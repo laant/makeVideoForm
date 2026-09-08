@@ -1,0 +1,89 @@
+{
+  "topic": "800만원 시골집 리모델링 — 건축 트랜스포메이션 쇼츠 (~60초)",
+  "cuts": [
+    {
+      "id": 1,
+      "style": "외경 비포",
+      "target_sec": 5,
+      "narration": "이 집, 팔백만 원에 샀습니다.",
+      "visual": "An abandoned a small Korean countryside house with a gray tiled hip roof, dark wooden window frames and a low stacked-stone fence, framed from the same fixed three-quarter view across the front yard, overgrown weeds filling the dirt yard, torn paper on the windows, a sagging gutter and moss on the roof tiles, gray overcast morning light, slow steady push-in toward the front door, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 2,
+      "style": "내부 비포",
+      "target_sec": 5,
+      "narration": "삼십 년을 비어 있던 시골집입니다.",
+      "visual": "Cluttered dusty interior of the same main room of a rural Korean house with exposed dark wooden roof beams and one wide window facing the front yard, peeling floral wallpaper, an old wooden cabinet and scattered junk on a worn vinyl floor, cobwebs on the beams, thin daylight through the dusty window, slow handheld walkthrough, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 3,
+      "style": "철거",
+      "target_sec": 4,
+      "narration": "일단 전부 뜯어냈습니다.",
+      "visual": "Mid-demolition interior of the same main room of a rural Korean house with exposed dark wooden roof beams and one wide window facing the front yard, wallpaper stripped off in ragged sheets, piles of debris and woven rubble bags on the bare floor, dust drifting in shafts of window light, energetic time-lapse feel with subtle camera motion, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 4,
+      "style": "골조 보강",
+      "target_sec": 5,
+      "narration": "썩은 기둥은 갈고, 뼈대는 살렸습니다.",
+      "visual": "Stripped structural interior of the same main room of a rural Korean house with exposed dark wooden roof beams and one wide window facing the front yard, old timber posts sanded clean, fresh new lumber braces clamped against the beams, sawdust floating in warm afternoon light, slow orbiting camera move, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 5,
+      "style": "단열·창호",
+      "target_sec": 4,
+      "narration": "단열재를 채우고, 창을 새로 냈습니다.",
+      "visual": "Renovation interior of the same main room of a rural Korean house with exposed dark wooden roof beams and one wide window facing the front yard, mineral wool insulation panels filling the open wall cavities, a brand-new large wooden-framed window with bright clean light pouring in, slow dolly toward the window, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 6,
+      "style": "마감 완료 (15초 궁금증)",
+      "target_sec": 5,
+      "narration": "그런데 여기서, 고민이 하나 생겼습니다.",
+      "visual": "Freshly finished empty interior of the same main room of a rural Korean house with exposed dark wooden roof beams and one wide window facing the front yard, pale oak wood flooring and smooth warm-white plaster walls, sunlight patches on the clean empty floor, slow wide pan across the room, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 7,
+      "style": "주방",
+      "target_sec": 4,
+      "narration": "주방은 마당 쪽으로 활짝 열었습니다.",
+      "visual": "A compact minimalist kitchen in a renovated rural Korean house, light wood cabinets and a white stone counter along the wall, a wide window over the sink looking out to a green yard, a kettle steaming softly on the stove, slow lateral dolly, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 8,
+      "style": "거실 (30초 반전: 서까래)",
+      "target_sec": 6,
+      "narration": "고민의 답은 천장이었습니다. 서까래를 가리지 않고, 그대로 뒀습니다.",
+      "visual": "Warm furnished living room in the same main room of a rural Korean house with exposed dark wooden roof beams and one wide window facing the front yard, a beige fabric sofa and a round paper pendant lamp, the restored dark wooden rafters fully exposed across the ceiling as the centerpiece, golden evening light, slow tilt up from the sofa to the beams, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 9,
+      "style": "침실",
+      "target_sec": 4,
+      "narration": "침실은 창문 하나로 끝냈습니다.",
+      "visual": "A serene minimalist bedroom in a renovated rural Korean house, a low wooden bed with white linen bedding, one large picture window perfectly framing green rice paddies outside like a painting, soft morning light, static composition with curtains moving in a gentle breeze, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 10,
+      "style": "외관 애프터",
+      "target_sec": 5,
+      "narration": "마당엔 잔디를 깔고, 툇마루를 놨습니다.",
+      "visual": "A beautifully renovated a small Korean countryside house with a gray tiled hip roof, dark wooden window frames and a low stacked-stone fence, framed from the same fixed three-quarter view across the front yard, crisp white plaster walls and clean dark roof tiles, a neat fresh grass lawn and a small wooden porch along the front, warm golden-hour sunlight, slow steady push-in, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 11,
+      "style": "밤 외경",
+      "target_sec": 4,
+      "narration": "해가 지면, 이 집의 진짜 얼굴이 나옵니다.",
+      "visual": "The renovated a small Korean countryside house with a gray tiled hip roof, dark wooden window frames and a low stacked-stone fence, framed from the same fixed three-quarter view across the front yard, at blue-hour dusk, warm amber light glowing from every window onto the yard, first stars in a deep blue sky, gentle slow push-in, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    },
+    {
+      "id": 12,
+      "style": "리빌·CTA (루프: 컷 1 앵글 복귀)",
+      "target_sec": 7,
+      "narration": "팔백만 원짜리 집이 이렇게 됐습니다. 수리비는 삼천 넘었을까요, 안 넘었을까요? 정답은 다음 영상에 있습니다.",
+      "visual": "The renovated a small Korean countryside house with a gray tiled hip roof, dark wooden window frames and a low stacked-stone fence, framed from the same fixed three-quarter view across the front yard, at dusk, camera slowly rising and pulling back to reveal the glowing house nestled among dark rice fields and distant hills, warm window light against a deep blue landscape, cinematic photorealistic renovation documentary footage, shot on digital cinema camera, subtle film grain, shallow depth of field, single continuous shot, no people, no text no letters no logos, 9:16 vertical video"
+    }
+  ]
+}

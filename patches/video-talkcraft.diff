@@ -1,0 +1,73 @@
+diff --git a/scripts/make_timing.py b/scripts/make_timing.py
+index 82eb706..375fe19 100644
+--- a/scripts/make_timing.py
++++ b/scripts/make_timing.py
+@@ -16,7 +16,7 @@ import sys
+ src, dst = sys.argv[1], sys.argv[2]
+ d = json.load(open(src))
+ 
+-KEPT = re.compile(r"[一-鿿A-Za-z0-9']")
++KEPT = re.compile(r"[一-鿿가-힣A-Za-z0-9']")
+ 
+ 
+ def clean(t):
+diff --git a/scripts/timestamps_cpu.py b/scripts/timestamps_cpu.py
+index 3dbe71b..10cfd51 100644
+--- a/scripts/timestamps_cpu.py
++++ b/scripts/timestamps_cpu.py
+@@ -56,7 +56,9 @@ import sys
+ import unicodedata
+ from pathlib import Path
+ 
+-CJK = re.compile(r"[一-鿿㐀-䶿]")
++# 한국어 확장: 한글 음절(가-힣)도 CJK 앵커로 취급 — 음절=문자 단위 앵커가 성립하고,
++# whisper(ko) 출력도 한글이라 문자 단위 매칭이 동일하게 동작한다 (pypinyin은 한글을 그대로 반환).
++CJK = re.compile(r"[一-鿿㐀-䶿가-힣]")
+ LATIN = re.compile(r"[A-Za-z0-9]")
+ # ASR 会把汉字数字转写成阿拉伯数字（"十四天"→"14天"）——逐位映射回汉字当对齐锚
+ DIGIT2CN = str.maketrans("0123456789", "零一二三四五六七八九")
+@@ -252,13 +254,13 @@ def align(sentences: list[str], asr_words: list[dict]) -> dict:
+     return {"sr": 16000, "total": round(total, 3), "sentences": out_sents}
+ 
+ 
+-def asr_whisper(audio_path: str, model_name: str) -> list[dict]:
++def asr_whisper(audio_path: str, model_name: str, language: str = "zh") -> list[dict]:
+     from faster_whisper import WhisperModel
+ 
+     model = WhisperModel(model_name, device="cpu", compute_type="int8")
+     # 不传 initial_prompt！实测把口播稿喂进 prompt 会让前几段直接幻觉错位
+     #（首段转写出第二句的内容、时间全错）；裸转写反而又准又稳。
+-    segments, _ = model.transcribe(audio_path, language="zh", word_timestamps=True)
++    segments, _ = model.transcribe(audio_path, language=language, word_timestamps=True)
+     words = []
+     for seg in segments:
+         for w in seg.words or []:
+@@ -294,8 +296,8 @@ DEFAULT_FIRERED_DIR = str(Path.home() / ".cache/koubo/sherpa-onnx-fire-red-asr2-
+ 
+ def main() -> None:
+     argv = sys.argv[1:]
+-    model_name, backend, model_dir = "small", "firered", ""
+-    for flag in ("--model", "--backend", "--model-dir"):
++    model_name, backend, model_dir, language = "small", "firered", "", "zh"
++    for flag in ("--model", "--backend", "--model-dir", "--language"):
+         if flag in argv:
+             i = argv.index(flag)
+             v = argv[i + 1]
+@@ -304,6 +306,8 @@ def main() -> None:
+                 model_name = v
+             elif flag == "--backend":
+                 backend = v
++            elif flag == "--language":
++                language = v
+             else:
+                 model_dir = v
+     if len(argv) != 3:
+@@ -326,7 +330,7 @@ def main() -> None:
+                 "  （model.int8.onnx + tokens.txt）；或改用 --backend whisper（免手动下载）")
+         asr_words = asr_firered(audio_path, model_dir)
+     else:
+-        asr_words = asr_whisper(audio_path, model_name)
++        asr_words = asr_whisper(audio_path, model_name, language)
+     if not asr_words:
+         sys.exit("ASR 没有产出任何词——检查音频路径/内容")
+ 

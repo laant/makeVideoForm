@@ -1,0 +1,24 @@
+# ── 비밀·환경 ──
+.env
+*.env
+!*.env.example
+
+# ── 재설치 가능한 의존성 ──
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# ── 미디어 산출물 (프롬프트·대본·드라이버로 재생산 가능) ──
+output/
+_archive-mpt/
+flow-pipeline/projects/*/clips/
+flow-pipeline/projects/*/audio/
+flow-pipeline/projects/*/subs/
+flow-pipeline/projects/*/out/
+flow-pipeline/projects/*/.zip/
+talkcraft/*/remotion/out/
+talkcraft/*/remotion/public/full.mp3
+
+# ── OS ──
+.DS_Store

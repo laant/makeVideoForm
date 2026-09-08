@@ -1,0 +1,74 @@
+[
+ {
+  "t": 2,
+  "anchor": "10조",
+  "sentence": 0,
+  "what": "counter 落定 스케일 펀치"
+ },
+ {
+  "t": 16.26,
+  "anchor": "80만",
+  "sentence": 3,
+  "what": "slab1 팝"
+ },
+ {
+  "t": 17.02,
+  "anchor": "3조",
+  "sentence": 3,
+  "what": "slab2 팝"
+ },
+ {
+  "t": 25.34,
+  "anchor": "사이트",
+  "sentence": 5,
+  "what": "URL 타이핑 시작"
+ },
+ {
+  "t": 25.88,
+  "anchor": "내보험찾아줌",
+  "sentence": 5,
+  "what": "서비스명 카드 팝"
+ },
+ {
+  "t": 29.1,
+  "anchor": "3분",
+  "sentence": 6,
+  "what": "3분 배지 팝"
+ },
+ {
+  "t": 37.3,
+  "anchor": "가짜",
+  "sentence": 8,
+  "what": "스트라이크 快斩"
+ },
+ {
+  "t": 40.04,
+  "anchor": "진짜",
+  "sentence": 9,
+  "what": "교체 立换"
+ },
+ {
+  "t": 41.62,
+  "anchor": "고정",
+  "sentence": 9,
+  "what": "서브라인 등장"
+ },
+ {
+  "t": 48.84,
+  "anchor": "나왔다",
+  "sentence": 11,
+  "what": "CTA 행1 전개"
+ },
+ {
+  "t": 50.18,
+  "anchor": "없었다",
+  "sentence": 11,
+  "what": "CTA 행2 전개"
+ },
+ {
+  "t": 50.84,
+  "anchor": "10조",
+  "sentence": 12,
+  "what": "루프 카운터 재등장"
+ }
+]
