@@ -16,7 +16,8 @@ flow-pipeline/projects/*/clips/
 flow-pipeline/projects/*/audio/
 flow-pipeline/projects/*/subs/
 flow-pipeline/projects/*/out/
-flow-pipeline/projects/*/.zip/
+flow-pipeline/projects/*/.zip*/
+flow-pipeline/projects/*/project*.zip
 talkcraft/*/remotion/out/
 talkcraft/*/remotion/public/full.mp3
 

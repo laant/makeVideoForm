@@ -38,6 +38,12 @@ MAPPING: dict[tuple[str, str], list[str]] = {
         "talkcraft/gcans/remotion/out/final.mp4"],
     ("03-tokyo-gcans", "mpt"): [
         "_archive-mpt/e79a0500-final.mp4"],  # MPT 모듈 삭제됨 — 아카이브 참조
+    ("06-ai-thinking-ep1", "flow"): [
+        "flow-pipeline/projects/06-ai-thinking-ep1/out/final.mp4"],
+    ("06-ai-thinking-ep1", "openmontage"): [
+        "OpenMontage/projects/ai-thinking-ep1/renders/final.mp4"],
+    ("06-ai-thinking-ep1", "talkcraft"): [
+        "talkcraft/thinking/remotion/out/final.mp4"],
     ("05-yeonan-family", "openmontage"): [
         "OpenMontage/projects/yeonan-family/renders/final_send.mp4",
         "OpenMontage/projects/yeonan-family/renders/final.mp4"],

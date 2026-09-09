@@ -57,6 +57,7 @@ myNextSeason/
 | 03 | 도쿄 지하의 신전 G-Cans | 건축쇼츠 | flow·openmontage·talkcraft·mpt | `output/03-tokyo-gcans/` |
 | 04 | 구리시 태극기 | 건축쇼츠(페이퍼 콜라주) | flow·openmontage·talkcraft | `output/04-guri-flags/` |
 | 05 | 연안이씨 가족 그림책 | 개인(가로 16:9) | flow·openmontage·talkcraft | `output/05-yeonan-family/` |
+| 06 | AI 사고력 1편 — 챗GPT가 헛소리하는 이유 | 실무 인사이트(3부작 1/3, 찰흙 3D) | flow·openmontage·talkcraft | `output/06-ai-thinking-ep1/` |
 
 ## 환경 메모
 
