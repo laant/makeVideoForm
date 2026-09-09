@@ -68,11 +68,11 @@ SCENES = [
                ('s7a', P(OPEN, 'SUBJECT: an instruction sheet on a clay table with three rounded clay cards floating above it in a warm glow, each embossed with a simple pictogram only — a flag, a target, a check mark.', PROHIB), 'ken-burns'),
                ('s7b', P(OPEN, 'SUBJECT: a close view of the three warmly glowing rounded cards with their embossed flag, target and check mark pictograms.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s8', narration='그런데 이 사고력을 가르친다는 코딩 학원. 계속 보내야 할지는, 다음 편에서 끝내드립니다.',
+    dict(id='s8', narration='그런데 이 사고력, 요즘은 강의로 팝니다. 그 자동화 강의를 결제해야 할지는, 다음 편에서 끝내드립니다.',
          imgs=[
-               ('s8', P(OPEN, 'SUBJECT: a small clay child silhouette standing before a huge pile of plain building blocks in a dark room under a single soft spotlight.', PROHIB), 'zoom-in'),
+               ('s8v2', P(OPEN, 'SUBJECT: a small clay figure silhouette standing before a tall shiny stack of glowing clay course cards in a dark room under a single soft spotlight, each card carrying only a play triangle and a blank price tag.', PROHIB), 'zoom-in'),
          ],
-         overlay={'type': 'stat_card', 'stat': '다음 편', 'subtitle': '코딩 학원, 끊어도 될까', 'accentColor': '#E5372F', 'backgroundOverlay': 0.5}),
+         overlay={'type': 'stat_card', 'stat': '다음 편', 'subtitle': '그 강의, 결제해도 될까', 'accentColor': '#E5372F', 'backgroundOverlay': 0.5}),
 ]
 
 IMG_DIR = PROJ / "assets" / "images"

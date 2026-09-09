@@ -59,7 +59,7 @@ myNextSeason/
 | 05 | 연안이씨 가족 그림책 | 개인(가로 16:9) | flow·openmontage·talkcraft | `output/05-yeonan-family/` |
 | 06 | AI 사고력 1편 — 챗GPT가 헛소리하는 이유 | 실무 인사이트(3부작 1/3, 찰흙 3D) | flow·openmontage·talkcraft | `output/06-ai-thinking-ep1/` |
 | 07 | AI 사고력 2편 — 일 못하는 사람들의 공통점 | 실무 인사이트(3부작 2/3) | openmontage | `output/07-ai-thinking-ep2/` |
-| 08 | AI 사고력 3편 — 코딩 학원, 끊어도 될까 | 교육 인사이트(3부작 3/3) | openmontage | `output/08-ai-thinking-ep3/` |
+| 08 | AI 사고력 3편 — 그 자동화 강의, 결제 전에 | 교육 인사이트(3부작 3/3, 개정판) | openmontage | `output/08-ai-thinking-ep3/` |
 
 ## 환경 메모
 

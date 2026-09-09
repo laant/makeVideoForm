@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AI 사고력 시리즈 3편 (코딩 학원) — OpenMontage 프로덕션 드라이버.
+"""AI 사고력 시리즈 3편 (자동화 강의, 결제 전에) — OpenMontage 프로덕션 드라이버.
 
 사용: .venv/bin/python projects/ai-thinking-ep3/produce.py [assets|props|render|all]
 """
@@ -34,41 +34,42 @@ def P(*parts: str) -> str:
 ACC = "#E5372F"
 
 SCENES = [
-    dict(id='s1', narration='AI가 코드를 다 짜주는 시대, 코딩 학원부터 끊었다는 부모님들. 절반은 맞고, 절반은 위험한 선택입니다.',
+    dict(id='s1', narration='쇼츠 자동화, 블로그 자동화, AI 프롬프트 특강. 결제하기 전에, 이 영상부터 보세요.',
          imgs=[
-               ('s1', P(OPEN, 'SUBJECT: a thick clay slab splitting cleanly in half in midair, one half bathed in a soft warm glow, the other half laced with harsh red cracks, the only red in the frame.', PROHIB), 'ken-burns'),
+               ('s1v2', P(OPEN, 'SUBJECT: three glossy clay course cards floating in midair like glowing advertisements, each carrying only a large play triangle and a blank price tag, above a large rounded clay pay button.', PROHIB), 'ken-burns'),
+               ('s1v2b', P(OPEN, 'SUBJECT: a close view of a clay fingertip hovering frozen just above the large rounded pay button.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s2', narration='맞는 절반. 컴퓨터 언어를 달달 외우는 시대는 정말 끝났습니다. 문법 암기는 이제 AI가 더 잘합니다.',
+    dict(id='s2', narration="강의가 파는 건 대부분 '따라 하기'입니다. 화면 그대로, 설정 그대로, 프롬프트 그대로.",
          imgs=[
-               ('s2', P(OPEN, 'SUBJECT: a thick heavy clay grammar book crumbling into fine dust particles that drift away in the studio air.', PROHIB), 'ken-burns'),
+               ('s2v2', P(OPEN, 'SUBJECT: a clay screen showing a tutorial panel with faint meaningless scribble marks, and beside it a row of identical clay blocks being copied one to one from the screen.', PROHIB), 'ken-burns'),
+               ('s2v2b', P(OPEN, 'SUBJECT: a close view of the row of perfectly identical copied clay blocks lined up on the desk.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s3', narration='위험한 절반. 코딩교육의 진짜 알맹이는, 애초에 언어가 아니었거든요.',
+    dict(id='s3', narration='문제는 다음 달입니다. 툴이 바뀌고 화면이 바뀌면, 따라 만든 건 통째로 낡아버립니다.',
          imgs=[
-               ('s3', P(OPEN, 'SUBJECT: a small luminous geometric core structure revealed hovering amid the settling dust, glowing softly warm.', PROHIB), 'zoom-in'),
+               ('s3v2', P(OPEN, 'SUBJECT: a clay desk calendar shedding a blank page into the air while the row of copied clay blocks cracks with harsh red fissures, the tutorial screen behind now showing a different scribble layout.', PROHIB), 'ken-burns'),
+               ('s3v2b', P(OPEN, 'SUBJECT: a close view of one copied clay block split by harsh red cracks, the only red in the frame.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s4', narration='블록 조립을 떠올려 보세요. 설명서대로 따라 만들면 결과물은 화려해도, 머릿속에 남는 게 없습니다.',
+    dict(id='s4', narration='오래 남는 건 강의 노트가 아니라, 막혔을 때 스스로 풀어본 경험입니다.',
          imgs=[
-               ('s4a', P(OPEN, 'SUBJECT: an ornate finished castle built from plain clay building blocks standing on a table, a small clay child staring only at an instruction booklet with scribble diagram marks.', PROHIB), 'ken-burns'),
-               ('s4b', P(OPEN, 'SUBJECT: a close view of the instruction booklet pages covered only with faint meaningless scribble diagrams.', PROHIB), 'zoom-in'),
+               ('s4v2', P(OPEN, 'SUBJECT: a small clay figure holding up a small patched clay piece with visible repair seams, the piece glowing softly warm in its hands.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s5', narration='왜 이렇게 나눴고, 왜 이 순서고, 틀리면 어디부터 확인할지. 설명할 수 있어야 진짜 훈련입니다.',
+    dict(id='s5', narration='직접 만들어 보세요. 작게 시작해서, 에러가 나면 어디부터 볼지 정하고, 하나씩 고치는 겁니다.',
          imgs=[
-               ('s5a', P(OPEN, 'SUBJECT: the same block castle disassembled in midair, its pieces floating in tidy ordered layers like exploded assembly steps, one single block edged with a red glow.', PROHIB), 'ken-burns'),
-               ('s5b', P(OPEN, 'SUBJECT: a close view of the red-edged clay block floating among the tidy ordered pieces, the only red in the frame.', PROHIB), 'zoom-in'),
+               ('s5v2', P(OPEN, 'SUBJECT: a clay workbench with a small half-built structure, a clay hand lifting out one red-edged error block, the only red in the frame.', PROHIB), 'ken-burns'),
+               ('s5v2b', P(OPEN, 'SUBJECT: a close view of the fresh clay block being pressed into the gap where the error block was removed.', PROHIB), 'zoom-in'),
          ]),
     dict(id='s6', narration='AI는 뭐든 딸깍 한 번에 만들어줍니다. 하지만 딸깍 앞엔 무엇을 만들지 정하는 사람이, 딸깍 뒤엔 결과를 의심하는 사람이 있어야 합니다.',
          imgs=[
                ('s6a', P(OPEN, 'SUBJECT: a large rounded clay button in the center, one clay figure standing before it gesturing at floating blueprint shapes, another clay figure behind it examining a result panel through a magnifying glass.', PROHIB), 'ken-burns'),
                ('s6b', P(OPEN, 'SUBJECT: a close view of the clay figure holding a magnifying glass over a glowing result panel marked only with faint scribble lines.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s7', narration='그래서 필요한 건 언어 수업이 아니라, 문제를 쪼개고 예외를 찾고 결과를 검증하는 논리 훈련입니다.',
+    dict(id='s7', narration='그 감각은 결제로 살 수 없습니다. 문제를 쪼개고, 예외를 만나고, 직접 고쳐본 사람만 갖게 됩니다.',
          imgs=[
-               ('s7a', P(OPEN, 'SUBJECT: three small clay podiums in a row: a big block splitting into smaller pieces on the first, one odd irregular piece lifted out on the second, a round stamp pressing down on the third.', PROHIB), 'ken-burns'),
-               ('s7b', P(OPEN, 'SUBJECT: a tidy assembled clay structure standing complete, pulsing with a soft warm glow.', PROHIB), 'zoom-in'),
+               ('s7v2', P(OPEN, 'SUBJECT: a tidy finished clay structure whose repair seams and patch marks glow softly warm, small clay tools resting beside it on the workbench.', PROHIB), 'zoom-in'),
          ]),
-    dict(id='s8', narration='끊어야 할 건 코딩이 아니라 암기입니다. 우리 아이에게 남길 건 어느 쪽일까요 — 따라 만든 성, 아니면 생각하는 힘.',
+    dict(id='s8', narration='다음에 강의 광고를 만나면 스스로에게 물어보세요. 따라 하기를 사는 건지, 생각하는 힘을 기르는 건지.',
          imgs=[
-               ('s8', P(OPEN, 'SUBJECT: a split scene: the ornate block castle standing on one side, and on the other a small clay child holding up the small luminous core in both hands.', PROHIB), 'zoom-in'),
+               ('s8v2', P(OPEN, 'SUBJECT: a split scene: a tall shiny stack of glowing clay course cards standing on one side, and on the other a clay figure holding up a small luminous core in both hands.', PROHIB), 'zoom-in'),
          ]),
 ]
 
