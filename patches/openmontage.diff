@@ -1,3 +1,16 @@
+diff --git a/remotion-composer/src/Explainer.tsx b/remotion-composer/src/Explainer.tsx
+index 99dd637..a1c89b9 100644
+--- a/remotion-composer/src/Explainer.tsx
++++ b/remotion-composer/src/Explainer.tsx
+@@ -877,7 +877,7 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
+         <CaptionOverlay
+           words={captions}
+           wordsPerPage={6}
+-          fontSize={42}
++          fontSize={70}
+           color={theme.textColor}
+           highlightColor={theme.captionHighlightColor}
+           backgroundColor={theme.captionBackgroundColor}
 diff --git a/remotion-composer/src/Root.tsx b/remotion-composer/src/Root.tsx
 index d837f14..673aa90 100644
 --- a/remotion-composer/src/Root.tsx
@@ -25,6 +38,21 @@ index d837f14..673aa90 100644
        <Composition
          id="CinematicRenderer"
          component={CinematicRenderer}
+diff --git a/remotion-composer/src/components/CaptionOverlay.tsx b/remotion-composer/src/components/CaptionOverlay.tsx
+index 0142d68..bcc0f09 100644
+--- a/remotion-composer/src/components/CaptionOverlay.tsx
++++ b/remotion-composer/src/components/CaptionOverlay.tsx
+@@ -118,6 +118,10 @@ const PageRenderer: React.FC<{
+                   // previous behavior; for CJK it prevents mid-word breaks.
+                   display: "inline-block",
+                   whiteSpace: "nowrap",
++                  // Trailing spaces inside an inline-block collapse at the box
++                  // edge, so inter-word gaps must be real margin.
++                  marginRight:
++                    wordSeparator && i < page.words.length - 1 ? "0.28em" : 0,
+                   color: isActive ? highlightColor : isPast ? color : `${color}99`,
+                   transition: "none", // CSS transitions forbidden in Remotion
+                   textShadow: isActive
 diff --git a/schemas/artifacts/edit_decisions.schema.json b/schemas/artifacts/edit_decisions.schema.json
 index b4dc008..4c62561 100644
 --- a/schemas/artifacts/edit_decisions.schema.json
