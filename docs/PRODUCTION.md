@@ -64,6 +64,10 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 **완성본 모음(정본)**: `output/<프로젝트>/<모듈명>_final_send.mp4` — 모듈 깊숙한 원본들을 한곳에 모은 배포·검토용 디렉토리.
 새 완성본이 생기면 `scripts/collect_outputs.py`의 MAPPING에 한 줄 추가 후 실행 (idempotent — 소스가 더 새것일 때만 갱신, 30MB 초과 원본은 자동 압축).
 
+**업로드 준비물 — 완성본과 항상 함께 만든다(요청 없어도 자동)**:
+- 영상별 썸네일 2장: `<파일명>_thumb1.jpg`(훅 장면) · `<파일명>_thumb2.jpg`(결정 장면). 모듈마다 화면이 달라 영상별.
+- 프로젝트별 제목·설명 1파일: `titles.txt` — 숫자 포함형 5 · 질문형 5 · 감정 자극형 5 = 15개(제목 ≤60자, 설명 ≤3000자) + ★바이럴 1순위와 이유·차점. 주제가 같으므로 모듈과 무관하게 프로젝트당 하나.
+
 모듈 내 원본 위치:
 - Flow판: `flow-pipeline/projects/<NN-이름>/out/final.mp4`
 - OpenMontage판: `OpenMontage/projects/<이름>/renders/final.mp4`
