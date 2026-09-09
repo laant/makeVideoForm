@@ -1,13 +1,24 @@
 diff --git a/remotion-composer/src/Explainer.tsx b/remotion-composer/src/Explainer.tsx
-index 99dd637..a1c89b9 100644
+index 99dd637..3582540 100644
 --- a/remotion-composer/src/Explainer.tsx
 +++ b/remotion-composer/src/Explainer.tsx
-@@ -877,7 +877,7 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
+@@ -836,7 +836,8 @@ const OverlayRenderer: React.FC<{ overlay: Overlay; theme: ThemeConfig }> = ({
+ 
+ export const Explainer: React.FC<ExplainerProps> = (props) => {
+   const { cuts, overlays, captions, audio } = props;
+-  const { fps, durationInFrames } = useVideoConfig();
++  const { fps, durationInFrames, width, height } = useVideoConfig();
++  const captionBottom = height > width ? 350 : 90;
+ 
+   // Resolve theme from props — playbook name, theme name, or custom themeConfig
+   const theme = resolveTheme(props as Record<string, unknown>);
+@@ -877,7 +878,8 @@ export const Explainer: React.FC<ExplainerProps> = (props) => {
          <CaptionOverlay
            words={captions}
            wordsPerPage={6}
 -          fontSize={42}
 +          fontSize={70}
++          bottom={captionBottom}
            color={theme.textColor}
            highlightColor={theme.captionHighlightColor}
            backgroundColor={theme.captionBackgroundColor}
@@ -39,10 +50,39 @@ index d837f14..673aa90 100644
          id="CinematicRenderer"
          component={CinematicRenderer}
 diff --git a/remotion-composer/src/components/CaptionOverlay.tsx b/remotion-composer/src/components/CaptionOverlay.tsx
-index 0142d68..bcc0f09 100644
+index 0142d68..772464b 100644
 --- a/remotion-composer/src/components/CaptionOverlay.tsx
 +++ b/remotion-composer/src/components/CaptionOverlay.tsx
-@@ -118,6 +118,10 @@ const PageRenderer: React.FC<{
+@@ -29,6 +29,9 @@ type CaptionOverlayProps = {
+   // Separator rendered between words. Space-delimited languages want the
+   // default " "; CJK languages (no inter-word spacing) should pass "".
+   wordSeparator?: string;
++  // Distance from the bottom edge (px). Vertical shorts need a large value
++  // so captions clear platform UI (progress bar, caption/like buttons).
++  bottom?: number;
+ };
+ 
+ interface CaptionPage {
+@@ -65,7 +68,8 @@ const PageRenderer: React.FC<{
+   backgroundColor: string;
+   fontFamily: string;
+   wordSeparator: string;
+-}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily, wordSeparator }) => {
++  bottom: number;
++}> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily, wordSeparator, bottom }) => {
+   const frame = useCurrentFrame();
+   const { fps } = useVideoConfig();
+ 
+@@ -83,7 +87,7 @@ const PageRenderer: React.FC<{
+       style={{
+         justifyContent: "flex-end",
+         alignItems: "center",
+-        paddingBottom: 80,
++        paddingBottom: bottom,
+       }}
+     >
+       <div
+@@ -118,6 +122,10 @@ const PageRenderer: React.FC<{
                    // previous behavior; for CJK it prevents mid-word breaks.
                    display: "inline-block",
                    whiteSpace: "nowrap",
@@ -53,6 +93,22 @@ index 0142d68..bcc0f09 100644
                    color: isActive ? highlightColor : isPast ? color : `${color}99`,
                    transition: "none", // CSS transitions forbidden in Remotion
                    textShadow: isActive
+@@ -144,6 +152,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
+   backgroundColor = "rgba(15, 23, 42, 0.75)",
+   fontFamily = "Space Grotesk, Inter, system-ui, sans-serif",
+   wordSeparator = " ",
++  bottom = 80,
+ }) => {
+   const { fps } = useVideoConfig();
+   const pages = buildPages(words, wordsPerPage);
+@@ -168,6 +177,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
+               backgroundColor={backgroundColor}
+               fontFamily={fontFamily}
+               wordSeparator={wordSeparator}
++              bottom={bottom}
+             />
+           </Sequence>
+         );
 diff --git a/schemas/artifacts/edit_decisions.schema.json b/schemas/artifacts/edit_decisions.schema.json
 index b4dc008..4c62561 100644
 --- a/schemas/artifacts/edit_decisions.schema.json
