@@ -1,0 +1,802 @@
+{
+  "slug": "youth-savings-2nd",
+  "topic": "청년미래적금 2차 신청 핵심 정리 (10월 7~16일)",
+  "audience": "만 19~34세 청년, 1차를 놓쳤거나 떨어졌거나 청년도약계좌를 들고 망설이는 사람",
+  "tone": "빠르고 친근한 존댓말, 정보 전달형. 과장 없이 숫자는 정확하게",
+  "cta": "신청일 까먹지 않게 저장",
+  "reference": {
+    "url": "https://m.blog.naver.com/sokum/224414323124",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "",
+    "notes": "정보 출처(2026.9.16 금융위원회 발표 기준 정리 블로그). 구조 레퍼런스가 아니므로 문장은 새로 작성."
+  },
+  "brief": {
+    "goal": "10월 7~16일 신청, 대상·혜택 핵심과 도약계좌 갈아타기 순서(먼저 해지 금지)를 알고 간다",
+    "hook": "최대 연 19.4% 효과 적금이 10월에 다시 열린다",
+    "lengthSec": 40,
+    "mustShow": "신청 일정(홀짝제), 가입 대상(나이+소득 2조건), 기여금 일반 6%/우대 12%, 갈아타기 순서, 내년 소급",
+    "avoid": "19.4%를 실제 금리처럼 말하기(일반 적금 환산 효과임), 2,255만 원 같은 최대치 단정, 확정되지 않은 예산안을 확정처럼 말하기",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#0b0b0f",
+    "fg": "#f5f5f7",
+    "accent": "#ffd84d",
+    "muted": "#8a8a96"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "최대 연 십구 점 사 퍼센트 효과라는 청년미래적금, 시월에 다시 열립니다.",
+      "onScreen": {
+        "kicker": "청년미래적금 2차",
+        "emoji": "💰",
+        "title": "연 19.4% 효과\n적금 재오픈",
+        "subtitle": "일반 적금 환산 기준 · 금융위 설명",
+        "subtitleAt": "word:시월에",
+        "highlight": [
+          "십구",
+          "시월에"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "white-flash",
+      "timing": {
+        "hash": "3338fa9c1a46",
+        "start": 0,
+        "duration": 5.993,
+        "speechEnd": 5.743,
+        "words": [
+          {
+            "text": "최대",
+            "start": 0.06,
+            "end": 0.22
+          },
+          {
+            "text": "연",
+            "start": 0.28,
+            "end": 0.37
+          },
+          {
+            "text": "십구",
+            "start": 0.37,
+            "end": 0.83
+          },
+          {
+            "text": "점",
+            "start": 0.83,
+            "end": 1.06
+          },
+          {
+            "text": "사",
+            "start": 1.06,
+            "end": 1.29
+          },
+          {
+            "text": "퍼센트",
+            "start": 1.29,
+            "end": 1.98
+          },
+          {
+            "text": "효과라는",
+            "start": 1.98,
+            "end": 2.63
+          },
+          {
+            "text": "청년미래적금,",
+            "start": 2.81,
+            "end": 4.2
+          },
+          {
+            "text": "시월에",
+            "start": 4.57,
+            "end": 4.97
+          },
+          {
+            "text": "다시",
+            "start": 4.97,
+            "end": 5.17
+          },
+          {
+            "text": "열립니다.",
+            "start": 5.17,
+            "end": 5.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "list",
+      "narration": "시월 칠일은 출생연도 끝자리 홀수, 팔일은 짝수, 십이일부터는 누구나요.",
+      "onScreen": {
+        "heading": "신청 일정 10.7~10.16",
+        "items": [
+          {
+            "text": "10/7(화) 출생연도 끝자리 홀수",
+            "at": "word:홀수"
+          },
+          {
+            "text": "10/8(수) 끝자리 짝수",
+            "at": "word:짝수"
+          },
+          {
+            "text": "10/12~16 누구나 · 16일 마감",
+            "at": "word:누구나"
+          }
+        ],
+        "highlight": [
+          "홀수",
+          "짝수",
+          "누구나요"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "word:홀수",
+          "volume": 1
+        },
+        {
+          "name": "pop",
+          "at": "word:짝수",
+          "volume": 1
+        },
+        {
+          "name": "pop",
+          "at": "word:누구나",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "ff8d54f9eed6",
+        "start": 5.993,
+        "duration": 7.581,
+        "speechEnd": 7.331,
+        "words": [
+          {
+            "text": "시월",
+            "start": 0.385,
+            "end": 0.78
+          },
+          {
+            "text": "칠일은",
+            "start": 0.79,
+            "end": 1.34
+          },
+          {
+            "text": "출생연도",
+            "start": 1.37,
+            "end": 2.01
+          },
+          {
+            "text": "끝자리",
+            "start": 2.01,
+            "end": 2.54
+          },
+          {
+            "text": "홀수,",
+            "start": 2.61,
+            "end": 3
+          },
+          {
+            "text": "팔일은",
+            "start": 3.58,
+            "end": 4.42
+          },
+          {
+            "text": "짝수,",
+            "start": 4.5,
+            "end": 5.24
+          },
+          {
+            "text": "십이일부터는",
+            "start": 5.48,
+            "end": 6.95
+          },
+          {
+            "text": "누구나요.",
+            "start": 6.95,
+            "end": 7.33
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "list",
+      "narration": "나이는 만 십구에서 삼십사 세, 소득 조건은 두 가지 다 맞아야 해요.",
+      "onScreen": {
+        "heading": "가입 대상",
+        "items": [
+          {
+            "text": "만 19~34세 (군 복무 최대 6년 차감)",
+            "at": "word:나이는"
+          },
+          {
+            "text": "총급여 7,500만 원 이하 또는 연매출 3억 이하 소상공인",
+            "at": "word:소득"
+          },
+          {
+            "text": "+ 가구 중위소득 200% 이하",
+            "at": "word:맞아야"
+          }
+        ]
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "0c99e1502db7",
+        "start": 13.574,
+        "duration": 5.918,
+        "speechEnd": 5.668,
+        "words": [
+          {
+            "text": "나이는",
+            "start": 0.05,
+            "end": 0.48
+          },
+          {
+            "text": "만",
+            "start": 0.48,
+            "end": 0.64
+          },
+          {
+            "text": "십구에서",
+            "start": 0.64,
+            "end": 1.13
+          },
+          {
+            "text": "삼십사",
+            "start": 1.13,
+            "end": 2.52
+          },
+          {
+            "text": "세,",
+            "start": 2.81,
+            "end": 2.94
+          },
+          {
+            "text": "소득",
+            "start": 3.17,
+            "end": 3.63
+          },
+          {
+            "text": "조건은",
+            "start": 3.63,
+            "end": 3.89
+          },
+          {
+            "text": "두",
+            "start": 4.1,
+            "end": 4.14
+          },
+          {
+            "text": "가지",
+            "start": 4.14,
+            "end": 4.43
+          },
+          {
+            "text": "다",
+            "start": 4.43,
+            "end": 4.57
+          },
+          {
+            "text": "맞아야",
+            "start": 4.57,
+            "end": 5
+          },
+          {
+            "text": "해요.",
+            "start": 5,
+            "end": 5.29
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "compare",
+      "narration": "정부가 내 납입액의 육 퍼센트, 중소기업 재직자 같은 우대형은 십이 퍼센트를 얹어줘요.",
+      "onScreen": {
+        "heading": "정부 기여금",
+        "left": {
+          "label": "일반형 6%",
+          "items": [
+            "납입액의 6%를 정부가 추가"
+          ]
+        },
+        "right": {
+          "label": "우대형 12%",
+          "items": [
+            "중소기업 재직자",
+            "신규 취업자 등"
+          ]
+        },
+        "rightAt": "word:중소기업",
+        "verdict": "이자는 비과세",
+        "verdictAt": "end",
+        "highlight": [
+          "육",
+          "십이"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "word:중소기업",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "4a0b3fc1fe93",
+        "start": 19.492,
+        "duration": 7.255,
+        "speechEnd": 7.005,
+        "words": [
+          {
+            "text": "정부가",
+            "start": 0.06,
+            "end": 0.51
+          },
+          {
+            "text": "내",
+            "start": 0.51,
+            "end": 0.68
+          },
+          {
+            "text": "납입액의",
+            "start": 0.68,
+            "end": 1.92
+          },
+          {
+            "text": "육",
+            "start": 1.92,
+            "end": 1.97
+          },
+          {
+            "text": "퍼센트,",
+            "start": 1.97,
+            "end": 2.55
+          },
+          {
+            "text": "중소기업",
+            "start": 3.26,
+            "end": 3.73
+          },
+          {
+            "text": "재직자",
+            "start": 3.82,
+            "end": 4.2
+          },
+          {
+            "text": "같은",
+            "start": 4.24,
+            "end": 4.56
+          },
+          {
+            "text": "우대형은",
+            "start": 4.62,
+            "end": 5.38
+          },
+          {
+            "text": "십이",
+            "start": 5.38,
+            "end": 5.653
+          },
+          {
+            "text": "퍼센트를",
+            "start": 5.653,
+            "end": 6.2
+          },
+          {
+            "text": "얹어줘요.",
+            "start": 6.2,
+            "end": 6.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "월 오십만 원씩 삼 년이면 우대형은 기여금만 이백십육만 원이에요.",
+      "onScreen": {
+        "kicker": "월 50만 원 × 3년",
+        "title": "기여금만\n+216만 원",
+        "subtitle": "우대형 기준 · 일반형은 +108만 원\n은행 이자 별도",
+        "subtitleAt": "word:이백십육만",
+        "highlight": [
+          "이백십육만"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "chime",
+          "at": "word:이백십육만",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "zoom",
+      "timing": {
+        "hash": "bc744251b864",
+        "start": 26.747,
+        "duration": 5.97,
+        "speechEnd": 5.72,
+        "words": [
+          {
+            "text": "월",
+            "start": 0.05,
+            "end": 0.37
+          },
+          {
+            "text": "오십만",
+            "start": 0.37,
+            "end": 1.26
+          },
+          {
+            "text": "원씩",
+            "start": 1.26,
+            "end": 1.5
+          },
+          {
+            "text": "삼",
+            "start": 1.5,
+            "end": 1.88
+          },
+          {
+            "text": "년이면",
+            "start": 1.88,
+            "end": 2.05
+          },
+          {
+            "text": "우대형은",
+            "start": 2.37,
+            "end": 3.09
+          },
+          {
+            "text": "기여금만",
+            "start": 3.09,
+            "end": 3.88
+          },
+          {
+            "text": "이백십육만",
+            "start": 3.88,
+            "end": 5.18
+          },
+          {
+            "text": "원이에요.",
+            "start": 5.18,
+            "end": 5.72
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "title",
+      "narration": "청년도약계좌 있는 분, 절대 먼저 해지하지 마세요.",
+      "onScreen": {
+        "kicker": "갈아타기 주의",
+        "emoji": "⚠️",
+        "title": "도약계좌\n먼저 해지 ❌",
+        "highlight": [
+          "절대"
+        ],
+        "cardNote": "새 계좌 먼저 개설 → 특별중도해지 순서로"
+      },
+      "sfx": [
+        {
+          "name": "error",
+          "at": "word:절대",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "201899f9d7e3",
+        "start": 32.717,
+        "duration": 4.074,
+        "speechEnd": 3.824,
+        "words": [
+          {
+            "text": "청년도약계좌",
+            "start": 0.05,
+            "end": 1.14
+          },
+          {
+            "text": "있는",
+            "start": 1.14,
+            "end": 1.53
+          },
+          {
+            "text": "분,",
+            "start": 1.53,
+            "end": 1.65
+          },
+          {
+            "text": "절대",
+            "start": 1.98,
+            "end": 2
+          },
+          {
+            "text": "먼저",
+            "start": 2.04,
+            "end": 2.2
+          },
+          {
+            "text": "해지하지",
+            "start": 2.33,
+            "end": 3.06
+          },
+          {
+            "text": "마세요.",
+            "start": 3.06,
+            "end": 3.44
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "list",
+      "narration": "미래적금 계좌를 먼저 만들고, 특별중도해지를 신청해야 혜택이 안 날아가요.",
+      "onScreen": {
+        "heading": "갈아타기 순서",
+        "items": [
+          {
+            "text": "미래적금 신청 → 심사 통과",
+            "at": "start"
+          },
+          {
+            "text": "미래적금 계좌 먼저 개설 (11/16~27)",
+            "at": "word:먼저"
+          },
+          {
+            "text": "도약계좌 '특별중도해지' 신청",
+            "at": "word:특별중도해지를"
+          }
+        ],
+        "highlight": [
+          "먼저",
+          "특별중도해지를"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:먼저",
+          "volume": 1
+        },
+        {
+          "name": "click",
+          "at": "word:특별중도해지를",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "e7509dad00ad",
+        "start": 36.791,
+        "duration": 5.951,
+        "speechEnd": 5.701,
+        "words": [
+          {
+            "text": "미래적금",
+            "start": 0.05,
+            "end": 0.85
+          },
+          {
+            "text": "계좌를",
+            "start": 0.91,
+            "end": 1.64
+          },
+          {
+            "text": "먼저",
+            "start": 1.65,
+            "end": 1.9
+          },
+          {
+            "text": "만들고,",
+            "start": 1.96,
+            "end": 2.42
+          },
+          {
+            "text": "특별중도해지를",
+            "start": 2.5,
+            "end": 3.73
+          },
+          {
+            "text": "신청해야",
+            "start": 3.79,
+            "end": 4.23
+          },
+          {
+            "text": "혜택이",
+            "start": 4.47,
+            "end": 4.84
+          },
+          {
+            "text": "안",
+            "start": 4.84,
+            "end": 4.94
+          },
+          {
+            "text": "날아가요.",
+            "start": 4.94,
+            "end": 5.34
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "title",
+      "narration": "내년 예산안이 통과되면 기여금 인상도 소급된다니, 기다릴 필요 없어요.",
+      "onScreen": {
+        "kicker": "2027 예산안",
+        "title": "기다리면\n손해",
+        "subtitle": "통과 시 우대형 15%\n지방 중소기업 25% · 기존 가입자 소급",
+        "subtitleAt": "word:소급된다니,",
+        "highlight": [
+          "소급된다니"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "694c1e81c05e",
+        "start": 42.742,
+        "duration": 5.704,
+        "speechEnd": 5.454,
+        "words": [
+          {
+            "text": "내년",
+            "start": 0.05,
+            "end": 0.49
+          },
+          {
+            "text": "예산안이",
+            "start": 0.49,
+            "end": 0.97
+          },
+          {
+            "text": "통과되면",
+            "start": 0.97,
+            "end": 1.82
+          },
+          {
+            "text": "기여금",
+            "start": 2.14,
+            "end": 2.59
+          },
+          {
+            "text": "인상도",
+            "start": 2.59,
+            "end": 3.17
+          },
+          {
+            "text": "소급된다니,",
+            "start": 3.17,
+            "end": 4.2
+          },
+          {
+            "text": "기다릴",
+            "start": 4.35,
+            "end": 4.84
+          },
+          {
+            "text": "필요",
+            "start": 4.84,
+            "end": 4.98
+          },
+          {
+            "text": "없어요.",
+            "start": 5.14,
+            "end": 5.39
+          }
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "cta",
+      "narration": "신청일 까먹지 않게 저장해 두세요.",
+      "onScreen": {
+        "emoji": "📌",
+        "headline": "10월 7일\n신청 시작",
+        "action": "저장하고 알림 켜기",
+        "actionAt": "word:저장해",
+        "handle": "@your_handle"
+      },
+      "sfx": [
+        {
+          "name": "notify",
+          "at": "word:저장해",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "cut",
+      "timing": {
+        "hash": "b386ba26af16",
+        "start": 48.446,
+        "duration": 2.855,
+        "speechEnd": 2.605,
+        "words": [
+          {
+            "text": "신청일",
+            "start": 0.07,
+            "end": 0.36
+          },
+          {
+            "text": "까먹지",
+            "start": 0.36,
+            "end": 1.23
+          },
+          {
+            "text": "않게",
+            "start": 1.23,
+            "end": 1.47
+          },
+          {
+            "text": "저장해",
+            "start": 1.47,
+            "end": 1.8
+          },
+          {
+            "text": "두세요.",
+            "start": 1.84,
+            "end": 2.17
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "2026.9.16 금융위원회 발표 기준 · 문의 서민금융진흥원 1397"
+  },
+  "caption": "청년미래적금 2차 10월 7~16일 신청 📌\n7일 홀수·8일 짝수(출생연도 끝자리), 12일부터 누구나\n청년도약계좌 가입자는 새 계좌 개설 후 특별중도해지!\n\n2026.9.16 금융위원회 발표 기준이며 세부 절차는 달라질 수 있어요. 문의: 서민금융진흥원 1397",
+  "hashtags": [
+    "#청년미래적금",
+    "#청년도약계좌",
+    "#적금",
+    "#재테크",
+    "#사회초년생"
+  ],
+  "upload": {
+    "title": "청년미래적금 2차 10월 7일 신청, 이것만 알면 됩니다",
+    "instagram": true,
+    "youtube": true
+  }
+}

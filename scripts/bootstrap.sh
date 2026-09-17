@@ -39,10 +39,13 @@ for p in gcans guri family; do
   [ -e "$link" ] || ln -s ../../demo/remotion/node_modules "$link"
 done
 [ -d OpenMontage/remotion-composer/node_modules ] || (cd OpenMontage/remotion-composer && npm install)
-echo "  talkcraft(demo 공유 심링크)·remotion-composer 준비 완료"
+[ -d autoShorts/node_modules ] || (cd autoShorts && npm install)
+(cd autoShorts && npm run sfx)
+echo "  talkcraft(demo 공유 심링크)·remotion-composer·autoShorts 준비 완료"
 
 echo ""
 echo "✅ bootstrap 완료. 남은 수동 단계 (docs/SETUP.md 5~6):"
 echo "   1) flow-pipeline/.env  → ELEVENLABS_API_KEY=..."
 echo "   2) OpenMontage/.env    → GOOGLE_API_KEY=..."
-echo "   3) (flow 사용 시) Aside 설치·MCP 등록·flow.google.com 로그인 — flow-pipeline/RUNBOOK.md"
+echo "   3) autoShorts/.env     → cp autoShorts/.env.example autoShorts/.env 후 GEMINI_API_KEY 등 (whisper 모델은 첫 tts 때 자동 다운로드)"
+echo "   4) (flow 사용 시) Aside 설치·MCP 등록·flow.google.com 로그인 — flow-pipeline/RUNBOOK.md"

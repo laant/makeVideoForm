@@ -31,6 +31,10 @@ myNextSeason/
 │   ├── video-talkcraft/     #   엔진·스킬 원본 (업스트림)
 │   └── demo·gcans·guri·family/  # 프로젝트들 (demo가 node_modules 원본 보유)
 │
+├── autoShorts/              # 모듈④ HTML/GSAP 템플릿 씬 → HyperFrames 렌더 → FFmpeg (+YT/IG 업로드)
+│   ├── CLAUDE.md            #   작업 규칙 (슬래시 커맨드 /shorts-* 는 루트 .claude/commands/)
+│   └── episodes/<slug>/     #   episode.json 단일 소스 · scenes · final.mp4
+│
 ├── patches/                 # 업스트림(OpenMontage·video-talkcraft) 수정분 diff
 ├── overlays/                # 서브모듈 내부 자작 파일 보관 (bootstrap이 복사)
 ├── output/                  # ★ 완성본 정본 — <프로젝트>/<모듈명>_final_send.mp4 (git 제외)
@@ -45,6 +49,7 @@ myNextSeason/
 | flow-pipeline | Veo 생성 영상 (Aside 브라우저 자동화) | 진짜 카메라 무빙·물/천 시뮬 | Flow 크레딧 (~10/컷, 구독 포함) |
 | OpenMontage | 3D/일러스트 스틸 + 모션 + stat_card | 무결 원샷·계측선 정확·숫자 오버레이 | ~$0.04/이미지 |
 | talkcraft | 코드로 그리는 모션그래픽 | 계측선·동기화·태극기 등 100% 결정론 | $0 (로컬 렌더) |
+| autoShorts | HTML/GSAP 템플릿 씬 (HyperFrames) | 템플릿 5종·음성 싱크·자동 검수·업로드까지 | TTS만 (Gemini/ElevenLabs) |
 
 기본 실험 방식: **같은 대본을 여러 모듈로 병렬 제작해 비교** (오디오는 Gemini Aoede를 공유).
 
@@ -60,11 +65,11 @@ myNextSeason/
 | 06 | AI 사고력 1편 — 챗GPT가 헛소리하는 이유 | 실무 인사이트(3부작 1/3, 찰흙 3D) | flow·openmontage·talkcraft | `output/06-ai-thinking-ep1/` |
 | 07 | AI 사고력 2편 — 일 못하는 사람들의 공통점 | 실무 인사이트(3부작 2/3) | openmontage | `output/07-ai-thinking-ep2/` |
 | 08 | AI 사고력 3편 — 그 자동화 강의, 결제 전에 | 교육 인사이트(3부작 3/3, 개정판) | openmontage | `output/08-ai-thinking-ep3/` |
-| 09 | 청년미래적금 2차 신청 총정리 | 머니 정보(시의성, 찰흙 3D) | openmontage·talkcraft·flow(크레딧 대기) | `output/09-youth-savings-2nd/` |
+| 09 | 청년미래적금 2차 신청 총정리 | 머니 정보(시의성, 찰흙 3D) | openmontage·talkcraft·autoshorts·flow(크레딧 대기) | `output/09-youth-savings-2nd/` |
 
 ## 환경 메모
 
-- API 키: ElevenLabs → `flow-pipeline/.env` · Google(GOOGLE_API_KEY, 결제 연결) → `OpenMontage/.env`
+- API 키: ElevenLabs → `flow-pipeline/.env` · Google(GOOGLE_API_KEY, 결제 연결) → `OpenMontage/.env` · autoShorts(Gemini TTS·ElevenLabs·YT/IG) → `autoShorts/.env`
   (쉘의 GEMINI_API_KEY는 무효한 옛 키 — unset 후 .env 사용)
 - Flow 웹: flow.google.com (Google 계정 lee.junghoon@gmail.com, 브라우저 자동화는 Aside MCP 경유)
 - 공용 자원: 폰트 `flow-pipeline/fonts/`, PIL venv `OpenMontage/.venv`, TTS는 Gemini Aoede(한국어 네이티브)

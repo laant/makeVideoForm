@@ -1,0 +1,41 @@
+<!-- demo: 입력 → 결과 시연 (채팅/앱 화면).
+     onScreen: { app?: "ChatGPT", heading?, input: "프롬프트", inputAt?, output: "결과" | ["줄", ...], outputAt? } -->
+<style>
+  .d-head { font-size: 64px; font-weight: 900; letter-spacing: -0.03em; }
+  .d-win { border-radius: 36px; background: #16161c; border: 3px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+  .d-bar { display: flex; align-items: center; gap: 14px; padding: 24px 32px; background: #1f1f27; font-size: 34px; color: var(--muted); font-weight: 700; }
+  .d-dot { width: 20px; height: 20px; border-radius: 50%; background: #444; }
+  .d-dot:nth-child(1) { background: #ff5f57; } .d-dot:nth-child(2) { background: #febc2e; } .d-dot:nth-child(3) { background: #28c840; }
+  .d-body { padding: 40px 36px; display: flex; flex-direction: column; gap: 34px; min-height: 760px; }
+  .d-in { white-space: pre-wrap; align-self: flex-end; max-width: 88%; padding: 28px 34px; border-radius: 30px 30px 8px 30px; background: var(--accent); color: #111; font-size: 40px; font-weight: 700; line-height: 1.4; }
+  .d-out { max-width: 94%; display: flex; flex-direction: column; gap: 18px; font-size: 40px; line-height: 1.45; color: #e8e8ee; }
+  .d-caret { display: inline-block; width: 4px; height: 44px; background: #111; vertical-align: middle; margin-left: 4px; }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.heading) {
+    const h = H.el("div", "d-head", o.heading, stage);
+    tl.fromTo(h, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3 }, 0.05);
+  }
+  const win = H.el("div", "d-win", null, stage);
+  const bar = H.el("div", "d-bar", null, win);
+  H.el("span", "d-dot", null, bar); H.el("span", "d-dot", null, bar); H.el("span", "d-dot", null, bar);
+  H.el("span", null, o.app || "AI", bar);
+  const body = H.el("div", "d-body", null, win);
+  tl.fromTo(win, { opacity: 0, y: 120, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.1);
+
+  const input = H.el("div", "d-in", null, body);
+  const inAt = H.at(o.inputAt, 0.45);
+  tl.fromTo(input, { opacity: 0 }, { opacity: 1, duration: 0.15 }, inAt);
+  const typedEnd = H.type(tl, input, o.input || "", inAt + 0.1, 28);
+  const caret = H.el("span", "d-caret", null, input);
+  tl.fromTo(caret, { opacity: 1 }, { opacity: 0, duration: 0.01 }, typedEnd + 0.1);
+
+  const out = H.el("div", "d-out", null, body);
+  const lines = Array.isArray(o.output) ? o.output : String(o.output || "").split("\n");
+  const outAt = Math.max(typedEnd + 0.25, H.at(o.outputAt, typedEnd + 0.25));
+  lines.forEach((line, i) => {
+    const e = H.el("div", null, line, out);
+    tl.fromTo(e, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, outAt + i * 0.35);
+  });
+</script>

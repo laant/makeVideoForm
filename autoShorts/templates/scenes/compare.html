@@ -1,0 +1,39 @@
+<!-- compare: 비교(Before/After, A vs B).
+     onScreen: { heading?, left: { label, items[] }, right: { label, items[] }, rightAt?, verdict?, verdictAt? } -->
+<style>
+  .c-head { white-space: pre-line; font-size: 72px; font-weight: 900; letter-spacing: -0.03em; }
+  .c-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .c-col { border-radius: 36px; padding: 44px 36px; background: rgba(255,255,255,0.06); border: 3px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 26px; }
+  .c-col.win { border-color: var(--accent); background: rgba(255,216,77,0.08); }
+  .c-label { font-size: 46px; font-weight: 800; }
+  .c-col.win .c-label { color: var(--accent); }
+  .c-item { font-size: 38px; line-height: 1.35; color: #d8d8e0; }
+  .c-col.lose .c-item { color: var(--muted); }
+  .c-verdict { text-align: center; font-size: 60px; font-weight: 900; color: var(--accent); }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.heading) {
+    const h = H.el("div", "c-head", o.heading, stage);
+    tl.fromTo(h, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35 }, 0.05);
+  }
+  const cols = H.el("div", "c-cols", null, stage);
+  const rightAt = H.at(o.rightAt, S.speechEnd * 0.45);
+  [["left", 0.25, "lose"], ["right", rightAt, "win"]].forEach(([side, t0, cls]) => {
+    const d = o[side] || { label: side, items: [] };
+    const col = H.el("div", `c-col ${cls}`, null, cols);
+    H.el("div", "c-label", d.label, col);
+    tl.fromTo(col, { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, t0);
+    (d.items || []).forEach((it, i) => {
+      const e = H.el("div", "c-item", `• ${it}`, col);
+      tl.fromTo(e, { opacity: 0, x: side === "left" ? -30 : 30 }, { opacity: 1, x: 0, duration: 0.3 }, t0 + 0.25 + i * 0.18);
+    });
+  });
+  // 비교 시점에 오른쪽 강조
+  tl.to(".c-col.lose", { opacity: 0.55, scale: 0.97, duration: 0.3 }, rightAt + 0.2);
+  tl.fromTo(".c-col.win", { scale: 1 }, { scale: 1.03, duration: 0.3, ease: "back.out(3)" }, rightAt + 0.2);
+  if (o.verdict) {
+    const v = H.el("div", "c-verdict", o.verdict, stage);
+    tl.fromTo(v, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, H.at(o.verdictAt, S.speechEnd * 0.8));
+  }
+</script>

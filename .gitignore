@@ -20,6 +20,14 @@ flow-pipeline/projects/*/.zip*/
 flow-pipeline/projects/*/project*.zip
 talkcraft/*/remotion/out/
 talkcraft/*/remotion/public/full.mp3
+autoShorts/.cache/
+autoShorts/.secrets/
+autoShorts/episodes/*/audio/
+autoShorts/episodes/*/renders/
+autoShorts/episodes/*/vendor/
+autoShorts/episodes/*/cards/
+autoShorts/episodes/*/final.mp4
+autoShorts/episodes/*/upload-log.json
 
 # ── OS ──
 .DS_Store

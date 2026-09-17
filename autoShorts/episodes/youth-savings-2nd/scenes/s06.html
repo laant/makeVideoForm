@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0b0f; }
+      :root {
+        --bg: #0b0b0f; --fg: #f5f5f7; --accent: #ffd84d; --muted: #8a8a96;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      .t-kicker { align-self: flex-start; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #111; font-size: 40px; font-weight: 800; }
+  .t-emoji { font-size: 150px; line-height: 1; }
+  .t-title { font-size: 112px; font-weight: 900; line-height: 1.08; letter-spacing: -0.04em; }
+  .t-title .line { display: block; transform-origin: 0 50%; }
+  .t-sub { white-space: pre-line; font-size: 50px; font-weight: 600; color: var(--muted); line-height: 1.35; }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:generated hash=484c2bcc39be template=title -->
+    <div id="root" data-composition-id="s06" data-start="0" data-duration="4.374" data-width="1080" data-height="1920">
+      <div id="s06-bg" class="layer bg-layer clip" data-start="0" data-duration="4.374">
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s06-content" class="layer content clip" data-start="0" data-duration="4.374">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s06",
+  "template": "title",
+  "onScreen": {
+    "kicker": "갈아타기 주의",
+    "emoji": "⚠️",
+    "title": "도약계좌\n먼저 해지 ❌",
+    "highlight": [
+      "절대"
+    ],
+    "cardNote": "새 계좌 먼저 개설 → 특별중도해지 순서로"
+  },
+  "highlight": [
+    "절대"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "청년도약계좌",
+      "start": 0.05,
+      "end": 1.14
+    },
+    {
+      "text": "있는",
+      "start": 1.14,
+      "end": 1.53
+    },
+    {
+      "text": "분,",
+      "start": 1.53,
+      "end": 1.65
+    },
+    {
+      "text": "절대",
+      "start": 1.98,
+      "end": 2
+    },
+    {
+      "text": "먼저",
+      "start": 2.04,
+      "end": 2.2
+    },
+    {
+      "text": "해지하지",
+      "start": 2.33,
+      "end": 3.06
+    },
+    {
+      "text": "마세요.",
+      "start": 3.06,
+      "end": 3.44
+    }
+  ],
+  "speechEnd": 3.824,
+  "duration": 4.074,
+  "renderDuration": 4.374,
+  "globalStart": 32.717,
+  "total": 51.301
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      const o = S.onScreen;
+  if (o.emoji) {
+    const e = H.el("div", "t-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0.6, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 0);
+  }
+  if (o.kicker) {
+    const k = H.el("div", "t-kicker", o.kicker, stage);
+    tl.fromTo(k, { x: -40 }, { x: 0, duration: 0.35, ease: "power3.out" }, 0);
+  }
+  const title = H.el("div", "t-title", null, stage);
+  String(o.title || "").split("\n").forEach((line, i) => {
+    const l = H.el("span", "line", line, title);
+    // 첫 프레임부터 보이게(썸네일/스크롤 멈춤용) — 투명도 대신 크기로 등장
+    tl.fromTo(l, { scale: 1.18, y: 30 }, { scale: 1, y: 0, duration: 0.45, ease: "power4.out" }, i * 0.08);
+  });
+  if (o.subtitle) {
+    const s = H.el("div", "t-sub", o.subtitle, stage);
+    tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 }, H.at(o.subtitleAt, 0.8));
+  }
+  tl.to(title, { scale: 1.04, duration: S.duration, ease: "none" }, 0.6);
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s06"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

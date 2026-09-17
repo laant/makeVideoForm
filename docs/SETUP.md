@@ -60,6 +60,9 @@ OpenMontage/.venv/bin/pip install -r OpenMontage/requirements.txt
 
 # Remotion 의존성 (OpenMontage 렌더러)
 (cd OpenMontage/remotion-composer && npm install)
+
+# autoShorts (HyperFrames — Node 22+, Google Chrome 필요)
+(cd autoShorts && npm install && npm run sfx)
 ```
 
 전제 도구: `python3`(3.10+), `node`+`npm`, `ffmpeg`/`ffprobe`(brew), `ditto`(macOS 기본).
@@ -69,7 +72,10 @@ OpenMontage/.venv/bin/pip install -r OpenMontage/requirements.txt
 ```bash
 echo 'ELEVENLABS_API_KEY=<키>' > flow-pipeline/.env      # Sarah 등 ElevenLabs 더빙용
 echo 'GOOGLE_API_KEY=<키>'     > OpenMontage/.env        # Gemini 이미지·TTS (결제 연결 필요)
+cp autoShorts/.env.example autoShorts/.env               # GEMINI_API_KEY(TTS)·ElevenLabs·YouTube/Instagram 업로드 키
 ```
+
+autoShorts YouTube 업로드를 쓰려면 `cd autoShorts && npm run yt:auth` 1회 (토큰은 `autoShorts/.secrets/`, git 제외).
 
 ⚠️ 쉘 환경변수 GEMINI_API_KEY가 있으면 unset (무효한 옛 키가 끼어드는 사고 방지).
 
@@ -88,6 +94,7 @@ echo 'GOOGLE_API_KEY=<키>'     > OpenMontage/.env        # Gemini 이미지·TT
 | flow-pipeline | `cd flow-pipeline && FLOW_PROJECT=<프로젝트> python3 scripts/assemble.py` (클립·오디오 있는 프로젝트에서) |
 | OpenMontage | `cd OpenMontage && .venv/bin/python projects/yeonan-family/produce.py assets` (키 필요) |
 | talkcraft | `cd talkcraft/family/remotion && npx remotion compositions src/entry.ts` |
+| autoShorts | `cd autoShorts && npx hyperframes doctor && npm run make -- sample --mock` (크레딧 0) |
 | 수집기 | `python3 scripts/collect_outputs.py` (소스 없으면 skip으로 표시됨 — 정상) |
 
 ## 유지보수 규칙 (서브모듈을 고칠 때 — 안 지키면 새 머신에서 유실됨)

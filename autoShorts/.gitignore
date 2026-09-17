@@ -1,0 +1,11 @@
+node_modules/
+.env
+.secrets/
+episodes/*/audio/
+episodes/*/renders/
+episodes/*/vendor/
+episodes/*/final.mp4
+episodes/*/upload-log.json
+.DS_Store
+episodes/*/cards/
+.cache/

@@ -1,0 +1,30 @@
+<!-- cta: 행동 유도. onScreen: { headline, action, handle?, emoji? } -->
+<style>
+  .a-wrap { align-items: center; text-align: center; }
+  .a-emoji { font-size: 170px; line-height: 1; text-align: center; }
+  .a-head { white-space: pre-line; font-size: 92px; font-weight: 900; line-height: 1.12; letter-spacing: -0.04em; text-align: center; }
+  .a-btn { align-self: center; padding: 38px 64px; border-radius: 999px; background: var(--accent); color: #111; font-size: 54px; font-weight: 900; }
+  .a-handle { text-align: center; font-size: 46px; font-weight: 700; color: var(--muted); }
+</style>
+<script>
+  const o = S.onScreen;
+  stage.classList.add("a-wrap");
+  if (o.emoji) {
+    const e = H.el("div", "a-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(2.5)" }, 0.05);
+  }
+  const h = H.el("div", "a-head", o.headline || "", stage);
+  tl.fromTo(h, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 0.15);
+  const b = H.el("div", "a-btn", o.action || "팔로우", stage);
+  const bAt = H.at(o.actionAt, Math.min(0.9, S.speechEnd * 0.4));
+  tl.fromTo(b, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, bAt);
+  // 버튼 펄스
+  for (let t = bAt + 0.8; t < S.renderDuration - 0.5; t += 1.2) {
+    tl.to(b, { scale: 1.07, duration: 0.3, ease: "sine.inOut" }, t);
+    tl.to(b, { scale: 1, duration: 0.3, ease: "sine.inOut" }, t + 0.3);
+  }
+  if (o.handle) {
+    const hd = H.el("div", "a-handle", o.handle, stage);
+    tl.fromTo(hd, { opacity: 0 }, { opacity: 1, duration: 0.4 }, bAt + 0.3);
+  }
+</script>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0b0f; }
+      :root {
+        --bg: #0b0b0f; --fg: #f5f5f7; --accent: #ffd84d; --muted: #8a8a96;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      .d-head { font-size: 64px; font-weight: 900; letter-spacing: -0.03em; }
+  .d-win { border-radius: 36px; background: #16161c; border: 3px solid rgba(255,255,255,0.1); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+  .d-bar { display: flex; align-items: center; gap: 14px; padding: 24px 32px; background: #1f1f27; font-size: 34px; color: var(--muted); font-weight: 700; }
+  .d-dot { width: 20px; height: 20px; border-radius: 50%; background: #444; }
+  .d-dot:nth-child(1) { background: #ff5f57; } .d-dot:nth-child(2) { background: #febc2e; } .d-dot:nth-child(3) { background: #28c840; }
+  .d-body { padding: 40px 36px; display: flex; flex-direction: column; gap: 34px; min-height: 760px; }
+  .d-in { white-space: pre-wrap; align-self: flex-end; max-width: 88%; padding: 28px 34px; border-radius: 30px 30px 8px 30px; background: var(--accent); color: #111; font-size: 40px; font-weight: 700; line-height: 1.4; }
+  .d-out { max-width: 94%; display: flex; flex-direction: column; gap: 18px; font-size: 40px; line-height: 1.45; color: #e8e8ee; }
+  .d-caret { display: inline-block; width: 4px; height: 44px; background: #111; vertical-align: middle; margin-left: 4px; }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:generated hash=23c4b090627a template=demo -->
+    <div id="root" data-composition-id="s02" data-start="0" data-duration="4.875" data-width="1080" data-height="1920">
+      <div id="s02-bg" class="layer bg-layer clip" data-start="0" data-duration="4.875">
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s02-content" class="layer content clip" data-start="0" data-duration="4.875">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s02",
+  "template": "demo",
+  "onScreen": {
+    "app": "ChatGPT",
+    "input": "결정사항 / 담당자별 할 일 / 기한으로 정리해줘",
+    "output": [
+      "✅ 결정: 9월 캠페인 예산 확정",
+      "👤 지훈 — 랜딩 시안 (9/20)",
+      "👤 수아 — 광고 소재 3종 (9/22)"
+    ],
+    "outputAt": "word:결정사항",
+    "highlight": [
+      "결정사항",
+      "할 일"
+    ]
+  },
+  "highlight": [
+    "결정사항",
+    "할 일"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "녹취록을",
+      "start": 0.05,
+      "end": 0.552
+    },
+    {
+      "text": "붙여넣고",
+      "start": 0.595,
+      "end": 1.097
+    },
+    {
+      "text": "이렇게만",
+      "start": 1.14,
+      "end": 1.642
+    },
+    {
+      "text": "입력하면",
+      "start": 1.685,
+      "end": 2.187
+    },
+    {
+      "text": "결정사항과",
+      "start": 2.231,
+      "end": 2.857
+    },
+    {
+      "text": "할",
+      "start": 2.912,
+      "end": 3.037
+    },
+    {
+      "text": "일이",
+      "start": 3.048,
+      "end": 3.299
+    },
+    {
+      "text": "바로",
+      "start": 3.321,
+      "end": 3.572
+    },
+    {
+      "text": "나옵니다.",
+      "start": 3.593,
+      "end": 4.22
+    }
+  ],
+  "speechEnd": 4.325,
+  "duration": 4.575,
+  "renderDuration": 4.875,
+  "globalStart": 2.54,
+  "total": 19.747
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      const o = S.onScreen;
+  if (o.heading) {
+    const h = H.el("div", "d-head", o.heading, stage);
+    tl.fromTo(h, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.3 }, 0.05);
+  }
+  const win = H.el("div", "d-win", null, stage);
+  const bar = H.el("div", "d-bar", null, win);
+  H.el("span", "d-dot", null, bar); H.el("span", "d-dot", null, bar); H.el("span", "d-dot", null, bar);
+  H.el("span", null, o.app || "AI", bar);
+  const body = H.el("div", "d-body", null, win);
+  tl.fromTo(win, { opacity: 0, y: 120, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 0.1);
+
+  const input = H.el("div", "d-in", null, body);
+  const inAt = H.at(o.inputAt, 0.45);
+  tl.fromTo(input, { opacity: 0 }, { opacity: 1, duration: 0.15 }, inAt);
+  const typedEnd = H.type(tl, input, o.input || "", inAt + 0.1, 28);
+  const caret = H.el("span", "d-caret", null, input);
+  tl.fromTo(caret, { opacity: 1 }, { opacity: 0, duration: 0.01 }, typedEnd + 0.1);
+
+  const out = H.el("div", "d-out", null, body);
+  const lines = Array.isArray(o.output) ? o.output : String(o.output || "").split("\n");
+  const outAt = Math.max(typedEnd + 0.25, H.at(o.outputAt, typedEnd + 0.25));
+  lines.forEach((line, i) => {
+    const e = H.el("div", null, line, out);
+    tl.fromTo(e, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, outAt + i * 0.35);
+  });
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s02"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

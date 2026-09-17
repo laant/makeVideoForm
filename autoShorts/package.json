@@ -1,0 +1,34 @@
+{
+  "name": "autoshorts",
+  "version": "1.0.0",
+  "description": "Shorts Factory: script → ElevenLabs → HTML/GSAP → HyperFrames → FFmpeg → upload",
+  "scripts": {
+    "new": "node scripts/new-episode.js",
+    "intake": "node scripts/intake.js",
+    "sfx": "node scripts/gen-sfx.js",
+    "tts": "node scripts/tts.js",
+    "scenes": "node scripts/build-scenes.js",
+    "render": "node scripts/render.js",
+    "assemble": "node scripts/assemble.js",
+    "verify": "node scripts/verify.js",
+    "cards": "node scripts/cards.js",
+    "make": "node scripts/make.js",
+    "preview": "node scripts/preview.js",
+    "yt:auth": "node scripts/upload/youtube-auth.js",
+    "upload": "node scripts/upload/index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "googleapis": "^181.0.0",
+    "gsap": "^3.14.2",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "hyperframes": "0.8.41"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
+}

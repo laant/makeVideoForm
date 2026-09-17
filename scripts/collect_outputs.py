@@ -48,6 +48,8 @@ MAPPING: dict[tuple[str, str], list[str]] = {
         "OpenMontage/projects/youth-savings-2nd/renders/final.mp4"],
     ("09-youth-savings-2nd", "talkcraft"): [
         "talkcraft/savings/remotion/out/final.mp4"],
+    ("09-youth-savings-2nd", "autoshorts"): [
+        "autoShorts/episodes/youth-savings-2nd/final.mp4"],
     ("09-youth-savings-2nd", "flow"): [
         "flow-pipeline/projects/09-youth-savings-2nd/out/final.mp4"],
     ("07-ai-thinking-ep2", "openmontage"): [

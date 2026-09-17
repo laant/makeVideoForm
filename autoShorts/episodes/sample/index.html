@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>* { margin: 0; padding: 0; } html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0b0f; }</style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="19.747" data-width="1080" data-height="1920">
+      <div id="scene-s01" class="clip" data-composition-id="s01" data-composition-src="scenes/s01.html" data-start="0" data-duration="2.54" data-track-index="0"></div>
+      <div id="scene-s02" class="clip" data-composition-id="s02" data-composition-src="scenes/s02.html" data-start="2.54" data-duration="4.575" data-track-index="0"></div>
+      <div id="scene-s03" class="clip" data-composition-id="s03" data-composition-src="scenes/s03.html" data-start="7.115" data-duration="4.37" data-track-index="0"></div>
+      <div id="scene-s04" class="clip" data-composition-id="s04" data-composition-src="scenes/s04.html" data-start="11.485" data-duration="4.438" data-track-index="0"></div>
+      <div id="scene-s05" class="clip" data-composition-id="s05" data-composition-src="scenes/s05.html" data-start="15.923" data-duration="3.824" data-track-index="0"></div>
+      <audio id="narration" src="audio/narration.mp3" data-start="0" data-duration="19.747" data-track-index="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

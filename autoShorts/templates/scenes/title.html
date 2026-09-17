@@ -1,0 +1,30 @@
+<!-- title: 훅/표지. onScreen: { kicker?, title, subtitle?, emoji? } -->
+<style>
+  .t-kicker { align-self: flex-start; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #111; font-size: 40px; font-weight: 800; }
+  .t-emoji { font-size: 150px; line-height: 1; }
+  .t-title { font-size: 112px; font-weight: 900; line-height: 1.08; letter-spacing: -0.04em; }
+  .t-title .line { display: block; transform-origin: 0 50%; }
+  .t-sub { white-space: pre-line; font-size: 50px; font-weight: 600; color: var(--muted); line-height: 1.35; }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.emoji) {
+    const e = H.el("div", "t-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0.6, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 0);
+  }
+  if (o.kicker) {
+    const k = H.el("div", "t-kicker", o.kicker, stage);
+    tl.fromTo(k, { x: -40 }, { x: 0, duration: 0.35, ease: "power3.out" }, 0);
+  }
+  const title = H.el("div", "t-title", null, stage);
+  String(o.title || "").split("\n").forEach((line, i) => {
+    const l = H.el("span", "line", line, title);
+    // 첫 프레임부터 보이게(썸네일/스크롤 멈춤용) — 투명도 대신 크기로 등장
+    tl.fromTo(l, { scale: 1.18, y: 30 }, { scale: 1, y: 0, duration: 0.45, ease: "power4.out" }, i * 0.08);
+  });
+  if (o.subtitle) {
+    const s = H.el("div", "t-sub", o.subtitle, stage);
+    tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 }, H.at(o.subtitleAt, 0.8));
+  }
+  tl.to(title, { scale: 1.04, duration: S.duration, ease: "none" }, 0.6);
+</script>

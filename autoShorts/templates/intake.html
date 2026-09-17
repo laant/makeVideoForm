@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>쇼츠 제작 입력</title>
+    <style>
+      :root {
+        --bg: #f6f6f8; --card: #ffffff; --fg: #17171c; --muted: #6b6b76; --line: #e3e3ea;
+        --accent: #e0a800; --accent-soft: #fff4cc; --ok: #1f9d55; --err: #d64545; --field: #fbfbfd;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0e0e12; --card: #17171d; --fg: #ececf1; --muted: #9a9aa6; --line: #2a2a33;
+          --accent: #ffd84d; --accent-soft: #3a3312; --ok: #4cc38a; --err: #ff6b6b; --field: #1d1d24;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: var(--bg); color: var(--fg); line-height: 1.5;
+        font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      header {
+        position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+      }
+      .bar { max-width: 880px; margin: 0 auto; padding: 14px 20px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+      .bar h1 { font-size: 18px; margin: 0; }
+      .slug { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: var(--muted); }
+      .status { margin-left: auto; font-size: 13px; color: var(--muted); }
+      .status.err { color: var(--err); }
+      .steps { display: flex; gap: 6px; flex-wrap: wrap; width: 100%; }
+      .steps a {
+        font-size: 12px; text-decoration: none; color: var(--muted); border: 1px solid var(--line);
+        border-radius: 999px; padding: 2px 10px;
+      }
+      .steps a.done { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 45%, transparent); }
+      main { max-width: 880px; margin: 0 auto; padding: 20px 20px 120px; }
+      .intro { color: var(--muted); font-size: 14px; margin: 4px 0 20px; }
+      section {
+        background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+        padding: 20px 22px; margin-bottom: 16px; scroll-margin-top: 110px;
+      }
+      section h2 { font-size: 17px; margin: 0 0 4px; }
+      section > p.hint { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+      .full { grid-column: 1 / -1; }
+      @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+      label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+      label .req { color: var(--err); font-weight: 700; margin-left: 2px; }
+      label small { font-weight: 400; color: var(--muted); margin-left: 6px; }
+      input[type="text"], input[type="url"], textarea {
+        width: 100%; font: inherit; font-size: 14px; color: var(--fg); background: var(--field);
+        border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px;
+      }
+      textarea { resize: vertical; min-height: 84px; }
+      textarea.tall { min-height: 180px; }
+      textarea.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+      input:focus, textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent); border-color: transparent; }
+      .range { display: flex; align-items: center; gap: 12px; }
+      .range input { flex: 1; accent-color: var(--accent); }
+      .range output { font-variant-numeric: tabular-nums; min-width: 44px; font-weight: 700; }
+      .colors { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+      @media (max-width: 640px) { .colors { grid-template-columns: repeat(2, 1fr); } }
+      .color { display: flex; align-items: center; gap: 8px; }
+      .color input[type="color"] { width: 38px; height: 34px; padding: 0; border: 1px solid var(--line); border-radius: 8px; background: none; }
+      .color input[type="text"] { font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
+      .preview {
+        margin-top: 14px; height: 120px; border-radius: 12px; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 6px; font-weight: 800; font-size: 22px;
+      }
+      .preview span { font-size: 13px; font-weight: 600; }
+      .checks { display: flex; gap: 18px; flex-wrap: wrap; }
+      .checks label { display: flex; align-items: center; gap: 6px; font-weight: 500; margin: 0; }
+      .drop {
+        border: 2px dashed var(--line); border-radius: 12px; padding: 18px; text-align: center;
+        color: var(--muted); font-size: 14px; cursor: pointer; transition: 0.15s;
+      }
+      .drop.over { border-color: var(--accent); background: var(--accent-soft); color: var(--fg); }
+      .drop input { display: none; }
+      .files { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; }
+      .file { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--field); }
+      .thumb { height: 120px; background: #000; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 28px; }
+      .thumb img, .thumb video { width: 100%; height: 100%; object-fit: contain; }
+      .file .meta { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+      .file .name { font-size: 12px; word-break: break-all; display: flex; justify-content: space-between; gap: 6px; }
+      .file button { border: 0; background: none; color: var(--err); cursor: pointer; font-size: 12px; padding: 0; flex-shrink: 0; }
+      .file input { font-size: 12px !important; padding: 6px 8px !important; }
+      details { margin-top: 10px; font-size: 13px; color: var(--muted); }
+      details pre { white-space: pre-wrap; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+      footer {
+        position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--line);
+      }
+      footer .bar { justify-content: flex-end; }
+      footer .missing { margin-right: auto; font-size: 13px; color: var(--muted); }
+      .btn {
+        font: inherit; font-size: 14px; font-weight: 700; border-radius: 10px; padding: 10px 18px; cursor: pointer;
+        border: 1px solid var(--line); background: var(--card); color: var(--fg);
+      }
+      .btn.primary { background: var(--accent); border-color: var(--accent); color: #111; }
+      .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+      .done-screen { max-width: 560px; margin: 18vh auto; text-align: center; padding: 0 20px; }
+      .done-screen code { background: var(--card); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; font-size: 16px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <h1>쇼츠 제작 입력</h1>
+        <span class="slug" id="slug"></span>
+        <span class="status" id="status">불러오는 중…</span>
+        <nav class="steps" id="steps"></nav>
+      </div>
+    </header>
+
+    <main id="form">
+      <p class="intro">
+        여기에 적은 내용은 <b>episode.json</b> 에 바로 저장되고, Claude 는 질문하기 전에 이것부터 읽습니다.
+        필수는 <b>①</b> 뿐이고 나머지는 아는 만큼만 채우세요. 비워 둔 칸은 Claude 가 제안합니다.
+      </p>
+
+      <section id="sec-basic" data-title="① 기본">
+        <h2>① 기본 <small style="color: var(--err); font-size: 13px">필수</small></h2>
+        <p class="hint">무엇을, 누구에게, 보고 나서 무엇을 하게 할지.</p>
+        <div class="grid">
+          <div class="full"><label>주제<span class="req">*</span></label><input type="text" data-k="topic" placeholder="예: ChatGPT로 회의록 3초 만에 정리하기" /></div>
+          <div><label>타깃 시청자<span class="req">*</span></label><input type="text" data-k="audience" placeholder="예: 회의가 많은 3~5년차 직장인" /></div>
+          <div><label>CTA<span class="req">*</span><small>보고 나서 할 행동</small></label><input type="text" data-k="cta" placeholder="예: 댓글에 '회의' → 프롬프트 원문 DM" /></div>
+        </div>
+      </section>
+
+      <section id="sec-direction" data-title="② 방향">
+        <h2>② 방향</h2>
+        <p class="hint">대본의 뼈대가 됩니다.</p>
+        <div class="grid">
+          <div class="full"><label>핵심 메시지<small>시청자가 얻어갈 딱 한 가지</small></label><input type="text" data-k="brief.goal" placeholder="예: 프롬프트 한 줄이면 회의록이 결정사항/담당자/기한으로 정리된다" /></div>
+          <div class="full"><label>훅 아이디어<small>첫 2초에 멈추게 할 한 마디</small></label><input type="text" data-k="brief.hook" placeholder="예: 회의록 정리, 아직도 손으로 하세요?" /></div>
+          <div class="full"><label>말투<small>설명 + 예시 문장이 있으면 가장 정확</small></label><textarea data-k="tone" placeholder="예: 빠르고 친근한 존댓말. '이거 모르면 손해예요' 같은 느낌"></textarea></div>
+          <div class="full">
+            <label>목표 길이</label>
+            <div class="range"><input type="range" min="15" max="90" step="5" data-k="brief.lengthSec" data-num /><output id="lenOut"></output></div>
+          </div>
+          <div><label>꼭 보여줄 것</label><textarea data-k="brief.mustShow" placeholder="예: 실제 입력 프롬프트, 결과 화면, 전후 비교"></textarea></div>
+          <div><label>피할 것</label><textarea data-k="brief.avoid" placeholder="예: 과장 표현('100% 자동'), 특정 브랜드 비하"></textarea></div>
+        </div>
+      </section>
+
+      <section id="sec-ref" data-title="③ 레퍼런스">
+        <h2>③ 레퍼런스 <small style="color: var(--muted); font-size: 13px">선택</small></h2>
+        <p class="hint">
+          따라 하고 싶은 영상의 <b>구조와 템포</b>를 빌립니다(문장은 베끼지 않음). 전사는 말의 구조를, 캡처·장면 메모는 화면 구성을 알려줍니다.
+        </p>
+        <div class="grid">
+          <div><label>URL</label><input type="url" data-k="reference.url" placeholder="https://" /></div>
+          <div><label>조회수/반응</label><input type="text" data-k="reference.reaction" placeholder="예: 120만 회, 저장 많음" /></div>
+          <div class="full"><label>전사<small>자막·나레이션을 그대로</small></label><textarea class="tall" data-k="reference.transcript" placeholder="0:00 이거 모르면 회의록에 1시간 씁니다&#10;0:02 …"></textarea></div>
+          <div class="full"><label>장면 흐름 메모<small>초 단위로 화면에 뭐가 나오는지</small></label><textarea data-k="reference.sceneFlow" placeholder="0~2초 큰 제목 텍스트&#10;2~6초 채팅창에 프롬프트 타이핑&#10;6~10초 결과 3줄 등장"></textarea></div>
+          <div class="full">
+            <label>레퍼런스 캡처·클립<small>refs/ 에 저장 — Claude 가 이미지를 직접 봅니다</small></label>
+            <div class="drop" data-use="reference">여기로 끌어다 놓거나 클릭 · 붙여넣기(⌘V)도 됩니다<input type="file" multiple /></div>
+            <div class="files" data-list="reference"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-draft" data-title="④ 대본 초안">
+        <h2>④ 내 대본 초안 <small style="color: var(--muted); font-size: 13px">선택</small></h2>
+        <p class="hint">
+          정해 둔 대사가 있으면 적으세요. 한 줄 = 한 씬, <code>나레이션 | 화면에 보일 것</code>. 자막은 나레이션에서 자동 생성되므로 따로 쓰지 않습니다.
+        </p>
+        <textarea class="tall mono" data-k="brief.draft" placeholder="회의록 정리, 아직도 손으로 하세요? | 큰 제목 '회의록 정리 3초 컷'&#10;회의 내용 붙여넣고 이 한 줄만 입력하면 | 채팅창에 프롬프트 타이핑&#10;결정사항, 담당자, 기한이 바로 나옵니다 | 결과 3줄 등장"></textarea>
+      </section>
+
+      <section id="sec-visual" data-title="⑤ 화면">
+        <h2>⑤ 화면·스타일</h2>
+        <p class="hint">색 테마와 연출 요청, 영상에 직접 넣을 자료.</p>
+        <div class="colors">
+          <div><label>배경</label><div class="color"><input type="color" data-color="bg" /><input type="text" data-k="theme.bg" /></div></div>
+          <div><label>글자</label><div class="color"><input type="color" data-color="fg" /><input type="text" data-k="theme.fg" /></div></div>
+          <div><label>강조</label><div class="color"><input type="color" data-color="accent" /><input type="text" data-k="theme.accent" /></div></div>
+          <div><label>보조</label><div class="color"><input type="color" data-color="muted" /><input type="text" data-k="theme.muted" /></div></div>
+        </div>
+        <div class="preview" id="themePreview">회의록 정리 <em style="font-style: normal" id="pvAccent">3초 컷</em><span id="pvMuted">@your_handle</span></div>
+        <div class="grid" style="margin-top: 16px">
+          <div class="full"><label>연출 요청</label><textarea data-k="brief.visual" placeholder="예: 채팅 화면 위주, 전환은 빠르게, 이모지 적게, 마지막에 전후 비교"></textarea></div>
+          <div class="full">
+            <label>영상에 쓸 자료<small>media/ 에 저장 — 실제 화면 캡처, 로고 등</small></label>
+            <div class="drop" data-use="asset">여기로 끌어다 놓거나 클릭<input type="file" multiple /></div>
+            <div class="files" data-list="asset"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-upload" data-title="⑥ 업로드">
+        <h2>⑥ 업로드 문구 <small style="color: var(--muted); font-size: 13px">선택</small></h2>
+        <p class="hint">비워 두면 대본 확정 때 Claude 가 채웁니다.</p>
+        <div class="grid">
+          <div class="full"><label>제목</label><input type="text" data-k="upload.title" /></div>
+          <div class="full"><label>캡션</label><textarea data-k="caption"></textarea></div>
+          <div class="full"><label>해시태그<small>공백/쉼표로 구분</small></label><input type="text" data-k="hashtags" data-tags placeholder="#ChatGPT #업무자동화" /></div>
+          <div class="full checks">
+            <label><input type="checkbox" data-k="upload.youtube" /> YouTube</label>
+            <label><input type="checkbox" data-k="upload.instagram" /> Instagram</label>
+          </div>
+        </div>
+        <details><summary>저장 위치</summary><pre>episodes/&lt;slug&gt;/episode.json   ← 모든 입력
+episodes/&lt;slug&gt;/refs/reference.md ← 레퍼런스 요약(자동 생성)
+episodes/&lt;slug&gt;/refs/            ← 레퍼런스 캡처
+episodes/&lt;slug&gt;/media/           ← 영상에 쓸 자료</pre></details>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <div class="bar">
+        <span class="missing" id="missing"></span>
+        <button class="btn" id="saveBtn">저장</button>
+        <button class="btn primary" id="submitBtn">입력 완료</button>
+      </div>
+    </footer>
+
+    <script>
+      const $ = (s, r = document) => r.querySelector(s);
+      const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+      const REQUIRED = ["topic", "audience", "cta"];
+      let data = null;
+      let files = [];
+      let timer = null;
+      let saving = Promise.resolve();
+
+      const get = (obj, key) => key.split(".").reduce((o, k) => o?.[k], obj);
+      function set(obj, key, val) {
+        const ks = key.split(".");
+        ks.slice(0, -1).reduce((o, k) => (o[k] ??= {}), obj)[ks.at(-1)] = val;
+      }
+
+      function status(text, err = false) {
+        const el = $("#status");
+        el.textContent = text;
+        el.classList.toggle("err", err);
+      }
+
+      function fill(state) {
+        data = state.episode;
+        files = state.files;
+        $("#slug").textContent = `episodes/${data.slug}`;
+        document.title = `입력 · ${data.slug}`;
+        for (const el of $$("[data-k]")) {
+          if (el === document.activeElement) continue;
+          const v = get(data, el.dataset.k);
+          if (el.type === "checkbox") el.checked = !!v;
+          else if ("tags" in el.dataset) el.value = (v || []).join(" ");
+          else el.value = v ?? "";
+        }
+        syncColors();
+        renderFiles();
+        refresh();
+      }
+
+      function collect() {
+        const out = {};
+        for (const el of $$("[data-k]")) {
+          let v = el.type === "checkbox" ? el.checked : el.value;
+          if ("num" in el.dataset) v = Number(v);
+          if ("tags" in el.dataset) {
+            v = v.split(/[\s,]+/).filter(Boolean).map((t) => (t.startsWith("#") ? t : `#${t}`));
+          }
+          set(out, el.dataset.k, v);
+        }
+        out.brief.files = files.map((f) => ({
+          path: f.path,
+          use: f.use,
+          note: $(`[data-note="${CSS.escape(f.path)}"]`)?.value ?? f.note,
+        }));
+        return out;
+      }
+
+      function refresh() {
+        const v = collect();
+        $("#lenOut").textContent = `${v.brief.lengthSec}초`;
+        const missing = REQUIRED.filter((k) => !String(get(v, k) || "").trim());
+        const names = { topic: "주제", audience: "타깃 시청자", cta: "CTA" };
+        $("#missing").textContent = missing.length ? `필수 미입력: ${missing.map((k) => names[k]).join(", ")}` : "필수 항목 완료";
+        $("#submitBtn").disabled = missing.length > 0;
+        const filled = {
+          "sec-basic": missing.length === 0,
+          "sec-direction": !!(v.brief.goal || v.brief.hook || v.tone || v.brief.mustShow),
+          "sec-ref": !!(v.reference.transcript || v.reference.sceneFlow || files.some((f) => f.use === "reference")),
+          "sec-draft": !!v.brief.draft.trim(),
+          "sec-visual": !!(v.brief.visual || files.some((f) => f.use === "asset")),
+          "sec-upload": !!(v.upload.title || v.caption || v.hashtags.length),
+        };
+        $("#steps").innerHTML = $$("section")
+          .map((s) => `<a href="#${s.id}" class="${filled[s.id] ? "done" : ""}">${filled[s.id] ? "✓ " : ""}${s.dataset.title}</a>`)
+          .join("");
+        const pv = $("#themePreview");
+        pv.style.background = v.theme.bg;
+        pv.style.color = v.theme.fg;
+        $("#pvAccent").style.color = v.theme.accent;
+        $("#pvMuted").style.color = v.theme.muted;
+      }
+
+      async function api(url, body) {
+        const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error);
+        return json;
+      }
+
+      function save() {
+        clearTimeout(timer);
+        saving = saving.then(async () => {
+          status("저장 중…");
+          try {
+            fill(await api("/api/save", collect()));
+            status(`저장됨 ${new Date().toLocaleTimeString("ko-KR")}`);
+          } catch (e) {
+            status(`저장 실패: ${e.message}`, true);
+          }
+        });
+        return saving;
+      }
+
+      function schedule() {
+        refresh();
+        status("수정됨…");
+        clearTimeout(timer);
+        timer = setTimeout(save, 800);
+      }
+
+      // 색상: color 피커 ↔ hex 입력
+      function syncColors() {
+        for (const p of $$("[data-color]")) {
+          const hex = $(`[data-k="theme.${p.dataset.color}"]`).value;
+          if (/^#[0-9a-f]{6}$/i.test(hex)) p.value = hex;
+        }
+      }
+      for (const p of $$("[data-color]")) {
+        p.addEventListener("input", () => {
+          $(`[data-k="theme.${p.dataset.color}"]`).value = p.value;
+          schedule();
+        });
+      }
+
+      document.addEventListener("input", (e) => {
+        if (e.target.matches("[data-k], [data-note]")) {
+          if (e.target.matches('[data-k^="theme."]')) syncColors();
+          schedule();
+        }
+      });
+      document.addEventListener("keydown", (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+          e.preventDefault();
+          save();
+        }
+      });
+
+      // 파일
+      const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+      function renderFiles() {
+        for (const list of $$("[data-list]")) {
+          const active = document.activeElement;
+          const focused = active?.dataset?.note;
+          const caret = focused ? active.selectionStart : 0;
+          list.innerHTML = files
+            .filter((f) => f.use === list.dataset.list)
+            .map((f) => {
+              const src = `/files/${encodeURIComponent(f.path)}`;
+              const thumb = /\.(png|jpe?g|gif|webp|svg)$/i.test(f.path)
+                ? `<img src="${src}" loading="lazy" alt="">`
+                : /\.(mp4|mov|webm)$/i.test(f.path)
+                  ? `<video src="${src}#t=0.5" muted preload="metadata"></video>`
+                  : "📄";
+              const name = f.path.split("/").pop();
+              return `<div class="file"><div class="thumb">${thumb}</div><div class="meta">
+                <div class="name"><span>${esc(name)}</span><button data-del="${esc(f.path)}">삭제</button></div>
+                <input type="text" data-note="${esc(f.path)}" value="${esc(f.note)}" placeholder="메모 (예: 3초 지점 결과 화면)">
+              </div></div>`;
+            })
+            .join("");
+          const again = focused && $(`[data-note="${CSS.escape(focused)}"]`, list);
+          if (again) {
+            again.value = active.value;
+            again.focus();
+            again.setSelectionRange(caret, caret);
+          }
+        }
+      }
+      document.addEventListener("click", async (e) => {
+        const del = e.target.closest("[data-del]");
+        if (!del) return;
+        await saving;
+        try {
+          fill(await api("/api/delete", { path: del.dataset.del }));
+          status("삭제됨");
+        } catch (err) {
+          status(`삭제 실패: ${err.message}`, true);
+        }
+      });
+
+      async function upload(use, list) {
+        await save();
+        for (const [i, file] of [...list].entries()) {
+          status(`업로드 중 ${i + 1}/${list.length}: ${file.name}`);
+          const res = await fetch(`/api/upload?use=${use}&name=${encodeURIComponent(file.name || "paste.png")}`, { method: "POST", body: file });
+          const json = await res.json();
+          if (!res.ok) return status(`업로드 실패: ${json.error}`, true);
+          fill(json);
+        }
+        status(`업로드 완료 ${list.length}개`);
+      }
+      for (const zone of $$(".drop")) {
+        const input = $("input", zone);
+        zone.addEventListener("click", () => input.click());
+        input.addEventListener("change", () => input.files.length && upload(zone.dataset.use, input.files));
+        zone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          zone.classList.add("over");
+        });
+        zone.addEventListener("dragleave", () => zone.classList.remove("over"));
+        zone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          zone.classList.remove("over");
+          if (e.dataTransfer.files.length) upload(zone.dataset.use, e.dataTransfer.files);
+        });
+      }
+      // 텍스트 입력 중이 아닐 때 붙여넣은 이미지는 레퍼런스 캡처로
+      document.addEventListener("paste", (e) => {
+        if (e.target.matches("input, textarea")) return;
+        const imgs = [...e.clipboardData.files].filter((f) => f.type.startsWith("image/"));
+        if (imgs.length) upload("reference", imgs);
+      });
+
+      $("#saveBtn").addEventListener("click", save);
+      $("#submitBtn").addEventListener("click", async () => {
+        await save();
+        try {
+          await api("/api/submit", collect());
+          document.body.innerHTML = `<div class="done-screen"><h1>입력 완료 ✓</h1>
+            <p>episodes/${esc(data.slug)}/episode.json 에 저장했습니다. 입력 페이지 서버는 종료됐고, 이 탭은 닫아도 됩니다.</p>
+            <p>Claude 에서 이어서:</p><p><code>/shorts-new ${esc(data.slug)}</code></p>
+            <p style="color:var(--muted);font-size:13px">다시 고치려면 터미널에서 npm run intake -- ${esc(data.slug)}</p></div>`;
+        } catch (e) {
+          status(`완료 실패: ${e.message}`, true);
+        }
+      });
+
+      fetch("/api/state")
+        .then((r) => r.json())
+        .then((s) => {
+          if (s.error) throw new Error(s.error);
+          fill(s);
+          status(s.episode.brief.submittedAt ? `이전에 입력 완료됨 (${new Date(s.episode.brief.submittedAt).toLocaleString("ko-KR")})` : "자동 저장됩니다");
+        })
+        .catch((e) => status(`불러오기 실패: ${e.message}`, true));
+    </script>
+  </body>
+</html>

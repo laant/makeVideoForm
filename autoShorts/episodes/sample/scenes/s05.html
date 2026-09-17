@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0b0f; }
+      :root {
+        --bg: #0b0b0f; --fg: #f5f5f7; --accent: #ffd84d; --muted: #8a8a96;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      .a-wrap { align-items: center; text-align: center; }
+  .a-emoji { font-size: 170px; line-height: 1; text-align: center; }
+  .a-head { white-space: pre-line; font-size: 92px; font-weight: 900; line-height: 1.12; letter-spacing: -0.04em; text-align: center; }
+  .a-btn { align-self: center; padding: 38px 64px; border-radius: 999px; background: var(--accent); color: #111; font-size: 54px; font-weight: 900; }
+  .a-handle { text-align: center; font-size: 46px; font-weight: 700; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:generated hash=9a716419da14 template=cta -->
+    <div id="root" data-composition-id="s05" data-start="0" data-duration="3.824" data-width="1080" data-height="1920">
+      <div id="s05-bg" class="layer bg-layer clip" data-start="0" data-duration="3.824">
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s05-content" class="layer content clip" data-start="0" data-duration="3.824">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s05",
+  "template": "cta",
+  "onScreen": {
+    "emoji": "👇",
+    "headline": "프롬프트 원문\n받아가세요",
+    "action": "댓글에 '회의'",
+    "handle": "@your_handle",
+    "highlight": [
+      "회의"
+    ]
+  },
+  "highlight": [
+    "회의"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "프롬프트",
+      "start": 0.05,
+      "end": 0.561
+    },
+    {
+      "text": "원문은",
+      "start": 0.606,
+      "end": 0.989
+    },
+    {
+      "text": "팔로우하고",
+      "start": 1.023,
+      "end": 1.662
+    },
+    {
+      "text": "댓글에",
+      "start": 1.718,
+      "end": 2.101
+    },
+    {
+      "text": "회의라고",
+      "start": 2.134,
+      "end": 2.646
+    },
+    {
+      "text": "남겨주세요!",
+      "start": 2.69,
+      "end": 3.457
+    }
+  ],
+  "speechEnd": 3.574,
+  "duration": 3.824,
+  "renderDuration": 3.824,
+  "globalStart": 15.923,
+  "total": 19.747
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      const o = S.onScreen;
+  stage.classList.add("a-wrap");
+  if (o.emoji) {
+    const e = H.el("div", "a-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(2.5)" }, 0.05);
+  }
+  const h = H.el("div", "a-head", o.headline || "", stage);
+  tl.fromTo(h, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 0.15);
+  const b = H.el("div", "a-btn", o.action || "팔로우", stage);
+  const bAt = H.at(o.actionAt, Math.min(0.9, S.speechEnd * 0.4));
+  tl.fromTo(b, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, bAt);
+  // 버튼 펄스
+  for (let t = bAt + 0.8; t < S.renderDuration - 0.5; t += 1.2) {
+    tl.to(b, { scale: 1.07, duration: 0.3, ease: "sine.inOut" }, t);
+    tl.to(b, { scale: 1, duration: 0.3, ease: "sine.inOut" }, t + 0.3);
+  }
+  if (o.handle) {
+    const hd = H.el("div", "a-handle", o.handle, stage);
+    tl.fromTo(hd, { opacity: 0 }, { opacity: 1, duration: 0.4 }, bAt + 0.3);
+  }
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s05"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

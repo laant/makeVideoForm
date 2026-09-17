@@ -1,0 +1,442 @@
+{
+  "slug": "sample",
+  "topic": "ChatGPT로 회의록 3초 만에 정리하기",
+  "audience": "회의가 많은 직장인",
+  "tone": "빠르고 친근한 반말 섞인 존댓말",
+  "cta": "팔로우하고 프롬프트 받아가기",
+  "reference": {
+    "url": "",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "",
+    "notes": "파이프라인 테스트용 샘플"
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#0b0b0f",
+    "fg": "#f5f5f7",
+    "accent": "#ffd84d",
+    "muted": "#8a8a96"
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "voiceId": "",
+    "prompt": "",
+    "modelId": "",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "회의록 정리, 아직도 손으로 하세요?",
+      "onScreen": {
+        "kicker": "직장인 필수",
+        "emoji": "📝",
+        "title": "회의록 정리\n3초 컷",
+        "highlight": [
+          "손으로"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "white-flash",
+      "timing": {
+        "hash": "f8951a62612b",
+        "start": 0,
+        "duration": 2.54,
+        "speechEnd": 2.29,
+        "words": [
+          {
+            "text": "회의록",
+            "start": 0.05,
+            "end": 0.428
+          },
+          {
+            "text": "정리,",
+            "start": 0.461,
+            "end": 0.839
+          },
+          {
+            "text": "아직도",
+            "start": 0.871,
+            "end": 1.249
+          },
+          {
+            "text": "손으로",
+            "start": 1.282,
+            "end": 1.66
+          },
+          {
+            "text": "하세요?",
+            "start": 1.693,
+            "end": 2.197
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "demo",
+      "narration": "녹취록을 붙여넣고 이렇게만 입력하면 결정사항과 할 일이 바로 나옵니다.",
+      "onScreen": {
+        "app": "ChatGPT",
+        "input": "결정사항 / 담당자별 할 일 / 기한으로 정리해줘",
+        "output": [
+          "✅ 결정: 9월 캠페인 예산 확정",
+          "👤 지훈 — 랜딩 시안 (9/20)",
+          "👤 수아 — 광고 소재 3종 (9/22)"
+        ],
+        "outputAt": "word:결정사항",
+        "highlight": [
+          "결정사항",
+          "할 일"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "typing",
+          "at": 0.5,
+          "volume": 1
+        },
+        {
+          "name": "pop",
+          "at": "word:결정사항",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "fb2ed01f7955",
+        "start": 2.54,
+        "duration": 4.575,
+        "speechEnd": 4.325,
+        "words": [
+          {
+            "text": "녹취록을",
+            "start": 0.05,
+            "end": 0.552
+          },
+          {
+            "text": "붙여넣고",
+            "start": 0.595,
+            "end": 1.097
+          },
+          {
+            "text": "이렇게만",
+            "start": 1.14,
+            "end": 1.642
+          },
+          {
+            "text": "입력하면",
+            "start": 1.685,
+            "end": 2.187
+          },
+          {
+            "text": "결정사항과",
+            "start": 2.231,
+            "end": 2.857
+          },
+          {
+            "text": "할",
+            "start": 2.912,
+            "end": 3.037
+          },
+          {
+            "text": "일이",
+            "start": 3.048,
+            "end": 3.299
+          },
+          {
+            "text": "바로",
+            "start": 3.321,
+            "end": 3.572
+          },
+          {
+            "text": "나옵니다.",
+            "start": 3.593,
+            "end": 4.22
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "compare",
+      "narration": "손으로 정리하면 삼십 분, 에이아이로 하면 삼 초면 끝나요.",
+      "onScreen": {
+        "heading": "회의록 정리 시간",
+        "left": {
+          "label": "손으로",
+          "items": [
+            "녹음 다시 듣기",
+            "요약 타이핑",
+            "할 일 누락"
+          ]
+        },
+        "right": {
+          "label": "AI로",
+          "items": [
+            "붙여넣기",
+            "한 줄 입력",
+            "자동 분류"
+          ]
+        },
+        "rightAt": "word:에이아이로",
+        "verdict": "30분 → 3초",
+        "verdictAt": "word:끝나요",
+        "highlight": [
+          "삼 초"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "error",
+          "at": 0.4,
+          "volume": 1
+        },
+        {
+          "name": "pop",
+          "at": "word:에이아이로",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "zoom",
+      "timing": {
+        "hash": "c3a1531a65c7",
+        "start": 7.115,
+        "duration": 4.37,
+        "speechEnd": 4.12,
+        "words": [
+          {
+            "text": "손으로",
+            "start": 0.05,
+            "end": 0.494
+          },
+          {
+            "text": "정리하면",
+            "start": 0.532,
+            "end": 1.124
+          },
+          {
+            "text": "삼십",
+            "start": 1.175,
+            "end": 1.471
+          },
+          {
+            "text": "분,",
+            "start": 1.497,
+            "end": 1.793
+          },
+          {
+            "text": "에이아이로",
+            "start": 1.819,
+            "end": 2.558
+          },
+          {
+            "text": "하면",
+            "start": 2.623,
+            "end": 2.918
+          },
+          {
+            "text": "삼",
+            "start": 2.944,
+            "end": 3.092
+          },
+          {
+            "text": "초면",
+            "start": 3.105,
+            "end": 3.401
+          },
+          {
+            "text": "끝나요.",
+            "start": 3.426,
+            "end": 4.018
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "list",
+      "narration": "결정사항, 담당자, 기한. 이 세 가지만 뽑으면 됩니다.",
+      "onScreen": {
+        "heading": "딱 3가지만\n뽑으세요",
+        "items": [
+          {
+            "text": "결정사항",
+            "at": "word:결정사항"
+          },
+          {
+            "text": "담당자",
+            "at": "word:담당자"
+          },
+          {
+            "text": "기한",
+            "at": "word:기한"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:결정사항",
+          "volume": 1
+        },
+        {
+          "name": "click",
+          "at": "word:담당자",
+          "volume": 1
+        },
+        {
+          "name": "click",
+          "at": "word:기한",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "timing": {
+        "hash": "b1a8a0df4a49",
+        "start": 11.485,
+        "duration": 4.438,
+        "speechEnd": 4.188,
+        "words": [
+          {
+            "text": "결정사항,",
+            "start": 0.05,
+            "end": 0.834
+          },
+          {
+            "text": "담당자,",
+            "start": 0.902,
+            "end": 1.528
+          },
+          {
+            "text": "기한.",
+            "start": 1.583,
+            "end": 2.053
+          },
+          {
+            "text": "이",
+            "start": 2.094,
+            "end": 2.251
+          },
+          {
+            "text": "세",
+            "start": 2.264,
+            "end": 2.421
+          },
+          {
+            "text": "가지만",
+            "start": 2.435,
+            "end": 2.905
+          },
+          {
+            "text": "뽑으면",
+            "start": 2.946,
+            "end": 3.416
+          },
+          {
+            "text": "됩니다.",
+            "start": 3.457,
+            "end": 4.083
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "cta",
+      "narration": "프롬프트 원문은 팔로우하고 댓글에 회의라고 남겨주세요!",
+      "onScreen": {
+        "emoji": "👇",
+        "headline": "프롬프트 원문\n받아가세요",
+        "action": "댓글에 '회의'",
+        "handle": "@your_handle",
+        "highlight": [
+          "회의"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "chime",
+          "at": "word:팔로우",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "cut",
+      "timing": {
+        "hash": "f6166be1a915",
+        "start": 15.923,
+        "duration": 3.824,
+        "speechEnd": 3.574,
+        "words": [
+          {
+            "text": "프롬프트",
+            "start": 0.05,
+            "end": 0.561
+          },
+          {
+            "text": "원문은",
+            "start": 0.606,
+            "end": 0.989
+          },
+          {
+            "text": "팔로우하고",
+            "start": 1.023,
+            "end": 1.662
+          },
+          {
+            "text": "댓글에",
+            "start": 1.718,
+            "end": 2.101
+          },
+          {
+            "text": "회의라고",
+            "start": 2.134,
+            "end": 2.646
+          },
+          {
+            "text": "남겨주세요!",
+            "start": 2.69,
+            "end": 3.457
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": ""
+  },
+  "caption": "회의록 정리 3초 컷 📝 프롬프트는 댓글에 '회의'",
+  "hashtags": [
+    "#ChatGPT",
+    "#업무자동화",
+    "#직장인꿀팁"
+  ],
+  "upload": {
+    "title": "회의록 정리 3초 컷",
+    "instagram": true,
+    "youtube": true
+  }
+}

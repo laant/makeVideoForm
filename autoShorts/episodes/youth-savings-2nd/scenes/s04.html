@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0b0f; }
+      :root {
+        --bg: #0b0b0f; --fg: #f5f5f7; --accent: #ffd84d; --muted: #8a8a96;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      .c-head { white-space: pre-line; font-size: 72px; font-weight: 900; letter-spacing: -0.03em; }
+  .c-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .c-col { border-radius: 36px; padding: 44px 36px; background: rgba(255,255,255,0.06); border: 3px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 26px; }
+  .c-col.win { border-color: var(--accent); background: rgba(255,216,77,0.08); }
+  .c-label { font-size: 46px; font-weight: 800; }
+  .c-col.win .c-label { color: var(--accent); }
+  .c-item { font-size: 38px; line-height: 1.35; color: #d8d8e0; }
+  .c-col.lose .c-item { color: var(--muted); }
+  .c-verdict { text-align: center; font-size: 60px; font-weight: 900; color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:generated hash=3e1bc806c980 template=compare -->
+    <div id="root" data-composition-id="s04" data-start="0" data-duration="7.555" data-width="1080" data-height="1920">
+      <div id="s04-bg" class="layer bg-layer clip" data-start="0" data-duration="7.555">
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s04-content" class="layer content clip" data-start="0" data-duration="7.555">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s04",
+  "template": "compare",
+  "onScreen": {
+    "heading": "정부 기여금",
+    "left": {
+      "label": "일반형 6%",
+      "items": [
+        "납입액의 6%를 정부가 추가"
+      ]
+    },
+    "right": {
+      "label": "우대형 12%",
+      "items": [
+        "중소기업 재직자",
+        "신규 취업자 등"
+      ]
+    },
+    "rightAt": "word:중소기업",
+    "verdict": "이자는 비과세",
+    "verdictAt": "end",
+    "highlight": [
+      "육",
+      "십이"
+    ]
+  },
+  "highlight": [
+    "육",
+    "십이"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "정부가",
+      "start": 0.06,
+      "end": 0.51
+    },
+    {
+      "text": "내",
+      "start": 0.51,
+      "end": 0.68
+    },
+    {
+      "text": "납입액의",
+      "start": 0.68,
+      "end": 1.92
+    },
+    {
+      "text": "육",
+      "start": 1.92,
+      "end": 1.97
+    },
+    {
+      "text": "퍼센트,",
+      "start": 1.97,
+      "end": 2.55
+    },
+    {
+      "text": "중소기업",
+      "start": 3.26,
+      "end": 3.73
+    },
+    {
+      "text": "재직자",
+      "start": 3.82,
+      "end": 4.2
+    },
+    {
+      "text": "같은",
+      "start": 4.24,
+      "end": 4.56
+    },
+    {
+      "text": "우대형은",
+      "start": 4.62,
+      "end": 5.38
+    },
+    {
+      "text": "십이",
+      "start": 5.38,
+      "end": 5.653
+    },
+    {
+      "text": "퍼센트를",
+      "start": 5.653,
+      "end": 6.2
+    },
+    {
+      "text": "얹어줘요.",
+      "start": 6.2,
+      "end": 6.94
+    }
+  ],
+  "speechEnd": 7.005,
+  "duration": 7.255,
+  "renderDuration": 7.555,
+  "globalStart": 19.492,
+  "total": 51.301
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      const o = S.onScreen;
+  if (o.heading) {
+    const h = H.el("div", "c-head", o.heading, stage);
+    tl.fromTo(h, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35 }, 0.05);
+  }
+  const cols = H.el("div", "c-cols", null, stage);
+  const rightAt = H.at(o.rightAt, S.speechEnd * 0.45);
+  [["left", 0.25, "lose"], ["right", rightAt, "win"]].forEach(([side, t0, cls]) => {
+    const d = o[side] || { label: side, items: [] };
+    const col = H.el("div", `c-col ${cls}`, null, cols);
+    H.el("div", "c-label", d.label, col);
+    tl.fromTo(col, { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, t0);
+    (d.items || []).forEach((it, i) => {
+      const e = H.el("div", "c-item", `• ${it}`, col);
+      tl.fromTo(e, { opacity: 0, x: side === "left" ? -30 : 30 }, { opacity: 1, x: 0, duration: 0.3 }, t0 + 0.25 + i * 0.18);
+    });
+  });
+  // 비교 시점에 오른쪽 강조
+  tl.to(".c-col.lose", { opacity: 0.55, scale: 0.97, duration: 0.3 }, rightAt + 0.2);
+  tl.fromTo(".c-col.win", { scale: 1 }, { scale: 1.03, duration: 0.3, ease: "back.out(3)" }, rightAt + 0.2);
+  if (o.verdict) {
+    const v = H.el("div", "c-verdict", o.verdict, stage);
+    tl.fromTo(v, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, H.at(o.verdictAt, S.speechEnd * 0.8));
+  }
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s04"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
