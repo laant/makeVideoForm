@@ -13,7 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ROOT } from "./lib/paths.js";
 import { ffprobeJson } from "./lib/proc.js";
-import { youtubeReady, uploadYouTubeWith } from "./upload/youtube.js";
+import { youtubeReady, uploadYouTubeWith, youtubeChannel, youtubeTokenAgeDays, explainAuthError } from "./upload/youtube.js";
 import { instagramReady, uploadInstagramWith } from "./upload/instagram.js";
 
 const OUTPUT = path.resolve(ROOT, "..", "output");
@@ -144,6 +144,17 @@ const targets = [
     ready: youtubeReady,
     preview: { ...ytMeta, description: `${ytMeta.description.slice(0, 120)}… (${ytMeta.description.length}자)`, thumbnail: thumbnail && path.basename(thumbnail) },
     upload: () => uploadYouTubeWith(ytMeta, video, { thumbnail }),
+    // 토큰 채널이 .env YT_CHANNEL_HANDLE 과 다르면 중단 (개인 채널 오업로드 방지)
+    precheck: async () => {
+      const age = youtubeTokenAgeDays();
+      if (age !== null && age > 6) console.warn(`  ⚠ 토큰 발급 ${age.toFixed(1)}일 경과 — OAuth '테스트' 상태면 7일에 만료됩니다 (npm run yt:auth)`);
+      const ch = await youtubeChannel();
+      console.log(`  채널: ${ch.title} ${ch.handle ?? ""}`);
+      const want = process.env.YT_CHANNEL_HANDLE?.trim().toLowerCase();
+      if (!want) return "YT_CHANNEL_HANDLE 미설정 — .env 에 올릴 채널 핸들(@…)을 적으세요";
+      if ((ch.handle ?? "").toLowerCase() !== want) return `채널 불일치: 토큰=${ch.handle ?? ch.title}, 설정=${want} — npm run yt:auth 에서 브랜드 채널을 선택하세요`;
+      return null;
+    },
   },
   {
     key: "instagram",
@@ -177,6 +188,19 @@ for (const t of targets) {
     failed = true;
     continue;
   }
+  if (t.precheck) {
+    let problem;
+    try {
+      problem = await t.precheck();
+    } catch (e) {
+      problem = explainAuthError(e);
+    }
+    if (problem) {
+      console.warn(`⚠ ${problem}`);
+      failed = true;
+      continue;
+    }
+  }
   if (!YES) {
     console.log("(dry-run) 실제 업로드하려면 --yes");
     continue;
@@ -187,7 +211,7 @@ for (const t of targets) {
     fs.writeFileSync(logFile, JSON.stringify(log, null, 2));
     console.log(`✓ ${t.key}: ${result.url ?? result.id}${result.publishAt ? ` (예약 공개 ${result.publishAt})` : ""}`);
   } catch (e) {
-    console.error(`✗ ${t.key}: ${e.message}`);
+    console.error(`✗ ${t.key}: ${t.key === "youtube" ? explainAuthError(e) : e.message}`);
     failed = true;
   }
 }

@@ -31,9 +31,13 @@ const server = http.createServer(async (req, res) => {
   try {
     const { tokens } = await oauth.getToken(u.searchParams.get("code"));
     fs.mkdirSync(path.dirname(TOKEN_PATH), { recursive: true });
-    fs.writeFileSync(TOKEN_PATH, JSON.stringify(tokens, null, 2), { mode: 0o600 });
+    fs.writeFileSync(TOKEN_PATH, JSON.stringify({ ...tokens, obtained_at: new Date().toISOString() }, null, 2), { mode: 0o600 });
     res.end("인증 완료. 터미널로 돌아가세요.");
     console.log(`✓ 토큰 저장: ${path.relative(process.cwd(), TOKEN_PATH)}`);
+    oauth.setCredentials(tokens);
+    const ch = await google.youtube({ version: "v3", auth: oauth }).channels.list({ part: ["snippet"], mine: true });
+    const c = ch.data.items?.[0];
+    console.log(c ? `✓ 채널: ${c.snippet.title} ${c.snippet.customUrl ?? ""} (${c.id})` : "⚠ 이 계정에 연결된 채널이 없습니다");
   } catch (e) {
     res.end("인증 실패: " + e.message);
     console.error(e);
