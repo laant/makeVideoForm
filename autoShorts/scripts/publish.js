@@ -207,6 +207,8 @@ for (const t of targets) {
   }
   try {
     const result = await t.upload();
+    // --again 재게시: 이전 기록은 history 로 보존
+    if (log[t.key]) (log.history ??= []).push({ platform: t.key, ...log[t.key] });
     log[t.key] = { module, titleNo: entry.no, title: entry.title, ...result, at: new Date().toISOString() };
     fs.writeFileSync(logFile, JSON.stringify(log, null, 2));
     console.log(`✓ ${t.key}: ${result.url ?? result.id}${result.publishAt ? ` (예약 공개 ${result.publishAt})` : ""}`);
