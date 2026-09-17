@@ -732,13 +732,13 @@
     {
       "id": "s09",
       "template": "cta",
-      "narration": "신청일 까먹지 않게 저장해 두세요.",
+      "narration": "신청일 까먹지 않게 저장해 두세요. 자세한 안내는 아래 설명 링크에.",
       "onScreen": {
         "emoji": "📌",
         "headline": "10월 7일\n신청 시작",
-        "action": "저장하고 알림 켜기",
+        "action": "저장하고 설명란 링크 확인",
         "actionAt": "word:저장해",
-        "handle": "@your_handle"
+        "handle": "@knowledge-f-financial"
       },
       "sfx": [
         {
@@ -749,35 +749,60 @@
       ],
       "transitionOut": "cut",
       "timing": {
-        "hash": "b386ba26af16",
+        "hash": "0657068c09b4",
         "start": 48.446,
-        "duration": 2.855,
-        "speechEnd": 2.605,
+        "duration": 5.073,
+        "speechEnd": 4.823,
         "words": [
           {
             "text": "신청일",
-            "start": 0.07,
-            "end": 0.36
+            "start": 0.06,
+            "end": 0.33
           },
           {
             "text": "까먹지",
-            "start": 0.36,
-            "end": 1.23
+            "start": 0.33,
+            "end": 1.09
           },
           {
             "text": "않게",
-            "start": 1.23,
-            "end": 1.47
+            "start": 1.17,
+            "end": 1.31
           },
           {
             "text": "저장해",
-            "start": 1.47,
-            "end": 1.8
+            "start": 1.43,
+            "end": 1.65
           },
           {
             "text": "두세요.",
-            "start": 1.84,
-            "end": 2.17
+            "start": 1.65,
+            "end": 1.94
+          },
+          {
+            "text": "자세한",
+            "start": 2.7,
+            "end": 2.86
+          },
+          {
+            "text": "안내는",
+            "start": 2.86,
+            "end": 3.78
+          },
+          {
+            "text": "아래",
+            "start": 3.78,
+            "end": 4
+          },
+          {
+            "text": "설명",
+            "start": 4.16,
+            "end": 4.35
+          },
+          {
+            "text": "링크에.",
+            "start": 4.35,
+            "end": 4.86
           }
         ]
       }
