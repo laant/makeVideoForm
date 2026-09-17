@@ -60,6 +60,7 @@ myNextSeason/
 | 06 | AI 사고력 1편 — 챗GPT가 헛소리하는 이유 | 실무 인사이트(3부작 1/3, 찰흙 3D) | flow·openmontage·talkcraft | `output/06-ai-thinking-ep1/` |
 | 07 | AI 사고력 2편 — 일 못하는 사람들의 공통점 | 실무 인사이트(3부작 2/3) | openmontage | `output/07-ai-thinking-ep2/` |
 | 08 | AI 사고력 3편 — 그 자동화 강의, 결제 전에 | 교육 인사이트(3부작 3/3, 개정판) | openmontage | `output/08-ai-thinking-ep3/` |
+| 09 | 청년미래적금 2차 신청 총정리 | 머니 정보(시의성, 찰흙 3D) | openmontage·talkcraft·flow(크레딧 대기) | `output/09-youth-savings-2nd/` |
 
 ## 환경 메모
 
