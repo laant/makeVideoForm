@@ -5,6 +5,7 @@
 - 소스에 final_send.mp4(압축본)가 있으면 그대로 복사, 없으면 final*.mp4를 crf26으로 압축.
 - 소스가 더 새것일 때만 갱신 (idempotent).
 - 새 프로젝트/모듈이 생기면 아래 MAPPING에 한 줄 추가.
+- autoShorts 인스타 카드뉴스(cards/NN.png)는 CARDS에 한 줄 추가 → output/<프로젝트>/cards/ 로 동기화.
 
 사용: python3 scripts/collect_outputs.py
 """
@@ -76,6 +77,37 @@ MAPPING: dict[tuple[str, str], list[str]] = {
         "talkcraft/guri/remotion/out/final.mp4"],
 }
 
+# 프로젝트 → autoShorts 카드뉴스 폴더 (npm run cards 결과, PNG만 복사 · src/ HTML 제외)
+CARDS: dict[str, str] = {
+    "09-youth-savings-2nd": "autoShorts/episodes/youth-savings-2nd/cards",
+}
+
+
+def collect_cards() -> None:
+    for project, rel in CARDS.items():
+        src_dir = ROOT / rel
+        pngs = sorted(src_dir.glob("[0-9][0-9].png")) if src_dir.is_dir() else []
+        if not pngs:
+            print(f"skip  {project}/cards — 소스 없음")
+            continue
+        dest_dir = OUT / project / "cards"
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        copied = 0
+        for src in pngs:
+            dest = dest_dir / src.name
+            if not dest.exists() or dest.stat().st_mtime < src.stat().st_mtime:
+                shutil.copy2(src, dest)
+                copied += 1
+        # 카드 수가 줄었으면 남은 옛 번호 제거 (cards.js와 같은 동작)
+        names = {s.name for s in pngs}
+        removed = [d for d in dest_dir.glob("[0-9][0-9].png") if d.name not in names]
+        for d in removed:
+            d.unlink()
+        state = f"copy {copied}장" if copied or removed else "최신 상태"
+        if removed:
+            state += f", 삭제 {len(removed)}장"
+        print(f"cards {project} — {len(pngs)}장 ({state})")
+
 
 def main() -> None:
     for (project, module), candidates in MAPPING.items():
@@ -97,6 +129,7 @@ def main() -> None:
                             "-c:v", "libx264", "-crf", "26", "-c:a", "aac", "-b:a", "128k",
                             str(dest)], check=True)
             print(f"press {project}/{module} ← {src.relative_to(ROOT)} (압축)")
+    collect_cards()
 
 
 if __name__ == "__main__":

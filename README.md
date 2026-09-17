@@ -73,4 +73,4 @@ myNextSeason/
   (쉘의 GEMINI_API_KEY는 무효한 옛 키 — unset 후 .env 사용)
 - Flow 웹: flow.google.com (Google 계정 lee.junghoon@gmail.com, 브라우저 자동화는 Aside MCP 경유)
 - 공용 자원: 폰트 `flow-pipeline/fonts/`, PIL venv `OpenMontage/.venv`, TTS는 Gemini Aoede(한국어 네이티브)
-- 새 완성본이 나오면: `scripts/collect_outputs.py`의 MAPPING에 한 줄 추가 → 실행 (마무리 절차)
+- 새 완성본이 나오면: `scripts/collect_outputs.py`의 MAPPING에 한 줄 추가 → 실행 (마무리 절차). autoShorts 카드뉴스는 CARDS에 추가 → `output/<프로젝트>/cards/`
