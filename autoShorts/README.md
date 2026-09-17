@@ -84,7 +84,7 @@ npm run cards -- <slug> [--only s02]      # 인스타 카드뉴스(1:1) → card
 npm run preview -- <slug> [--stop]        # HyperFrames Studio 미리보기
 npm run upload -- <slug> [--yes] [--only youtube|instagram] [--again]
 npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|none] [--at "YYYY-MM-DD HH:mm"] [--yes]
-                                          # ../output/ 의 모든 모듈판 완성본 배포 (titles.txt ★제목 + 썸네일)
+                                          # ../output/ 의 모든 모듈판 완성본 배포 (titles.txt ★제목 + 썸네일, YouTube 기본 +10분 예약 공개)
 npm run yt:auth                           # YouTube OAuth 최초 인증
 npm run sfx [-- --force]                  # 효과음 재생성
 ```

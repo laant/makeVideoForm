@@ -6,7 +6,9 @@
 //                      [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--privacy private|unlisted|public]
 //                      [--yes] [--again]
 //
-//   --at     YouTube 예약 공개(한국 시간). 비공개로 올린 뒤 그 시각에 공개. Instagram은 예약이 없어 건너뜀
+//   기본     YouTube 는 업로드 시점 + YT_SCHEDULE_DELAY_MIN(기본 10)분 뒤 예약 공개 (비공개로 올린 뒤 자동 공개)
+//   --at     예약 시각 직접 지정(한국 시간). 이때 Instagram 은 예약이 없어 건너뜀
+//   --privacy private|unlisted|public  예약 없이 해당 공개 상태로 즉시 올림
 //   --again  같은 프로젝트를 같은 플랫폼에 이미 올렸어도 다시 올림 (모듈판이 달라도 채널 중복 방지가 기본)
 import "./lib/env.js";
 import fs from "node:fs";
@@ -111,9 +113,13 @@ if (opt("at")) {
   const m = opt("at").match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})$/);
   if (!m) die('--at 형식: "YYYY-MM-DD HH:mm" (한국 시간)');
   const d = new Date(`${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:00+09:00`);
-  if (d.getTime() < Date.now() + 15 * 60 * 1000) die("--at 은 지금부터 15분 이후여야 합니다");
+  if (d.getTime() < Date.now() + 10 * 60 * 1000) die("--at 은 지금부터 10분 이후여야 합니다");
   publishAt = d.toISOString();
 }
+// --at·--privacy 가 없으면 업로드 직전 시각 기준 N분 뒤 예약 공개
+const delayMin = Number(process.env.YT_SCHEDULE_DELAY_MIN ?? 10);
+const autoSchedule = !publishAt && !opt("privacy") && delayMin > 0;
+const schedulePreview = () => publishAt ?? (autoSchedule ? `업로드 시점 + ${delayMin}분` : null);
 const privacy = opt("privacy") || process.env.YT_PRIVACY || "private";
 if (!["private", "unlisted", "public"].includes(privacy)) die(`--privacy 값 오류: ${privacy}`);
 
@@ -129,7 +135,7 @@ const ytMeta = {
   title: entry.title.slice(0, 100),
   description: entry.description.slice(0, 5000),
   tags,
-  privacyStatus: publishAt ? "private" : privacy,
+  privacyStatus: publishAt || autoSchedule ? "private" : privacy,
   ...(publishAt && { publishAt }),
 };
 const igCaption = entry.description.slice(0, 2200);
@@ -142,8 +148,13 @@ const targets = [
   {
     key: "youtube",
     ready: youtubeReady,
-    preview: { ...ytMeta, description: `${ytMeta.description.slice(0, 120)}… (${ytMeta.description.length}자)`, thumbnail: thumbnail && path.basename(thumbnail) },
-    upload: () => uploadYouTubeWith(ytMeta, video, { thumbnail }),
+    preview: { ...ytMeta, publishAt: schedulePreview(), description: `${ytMeta.description.slice(0, 120)}… (${ytMeta.description.length}자)`, thumbnail: thumbnail && path.basename(thumbnail) },
+    upload: () =>
+      uploadYouTubeWith(
+        autoSchedule ? { ...ytMeta, publishAt: new Date(Date.now() + delayMin * 60 * 1000).toISOString() } : ytMeta,
+        video,
+        { thumbnail },
+      ),
     // 토큰 채널이 .env YT_CHANNEL_HANDLE 과 다르면 중단 (개인 채널 오업로드 방지)
     precheck: async () => {
       const age = youtubeTokenAgeDays();
@@ -211,7 +222,8 @@ for (const t of targets) {
     if (log[t.key]) (log.history ??= []).push({ platform: t.key, ...log[t.key] });
     log[t.key] = { module, titleNo: entry.no, title: entry.title, ...result, at: new Date().toISOString() };
     fs.writeFileSync(logFile, JSON.stringify(log, null, 2));
-    console.log(`✓ ${t.key}: ${result.url ?? result.id}${result.publishAt ? ` (예약 공개 ${result.publishAt})` : ""}`);
+    const kst = result.publishAt && new Date(result.publishAt).toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
+    console.log(`✓ ${t.key}: ${result.url ?? result.id}${kst ? ` (예약 공개 ${kst} KST)` : ""}`);
   } catch (e) {
     console.error(`✗ ${t.key}: ${t.key === "youtube" ? explainAuthError(e) : e.message}`);
     failed = true;

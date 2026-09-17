@@ -24,6 +24,7 @@ npm run preview -- <slug> [--stop]     # HyperFrames Studio (씬 + 나레이션 
 npm run upload -- <slug>               # dry-run. 실제 업로드는 --yes (사용자 확인 후에만)
 npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|none] [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--yes] [--again]
                                        # myNextSeason output/ 완성본(모든 모듈판) 배포 — 제목·설명은 titles.txt(★ 기본)
+                                       # YouTube 기본 = 업로드 +10분 예약 공개 (YT_SCHEDULE_DELAY_MIN), --privacy 지정 시 예약 없음
 ```
 `--mock` 은 macOS `say` 로 음성을 대신해 크레딧 없이 파이프라인을 점검한다.
 

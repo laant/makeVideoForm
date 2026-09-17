@@ -68,7 +68,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 **업로드 준비물 — 완성본과 항상 함께 만든다(요청 없어도 자동)**:
 - 영상별 썸네일 2장: `<파일명>_thumb1.jpg`(훅 장면) · `<파일명>_thumb2.jpg`(결정 장면). 모듈마다 화면이 달라 영상별.
 - 프로젝트별 제목·설명 1파일: `titles.txt` — 숫자 포함형 5 · 질문형 5 · 감정 자극형 5 = 15개(제목 ≤60자, 설명 ≤3000자) + ★바이럴 1순위와 이유·차점. 주제가 같으므로 모듈과 무관하게 프로젝트당 하나.
-- **배포(모든 모듈판 공통)**: `cd autoShorts && npm run publish -- <프로젝트> --module <모듈>` — `output/`의 완성본 + titles.txt ★제목 + thumb1로 YouTube Shorts·Instagram Reels 업로드. 기본 dry-run, 실제 업로드 `--yes`는 사용자 요청 시에만. 옵션: `--title N` · `--thumb 2|none` · `--only youtube|instagram` · `--at "YYYY-MM-DD HH:mm"`(YouTube 예약 공개) · `--again`. 기록은 `output/<프로젝트>/publish-log.json`(플랫폼당 1회 — 모듈판 중복 게시 방지). 대상 채널은 `autoShorts/.env` `YT_CHANNEL_HANDLE`(@knowledge-f-financial)과 토큰 채널이 일치해야 진행. OAuth 앱이 '테스트' 상태라 **토큰 7일 만료 → 주 1회 `npm run yt:auth`**(브랜드 채널 선택).
+- **배포(모든 모듈판 공통)**: `cd autoShorts && npm run publish -- <프로젝트> --module <모듈>` — `output/`의 완성본 + titles.txt ★제목 + thumb1로 YouTube Shorts·Instagram Reels 업로드. 기본 dry-run, 실제 업로드 `--yes`는 사용자 요청 시에만. 옵션: `--title N` · `--thumb 2|none` · `--only youtube|instagram` · **YouTube는 기본으로 업로드 시점 +10분 예약 공개**(`.env` `YT_SCHEDULE_DELAY_MIN`) · `--at "YYYY-MM-DD HH:mm"`(예약 시각 지정) · `--privacy private|unlisted|public`(예약 없이 즉시) · `--again`. 기록은 `output/<프로젝트>/publish-log.json`(플랫폼당 1회 — 모듈판 중복 게시 방지). 대상 채널은 `autoShorts/.env` `YT_CHANNEL_HANDLE`(@knowledge-f-financial)과 토큰 채널이 일치해야 진행. OAuth 앱이 '테스트' 상태라 **토큰 7일 만료 → 주 1회 `npm run yt:auth`**(브랜드 채널 선택).
 - 인스타 카드뉴스(autoShorts판이 있을 때): `output/<프로젝트>/cards/NN.png` — `npm run cards -- <slug>` 후 `collect_outputs.py`의 CARDS에 한 줄 추가·실행.
 
 모듈 내 원본 위치:
