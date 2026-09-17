@@ -35,13 +35,17 @@ async function graph(method, pathname, params = {}) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export async function uploadInstagram(ep, file, { thumbOffsetMs = 1200 } = {}) {
+export async function uploadInstagram(ep, file, opts) {
+  return uploadInstagramWith(instagramCaption(ep), file, opts);
+}
+
+export async function uploadInstagramWith(caption, file, { thumbOffsetMs = 1200 } = {}) {
   const { user, token } = env();
   // 1) 컨테이너 생성
   const container = await graph("POST", `${user}/media`, {
     media_type: "REELS",
     upload_type: "resumable",
-    caption: instagramCaption(ep),
+    caption: caption.slice(0, 2200),
     share_to_feed: "true",
     thumb_offset: String(thumbOffsetMs),
   });

@@ -22,6 +22,8 @@ npm run verify -- <slug>               # 결과: renders/check/contact-sheet.jpg
 npm run cards -- <slug> [--only s02]   # 인스타 카드뉴스 1080x1080 → cards/01.png… (자막 없음, 음성 없어도 가능)
 npm run preview -- <slug> [--stop]     # HyperFrames Studio (씬 + 나레이션 합본)
 npm run upload -- <slug>               # dry-run. 실제 업로드는 --yes (사용자 확인 후에만)
+npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|none] [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--yes] [--again]
+                                       # myNextSeason output/ 완성본(모든 모듈판) 배포 — 제목·설명은 titles.txt(★ 기본)
 ```
 `--mock` 은 macOS `say` 로 음성을 대신해 크레딧 없이 파이프라인을 점검한다.
 

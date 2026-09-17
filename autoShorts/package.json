@@ -15,7 +15,8 @@
     "make": "node scripts/make.js",
     "preview": "node scripts/preview.js",
     "yt:auth": "node scripts/upload/youtube-auth.js",
-    "upload": "node scripts/upload/index.js"
+    "upload": "node scripts/upload/index.js",
+    "publish": "node scripts/publish.js"
   },
   "type": "module",
   "dependencies": {
