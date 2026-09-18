@@ -5,13 +5,13 @@ import path from "node:path";
 import { SFX_DIR, episodePaths } from "./lib/paths.js";
 import { loadEpisode, requireTiming, slugArg } from "./lib/episode.js";
 import { run, mediaDuration, round3 } from "./lib/proc.js";
+import { xfadeArgs, effectFilters } from "./lib/fx.js";
 
 const slug = slugArg();
 const ep = loadEpisode(slug);
 requireTiming(ep);
 const P = episodePaths(slug);
 
-const XFADE = { crossfade: "fade", "white-flash": "fadewhite", zoom: "zoomin" };
 const T = ep.transitionSeconds;
 
 const inputs = [];
@@ -22,7 +22,10 @@ ep.scenes.forEach((s, i) => {
   const f = path.join(P.renders, `${s.id}.mp4`);
   if (!fs.existsSync(f)) throw new Error(`${f} 없음 → npm run render -- ${slug}`);
   inputs.push("-i", f);
-  filters.push(`[${i}:v]fps=30,scale=1080:1920:flags=lanczos,setsar=1,format=yuv420p,settb=AVTB[v${i}]`);
+  filters.push(`[${i}:v]fps=30,scale=1080:1920:flags=lanczos,setsar=1,format=yuv420p[n${i}]`);
+  // 화면 효과 → 타임베이스 통일 (xfade 입력 조건)
+  filters.push(...effectFilters(s.effects, `n${i}`, `e${i}`, round3(mediaDuration(f))));
+  filters.push(`[e${i}]settb=AVTB[v${i}]`);
 });
 let acc = "v0";
 let elapsed = 0; // acc 의 "슬롯 기준" 길이
@@ -32,7 +35,7 @@ ep.scenes.slice(0, -1).forEach((s, i) => {
   if (s.transitionOut === "cut" || T === 0) {
     filters.push(`[${acc}][v${i + 1}]concat=n=2:v=1:a=0[${out}]`);
   } else {
-    filters.push(`[${acc}][v${i + 1}]xfade=transition=${XFADE[s.transitionOut]}:duration=${T}:offset=${round3(elapsed)}[${out}]`);
+    filters.push(`[${acc}][v${i + 1}]xfade=${xfadeArgs(s.transitionOut)}:duration=${T}:offset=${round3(elapsed)}[${out}]`);
   }
   acc = out;
 });

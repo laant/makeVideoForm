@@ -14,6 +14,9 @@ argument-hint: <slug> [sNN ...]
    - 요소 등장은 `S.words` 의 실제 타임스탬프에 맞춰 stagger (`H.at("word:…")`)
    - 자막·효과음 타이밍은 나레이션과 겹치지 않게, 화면 텍스트는 안전영역 안에
    - `data-duration` 유지, 결정적 코드만, 에셋 경로는 에피소드 폴더 기준
-   - 사용한 이미지/에셋 경로를 목록으로 보고
-4. `npx hyperframes lint episodes/<slug>` 와 `npm run render -- <slug> --only sNN --draft` 로 확인하고,
+   - 사용한 에셋을 **매니페스트 표**로 보고: `경로 | 종류(이미지·폰트·음원·로고) | 출처 | 라이선스·사용 근거`
+     직접 만든 것·사용자 제공 자료는 그렇게 표시. 출처·라이선스가 불명확한 외부 에셋은 쓰지 말고 사용자에게 확인한다
+4. 연출 옵션: 씬 전환 `transitionOut`(20종)·화면 효과 `effects`(19종)·효과음 `sfx`(17종) — `templates/scenes/README.md` 표에서
+   영상 분위기에 맞는 것을 골라 episode.json 에 적는다(효과는 합성 단계 FFmpeg 적용이라 preview 에는 안 보임).
+5. `npx hyperframes lint episodes/<slug>` 와 `npm run render -- <slug> --only sNN --draft` 로 확인하고,
    `ffmpeg -ss <초> -i renders/sNN.mp4 -frames:v 1 /tmp/…png` 로 핵심 순간 프레임을 뽑아 직접 확인한다.

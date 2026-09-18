@@ -9,6 +9,7 @@
 //   기본     YouTube 는 업로드 시점 + YT_SCHEDULE_DELAY_MIN(기본 10)분 뒤 예약 공개 (비공개로 올린 뒤 자동 공개)
 //   --at     예약 시각 직접 지정(한국 시간). 이때 Instagram 은 예약이 없어 건너뜀
 //   --privacy private|unlisted|public  예약 없이 해당 공개 상태로 즉시 올림
+//   --skip-precheck  업로드 전 점검(링크·자리표시자·URL) 실패를 무시
 //   --again  같은 프로젝트를 같은 플랫폼에 이미 올렸어도 다시 올림 (모듈판이 달라도 채널 중복 방지가 기본)
 import "./lib/env.js";
 import fs from "node:fs";
@@ -17,6 +18,7 @@ import { ROOT } from "./lib/paths.js";
 import { ffprobeJson } from "./lib/proc.js";
 import { youtubeReady, uploadYouTubeWith, youtubeChannel, youtubeTokenAgeDays, explainAuthError } from "./upload/youtube.js";
 import { instagramReady, uploadInstagramWith } from "./upload/instagram.js";
+import { precheck, printPrecheck } from "./lib/precheck.js";
 
 const OUTPUT = path.resolve(ROOT, "..", "output");
 const argv = process.argv.slice(2);
@@ -140,6 +142,21 @@ const ytMeta = {
 };
 const igCaption = entry.description.slice(0, 2200);
 
+// 업로드 전 점검 — 제목·설명의 자리표시자, 링크 안내 vs URL, URL 접속, 글자 수
+const pre = await precheck({
+  texts: [
+    { where: `titles #${entry.no} 제목`, text: entry.title },
+    { where: `titles #${entry.no} 설명`, text: entry.description },
+  ],
+  description: entry.description,
+  limits: [
+    { where: "YouTube 제목", text: entry.title, max: 100 },
+    { where: "YouTube 설명", text: entry.description, max: 5000 },
+    { where: "Instagram 캡션", text: entry.description, max: 2200 },
+  ],
+});
+const BLOCKED = pre.fails.length > 0 && !flag("skip-precheck");
+
 const logFile = path.join(dir, "publish-log.json");
 const log = fs.existsSync(logFile) ? JSON.parse(fs.readFileSync(logFile, "utf8")) : {};
 const YES = flag("yes");
@@ -179,6 +196,8 @@ const targets = [
 console.log(`▶ ${project} / ${module}  (${v?.width}x${v?.height}, ${duration.toFixed(1)}s)`);
 console.log(`  제목 #${entry.no}${entry.title === star ? " ★" : ""}: ${entry.title}`);
 for (const w of warnings) console.warn(`  ⚠ ${w}`);
+printPrecheck(pre);
+if (BLOCKED) console.log("✗ 업로드 전 점검 실패 — 고친 뒤 다시 실행 (무시하려면 --skip-precheck)");
 
 let failed = false;
 for (const t of targets) {
@@ -211,6 +230,10 @@ for (const t of targets) {
       failed = true;
       continue;
     }
+  }
+  if (BLOCKED) {
+    failed = true;
+    continue;
   }
   if (!YES) {
     console.log("(dry-run) 실제 업로드하려면 --yes");

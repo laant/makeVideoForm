@@ -37,6 +37,8 @@ npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|non
 - 나레이션은 핵심만, 긴 텍스트는 화면(onScreen)으로. 한 씬 = 한 문장(1.5~5초).
 - 모든 나레이션 문장에 대해 화면에서 **무엇을 입력/무엇을 하고/무엇이 보이는지**가 정해져 있어야 한다.
 - 첫 씬 첫 2초 안에 훅, 훅에서 약속한 것을 영상 안에서 반드시 보여준다(훅-페이오프 정합성).
+- **지어내기 금지**: 레퍼런스·brief·제공 자료에 없는 성과·수치·개인 경험·후기를 만들지 않는다. 출처 없는 숫자는 확정 전에 사용자에게 확인.
+- 링크·설명란·고정 댓글을 안내하면 `caption` 에 실제 URL 을 넣는다.
 - 총 길이 20~45초 권장, 90초 초과 금지. 숫자·영문 약어는 발음대로 풀어 쓴다(예: "GPT" → "지피티").
 
 ## 씬 규칙
@@ -44,9 +46,14 @@ npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|non
 - 템플릿으로 충분하면 episode.json 만 수정한다. 특수 연출이 필요할 때만 `scenes/sNN.html` 을 직접 수정하고
   첫 주석을 `autoshorts:generated …` → `autoshorts:custom` 으로 바꿔 재생성에서 보호한다.
 - custom 씬도 `data-duration` 은 `timing.duration`(+ 트랜지션 꼬리) 와 같아야 한다. `npm run render` 가 경고한다.
+- 연출 라이브러리: `transitionOut`(20종) · `effects`(화면 효과 19종) · `sfx`(17종) — 표는 `templates/scenes/README.md`, 정의는 `scripts/lib/fx.js`·`scripts/gen-sfx.js`.
+  트랜지션·화면 효과는 합성 단계(FFmpeg)에서 적용되어 preview 에는 보이지 않는다.
+- 외부 이미지·폰트·음원은 출처·라이선스를 확인하고 에셋 매니페스트로 보고한다.
 - HyperFrames 규칙: `Date.now()`/`Math.random()`/네트워크 금지, 타임라인은 `{ paused: true }` 로 `window.__timelines[id]` 등록,
   에셋 경로는 에피소드 폴더 기준(`vendor/…`, `audio/…`, `../` 금지). 문서: `npx hyperframes docs <topic>`.
 
 ## 안전
 - 업로드는 사용자가 명시적으로 요청했을 때만 `--yes`. YouTube 기본 `private`.
+- `upload`·`publish` 는 업로드 전 점검(`scripts/lib/precheck.js`)이 ✗ 면 멈춘다. `--skip-precheck` 는 사용자가 원할 때만.
+- 결과 보고는 **실행·확인한 것** / **사람이 확인할 것** 을 나눠 쓴다.
 - `.env`, `.secrets/` 내용은 출력하지 않는다.

@@ -15,5 +15,6 @@ argument-hint: <slug>
    - 씬 발화 길이 < 1.2s (화면 연출이 안 보일 만큼 짧음)
 3. 전체 길이 `ffprobe episodes/$ARGUMENTS/audio/narration.mp3` 확인.
 4. 발음 문제 의심 구간은 사용자가 직접 들어볼 수 있게 `afplay` 명령과 해당 씬 파일(`audio/sNN.mp3`)을 안내한다.
-5. 수정안: narration 표기 변경(발음대로 쓰기, 쉼표 추가), voice 설정(speed/stability) 조정 제안.
+5. 보고 시 **실행·확인한 것**(타임스탬프 분석 결과)과 **사람이 들어봐야 할 것**(억양·감정·어색한 발음 후보)을 나눠 적는다.
+6. 수정안: narration 표기 변경(발음대로 쓰기, 쉼표 추가), voice 설정(speed/stability) 조정 제안.
    수정 시 해당 씬만 재생성되므로 `npm run tts -- $ARGUMENTS` 재실행을 안내한다.

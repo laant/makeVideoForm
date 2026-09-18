@@ -3,8 +3,13 @@ import { z } from "zod";
 import { episodePaths } from "./paths.js";
 
 export const TEMPLATE_NAMES = ["title", "compare", "list", "demo", "cta"];
-export const TRANSITIONS = ["cut", "crossfade", "white-flash", "zoom"];
-export const SFX_NAMES = ["click", "typing", "whoosh", "pop", "chime", "notify", "error"];
+import { TRANSITIONS, EFFECTS } from "./fx.js";
+export { TRANSITIONS, EFFECTS };
+// assets/sfx/<name>.wav — scripts/gen-sfx.js 가 생성 (가이드 17종)
+export const SFX_NAMES = [
+  "click", "key", "typing", "whoosh", "whoosh-long", "impact", "impact-deep", "tone", "pop", "ping",
+  "notify", "chime", "sparkle", "error", "glitch", "glitch-2", "glitch-3",
+];
 
 const Word = z.object({ text: z.string(), start: z.number(), end: z.number() });
 
@@ -33,6 +38,8 @@ const Scene = z.object({
     )
     .default([]),
   transitionOut: z.enum(TRANSITIONS).default("crossfade"),
+  // 씬 전체에 거는 화면 효과 (합성 단계 FFmpeg, 순서대로 적용). templates/scenes/README.md
+  effects: z.array(z.enum(EFFECTS)).default([]),
   timing: Timing.optional(),
 });
 

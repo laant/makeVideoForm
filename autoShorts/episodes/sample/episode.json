@@ -61,36 +61,37 @@
         }
       ],
       "transitionOut": "white-flash",
+      "effects": [],
       "timing": {
         "hash": "f8951a62612b",
         "start": 0,
-        "duration": 2.54,
-        "speechEnd": 2.29,
+        "duration": 2.618,
+        "speechEnd": 2.368,
         "words": [
           {
             "text": "회의록",
             "start": 0.05,
-            "end": 0.428
+            "end": 0.441
           },
           {
             "text": "정리,",
-            "start": 0.461,
-            "end": 0.839
+            "start": 0.475,
+            "end": 0.866
           },
           {
             "text": "아직도",
-            "start": 0.871,
-            "end": 1.249
+            "start": 0.9,
+            "end": 1.292
           },
           {
             "text": "손으로",
-            "start": 1.282,
-            "end": 1.66
+            "start": 1.326,
+            "end": 1.717
           },
           {
             "text": "하세요?",
-            "start": 1.693,
-            "end": 2.197
+            "start": 1.751,
+            "end": 2.272
           }
         ]
       }
@@ -126,56 +127,57 @@
         }
       ],
       "transitionOut": "crossfade",
+      "effects": [],
       "timing": {
         "hash": "fb2ed01f7955",
-        "start": 2.54,
-        "duration": 4.575,
-        "speechEnd": 4.325,
+        "start": 2.618,
+        "duration": 4.908,
+        "speechEnd": 4.658,
         "words": [
           {
             "text": "녹취록을",
             "start": 0.05,
-            "end": 0.552
+            "end": 0.591
           },
           {
             "text": "붙여넣고",
-            "start": 0.595,
-            "end": 1.097
+            "start": 0.638,
+            "end": 1.179
           },
           {
             "text": "이렇게만",
-            "start": 1.14,
-            "end": 1.642
+            "start": 1.226,
+            "end": 1.767
           },
           {
             "text": "입력하면",
-            "start": 1.685,
-            "end": 2.187
+            "start": 1.814,
+            "end": 2.356
           },
           {
             "text": "결정사항과",
-            "start": 2.231,
-            "end": 2.857
+            "start": 2.403,
+            "end": 3.079
           },
           {
             "text": "할",
-            "start": 2.912,
-            "end": 3.037
+            "start": 3.138,
+            "end": 3.273
           },
           {
             "text": "일이",
-            "start": 3.048,
-            "end": 3.299
+            "start": 3.285,
+            "end": 3.555
           },
           {
             "text": "바로",
-            "start": 3.321,
-            "end": 3.572
+            "start": 3.579,
+            "end": 3.85
           },
           {
             "text": "나옵니다.",
-            "start": 3.593,
-            "end": 4.22
+            "start": 3.873,
+            "end": 4.549
           }
         ]
       }
@@ -222,56 +224,57 @@
         }
       ],
       "transitionOut": "zoom",
+      "effects": [],
       "timing": {
         "hash": "c3a1531a65c7",
-        "start": 7.115,
-        "duration": 4.37,
-        "speechEnd": 4.12,
+        "start": 7.526,
+        "duration": 4.42,
+        "speechEnd": 4.17,
         "words": [
           {
             "text": "손으로",
             "start": 0.05,
-            "end": 0.494
+            "end": 0.499
           },
           {
             "text": "정리하면",
-            "start": 0.532,
-            "end": 1.124
+            "start": 0.538,
+            "end": 1.137
           },
           {
             "text": "삼십",
-            "start": 1.175,
-            "end": 1.471
+            "start": 1.189,
+            "end": 1.489
           },
           {
             "text": "분,",
-            "start": 1.497,
-            "end": 1.793
+            "start": 1.515,
+            "end": 1.815
           },
           {
             "text": "에이아이로",
-            "start": 1.819,
-            "end": 2.558
+            "start": 1.841,
+            "end": 2.589
           },
           {
             "text": "하면",
-            "start": 2.623,
-            "end": 2.918
+            "start": 2.655,
+            "end": 2.954
           },
           {
             "text": "삼",
-            "start": 2.944,
-            "end": 3.092
+            "start": 2.98,
+            "end": 3.13
           },
           {
             "text": "초면",
-            "start": 3.105,
-            "end": 3.401
+            "start": 3.143,
+            "end": 3.442
           },
           {
             "text": "끝나요.",
-            "start": 3.426,
-            "end": 4.018
+            "start": 3.468,
+            "end": 4.068
           }
         ]
       }
@@ -315,51 +318,52 @@
         }
       ],
       "transitionOut": "crossfade",
+      "effects": [],
       "timing": {
         "hash": "b1a8a0df4a49",
-        "start": 11.485,
-        "duration": 4.438,
-        "speechEnd": 4.188,
+        "start": 11.946,
+        "duration": 4.488,
+        "speechEnd": 4.238,
         "words": [
           {
             "text": "결정사항,",
             "start": 0.05,
-            "end": 0.834
+            "end": 0.843
           },
           {
             "text": "담당자,",
-            "start": 0.902,
-            "end": 1.528
+            "start": 0.912,
+            "end": 1.547
           },
           {
             "text": "기한.",
-            "start": 1.583,
-            "end": 2.053
+            "start": 1.602,
+            "end": 2.078
           },
           {
             "text": "이",
-            "start": 2.094,
-            "end": 2.251
+            "start": 2.119,
+            "end": 2.278
           },
           {
             "text": "세",
-            "start": 2.264,
-            "end": 2.421
+            "start": 2.291,
+            "end": 2.45
           },
           {
             "text": "가지만",
-            "start": 2.435,
-            "end": 2.905
+            "start": 2.464,
+            "end": 2.94
           },
           {
             "text": "뽑으면",
-            "start": 2.946,
-            "end": 3.416
+            "start": 2.981,
+            "end": 3.457
           },
           {
             "text": "됩니다.",
-            "start": 3.457,
-            "end": 4.083
+            "start": 3.498,
+            "end": 4.133
           }
         ]
       }
@@ -372,7 +376,7 @@
         "emoji": "👇",
         "headline": "프롬프트 원문\n받아가세요",
         "action": "댓글에 '회의'",
-        "handle": "@your_handle",
+        "handle": "@autoshorts.demo",
         "highlight": [
           "회의"
         ]
@@ -385,41 +389,42 @@
         }
       ],
       "transitionOut": "cut",
+      "effects": [],
       "timing": {
         "hash": "f6166be1a915",
-        "start": 15.923,
-        "duration": 3.824,
-        "speechEnd": 3.574,
+        "start": 16.434,
+        "duration": 3.874,
+        "speechEnd": 3.624,
         "words": [
           {
             "text": "프롬프트",
             "start": 0.05,
-            "end": 0.561
+            "end": 0.569
           },
           {
             "text": "원문은",
-            "start": 0.606,
-            "end": 0.989
+            "start": 0.614,
+            "end": 1.003
           },
           {
             "text": "팔로우하고",
-            "start": 1.023,
-            "end": 1.662
+            "start": 1.037,
+            "end": 1.685
           },
           {
             "text": "댓글에",
-            "start": 1.718,
-            "end": 2.101
+            "start": 1.742,
+            "end": 2.131
           },
           {
             "text": "회의라고",
-            "start": 2.134,
-            "end": 2.646
+            "start": 2.164,
+            "end": 2.683
           },
           {
             "text": "남겨주세요!",
-            "start": 2.69,
-            "end": 3.457
+            "start": 2.728,
+            "end": 3.506
           }
         ]
       }

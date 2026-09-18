@@ -55,7 +55,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 | `flow-pipeline/` | Veo 생성형 영상 (Aside 자동화) | 진짜 카메라 무빙·물 시뮬 | `flow-pipeline/RUNBOOK.md` |
 | `OpenMontage/` | Gemini 3D 스틸 + Ken Burns + 데이터 오버레이 | 무결 원샷·계측선 정확·stat_card | `OpenMontage/projects/tokyo-gcans-archi/produce.py` 패턴 |
 | `talkcraft/` | Remotion 코드 모션그래픽 | 계측선·동기화 100% 결정론 | 엔진 `talkcraft/video-talkcraft/` + 프로젝트 `talkcraft/<이름>/` (demo·gcans·guri·family, ⚠️ 비상업 라이선스 — 실험 전용) |
-| `autoShorts/` | HTML/GSAP 템플릿 씬(HyperFrames 렌더) + FFmpeg 합성 | 씬 템플릿 5종·음성 타임스탬프 싱크·자동 검수·인스타 카드뉴스·YT/IG 업로드 | `autoShorts/CLAUDE.md` + 루트 `/shorts-*` 커맨드 (Apache-2.0, 상업 사용 가능) |
+| `autoShorts/` | HTML/GSAP 템플릿 씬(HyperFrames 렌더) + FFmpeg 합성 | 씬 템플릿 5종·연출 라이브러리(트랜지션 20·화면 효과 19·효과음 17)·음성 타임스탬프 싱크·자동 검수(머리·꼬리 잘림·자리표시자)·업로드 전 점검(링크·URL)·인스타 카드뉴스·YT/IG 업로드 | `autoShorts/CLAUDE.md` + 루트 `/shorts-*` 커맨드 (Apache-2.0, 상업 사용 가능) |
 
 - 같은 대본을 여러 모듈로 병렬 제작해 비교하는 것이 기본 실험 방식 (G-Cans 03/04/05가 선례).
 - 공용 자원: 폰트 `flow-pipeline/fonts/Pretendard-*.ttf`, PIL venv `OpenMontage/.venv`, TTS(Gemini Aoede = 한국어 네이티브 검증).

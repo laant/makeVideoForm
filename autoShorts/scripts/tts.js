@@ -167,7 +167,8 @@ async function ensureWhisper() {
 async function mockSay(scene, mp3Path) {
   const tmp = path.join(os.tmpdir(), `autoshorts-${process.pid}-${scene.id}.aiff`);
   await run("say", ["-v", process.env.MOCK_VOICE || "Yuna", "-r", "210", "-o", tmp, scene.narration]);
-  await run("ffmpeg", ["-y", "-loglevel", "error", "-i", tmp, "-ar", "44100", "-ac", "1", "-b:a", "128k", mp3Path]);
+  // say 는 무음 없이 바로 시작 → 첫 단어 시간(0.05s)에 맞춰 앞 여백 0.05s (머리 잘림 방지)
+  await run("ffmpeg", ["-y", "-loglevel", "error", "-i", tmp, "-af", "adelay=50:all=1", "-ar", "44100", "-ac", "1", "-b:a", "128k", mp3Path]);
   fs.rmSync(tmp, { force: true });
   // 글자 수 비례로 단어 시간 추정
   const dur = mediaDuration(mp3Path);
