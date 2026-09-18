@@ -58,6 +58,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 | `autoShorts/` | HTML/GSAP 템플릿 씬(HyperFrames 렌더) + FFmpeg 합성 | 씬 템플릿 5종·연출 라이브러리(트랜지션 20·화면 효과 19·효과음 17)·음성 타임스탬프 싱크·자동 검수(머리·꼬리 잘림·자리표시자)·업로드 전 점검(링크·URL)·인스타 카드뉴스·YT/IG 업로드 | `autoShorts/CLAUDE.md` + 루트 `/shorts-*` 커맨드 (Apache-2.0, 상업 사용 가능) |
 
 - 같은 대본을 여러 모듈로 병렬 제작해 비교하는 것이 기본 실험 방식 (G-Cans 03/04/05가 선례).
+- **autoShorts는 기본으로 '그림판'** (2026-09-18 사용자 지시): OpenMontage판이 함께 제작되면 그 이미지를 `onScreen.bgImage`로 깔고, 태극기처럼 AI가 틀리는 대상은 코드(`H.taegukgi()` 등)로 그린다. 글자 카드판은 사용자가 따로 요청할 때만. 그림이 필요 없는 경우는 사용자가 별도로 말한다.
 - 공용 자원: 폰트 `flow-pipeline/fonts/Pretendard-*.ttf`, PIL venv `OpenMontage/.venv`, TTS(Gemini Aoede = 한국어 네이티브 검증).
 
 ## 6. 산출물 위치
