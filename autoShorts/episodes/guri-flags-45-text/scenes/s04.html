@@ -6,9 +6,9 @@
     <script src="vendor/gsap.min.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1080px; height: 1920px; overflow: hidden; background: {{bg}}; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0d0c; }
       :root {
-        --bg: {{bg}}; --fg: {{fg}}; --accent: {{accent}}; --muted: {{muted}};
+        --bg: #0e0d0c; --fg: #f7f3ee; --accent: #D6323C; --muted: #9a938b;
         --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
       }
       #root {
@@ -40,18 +40,26 @@
         text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
       }
       .cap em { font-style: normal; color: var(--accent); }
-      {{templateStyle}}
+      .c-head { white-space: pre-line; font-size: 72px; font-weight: 900; letter-spacing: -0.03em; }
+  .c-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .c-col { border-radius: 36px; padding: 44px 36px; background: rgba(255,255,255,0.06); border: 3px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 26px; }
+  .c-col.win { border-color: var(--accent); background: rgba(255,216,77,0.08); }
+  .c-label { font-size: 46px; font-weight: 800; }
+  .c-col.win .c-label { color: var(--accent); }
+  .c-item { font-size: 38px; line-height: 1.35; color: #d8d8e0; }
+  .c-col.lose .c-item { color: var(--muted); }
+  .c-verdict { text-align: center; font-size: 60px; font-weight: 900; color: var(--accent); }
     </style>
   </head>
   <body>
-    <!-- {{marker}} -->
-    <div id="root" data-composition-id="{{id}}" data-start="0" data-duration="{{renderDuration}}" data-width="1080" data-height="1920">
-      <div id="{{id}}-bg" class="layer bg-layer clip" data-start="0" data-duration="{{renderDuration}}">
-        {{bgLayer}}
+    <!-- autoshorts:generated hash=031fae4cb2b1 template=compare -->
+    <div id="root" data-composition-id="s04" data-start="0" data-duration="7.348" data-width="1080" data-height="1920">
+      <div id="s04-bg" class="layer bg-layer clip" data-start="0" data-duration="7.348">
+        
         <div class="glow a"></div>
         <div class="glow b"></div>
       </div>
-      <div id="{{id}}-content" class="layer content clip" data-start="0" data-duration="{{renderDuration}}">
+      <div id="s04-content" class="layer content clip" data-start="0" data-duration="7.348">
         <div class="stage"></div>
         <div class="captions"></div>
         <div class="progress"></div>
@@ -59,7 +67,90 @@
     </div>
     <script>
       // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
-      const S = {{sceneJson}};
+      const S = {
+  "id": "s04",
+  "template": "compare",
+  "onScreen": {
+    "heading": "게양대 두 개",
+    "left": {
+      "label": "강변 50m",
+      "items": [
+        "2007 · 한강시민공원"
+      ]
+    },
+    "right": {
+      "label": "아차산 75m",
+      "items": [
+        "2013 · 25층 높이"
+      ]
+    },
+    "rightAt": "word:아차산엔"
+  },
+  "highlight": [],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "이천칠",
+      "start": 0.348,
+      "end": 1.24
+    },
+    {
+      "text": "년",
+      "start": 1.24,
+      "end": 1.32
+    },
+    {
+      "text": "한강시민공원에",
+      "start": 1.35,
+      "end": 2.14
+    },
+    {
+      "text": "오십",
+      "start": 2.14,
+      "end": 2.55
+    },
+    {
+      "text": "미터,",
+      "start": 2.55,
+      "end": 2.89
+    },
+    {
+      "text": "이천십삼",
+      "start": 3.49,
+      "end": 4.58
+    },
+    {
+      "text": "년",
+      "start": 4.58,
+      "end": 4.71
+    },
+    {
+      "text": "아차산엔",
+      "start": 4.71,
+      "end": 5.24
+    },
+    {
+      "text": "칠십오",
+      "start": 5.24,
+      "end": 5.65
+    },
+    {
+      "text": "미터",
+      "start": 5.65,
+      "end": 6.33
+    },
+    {
+      "text": "게양대.",
+      "start": 6.5,
+      "end": 6.71
+    }
+  ],
+  "speechEnd": 6.798,
+  "duration": 7.048,
+  "renderDuration": 7.348,
+  "globalStart": 18.935,
+  "total": 44.568
+};
 
       // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
       const H = {
@@ -185,12 +276,35 @@
       if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
 
       // ── 템플릿 본문 ──────────────────────────────────────────
-      {{templateScript}}
+      const o = S.onScreen;
+  if (o.heading) {
+    const h = H.el("div", "c-head", o.heading, stage);
+    tl.fromTo(h, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35 }, 0.05);
+  }
+  const cols = H.el("div", "c-cols", null, stage);
+  const rightAt = H.at(o.rightAt, S.speechEnd * 0.45);
+  [["left", 0.25, "lose"], ["right", rightAt, "win"]].forEach(([side, t0, cls]) => {
+    const d = o[side] || { label: side, items: [] };
+    const col = H.el("div", `c-col ${cls}`, null, cols);
+    H.el("div", "c-label", d.label, col);
+    tl.fromTo(col, { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, t0);
+    (d.items || []).forEach((it, i) => {
+      const e = H.el("div", "c-item", `• ${it}`, col);
+      tl.fromTo(e, { opacity: 0, x: side === "left" ? -30 : 30 }, { opacity: 1, x: 0, duration: 0.3 }, t0 + 0.25 + i * 0.18);
+    });
+  });
+  // 비교 시점에 오른쪽 강조
+  tl.to(".c-col.lose", { opacity: 0.55, scale: 0.97, duration: 0.3 }, rightAt + 0.2);
+  tl.fromTo(".c-col.win", { scale: 1 }, { scale: 1.03, duration: 0.3, ease: "back.out(3)" }, rightAt + 0.2);
+  if (o.verdict) {
+    const v = H.el("div", "c-verdict", o.verdict, stage);
+    tl.fromTo(v, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, H.at(o.verdictAt, S.speechEnd * 0.8));
+  }
 
       if (S.showCaptions !== false) H.captions(tl);
 
       window.__timelines = window.__timelines || {};
-      window.__timelines["{{id}}"] = tl;
+      window.__timelines["s04"] = tl;
       tl.seek(0);
     </script>
   </body>

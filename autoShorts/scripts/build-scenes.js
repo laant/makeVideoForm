@@ -69,7 +69,15 @@ for (const [i, scene] of ep.scenes.entries()) {
       continue;
     }
   }
+  // onScreen.bgImage → 정적 <img> (렌더 전에 로드되도록 HTML 에 직접 넣는다). 경로는 에피소드 폴더 기준 media/…
+  const bgImage = scene.onScreen.bgImage;
+  if (bgImage && !fs.existsSync(path.join(P.dir, bgImage))) throw new Error(`${scene.id} bgImage 없음: ${bgImage}`);
+  const dim = scene.onScreen.bgDim ?? 0.6;
+  const bgLayer = bgImage
+    ? `<img class="bgimg" src="${bgImage}" alt="" />\n        <div class="bgshade" style="background: linear-gradient(180deg, rgba(0,0,0,${dim * 0.4}) 0%, rgba(0,0,0,${dim}) 45%, rgba(0,0,0,${Math.min(1, dim + 0.25)}) 100%)"></div>`
+    : "";
   const html = fill(base, {
+    bgLayer,
     ...ep.theme,
     id: scene.id,
     renderDuration,

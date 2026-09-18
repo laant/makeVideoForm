@@ -72,6 +72,10 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("04-guri-flags", "openmontage"): [
         "OpenMontage/projects/guri-flags-paper/renders/final_send.mp4",
         "OpenMontage/projects/guri-flags-paper/renders/final.mp4"],
+    ("04-guri-flags", "autoshorts"): [
+        "autoShorts/episodes/guri-flags-45/final.mp4"],  # 45초 압축판 · 페이퍼 콜라주 배경 + 규정 태극기
+    ("04-guri-flags", "autoshorts-text"): [
+        "autoShorts/episodes/guri-flags-45-text/final.mp4"],  # 45초 압축판 · 글자 카드
     ("04-guri-flags", "talkcraft"): [
         "talkcraft/guri/remotion/out/final_send.mp4",
         "talkcraft/guri/remotion/out/final.mp4"],

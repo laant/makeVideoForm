@@ -1,0 +1,639 @@
+{
+  "slug": "guri-flags-45",
+  "topic": "구리시 태극기 — 강변 50m·아차산 75m 게양대의 사연",
+  "audience": "도시·건축 이야기를 좋아하는 일반 시청자",
+  "tone": "단정한 설명체, 끝은 양자택일 질문",
+  "cta": "멋지다 vs 과하다 댓글 투표",
+  "reference": {
+    "url": "",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "",
+    "notes": ""
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#0e0d0c",
+    "fg": "#f7f3ee",
+    "accent": "#D6323C",
+    "muted": "#9a938b"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "강변북로에서 구리로 넘어가면, 하늘을 덮는 거대한 태극기를 만납니다.",
+      "onScreen": {
+        "kicker": "구리시",
+        "title": "하늘을 덮는\n태극기",
+        "highlight": [
+          "태극기"
+        ],
+        "bgImage": "media/s1.png"
+      },
+      "sfx": [
+        {
+          "name": "impact-deep",
+          "at": "start",
+          "volume": 1
+        },
+        {
+          "name": "whoosh",
+          "at": "word:태극기",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "whoosh-left",
+      "effects": [],
+      "timing": {
+        "hash": "6faebd127b3c",
+        "start": 0,
+        "duration": 5.771,
+        "speechEnd": 5.521,
+        "words": [
+          {
+            "text": "강변북로에서",
+            "start": 0.07,
+            "end": 1.11
+          },
+          {
+            "text": "구리로",
+            "start": 1.27,
+            "end": 1.94
+          },
+          {
+            "text": "넘어가면,",
+            "start": 1.94,
+            "end": 2.68
+          },
+          {
+            "text": "하늘을",
+            "start": 2.74,
+            "end": 3.08
+          },
+          {
+            "text": "덮는",
+            "start": 3.08,
+            "end": 3.62
+          },
+          {
+            "text": "거대한",
+            "start": 3.68,
+            "end": 4.25
+          },
+          {
+            "text": "태극기를",
+            "start": 4.31,
+            "end": 4.73
+          },
+          {
+            "text": "만납니다.",
+            "start": 4.75,
+            "end": 5.44
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "title",
+      "narration": "시작은 이천 년대 초. 국경일에도 태극기를 다는 집이 점점 사라졌죠.",
+      "onScreen": {
+        "kicker": "2000년대 초",
+        "title": "태극기 다는 집이\n사라졌다",
+        "subtitle": "국경일에도 빈 게양대",
+        "subtitleAt": "word:사라졌죠",
+        "bgImage": "media/s3a.png"
+      },
+      "sfx": [
+        {
+          "name": "error",
+          "at": "word:사라졌죠",
+          "volume": 0.8
+        }
+      ],
+      "transitionOut": "white-flash",
+      "effects": [],
+      "timing": {
+        "hash": "834e1a6ce513",
+        "start": 5.771,
+        "duration": 5.959,
+        "speechEnd": 5.709,
+        "words": [
+          {
+            "text": "시작은",
+            "start": 0.1,
+            "end": 0.31
+          },
+          {
+            "text": "이천",
+            "start": 0.925,
+            "end": 1.54
+          },
+          {
+            "text": "년대",
+            "start": 1.54,
+            "end": 2.21
+          },
+          {
+            "text": "초.",
+            "start": 2.34,
+            "end": 2.34
+          },
+          {
+            "text": "국경일에도",
+            "start": 2.38,
+            "end": 3.15
+          },
+          {
+            "text": "태극기를",
+            "start": 3.15,
+            "end": 3.8
+          },
+          {
+            "text": "다는",
+            "start": 3.8,
+            "end": 4.09
+          },
+          {
+            "text": "집이",
+            "start": 4.13,
+            "end": 4.49
+          },
+          {
+            "text": "점점",
+            "start": 4.58,
+            "end": 5.01
+          },
+          {
+            "text": "사라졌죠.",
+            "start": 5.05,
+            "end": 5.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "title",
+      "narration": "그래서 구리시는 발상을 뒤집습니다. 시민이 안 달면, 시가 삼백육십오 일 달자.",
+      "onScreen": {
+        "kicker": "발상의 전환",
+        "title": "시가\n365일 달자",
+        "highlight": [
+          "365일"
+        ],
+        "bgImage": "media/s4a.png"
+      },
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "word:시가",
+          "volume": 1
+        },
+        {
+          "name": "chime",
+          "at": "word:달자",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "slide-up",
+      "effects": [],
+      "timing": {
+        "hash": "9b914b39a035",
+        "start": 11.73,
+        "duration": 7.205,
+        "speechEnd": 6.955,
+        "words": [
+          {
+            "text": "그래서",
+            "start": 0.04,
+            "end": 0.42
+          },
+          {
+            "text": "구리시는",
+            "start": 0.54,
+            "end": 1.46
+          },
+          {
+            "text": "발상을",
+            "start": 1.59,
+            "end": 1.97
+          },
+          {
+            "text": "뒤집습니다.",
+            "start": 1.97,
+            "end": 2.6
+          },
+          {
+            "text": "시민이",
+            "start": 3.41,
+            "end": 4.08
+          },
+          {
+            "text": "안",
+            "start": 4.08,
+            "end": 4.21
+          },
+          {
+            "text": "달면,",
+            "start": 4.21,
+            "end": 4.82
+          },
+          {
+            "text": "시가",
+            "start": 4.95,
+            "end": 5.08
+          },
+          {
+            "text": "삼백육십오",
+            "start": 5.08,
+            "end": 5.93
+          },
+          {
+            "text": "일",
+            "start": 6.14,
+            "end": 6.3
+          },
+          {
+            "text": "달자.",
+            "start": 6.3,
+            "end": 6.54
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "compare",
+      "narration": "이천칠 년 한강시민공원에 오십 미터, 이천십삼 년 아차산엔 칠십오 미터 게양대.",
+      "onScreen": {
+        "heading": "게양대 두 개",
+        "left": {
+          "label": "강변 50m",
+          "items": [
+            "2007 · 한강시민공원"
+          ]
+        },
+        "right": {
+          "label": "아차산 75m",
+          "items": [
+            "2013 · 25층 높이"
+          ]
+        },
+        "rightAt": "word:아차산엔",
+        "bgImage": "media/s9a.png",
+        "bgDim": 0.8
+      },
+      "sfx": [
+        {
+          "name": "impact",
+          "at": "word:오십",
+          "volume": 1
+        },
+        {
+          "name": "impact",
+          "at": "word:칠십오",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "zoom",
+      "effects": [],
+      "timing": {
+        "hash": "fdbe670b412f",
+        "start": 18.935,
+        "duration": 7.048,
+        "speechEnd": 6.798,
+        "words": [
+          {
+            "text": "이천칠",
+            "start": 0.348,
+            "end": 1.24
+          },
+          {
+            "text": "년",
+            "start": 1.24,
+            "end": 1.32
+          },
+          {
+            "text": "한강시민공원에",
+            "start": 1.35,
+            "end": 2.14
+          },
+          {
+            "text": "오십",
+            "start": 2.14,
+            "end": 2.55
+          },
+          {
+            "text": "미터,",
+            "start": 2.55,
+            "end": 2.89
+          },
+          {
+            "text": "이천십삼",
+            "start": 3.49,
+            "end": 4.58
+          },
+          {
+            "text": "년",
+            "start": 4.58,
+            "end": 4.71
+          },
+          {
+            "text": "아차산엔",
+            "start": 4.71,
+            "end": 5.24
+          },
+          {
+            "text": "칠십오",
+            "start": 5.24,
+            "end": 5.65
+          },
+          {
+            "text": "미터",
+            "start": 5.65,
+            "end": 6.33
+          },
+          {
+            "text": "게양대.",
+            "start": 6.5,
+            "end": 6.71
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "아차산 태극기는 가로 십팔, 세로 십이 미터. 배구 코트보다 큰 천이에요.",
+      "onScreen": {
+        "kicker": "아차산 태극기",
+        "title": "18 × 12m",
+        "subtitle": "배구 코트보다 큰 천",
+        "subtitleAt": "word:배구",
+        "highlight": [
+          "18",
+          "12m"
+        ],
+        "bgImage": "media/s6a.png",
+        "bgDim": 0.75
+      },
+      "sfx": [
+        {
+          "name": "whoosh-long",
+          "at": "start",
+          "volume": 1
+        },
+        {
+          "name": "ping",
+          "at": "word:배구",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "light-leak",
+      "effects": [],
+      "timing": {
+        "hash": "f30dcb0b1a64",
+        "start": 25.983,
+        "duration": 7.297,
+        "speechEnd": 7.047,
+        "words": [
+          {
+            "text": "아차산",
+            "start": 0.04,
+            "end": 0.45
+          },
+          {
+            "text": "태극기는",
+            "start": 0.45,
+            "end": 1.06
+          },
+          {
+            "text": "가로",
+            "start": 1.06,
+            "end": 1.68
+          },
+          {
+            "text": "십팔,",
+            "start": 1.7,
+            "end": 2.61
+          },
+          {
+            "text": "세로",
+            "start": 3.1,
+            "end": 3.54
+          },
+          {
+            "text": "십이",
+            "start": 3.54,
+            "end": 4.17
+          },
+          {
+            "text": "미터.",
+            "start": 4.45,
+            "end": 4.73
+          },
+          {
+            "text": "배구",
+            "start": 5.2,
+            "end": 5.42
+          },
+          {
+            "text": "코트보다",
+            "start": 5.53,
+            "end": 6.34
+          },
+          {
+            "text": "큰",
+            "start": 6.34,
+            "end": 6.49
+          },
+          {
+            "text": "천이에요.",
+            "start": 6.49,
+            "end": 6.98
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "title",
+      "narration": "태극기의 도시를 선언하고, 이천십 년엔 대통령 표창까지 받았죠.",
+      "onScreen": {
+        "kicker": "태극기의 도시",
+        "title": "2010\n대통령 표창",
+        "highlight": [
+          "대통령 표창"
+        ],
+        "bgImage": "media/s10a.png"
+      },
+      "sfx": [
+        {
+          "name": "sparkle",
+          "at": "word:표창까지",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "d2672fdb81cc",
+        "start": 33.28,
+        "duration": 5.303,
+        "speechEnd": 5.053,
+        "words": [
+          {
+            "text": "태극기의",
+            "start": 0.05,
+            "end": 0.6
+          },
+          {
+            "text": "도시를",
+            "start": 0.6,
+            "end": 1.35
+          },
+          {
+            "text": "선언하고,",
+            "start": 1.35,
+            "end": 1.79
+          },
+          {
+            "text": "이천십",
+            "start": 2.383,
+            "end": 3.11
+          },
+          {
+            "text": "년엔",
+            "start": 3.22,
+            "end": 3.32
+          },
+          {
+            "text": "대통령",
+            "start": 3.37,
+            "end": 3.82
+          },
+          {
+            "text": "표창까지",
+            "start": 3.82,
+            "end": 4.47
+          },
+          {
+            "text": "받았죠.",
+            "start": 4.47,
+            "end": 4.98
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "cta",
+      "narration": "이런 도시 마케팅, 멋지다일까요, 과하다일까요? 댓글로 골라 주세요.",
+      "onScreen": {
+        "emoji": "🗳️",
+        "headline": "멋지다\nvs 과하다",
+        "action": "댓글로 한 표",
+        "actionAt": "word:댓글로",
+        "bgImage": "media/s12.png"
+      },
+      "sfx": [
+        {
+          "name": "notify",
+          "at": "word:댓글로",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "91873670dd80",
+        "start": 38.583,
+        "duration": 5.985,
+        "speechEnd": 5.735,
+        "words": [
+          {
+            "text": "이런",
+            "start": 0.05,
+            "end": 0.42
+          },
+          {
+            "text": "도시",
+            "start": 0.47,
+            "end": 0.91
+          },
+          {
+            "text": "마케팅,",
+            "start": 0.91,
+            "end": 1.62
+          },
+          {
+            "text": "멋지다일까요,",
+            "start": 1.69,
+            "end": 2.87
+          },
+          {
+            "text": "과하다일까요?",
+            "start": 3.16,
+            "end": 4.02
+          },
+          {
+            "text": "댓글로",
+            "start": 4.58,
+            "end": 5.66
+          },
+          {
+            "text": "골라",
+            "start": 5.73,
+            "end": 5.73
+          },
+          {
+            "text": "주세요.",
+            "start": 5.73,
+            "end": 5.73
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "출처: 구리시 · 2010 국기 선양 대통령 표창"
+  },
+  "caption": "하늘을 덮는 구리시 태극기, 왜 거기 있을까 🇰🇷\n2007 한강시민공원 50m · 2013 아차산 75m 게양대 · 18×12m 태극기 · 2010 대통령 표창",
+  "hashtags": [
+    "#구리시",
+    "#태극기",
+    "#아차산",
+    "#강변북로",
+    "#도시이야기",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "강변북로 그 거대한 태극기, 왜 구리에 있을까",
+    "instagram": true,
+    "youtube": true
+  }
+}

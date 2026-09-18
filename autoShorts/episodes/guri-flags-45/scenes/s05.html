@@ -6,9 +6,9 @@
     <script src="vendor/gsap.min.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1080px; height: 1920px; overflow: hidden; background: {{bg}}; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0d0c; }
       :root {
-        --bg: {{bg}}; --fg: {{fg}}; --accent: {{accent}}; --muted: {{muted}};
+        --bg: #0e0d0c; --fg: #f7f3ee; --accent: #D6323C; --muted: #9a938b;
         --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
       }
       #root {
@@ -40,18 +40,38 @@
         text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
       }
       .cap em { font-style: normal; color: var(--accent); }
-      {{templateStyle}}
+      .t-kicker { align-self: flex-start; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #111; font-size: 40px; font-weight: 800; }
+  .t-emoji { font-size: 150px; line-height: 1; }
+  .t-title { font-size: 112px; font-weight: 900; line-height: 1.08; letter-spacing: -0.04em; }
+  .t-title .line { display: block; transform-origin: 0 50%; }
+  .t-sub { white-space: pre-line; font-size: 50px; font-weight: 600; color: var(--muted); line-height: 1.35; }
+
+      .bgimg { filter: blur(14px) saturate(0.9); } /* 배경 속 AI 글자·작은 깃발이 태극기와 겹치지 않게 */
+      .flagbox { position: relative; align-self: center; margin: 40px 0 30px; }
+      .flagbox .taegukgi { display: block; box-shadow: 0 18px 50px rgba(0,0,0,0.5); }
+      .dim { position: absolute; background: var(--accent); }
+      .dim.w { left: 0; top: -44px; height: 6px; width: 100%; transform-origin: 0 50%; }
+      .dim.h { top: 0; right: -44px; width: 6px; height: 100%; transform-origin: 50% 0; }
+      .dim::before, .dim::after { content: ""; position: absolute; background: var(--accent); }
+      .dim.w::before, .dim.w::after { top: -14px; width: 6px; height: 34px; }
+      .dim.w::before { left: 0; } .dim.w::after { right: 0; }
+      .dim.h::before, .dim.h::after { left: -14px; height: 6px; width: 34px; }
+      .dim.h::before { top: 0; } .dim.h::after { bottom: 0; }
+      .dimlabel { position: absolute; font-size: 54px; font-weight: 900; color: #fff; background: var(--accent); padding: 4px 18px; border-radius: 12px; }
+      .dimlabel.w { left: 50%; top: -110px; transform: translateX(-50%); }
+      .dimlabel.h { right: -150px; top: 50%; transform: translateY(-50%); }
     </style>
   </head>
   <body>
-    <!-- {{marker}} -->
-    <div id="root" data-composition-id="{{id}}" data-start="0" data-duration="{{renderDuration}}" data-width="1080" data-height="1920">
-      <div id="{{id}}-bg" class="layer bg-layer clip" data-start="0" data-duration="{{renderDuration}}">
-        {{bgLayer}}
+    <!-- autoshorts:custom 규정 태극기 SVG + 18m·12m 치수선 (template=title 기반) -->
+    <div id="root" data-composition-id="s05" data-start="0" data-duration="7.597" data-width="1080" data-height="1920">
+      <div id="s05-bg" class="layer bg-layer clip" data-start="0" data-duration="7.597">
+        <img class="bgimg" src="media/s6a.png" alt="" />
+        <div class="bgshade" style="background: linear-gradient(180deg, rgba(0,0,0,0.35200000000000004) 0%, rgba(0,0,0,0.88) 45%, rgba(0,0,0,1) 100%)"></div>
         <div class="glow a"></div>
         <div class="glow b"></div>
       </div>
-      <div id="{{id}}-content" class="layer content clip" data-start="0" data-duration="{{renderDuration}}">
+      <div id="s05-content" class="layer content clip" data-start="0" data-duration="7.597">
         <div class="stage"></div>
         <div class="captions"></div>
         <div class="progress"></div>
@@ -59,7 +79,89 @@
     </div>
     <script>
       // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
-      const S = {{sceneJson}};
+      const S = {
+  "id": "s05",
+  "template": "title",
+  "onScreen": {
+    "kicker": "아차산 태극기",
+    "title": "배구 코트보다 큰 천",
+    "subtitle": "가로 18m · 세로 12m",
+    "subtitleAt": "word:배구",
+    "highlight": [
+      "18",
+      "12m"
+    ],
+    "bgImage": "media/s6a.png",
+    "bgDim": 0.88
+  },
+  "highlight": [
+    "18",
+    "12m"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "아차산",
+      "start": 0.04,
+      "end": 0.45
+    },
+    {
+      "text": "태극기는",
+      "start": 0.45,
+      "end": 1.06
+    },
+    {
+      "text": "가로",
+      "start": 1.06,
+      "end": 1.68
+    },
+    {
+      "text": "십팔,",
+      "start": 1.7,
+      "end": 2.61
+    },
+    {
+      "text": "세로",
+      "start": 3.1,
+      "end": 3.54
+    },
+    {
+      "text": "십이",
+      "start": 3.54,
+      "end": 4.17
+    },
+    {
+      "text": "미터.",
+      "start": 4.45,
+      "end": 4.73
+    },
+    {
+      "text": "배구",
+      "start": 5.2,
+      "end": 5.42
+    },
+    {
+      "text": "코트보다",
+      "start": 5.53,
+      "end": 6.34
+    },
+    {
+      "text": "큰",
+      "start": 6.34,
+      "end": 6.49
+    },
+    {
+      "text": "천이에요.",
+      "start": 6.49,
+      "end": 6.98
+    }
+  ],
+  "speechEnd": 7.047,
+  "duration": 7.297,
+  "renderDuration": 7.597,
+  "globalStart": 25.983,
+  "total": 44.568
+};
 
       // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
       const H = {
@@ -185,12 +287,48 @@
       if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
 
       // ── 템플릿 본문 ──────────────────────────────────────────
-      {{templateScript}}
+      const o = S.onScreen;
+  if (o.emoji) {
+    const e = H.el("div", "t-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0.6, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 0);
+  }
+  if (o.kicker) {
+    const k = H.el("div", "t-kicker", o.kicker, stage);
+    tl.fromTo(k, { x: -40 }, { x: 0, duration: 0.35, ease: "power3.out" }, 0);
+  }
+  const title = H.el("div", "t-title", null, stage);
+  String(o.title || "").split("\n").forEach((line, i) => {
+    const l = H.el("span", "line", line, title);
+    // 첫 프레임부터 보이게(썸네일/스크롤 멈춤용) — 투명도 대신 크기로 등장
+    tl.fromTo(l, { scale: 1.18, y: 30 }, { scale: 1, y: 0, duration: 0.45, ease: "power4.out" }, i * 0.08);
+  });
+  if (o.subtitle) {
+    const s = H.el("div", "t-sub", o.subtitle, stage);
+    tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 }, H.at(o.subtitleAt, 0.8));
+  }
+  tl.to(title, { scale: 1.04, duration: S.duration, ease: "none" }, 0.6);
+
+
+      // ── custom: 규정 태극기 + 치수선 (가로 18m = "십팔", 세로 12m = "십이" 발화 시점) ──
+      {
+        const box = H.el("div", "flagbox");
+        stage.insertBefore(box, stage.querySelector(".t-title"));
+        H.taegukgi(box, 700);
+        const dw = H.el("div", "dim w", null, box), dh = H.el("div", "dim h", null, box);
+        const lw = H.el("div", "dimlabel w", "18m", box), lh = H.el("div", "dimlabel h", "12m", box);
+        const tW = H.at("word:십팔", 1.2), tH = H.at("word:십이", 2.0);
+        tl.fromTo(box, { scale: 0.7, rotation: -4 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.6)" }, 0);
+        tl.fromTo(dw, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, tW);
+        tl.fromTo(lw, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3 }, tW + 0.2);
+        tl.fromTo(dh, { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, tH);
+        tl.fromTo(lh, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3 }, tH + 0.2);
+        tl.to(box, { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: Math.max(0, Math.floor(S.renderDuration / 1.2) - 1) }, 0.6);
+      }
 
       if (S.showCaptions !== false) H.captions(tl);
 
       window.__timelines = window.__timelines || {};
-      window.__timelines["{{id}}"] = tl;
+      window.__timelines["s05"] = tl;
       tl.seek(0);
     </script>
   </body>

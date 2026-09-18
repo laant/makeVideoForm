@@ -98,6 +98,7 @@ for (const [i, scene] of scenes.entries()) {
       sceneJson: JSON.stringify(data, null, 2).replace(/</g, "\\u003c"),
       templateStyle: style.trim(),
       templateScript: script.trim(),
+      bgLayer: "", // 카드는 배경 그림 없이 (cards/src 경로에서 media/ 를 못 찾음)
     };
     return k in vars ? vars[k] : m;
   });

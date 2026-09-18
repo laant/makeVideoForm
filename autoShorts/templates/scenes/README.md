@@ -5,6 +5,7 @@
 모든 템플릿 공통 `onScreen` 옵션
 - `highlight: ["단어"]` 자막에서 강조색
 - `showCaptions: false` 자막 끄기
+- `bgImage: "media/x.png"` 배경 그림(에피소드 `media/` 기준, 느린 줌 인 + 가독성 그라데이션), `bgDim: 0~1` 어둡기(기본 0.6). 카드뉴스에는 적용 안 됨
 - `card: false` 카드뉴스(`npm run cards`)에서 제외, `cardNote: "…"` 카드에만 보충 문구 추가
   (카드 하단 공통 문구는 episode.json `cards.footer`)
 

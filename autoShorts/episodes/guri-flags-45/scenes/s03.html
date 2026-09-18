@@ -6,9 +6,9 @@
     <script src="vendor/gsap.min.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1080px; height: 1920px; overflow: hidden; background: {{bg}}; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0d0c; }
       :root {
-        --bg: {{bg}}; --fg: {{fg}}; --accent: {{accent}}; --muted: {{muted}};
+        --bg: #0e0d0c; --fg: #f7f3ee; --accent: #D6323C; --muted: #9a938b;
         --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
       }
       #root {
@@ -40,18 +40,23 @@
         text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
       }
       .cap em { font-style: normal; color: var(--accent); }
-      {{templateStyle}}
+      .t-kicker { align-self: flex-start; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #111; font-size: 40px; font-weight: 800; }
+  .t-emoji { font-size: 150px; line-height: 1; }
+  .t-title { font-size: 112px; font-weight: 900; line-height: 1.08; letter-spacing: -0.04em; }
+  .t-title .line { display: block; transform-origin: 0 50%; }
+  .t-sub { white-space: pre-line; font-size: 50px; font-weight: 600; color: var(--muted); line-height: 1.35; }
     </style>
   </head>
   <body>
-    <!-- {{marker}} -->
-    <div id="root" data-composition-id="{{id}}" data-start="0" data-duration="{{renderDuration}}" data-width="1080" data-height="1920">
-      <div id="{{id}}-bg" class="layer bg-layer clip" data-start="0" data-duration="{{renderDuration}}">
-        {{bgLayer}}
+    <!-- autoshorts:generated hash=73d88ea2a5b6 template=title -->
+    <div id="root" data-composition-id="s03" data-start="0" data-duration="7.505" data-width="1080" data-height="1920">
+      <div id="s03-bg" class="layer bg-layer clip" data-start="0" data-duration="7.505">
+        <img class="bgimg" src="media/s4a.png" alt="" />
+        <div class="bgshade" style="background: linear-gradient(180deg, rgba(0,0,0,0.24) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.85) 100%)"></div>
         <div class="glow a"></div>
         <div class="glow b"></div>
       </div>
-      <div id="{{id}}-content" class="layer content clip" data-start="0" data-duration="{{renderDuration}}">
+      <div id="s03-content" class="layer content clip" data-start="0" data-duration="7.505">
         <div class="stage"></div>
         <div class="captions"></div>
         <div class="progress"></div>
@@ -59,7 +64,84 @@
     </div>
     <script>
       // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
-      const S = {{sceneJson}};
+      const S = {
+  "id": "s03",
+  "template": "title",
+  "onScreen": {
+    "kicker": "발상의 전환",
+    "title": "시가\n365일 달자",
+    "highlight": [
+      "365일"
+    ],
+    "bgImage": "media/s4a.png"
+  },
+  "highlight": [
+    "365일"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "그래서",
+      "start": 0.04,
+      "end": 0.42
+    },
+    {
+      "text": "구리시는",
+      "start": 0.54,
+      "end": 1.46
+    },
+    {
+      "text": "발상을",
+      "start": 1.59,
+      "end": 1.97
+    },
+    {
+      "text": "뒤집습니다.",
+      "start": 1.97,
+      "end": 2.6
+    },
+    {
+      "text": "시민이",
+      "start": 3.41,
+      "end": 4.08
+    },
+    {
+      "text": "안",
+      "start": 4.08,
+      "end": 4.21
+    },
+    {
+      "text": "달면,",
+      "start": 4.21,
+      "end": 4.82
+    },
+    {
+      "text": "시가",
+      "start": 4.95,
+      "end": 5.08
+    },
+    {
+      "text": "삼백육십오",
+      "start": 5.08,
+      "end": 5.93
+    },
+    {
+      "text": "일",
+      "start": 6.14,
+      "end": 6.3
+    },
+    {
+      "text": "달자.",
+      "start": 6.3,
+      "end": 6.54
+    }
+  ],
+  "speechEnd": 6.955,
+  "duration": 7.205,
+  "renderDuration": 7.505,
+  "globalStart": 11.73,
+  "total": 44.568
+};
 
       // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
       const H = {
@@ -185,12 +267,31 @@
       if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
 
       // ── 템플릿 본문 ──────────────────────────────────────────
-      {{templateScript}}
+      const o = S.onScreen;
+  if (o.emoji) {
+    const e = H.el("div", "t-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0.6, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2)" }, 0);
+  }
+  if (o.kicker) {
+    const k = H.el("div", "t-kicker", o.kicker, stage);
+    tl.fromTo(k, { x: -40 }, { x: 0, duration: 0.35, ease: "power3.out" }, 0);
+  }
+  const title = H.el("div", "t-title", null, stage);
+  String(o.title || "").split("\n").forEach((line, i) => {
+    const l = H.el("span", "line", line, title);
+    // 첫 프레임부터 보이게(썸네일/스크롤 멈춤용) — 투명도 대신 크기로 등장
+    tl.fromTo(l, { scale: 1.18, y: 30 }, { scale: 1, y: 0, duration: 0.45, ease: "power4.out" }, i * 0.08);
+  });
+  if (o.subtitle) {
+    const s = H.el("div", "t-sub", o.subtitle, stage);
+    tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 }, H.at(o.subtitleAt, 0.8));
+  }
+  tl.to(title, { scale: 1.04, duration: S.duration, ease: "none" }, 0.6);
 
       if (S.showCaptions !== false) H.captions(tl);
 
       window.__timelines = window.__timelines || {};
-      window.__timelines["{{id}}"] = tl;
+      window.__timelines["s03"] = tl;
       tl.seek(0);
     </script>
   </body>

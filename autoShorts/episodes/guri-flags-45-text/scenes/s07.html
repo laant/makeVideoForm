@@ -6,9 +6,9 @@
     <script src="vendor/gsap.min.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1080px; height: 1920px; overflow: hidden; background: {{bg}}; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e0d0c; }
       :root {
-        --bg: {{bg}}; --fg: {{fg}}; --accent: {{accent}}; --muted: {{muted}};
+        --bg: #0e0d0c; --fg: #f7f3ee; --accent: #D6323C; --muted: #9a938b;
         --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
       }
       #root {
@@ -40,18 +40,22 @@
         text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
       }
       .cap em { font-style: normal; color: var(--accent); }
-      {{templateStyle}}
+      .a-wrap { align-items: center; text-align: center; }
+  .a-emoji { font-size: 170px; line-height: 1; text-align: center; }
+  .a-head { white-space: pre-line; font-size: 92px; font-weight: 900; line-height: 1.12; letter-spacing: -0.04em; text-align: center; }
+  .a-btn { align-self: center; padding: 38px 64px; border-radius: 999px; background: var(--accent); color: #111; font-size: 54px; font-weight: 900; }
+  .a-handle { text-align: center; font-size: 46px; font-weight: 700; color: var(--muted); }
     </style>
   </head>
   <body>
-    <!-- {{marker}} -->
-    <div id="root" data-composition-id="{{id}}" data-start="0" data-duration="{{renderDuration}}" data-width="1080" data-height="1920">
-      <div id="{{id}}-bg" class="layer bg-layer clip" data-start="0" data-duration="{{renderDuration}}">
-        {{bgLayer}}
+    <!-- autoshorts:generated hash=5443ded45c13 template=cta -->
+    <div id="root" data-composition-id="s07" data-start="0" data-duration="5.985" data-width="1080" data-height="1920">
+      <div id="s07-bg" class="layer bg-layer clip" data-start="0" data-duration="5.985">
+        
         <div class="glow a"></div>
         <div class="glow b"></div>
       </div>
-      <div id="{{id}}-content" class="layer content clip" data-start="0" data-duration="{{renderDuration}}">
+      <div id="s07-content" class="layer content clip" data-start="0" data-duration="5.985">
         <div class="stage"></div>
         <div class="captions"></div>
         <div class="progress"></div>
@@ -59,7 +63,65 @@
     </div>
     <script>
       // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
-      const S = {{sceneJson}};
+      const S = {
+  "id": "s07",
+  "template": "cta",
+  "onScreen": {
+    "emoji": "🗳️",
+    "headline": "멋지다\nvs 과하다",
+    "action": "댓글로 한 표",
+    "actionAt": "word:댓글로"
+  },
+  "highlight": [],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "이런",
+      "start": 0.05,
+      "end": 0.42
+    },
+    {
+      "text": "도시",
+      "start": 0.47,
+      "end": 0.91
+    },
+    {
+      "text": "마케팅,",
+      "start": 0.91,
+      "end": 1.62
+    },
+    {
+      "text": "멋지다일까요,",
+      "start": 1.69,
+      "end": 2.87
+    },
+    {
+      "text": "과하다일까요?",
+      "start": 3.16,
+      "end": 4.02
+    },
+    {
+      "text": "댓글로",
+      "start": 4.58,
+      "end": 5.66
+    },
+    {
+      "text": "골라",
+      "start": 5.73,
+      "end": 5.73
+    },
+    {
+      "text": "주세요.",
+      "start": 5.73,
+      "end": 5.73
+    }
+  ],
+  "speechEnd": 5.735,
+  "duration": 5.985,
+  "renderDuration": 5.985,
+  "globalStart": 38.583,
+  "total": 44.568
+};
 
       // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
       const H = {
@@ -185,12 +247,31 @@
       if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
 
       // ── 템플릿 본문 ──────────────────────────────────────────
-      {{templateScript}}
+      const o = S.onScreen;
+  stage.classList.add("a-wrap");
+  if (o.emoji) {
+    const e = H.el("div", "a-emoji", o.emoji, stage);
+    tl.fromTo(e, { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(2.5)" }, 0.05);
+  }
+  const h = H.el("div", "a-head", o.headline || "", stage);
+  tl.fromTo(h, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 0.15);
+  const b = H.el("div", "a-btn", o.action || "팔로우", stage);
+  const bAt = H.at(o.actionAt, Math.min(0.9, S.speechEnd * 0.4));
+  tl.fromTo(b, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, bAt);
+  // 버튼 펄스
+  for (let t = bAt + 0.8; t < S.renderDuration - 0.5; t += 1.2) {
+    tl.to(b, { scale: 1.07, duration: 0.3, ease: "sine.inOut" }, t);
+    tl.to(b, { scale: 1, duration: 0.3, ease: "sine.inOut" }, t + 0.3);
+  }
+  if (o.handle) {
+    const hd = H.el("div", "a-handle", o.handle, stage);
+    tl.fromTo(hd, { opacity: 0 }, { opacity: 1, duration: 0.4 }, bAt + 0.3);
+  }
 
       if (S.showCaptions !== false) H.captions(tl);
 
       window.__timelines = window.__timelines || {};
-      window.__timelines["{{id}}"] = tl;
+      window.__timelines["s07"] = tl;
       tl.seek(0);
     </script>
   </body>
