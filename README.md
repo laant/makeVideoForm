@@ -60,7 +60,7 @@ myNextSeason/
 | 01 | 숨은 보험금 10조 | 머니 정보 | flow·openmontage·talkcraft(+구 MPT) | `output/01-hidden-insurance/` |
 | 02 | 800만원 시골집 리모델링 | 건축(트랜스포메이션) | flow | `output/02-country-house-reno/` |
 | 03 | 도쿄 지하의 신전 G-Cans | 건축쇼츠 | flow·openmontage·talkcraft·mpt | `output/03-tokyo-gcans/` |
-| 04 | 구리시 태극기 | 건축쇼츠(페이퍼 콜라주) | flow·openmontage·talkcraft | `output/04-guri-flags/` |
+| 04 | 구리시 태극기 | 건축쇼츠(페이퍼 콜라주) | flow·openmontage·talkcraft·autoshorts(45초 2종) | `output/04-guri-flags/` |
 | 05 | 연안이씨 가족 그림책 | 개인(가로 16:9) | flow·openmontage·talkcraft | `output/05-yeonan-family/` |
 | 06 | AI 사고력 1편 — 챗GPT가 헛소리하는 이유 | 실무 인사이트(3부작 1/3, 찰흙 3D) | flow·openmontage·talkcraft | `output/06-ai-thinking-ep1/` |
 | 07 | AI 사고력 2편 — 일 못하는 사람들의 공통점 | 실무 인사이트(3부작 2/3) | openmontage | `output/07-ai-thinking-ep2/` |
