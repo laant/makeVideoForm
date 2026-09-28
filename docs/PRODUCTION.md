@@ -54,11 +54,15 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 |---|---|---|---|
 | `flow-pipeline/` | Veo 생성형 영상 (Aside 자동화) | 진짜 카메라 무빙·물 시뮬 | `flow-pipeline/RUNBOOK.md` |
 | `OpenMontage/` | Gemini 3D 스틸 + Ken Burns + 데이터 오버레이 | 무결 원샷·계측선 정확·stat_card | `OpenMontage/projects/tokyo-gcans-archi/produce.py` 패턴 |
-| `talkcraft/` | Remotion 코드 모션그래픽 | 계측선·동기화 100% 결정론 | 엔진 `talkcraft/video-talkcraft/` + 프로젝트 `talkcraft/<이름>/` (demo·gcans·guri·family, ⚠️ 비상업 라이선스 — 실험 전용) |
+| `talkcraft/` | Remotion 코드 모션그래픽 | **동결 (2026-09-23)** — PolyForm Noncommercial 이라 수익화용 불가. 공통 카드 4종은 autoShorts 로 이식 완료. 과거 프로젝트 재렌더용으로만 보존 | `talkcraft/README.md` |
 | `autoShorts/` | HTML/GSAP 템플릿 씬(HyperFrames 렌더) + FFmpeg 합성 | 씬 템플릿 5종·연출 라이브러리(트랜지션 20·화면 효과 19·효과음 17)·음성 타임스탬프 싱크·자동 검수(머리·꼬리 잘림·자리표시자)·업로드 전 점검(링크·URL)·인스타 카드뉴스·YT/IG 업로드 | `autoShorts/CLAUDE.md` + 루트 `/shorts-*` 커맨드 (Apache-2.0, 상업 사용 가능) |
+| `shopShorts/` | 상품 이미지 → Higgsfield image-to-video 클립 + 텍스트 오버레이 | 상품 페이지 수집(Aside)·고지 자동 강제(빠지면 빌드 중단)·실사용 주장 차단·리워드 링크 검증 | `shopShorts/CLAUDE.md` (a 제휴리뷰 / b 큐레이션 / c 단일홍보) |
 
 - 같은 대본을 여러 모듈로 병렬 제작해 비교하는 것이 기본 실험 방식 (G-Cans 03/04/05가 선례).
 - **autoShorts는 기본으로 '그림판'** (2026-09-18 사용자 지시): OpenMontage판이 함께 제작되면 그 이미지를 `onScreen.bgImage`로 깔고, 태극기처럼 AI가 틀리는 대상은 코드(`H.taegukgi()` 등)로 그린다. 글자 카드판은 사용자가 따로 요청할 때만. 그림이 필요 없는 경우는 사용자가 별도로 말한다.
+- **렌더 런타임은 HyperFrames(Apache-2.0)로 통일한다.** autoShorts·shopShorts 는 전면, OpenMontage 는
+  `render_runtime = "hyperframes"` 로 선택 가능(Phase 1). 단어 단위 자막 번인·아바타 립싱크는
+  아직 Remotion 전용이므로 그때만 예외 — `OpenMontage/skills/core/hyperframes.md` 의 결정 매트릭스를 따른다.
 - 공용 자원: 폰트 `flow-pipeline/fonts/Pretendard-*.ttf`, PIL venv `OpenMontage/.venv`, TTS(Gemini Aoede = 한국어 네이티브 검증).
 
 ## 6. 산출물 위치

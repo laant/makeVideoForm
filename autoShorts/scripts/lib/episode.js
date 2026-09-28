@@ -2,7 +2,10 @@ import fs from "node:fs";
 import { z } from "zod";
 import { episodePaths } from "./paths.js";
 
-export const TEMPLATE_NAMES = ["title", "compare", "list", "demo", "cta"];
+// 뒤 4종은 talkcraft(Remotion) 카드를 이식한 모션 어휘 — templates/scenes/README.md 참조
+export const TEMPLATE_NAMES = ["title", "compare", "list", "demo", "cta",
+  "number-slab-pop", "number-counter", "alt-block-lines", "strike-and-replace",
+  "aperture"];
 import { TRANSITIONS, EFFECTS } from "./fx.js";
 export { TRANSITIONS, EFFECTS };
 // assets/sfx/<name>.wav — scripts/gen-sfx.js 가 생성 (가이드 17종)

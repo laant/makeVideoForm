@@ -4,6 +4,8 @@ node_modules/
 episodes/*/audio/
 episodes/*/renders/
 episodes/*/vendor/
+episodes/*/.thumbnails/      # HyperFrames Studio 캐시
+episodes/*/.waveform-cache/
 episodes/*/final.mp4
 episodes/*/upload-log.json
 .DS_Store

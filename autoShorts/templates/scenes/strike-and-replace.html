@@ -1,0 +1,47 @@
+<!-- strike-and-replace: "A가 아니라 B" 정정. onScreen: { prefix?, from, to, suffix?, strikeAt?, swapDelay?, keepStrike?, subline?, sublineDelay? }
+     talkcraft cards/strike-and-replace.tsx 이식 — 快斬(0.15s) → 立換(0.25s 동위 교체) → 定格(취소선 유지)
+     ※ 원본은 취소선을 from 스팬 안에 두어 부모 opacity 가 0 이 되면 함께 사라졌다(keepStrike 가 무력화된 잠복 버그).
+        여기서는 취소선을 형제 요소로 빼내 주석에 적힌 定格 을 실제로 구현한다. keepStrike:false 로 원본 거동 재현 가능. -->
+<style>
+  .sr-line { text-align: center; font-size: 74px; font-weight: 700; line-height: 1.5; white-space: nowrap; color: var(--fg); }
+  .sr-slot { position: relative; display: inline-block; vertical-align: baseline; }
+  .sr-ghost { visibility: hidden; white-space: nowrap; }
+  .sr-val { position: absolute; left: 50%; top: 0; white-space: nowrap; transform: translateX(-50%); }
+  .sr-from { color: var(--fg); }
+  .sr-to { color: var(--accent); }
+  .sr-strike {
+    position: absolute; left: 0; top: 50%; height: 6px; width: 100%;
+    background: #E5372F; border-radius: 3px; transform-origin: left center;
+  }
+  .sr-sub { margin-top: 46px; font-size: 40px; font-weight: 600; color: var(--muted); letter-spacing: 2px; text-align: center; }
+</style>
+<script>
+  const o = S.onScreen;
+  const from = o.from ?? "", to = o.to ?? "";
+  const strikeAt = H.at(o.strikeAt, 0.25);
+  const swapAt = strikeAt + 0.15 + (o.swapDelay ?? 0.35);   // 快斬 종료 후 교체
+  const keepStrike = o.keepStrike !== false;
+
+  const line = H.el("div", "sr-line", null, stage);
+  if (o.prefix) line.appendChild(document.createTextNode(o.prefix + " "));
+  const slot = H.el("span", "sr-slot", null, line);
+  // 두 값이 같은 자리에 겹쳐야 "교체"로 읽힌다 → 긴 쪽으로 자리를 잡아둔다(값 교체 시 0 이동)
+  H.el("span", "sr-ghost", from.length >= to.length ? from : to, slot);
+  const elFrom = H.el("span", "sr-val sr-from", from, slot);
+  const elTo = H.el("span", "sr-val sr-to", to, slot);
+  // 취소선은 slot 직속 — from 이 사라져도 남는다
+  const strike = H.el("span", "sr-strike", null, slot);
+  if (o.suffix) line.appendChild(document.createTextNode(" " + o.suffix));
+  const sub = o.subline ? H.el("div", "sr-sub", o.subline, stage) : null;
+
+  tl.fromTo(line, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0);
+  tl.set(elTo, { opacity: 0 }, 0);
+  tl.set(strike, { scaleX: 0 }, 0);
+
+  tl.to(strike, { scaleX: 1, duration: 0.15, ease: "power3.out" }, strikeAt);   // 快斬
+  tl.to(elFrom, { opacity: 0, duration: 0.25, ease: "power1.out" }, swapAt);    // 立換
+  tl.fromTo(elTo, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, swapAt);
+  if (!keepStrike) tl.to(strike, { opacity: 0, duration: 0.25, ease: "power1.out" }, swapAt);
+  if (sub) tl.fromTo(sub, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+                           swapAt + (o.sublineDelay ?? 0.2));
+</script>

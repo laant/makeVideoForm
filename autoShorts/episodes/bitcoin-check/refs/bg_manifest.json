@@ -1,0 +1,34 @@
+{
+ "assets": [
+  {
+   "file": "media/bg-s01.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: one large matte clay disc lying tilted on a dark surface, like a plain coin with no markings. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint warm amber rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no charts, no graphs, no arrows with symbols, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s02.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: a few very faint parallel clay ridges running across the floor, like a soft grid of low steps, barely visible. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint warm amber rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no charts, no graphs, no arrows with symbols, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s03.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: two small blunt clay wedges on a dark floor pointing in opposite directions, one slightly ahead of the other. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint warm amber rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no charts, no graphs, no arrows with symbols, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s04.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: one small clay sphere lit at the front and a loose scatter of smaller clay spheres fading into darkness behind it. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint warm amber rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no charts, no graphs, no arrows with symbols, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s05.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: a small round clay dial resting flat on a dark surface, a plain needle across it, no markings on the face. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint warm amber rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no charts, no graphs, no arrows with symbols, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  }
+ ]
+}

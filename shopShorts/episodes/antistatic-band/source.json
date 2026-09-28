@@ -1,0 +1,97 @@
+{
+  "slug": "antistatic-band",
+  "type": "a",
+  "topic": "정전기 방지 팔찌",
+  "products": [
+    {
+      "id": "p01",
+      "name": "정전기 방지팔찌 옷 정전기제거 자동차 문고리",
+      "brand": "아띠꼴로",
+      "url": "https://smartstore.naver.com/atticolo/products/5227955225",
+      "rewardUrl": "https://naver.me/5bCTtOOk",
+      "price": {
+        "current": 19800,
+        "original": null,
+        "currency": "KRW",
+        "note": "무료배송 · 최대 적립 3,770원"
+      },
+      "rating": {
+        "score": 4.38,
+        "count": 73
+      },
+      "specs": [
+        {
+          "label": "가격",
+          "value": "19,800원"
+        },
+        {
+          "label": "배송",
+          "value": "무료 · 오늘출발"
+        },
+        {
+          "label": "원산지",
+          "value": "중국산"
+        },
+        {
+          "label": "제조사",
+          "value": "atticolo oem"
+        },
+        {
+          "label": "옵션",
+          "value": "컬러 선택 · 교체용 밴드 추가"
+        },
+        {
+          "label": "형태",
+          "value": "밴드형 손목 착용"
+        }
+      ],
+      "pros": [
+        "리뷰 4점 이상 비율 84%",
+        "밴드 교체 가능 (교체용 밴드 별도 옵션)",
+        "무료배송 · 17시 전 결제 시 오늘 발송"
+      ],
+      "cons": [
+        "한글 설명서가 없다는 리뷰 있음",
+        "원산지 중국산 · 구매대행 유통 제품",
+        "리뷰 수 73건으로 표본이 많지 않음"
+      ],
+      "reviewThemes": [
+        "정전기가 '줄었다'는 표현이 많고 '완전히 없어졌다'는 아님",
+        "구버전(2세대) 대비 4세대 디자인이 개선됐다는 언급",
+        "여유 배터리가 동봉됐다는 언급",
+        "손목에 차도 신경 쓰이지 않는 착용감",
+        "한글 설명서 부재 지적"
+      ],
+      "images": [
+        {
+          "url": "https://shop-phinf.pstatic.net/20201119_119/1605776403923Mhe7h_JPEG/6912237735240825_763753690.jpg",
+          "role": "hero",
+          "note": "어두운 배경에 블랙 제품, 녹색 인디케이터 점등"
+        },
+        {
+          "url": "https://shop-phinf.pstatic.net/20250605_239/17490855851065Ts11_JPEG/9649498170862978_1427179528.jpg",
+          "role": "usage",
+          "note": "팔찌를 찬 손이 자동차 문손잡이에 닿는 장면"
+        },
+        {
+          "url": "https://shop-phinf.pstatic.net/20210129_143/1611886008295G7gyJ_JPEG/13021850993115060_1802976303.jpg",
+          "role": "usage",
+          "note": "팔찌를 차고 운전대를 잡은 장면"
+        },
+        {
+          "url": "https://shop-phinf.pstatic.net/20201119_61/1605776404838FVIVc_JPEG/6912238446954274_1214188261.jpg",
+          "role": "package",
+          "note": "블랙·핑크 컬러 제품 나란히"
+        },
+        {
+          "url": "https://shop-phinf.pstatic.net/20201119_39/1605776404381jBzlm_JPEG/6912237995069146_2014563922.jpg",
+          "role": "detail",
+          "note": "녹색 발광부 클로즈업"
+        }
+      ]
+    }
+  ],
+  "collectedAt": "2026-09-22",
+  "collectedVia": "aside (naver smartstore)",
+  "notes": "원 URL https://naver.me/5bCTtOOk 는 네이버 브랜드커넥트 제휴 링크(channelProductNo=5227955225)로, 상품 링크이자 리워드 링크를 겸한다. 상세페이지가 이미지로만 되어 있어 텍스트 스펙은 상품정보 표가 전부. 컬러 옵션 값은 커스텀 UI라 읽지 못했고, 이미지에서 블랙·핑크 2종이 확인된다. 구매자 리뷰 사진(checkout.phinf)은 구매자 저작물이라 이미지 후보에서 제외했다."
+}

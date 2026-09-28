@@ -1,0 +1,40 @@
+{
+ "assets": [
+  {
+   "file": "media/bg-s01.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: a small clay camera lens barrel lying on its side on a dark floor, plain and unmarked. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s02.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: a single narrow shaft of soft light falling through a small round opening onto a dark floor, the opening itself out of frame. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s03.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: two shallow clay dishes side by side on a dark floor, the left one wide and shallow, the right one narrow and deep. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s04.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: one clay lens barrel that is clearly too large for the small clay tray it rests on, overflowing its edges. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s05.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: three small clay bowls in a row receding into darkness, only the nearest one crisply lit while the farther two dissolve into soft blur. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  },
+  {
+   "file": "media/bg-s06.png",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background. SUBJECT: a ring of overlapping thin clay blades arranged in a circle on a dark floor, forming a small iris opening at the centre. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces."
+  }
+ ]
+}

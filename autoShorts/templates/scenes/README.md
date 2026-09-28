@@ -19,6 +19,27 @@
 | `demo` | 입력→결과 시연 | `app?`, `heading?`, `input`, `inputAt?`, `output: "…" \| ["줄"]`, `outputAt?` |
 | `cta` | 행동 유도 | `headline`, `action`, `actionAt?`, `handle?`, `emoji?` |
 
+## 모션 어휘 (talkcraft 이식, 2026-09-23)
+
+talkcraft(Remotion, PolyForm Noncommercial)의 공통 카드 4종을 HyperFrames 로 이식한 것.
+**원본 타임테이블·이징을 그대로 옮겼다** — talkcraft 의 `power2Out/power3Out/backOut` 은
+GSAP 의 `power2.out/power3.out/back.out()` 과 정확히 같은 곡선이라 변환이 1:1이다.
+이식 근거와 lint 결과는 `../../../talkcraft/README.md` 참조.
+
+| template | 용도 | onScreen |
+|---|---|---|
+| `number-slab-pop` | 결론감 있는 숫자 한 방 | `value`, `unit?`, `caption?`, `at?` |
+| `number-counter` | 숫자가 굴러 올라가 착지 | `target`, `decimals?`, `label?`, `unit?`, `suffix?`, `caption?`, `at?`, `countDur?`, `instant?` |
+| `alt-block-lines` | 색블록이 글자를 쓸어내는 대구 | `title?`, `rows: [{text, at?, accent?}]` |
+| `strike-and-replace` | "A가 아니라 B" 정정 | `prefix?`, `from`, `to`, `suffix?`, `strikeAt?`, `swapDelay?`, `keepStrike?`, `subline?`, `sublineDelay?` |
+
+- `at` 류는 다른 템플릿과 같이 `"word:키워드"` 앵커를 받는다. talkcraft 는 이 값을 손으로 주입했지만
+  여기서는 `H.at()` 이 나레이션 타임스탬프에서 바로 계산한다.
+- `number-counter` 의 카운트는 1~1.5초가 원칙이다(원본 주석: 2초 넘으면 시청자가 이미 문장을 다 들었다).
+- `strike-and-replace` 는 **원본의 잠복 버그를 고쳤다.** 원본은 취소선을 `from` 스팬 안에 두어
+  부모 opacity 가 0 이 되면 함께 사라졌다(`keepStrike` 무력화). 여기서는 형제로 빼내 주석에 적힌
+  `定格`(취소선과 새 값이 함께 남는 3박째)을 실제로 구현한다. `keepStrike: false` 로 원본 거동 재현.
+
 ## 연출 라이브러리 (Shorts Factory 가이드 16 트랜지션 · 18 화면 효과 · 17 효과음)
 
 모두 FFmpeg 로 합성 단계(`npm run assemble`)에서 적용 — 결정적(시드 고정). HyperFrames preview 에는 트랜지션·화면 효과가 보이지 않는다.

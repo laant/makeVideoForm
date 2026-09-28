@@ -1,0 +1,24 @@
+<!-- spec: 스펙 표. onScreen: { heading?, rows: [ { label, value, at? } ] } -->
+<style>
+  .s-head { font-size: 72px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.12; }
+  .s-table { display: flex; flex-direction: column; gap: 18px; }
+  .s-row { display: flex; align-items: center; gap: 24px; padding: 26px 34px; border-radius: 26px; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); }
+  .s-label { flex: none; width: 300px; font-size: 40px; font-weight: 700; color: var(--muted); }
+  .s-value { font-size: 46px; font-weight: 800; line-height: 1.25; }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.heading) {
+    const h = H.el("div", "s-head", o.heading, stage);
+    tl.fromTo(h, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+  }
+  const table = H.el("div", "s-table", null, stage);
+  const rows = o.rows || [];
+  const even = H.spread(rows.length, 0.45, Math.max(0.6, S.speechEnd - 0.7));
+  rows.forEach((r, i) => {
+    const row = H.el("div", "s-row", null, table);
+    H.el("div", "s-label", r.label, row);
+    H.el("div", "s-value", r.value, row);
+    tl.fromTo(row, { opacity: 0, x: 90 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, H.at(r.at, even[i]));
+  });
+</script>

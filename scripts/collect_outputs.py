@@ -5,7 +5,8 @@
 - 소스에 final_send.mp4(압축본)가 있으면 그대로 복사, 없으면 final*.mp4를 crf26으로 압축.
 - 소스가 더 새것일 때만 갱신 (idempotent).
 - 새 프로젝트/모듈이 생기면 아래 MAPPING에 한 줄 추가.
-- autoShorts 인스타 카드뉴스(cards/NN.png)는 CARDS에 한 줄 추가 → output/<프로젝트>/cards/ 로 동기화.
+- autoShorts/shopShorts 인스타 카드뉴스(cards/NN.png)는 CARDS에 한 줄 추가 → output/<프로젝트>/cards/ 로 동기화.
+- shopShorts(쇼핑 쇼츠)는 shopShorts/episodes/<slug>/final.mp4 → output/<프로젝트>/shopshorts_final_send.mp4
 
 사용: python3 scripts/collect_outputs.py
 """
@@ -79,6 +80,14 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("04-guri-flags", "talkcraft"): [
         "talkcraft/guri/remotion/out/final_send.mp4",
         "talkcraft/guri/remotion/out/final.mp4"],
+    ("13-aperture-explained", "autoshorts"): [
+        "autoShorts/episodes/aperture-explained/final.mp4"],  # 12번 + 원글 제작자판 조합 (개념·트레이드오프 보강)
+    ("12-aperture-return", "autoshorts"): [
+        "autoShorts/episodes/aperture-return/final.mp4"],  # 테크 · 조리개 SVG custom 씬 (테크 채널 예정)
+    ("11-bitcoin-check", "autoshorts"): [
+        "autoShorts/episodes/bitcoin-check/final.mp4"],  # 재테크 정보 · 차트 custom 씬
+    ("10-miraclemuse-ahabha", "shopshorts"): [
+        "shopShorts/episodes/miraclemuse-ahabha/final.mp4"],  # 쇼핑쇼츠 a형 · 제휴 리뷰
 }
 
 # 프로젝트 → autoShorts 카드뉴스 폴더 (npm run cards 결과, PNG만 복사 · src/ HTML 제외)

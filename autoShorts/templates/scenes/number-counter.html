@@ -1,0 +1,46 @@
+<!-- number-counter: 숫자가 굴러 올라가 결론에 착지. onScreen: { label?, target, unit?, suffix?, caption?, at?, decimals?, instant? }
+     talkcraft cards/number-counter.tsx 이식 — 카운트(power3.out) → 착지 펀치 1.08 → 되돌림 back.out(3) → 단위·캡션 -->
+<style>
+  .nc-wrap { text-align: center; }
+  .nc-label { font-size: 44px; font-weight: 600; color: var(--muted); letter-spacing: 6px; margin-bottom: 30px; }
+  .nc-row { display: flex; align-items: baseline; justify-content: center; white-space: nowrap;
+            font-variant-numeric: tabular-nums; transform-origin: 50% 60%; }
+  .nc-num { font-size: 210px; font-weight: 800; color: var(--accent); letter-spacing: -4px; line-height: 1; }
+  .nc-unit { font-size: 110px; font-weight: 800; color: var(--fg); }
+  .nc-suffix { font-size: 64px; font-weight: 600; color: var(--muted); margin-left: 12px; }
+  .nc-cap { font-size: 30px; color: var(--muted); letter-spacing: 3px; margin-top: 34px; }
+</style>
+<script>
+  // 원본 타임테이블: 0.30–1.60 카운트 / 1.60–1.69 펀치 1.08 / 1.69–1.87 되돌림 / 1.69–1.94 단위·캡션
+  // 카운트 1~1.5s 가 원칙 — 2s 넘으면 시청자가 이미 문장을 다 들었다(원본 주석).
+  const o = S.onScreen;
+  const DEC = o.decimals ?? 0;
+  const TARGET = Number(o.target ?? 0);
+  const t0 = H.at(o.at, 0.3);
+  const COUNT = o.instant ? 0 : (o.countDur ?? 1.3);
+
+  const wrap = H.el("div", "nc-wrap", null, stage);
+  if (o.label) H.el("div", "nc-label", o.label, wrap);
+  const row = H.el("div", "nc-row", null, wrap);
+  const num = H.el("span", "nc-num", (0).toFixed(DEC), row);
+  if (o.unit) H.el("span", "nc-unit", o.unit, row);
+  const suffix = o.suffix ? H.el("span", "nc-suffix", o.suffix, row) : null;
+  const cap = o.caption ? H.el("div", "nc-cap", o.caption, wrap) : null;
+
+  tl.fromTo(wrap, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, Math.max(0, t0 - 0.3));
+
+  // 카운트: onUpdate 로 텍스트를 쓴다(HyperFrames 의 seek 렌더에서도 반영된다).
+  if (COUNT > 0) {
+    const counter = { v: 0 };
+    tl.to(counter, { v: TARGET, duration: COUNT, ease: "power3.out",
+                     onUpdate: () => { num.textContent = counter.v.toFixed(DEC); } }, t0);
+  } else {
+    tl.set(num, { text: undefined }, t0);
+    num.textContent = TARGET.toFixed(DEC);
+  }
+  const land = t0 + COUNT;
+  tl.to(row, { scale: 1.08, duration: 0.09, ease: "power2.out" }, land);
+  tl.to(row, { scale: 1, duration: 0.18, ease: "back.out(3)" }, land + 0.09);
+  if (suffix) tl.fromTo(suffix, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, land + 0.09);
+  if (cap) tl.fromTo(cap, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, land + 0.09);
+</script>

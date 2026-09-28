@@ -1,0 +1,50 @@
+{
+  "slug": "antistatic-band",
+  "topic": "정전기 방지 팔찌",
+  "shopType": "a",
+  "audience": "",
+  "tone": "",
+  "cta": "",
+  "disclosure": {
+    "affiliate": "제휴 링크가 포함되어 있으며 구매 시 수수료를 받습니다",
+    "aiGenerated": "제품 영상은 AI로 생성되었습니다",
+    "source": "가격·스펙은 2026-09-21 기준",
+    "banner": ""
+  },
+  "links": [],
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "hook",
+      "narration": "훅 문장",
+      "onScreen": {
+        "title": "제목"
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start"
+        }
+      ],
+      "transitionOut": "crossfade"
+    },
+    {
+      "id": "s02",
+      "template": "cta-link",
+      "narration": "CTA 문장",
+      "onScreen": {
+        "headline": "헤드라인",
+        "action": "설명란 링크 확인"
+      },
+      "sfx": [],
+      "transitionOut": "cut"
+    }
+  ],
+  "caption": "",
+  "hashtags": [],
+  "upload": {
+    "title": "",
+    "instagram": true,
+    "youtube": true
+  }
+}

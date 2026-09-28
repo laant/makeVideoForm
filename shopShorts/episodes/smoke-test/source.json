@@ -1,0 +1,52 @@
+{
+  "slug": "smoke-test",
+  "type": "a",
+  "topic": "스모크 테스트",
+  "products": [
+    {
+      "id": "p01",
+      "name": "테스트 상품 이름",
+      "brand": "테스트브랜드",
+      "url": "https://example.org/product/1",
+      "rewardUrl": "https://example.org/ref/abc",
+      "price": {
+        "current": 32000,
+        "original": 45000,
+        "currency": "KRW",
+        "note": "쿠폰 적용가"
+      },
+      "rating": {
+        "score": 4.6,
+        "count": 1240
+      },
+      "specs": [
+        {
+          "label": "무게",
+          "value": "300g"
+        },
+        {
+          "label": "용량",
+          "value": "500ml"
+        }
+      ],
+      "pros": [],
+      "cons": [],
+      "reviewThemes": [],
+      "images": [
+        {
+          "url": "https://example.org/img/hero.jpg",
+          "role": "hero",
+          "note": "대표 이미지"
+        },
+        {
+          "url": "https://example.org/img/detail.jpg",
+          "role": "detail",
+          "note": ""
+        }
+      ]
+    }
+  ],
+  "collectedAt": "2026-09-21",
+  "collectedVia": "aside",
+  "notes": ""
+}

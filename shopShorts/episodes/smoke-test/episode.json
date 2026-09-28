@@ -1,0 +1,453 @@
+{
+  "slug": "smoke-test",
+  "topic": "스모크 테스트 — 템플릿 6종",
+  "audience": "",
+  "tone": "",
+  "cta": "",
+  "theme": {
+    "bg": "#0b0b0f",
+    "fg": "#f5f5f7",
+    "accent": "#ffd84d",
+    "muted": "#8a8a96"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "hook",
+      "narration": "이 제품, 사기 전에 확인할 게 세 가지 있습니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.62,
+        "kicker": "가격 확인",
+        "title": "사기 전에\n확인할 세 가지",
+        "badge": "3만원대",
+        "highlight": [
+          "세 가지"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "b4b95b75f6af",
+        "start": 0,
+        "duration": 3.294,
+        "speechEnd": 3.044,
+        "words": [
+          {
+            "text": "이",
+            "start": 0.05,
+            "end": 0.185
+          },
+          {
+            "text": "제품,",
+            "start": 0.197,
+            "end": 0.604
+          },
+          {
+            "text": "사기",
+            "start": 0.639,
+            "end": 0.91
+          },
+          {
+            "text": "전에",
+            "start": 0.933,
+            "end": 1.204
+          },
+          {
+            "text": "확인할",
+            "start": 1.228,
+            "end": 1.634
+          },
+          {
+            "text": "게",
+            "start": 1.669,
+            "end": 1.805
+          },
+          {
+            "text": "세",
+            "start": 1.817,
+            "end": 1.952
+          },
+          {
+            "text": "가지",
+            "start": 1.964,
+            "end": 2.235
+          },
+          {
+            "text": "있습니다.",
+            "start": 2.258,
+            "end": 2.936
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "product",
+      "narration": "판매 페이지 기준 가격은 삼만 이천원, 별점은 사점 육입니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.62,
+        "brand": "테스트브랜드",
+        "name": "테스트 상품 이름",
+        "price": "32,000원",
+        "was": "45,000원",
+        "priceNote": "쿠폰 적용가",
+        "rating": "4.6",
+        "ratingCount": "1,240"
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "1fd212c8d711",
+        "start": 3.294,
+        "duration": 4.374,
+        "speechEnd": 4.124,
+        "words": [
+          {
+            "text": "판매",
+            "start": 0.05,
+            "end": 0.335
+          },
+          {
+            "text": "페이지",
+            "start": 0.36,
+            "end": 0.787
+          },
+          {
+            "text": "기준",
+            "start": 0.824,
+            "end": 1.109
+          },
+          {
+            "text": "가격은",
+            "start": 1.133,
+            "end": 1.561
+          },
+          {
+            "text": "삼만",
+            "start": 1.598,
+            "end": 1.883
+          },
+          {
+            "text": "이천원,",
+            "start": 1.907,
+            "end": 2.477
+          },
+          {
+            "text": "별점은",
+            "start": 2.527,
+            "end": 2.954
+          },
+          {
+            "text": "사점",
+            "start": 2.991,
+            "end": 3.276
+          },
+          {
+            "text": "육입니다.",
+            "start": 3.3,
+            "end": 4.013
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "spec",
+      "narration": "스펙상 무게는 삼백 그램, 용량은 오백 밀리리터입니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.62,
+        "heading": "핵심 스펙",
+        "rows": [
+          {
+            "label": "무게",
+            "value": "300g"
+          },
+          {
+            "label": "용량",
+            "value": "500ml"
+          },
+          {
+            "label": "보증",
+            "value": "1년"
+          }
+        ]
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "925c10e5d4ea",
+        "start": 7.668,
+        "duration": 3.851,
+        "speechEnd": 3.601,
+        "words": [
+          {
+            "text": "스펙상",
+            "start": 0.05,
+            "end": 0.453
+          },
+          {
+            "text": "무게는",
+            "start": 0.488,
+            "end": 0.89
+          },
+          {
+            "text": "삼백",
+            "start": 0.925,
+            "end": 1.194
+          },
+          {
+            "text": "그램,",
+            "start": 1.217,
+            "end": 1.619
+          },
+          {
+            "text": "용량은",
+            "start": 1.654,
+            "end": 2.057
+          },
+          {
+            "text": "오백",
+            "start": 2.092,
+            "end": 2.36
+          },
+          {
+            "text": "밀리리터입니다.",
+            "start": 2.384,
+            "end": 3.457
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "compare",
+      "narration": "같은 가격대 제품과 비교하면 차이가 분명합니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.62,
+        "heading": "같은 가격대 비교",
+        "left": {
+          "label": "이 제품",
+          "items": [
+            "300g",
+            "보증 1년"
+          ]
+        },
+        "right": {
+          "label": "경쟁 제품",
+          "items": [
+            "420g",
+            "보증 6개월"
+          ]
+        },
+        "verdict": "무게에서 갈린다"
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "b7587db468a4",
+        "start": 11.519,
+        "duration": 3.629,
+        "speechEnd": 3.379,
+        "words": [
+          {
+            "text": "같은",
+            "start": 0.05,
+            "end": 0.337
+          },
+          {
+            "text": "가격대",
+            "start": 0.362,
+            "end": 0.793
+          },
+          {
+            "text": "제품과",
+            "start": 0.831,
+            "end": 1.262
+          },
+          {
+            "text": "비교하면",
+            "start": 1.299,
+            "end": 1.874
+          },
+          {
+            "text": "차이가",
+            "start": 1.923,
+            "end": 2.354
+          },
+          {
+            "text": "분명합니다.",
+            "start": 2.392,
+            "end": 3.254
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "verdict",
+      "narration": "가벼운 걸 찾는다면 맞고, 대용량이 필요하면 아닙니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.62,
+        "call": "가벼움 우선이면 추천",
+        "reason": "같은 값에 백이십 그램 가볍다",
+        "forWho": "휴대를 자주 하는 사람",
+        "notFor": "대용량이 필요한 사람"
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "c16a16d39a1c",
+        "start": 15.148,
+        "duration": 3.896,
+        "speechEnd": 3.646,
+        "words": [
+          {
+            "text": "가벼운",
+            "start": 0.05,
+            "end": 0.458
+          },
+          {
+            "text": "걸",
+            "start": 0.493,
+            "end": 0.629
+          },
+          {
+            "text": "찾는다면",
+            "start": 0.641,
+            "end": 1.185
+          },
+          {
+            "text": "맞고,",
+            "start": 1.232,
+            "end": 1.64
+          },
+          {
+            "text": "대용량이",
+            "start": 1.675,
+            "end": 2.219
+          },
+          {
+            "text": "필요하면",
+            "start": 2.266,
+            "end": 2.81
+          },
+          {
+            "text": "아닙니다.",
+            "start": 2.857,
+            "end": 3.537
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "cta-link",
+      "narration": "자세한 가격은 설명란 링크에서 확인하세요.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.62,
+        "headline": "가격은\n설명란에",
+        "action": "설명란 링크 확인",
+        "where": "가격은 수시로 바뀝니다"
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "526ed8d9e070",
+        "start": 19.044,
+        "duration": 3.136,
+        "speechEnd": 2.886,
+        "words": [
+          {
+            "text": "자세한",
+            "start": 0.05,
+            "end": 0.455
+          },
+          {
+            "text": "가격은",
+            "start": 0.49,
+            "end": 0.895
+          },
+          {
+            "text": "설명란",
+            "start": 0.93,
+            "end": 1.334
+          },
+          {
+            "text": "링크에서",
+            "start": 1.37,
+            "end": 1.909
+          },
+          {
+            "text": "확인하세요.",
+            "start": 1.956,
+            "end": 2.766
+          }
+        ]
+      }
+    }
+  ],
+  "shopType": "a",
+  "disclosure": {
+    "affiliate": "제휴 링크가 포함되어 있으며 구매 시 수수료를 받습니다",
+    "aiGenerated": "제품 영상은 AI로 생성되었습니다",
+    "source": "가격·스펙은 2026-09-21 기준",
+    "banner": ""
+  },
+  "links": [
+    {
+      "label": "상품 링크",
+      "url": "https://example.org/"
+    }
+  ],
+  "cards": {
+    "footer": ""
+  },
+  "caption": "스모크 테스트 캡션입니다. 상품 링크: https://example.org/",
+  "hashtags": [],
+  "upload": {
+    "title": "스모크 테스트",
+    "instagram": true,
+    "youtube": true
+  },
+  "header": {
+    "kicker": "성분 확인법",
+    "title": "이중기능성이라고\n다 같은 거 아닙니다",
+    "badge": "식약처\n기능성"
+  }
+}

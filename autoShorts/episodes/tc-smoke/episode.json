@@ -1,0 +1,263 @@
+{
+  "slug": "tc-smoke",
+  "topic": "talkcraft 이식 카드 검증",
+  "audience": "",
+  "tone": "",
+  "cta": "",
+  "reference": {
+    "url": "",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "",
+    "notes": ""
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#0b0b0f",
+    "fg": "#f5f5f7",
+    "accent": "#E3B23C",
+    "muted": "#9aa0aa"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "number-slab-pop",
+      "narration": "올해 환급률은 이십삼 퍼센트입니다.",
+      "onScreen": {
+        "value": "23",
+        "unit": "%",
+        "caption": "전년 대비 증가",
+        "at": "word:이십삼"
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "79aa36d6adaf",
+        "start": 0,
+        "duration": 2.668,
+        "speechEnd": 2.418,
+        "words": [
+          {
+            "text": "올해",
+            "start": 0.05,
+            "end": 0.317
+          },
+          {
+            "text": "환급률은",
+            "start": 0.34,
+            "end": 0.873
+          },
+          {
+            "text": "이십삼",
+            "start": 0.919,
+            "end": 1.319
+          },
+          {
+            "text": "퍼센트입니다.",
+            "start": 1.354,
+            "end": 2.287
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "number-counter",
+      "narration": "주인 없는 숨은 보험금은 십 점 삼조 원입니다.",
+      "onScreen": {
+        "label": "주인 없는 숨은 보험금",
+        "target": 10.3,
+        "decimals": 1,
+        "unit": "조",
+        "suffix": "원",
+        "caption": "2025년 말 기준 · 금융위원회",
+        "at": "word:숨은"
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "c7107868c1ce",
+        "start": 2.668,
+        "duration": 3.157,
+        "speechEnd": 2.907,
+        "words": [
+          {
+            "text": "주인",
+            "start": 0.05,
+            "end": 0.322
+          },
+          {
+            "text": "없는",
+            "start": 0.345,
+            "end": 0.617
+          },
+          {
+            "text": "숨은",
+            "start": 0.641,
+            "end": 0.913
+          },
+          {
+            "text": "보험금은",
+            "start": 0.936,
+            "end": 1.48
+          },
+          {
+            "text": "십",
+            "start": 1.527,
+            "end": 1.663
+          },
+          {
+            "text": "점",
+            "start": 1.675,
+            "end": 1.811
+          },
+          {
+            "text": "삼조",
+            "start": 1.823,
+            "end": 2.094
+          },
+          {
+            "text": "원입니다.",
+            "start": 2.118,
+            "end": 2.797
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "alt-block-lines",
+      "narration": "나왔다는 사람도 있고, 없었다는 사람도 있습니다.",
+      "onScreen": {
+        "title": "댓글로 한 단어만",
+        "rows": [
+          {
+            "text": "나왔다",
+            "at": "word:나왔다는",
+            "accent": true
+          },
+          {
+            "text": "없었다",
+            "at": "word:없었다는",
+            "accent": false
+          }
+        ]
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "4593252866d9",
+        "start": 5.825,
+        "duration": 3.445,
+        "speechEnd": 3.195,
+        "words": [
+          {
+            "text": "나왔다는",
+            "start": 0.05,
+            "end": 0.568
+          },
+          {
+            "text": "사람도",
+            "start": 0.613,
+            "end": 1.001
+          },
+          {
+            "text": "있고,",
+            "start": 1.035,
+            "end": 1.423
+          },
+          {
+            "text": "없었다는",
+            "start": 1.457,
+            "end": 1.975
+          },
+          {
+            "text": "사람도",
+            "start": 2.02,
+            "end": 2.408
+          },
+          {
+            "text": "있습니다.",
+            "start": 2.442,
+            "end": 3.089
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "strike-and-replace",
+      "narration": "가짜가 아니라, 진짜였습니다.",
+      "onScreen": {
+        "prefix": "비슷한 이름의",
+        "from": "가짜",
+        "to": "진짜",
+        "suffix": "사이트",
+        "strikeAt": "word:가짜가",
+        "swapDelay": 0.35,
+        "subline": "확인해보면 달라집니다"
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "d2757d733b43",
+        "start": 9.27,
+        "duration": 2.247,
+        "speechEnd": 1.997,
+        "words": [
+          {
+            "text": "가짜가",
+            "start": 0.05,
+            "end": 0.424
+          },
+          {
+            "text": "아니라,",
+            "start": 0.457,
+            "end": 0.955
+          },
+          {
+            "text": "진짜였습니다.",
+            "start": 0.999,
+            "end": 1.871
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": ""
+  },
+  "caption": "talkcraft 이식 카드 검증",
+  "hashtags": [],
+  "upload": {
+    "title": "검증",
+    "instagram": false,
+    "youtube": false
+  }
+}

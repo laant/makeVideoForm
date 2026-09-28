@@ -35,6 +35,10 @@ myNextSeason/
 │   ├── CLAUDE.md            #   작업 규칙 (슬래시 커맨드 /shorts-* 는 루트 .claude/commands/)
 │   └── episodes/<slug>/     #   episode.json 단일 소스 · scenes · final.mp4
 │
+├── shopShorts/              # 모듈⑤ 쇼핑 쇼츠 — 상품 페이지 수집 → Higgsfield i2v 클립 → 오버레이
+│   ├── CLAUDE.md            #   작업 규칙 (a 제휴리뷰 / b 큐레이션 / c 단일홍보, 고지 강제)
+│   └── episodes/<slug>/     #   source.json(상품 원천) + episode.json + media/ 클립
+│
 ├── patches/                 # 업스트림(OpenMontage·video-talkcraft) 수정분 diff
 ├── overlays/                # 서브모듈 내부 자작 파일 보관 (bootstrap이 복사)
 ├── output/                  # ★ 완성본 정본 — <프로젝트>/<모듈명>_final_send.mp4 (git 제외)
@@ -50,6 +54,7 @@ myNextSeason/
 | OpenMontage | 3D/일러스트 스틸 + 모션 + stat_card | 무결 원샷·계측선 정확·숫자 오버레이 | ~$0.04/이미지 |
 | talkcraft | 코드로 그리는 모션그래픽 | 계측선·동기화·태극기 등 100% 결정론 | $0 (로컬 렌더) |
 | autoShorts | HTML/GSAP 템플릿 씬 (HyperFrames) | 템플릿 5종·음성 싱크·자동 검수·업로드까지 | TTS만 (Gemini/ElevenLabs) |
+| shopShorts | 상품 이미지 → Higgsfield i2v + 텍스트 오버레이 | 상품 페이지 수집·고지 자동 강제·리워드 링크 검증 | i2v 클립당 (Higgsfield 크레딧) |
 
 기본 실험 방식: **같은 대본을 여러 모듈로 병렬 제작해 비교** (오디오는 Gemini Aoede를 공유).
 
@@ -66,10 +71,14 @@ myNextSeason/
 | 07 | AI 사고력 2편 — 일 못하는 사람들의 공통점 | 실무 인사이트(3부작 2/3) | openmontage | `output/07-ai-thinking-ep2/` |
 | 08 | AI 사고력 3편 — 그 자동화 강의, 결제 전에 | 교육 인사이트(3부작 3/3, 개정판) | openmontage | `output/08-ai-thinking-ep3/` |
 | 09 | 청년미래적금 2차 신청 총정리 | 머니 정보(시의성, 찰흙 3D) | openmontage·talkcraft·autoshorts·flow(크레딧 대기) | `output/09-youth-savings-2nd/` |
+| 10 | 미라클뮤즈 아하바하메디크림 | **쇼핑 쇼츠(a 제휴 리뷰, 28초)** | shopshorts | `output/10-miraclemuse-ahabha/` |
+| 11 | '5% 올랐다'만 보면 안 되는 이유 | 머니 정보(코인 시황 읽는 법, 차트 custom 씬) | autoshorts | `output/11-bitcoin-check/` |
+| 12 | 삼성이 버린 기술, 애플이 8년 뒤에 | **테크**(가변 조리개, 조리개 SVG custom 씬) | autoshorts | `output/12-aperture-return/` — ⚠️ 테크 채널 신설 예정, 업로드 보류 |
+| 13 | 조리개가 뭔지부터, 왜 돌아왔는지까지 | 테크(12번 + 원글 제작자판 조합, 49초) | autoshorts | `output/13-aperture-explained/` — 테크 채널용 |
 
 ## 환경 메모
 
-- API 키: ElevenLabs → `flow-pipeline/.env` · Google(GOOGLE_API_KEY, 결제 연결) → `OpenMontage/.env` · autoShorts(Gemini TTS·ElevenLabs·YT/IG) → `autoShorts/.env`
+- API 키: ElevenLabs → `flow-pipeline/.env` · Google(GOOGLE_API_KEY, 결제 연결) → `OpenMontage/.env` · autoShorts(Gemini TTS·ElevenLabs·YT/IG) → `autoShorts/.env` · shopShorts(Higgsfield·Gemini TTS) → `shopShorts/.env`
   (쉘의 GEMINI_API_KEY는 무효한 옛 키 — unset 후 .env 사용)
 - Flow 웹: flow.google.com (Google 계정 lee.junghoon@gmail.com, 브라우저 자동화는 Aside MCP 경유)
 - 공용 자원: 폰트 `flow-pipeline/fonts/`, PIL venv `OpenMontage/.venv`, TTS는 Gemini Aoede(한국어 네이티브)

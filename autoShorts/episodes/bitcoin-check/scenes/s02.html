@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0a0d12; }
+      :root {
+        --bg: #0a0d12; --fg: #f2f5f8; --accent: #F7931A; --muted: #8fa0b5;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* onScreen.bgImage: 배경 그림 + 글자 가독성용 그라데이션 (onScreen.bgDim 0~1 로 어둡기 조절) */
+      .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
+      .bgshade { position: absolute; inset: 0; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      /* ── 차트 씬 (custom) ─────────────────────────────── */
+      .k-head { font-size: 66px; font-weight: 900; letter-spacing: -0.03em; }
+      .k-sub { font-size: 32px; font-weight: 700; color: var(--muted); margin-top: -18px; }
+      .k-wrap { position: relative; }
+      .k-legend { display: flex; gap: 30px; margin-bottom: 14px; }
+      .k-leg { display: flex; align-items: center; gap: 12px; font-size: 34px; font-weight: 800; }
+      .k-dot { width: 26px; height: 8px; border-radius: 4px; }
+      .k-tag {
+        position: absolute; padding: 12px 22px; border-radius: 16px;
+        font-size: 38px; font-weight: 900; white-space: nowrap; opacity: 0;
+      }
+      .k-tag.month { background: var(--accent); color: #10141a; }
+      .k-tag.day { background: #ffffff; color: #10141a; border: 4px solid var(--accent); }
+      .k-src { font-size: 26px; font-weight: 600; color: var(--muted); margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:custom template=chart -->
+    <div id="root" data-composition-id="s02" data-start="0" data-duration="8.913" data-width="1080" data-height="1920">
+      <div id="s02-bg" class="layer bg-layer clip" data-start="0" data-duration="8.913">
+        <img class="bgimg" src="media/bg-s02.png" alt="" />
+        <div class="bgshade" style="background: linear-gradient(180deg, rgba(0,0,0,0.22000000000000003) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.8) 100%)"></div>
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s02-content" class="layer content clip" data-start="0" data-duration="8.913">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s02",
+  "template": "compare",
+  "onScreen": {
+    "heading": "① 비교 기간",
+    "chart": {
+      "dates": [
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-29",
+        "2026-08-30",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-12",
+        "2026-09-13",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-19",
+        "2026-09-20",
+        "2026-09-21"
+      ],
+      "btc": [
+        101.8,
+        102.28,
+        102.9,
+        104,
+        100.95,
+        101.88,
+        101.21,
+        101.47,
+        100.25,
+        99.69,
+        103.93,
+        102.24,
+        102.12,
+        102.5,
+        100.92,
+        99.66,
+        99.69,
+        98.1,
+        98.55,
+        98.45,
+        97.93,
+        99.02,
+        96.49,
+        98.24,
+        98.75,
+        103.66,
+        103.92,
+        104.14,
+        109.73
+      ],
+      "eth": [
+        100.95,
+        100.35,
+        103.02,
+        102.63,
+        99.94,
+        101.01,
+        99.38,
+        100.5,
+        98.91,
+        97.37,
+        101.21,
+        99.47,
+        100.15,
+        101.21,
+        100.24,
+        99.59,
+        99.14,
+        98.52,
+        101.45,
+        101.6,
+        99.7,
+        100.44,
+        96.57,
+        98.29,
+        99.7,
+        105.59,
+        106.33,
+        107.01,
+        111.06
+      ],
+      "base": "8/24 09시 = 100",
+      "source": "업비트 원화시장 일봉"
+    },
+    "dayLabel": "하루 +5.37%",
+    "monthLabel": "한 달 +9.73%",
+    "highlight": [
+      "언제부터"
+    ]
+  },
+  "highlight": [
+    "언제부터"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "첫째,",
+      "start": 0.05,
+      "end": 0.15
+    },
+    {
+      "text": "언제부터",
+      "start": 0.51,
+      "end": 1.33
+    },
+    {
+      "text": "비교했는지를",
+      "start": 1.43,
+      "end": 2.22
+    },
+    {
+      "text": "봅니다.",
+      "start": 2.24,
+      "end": 2.8
+    },
+    {
+      "text": "하루로는",
+      "start": 3.46,
+      "end": 4.08
+    },
+    {
+      "text": "오",
+      "start": 4.08,
+      "end": 4.16
+    },
+    {
+      "text": "점",
+      "start": 4.16,
+      "end": 4.24
+    },
+    {
+      "text": "삼칠",
+      "start": 4.24,
+      "end": 4.4
+    },
+    {
+      "text": "퍼센트,",
+      "start": 4.4,
+      "end": 5.72
+    },
+    {
+      "text": "한",
+      "start": 6.08,
+      "end": 6.18
+    },
+    {
+      "text": "달로는",
+      "start": 6.18,
+      "end": 6.67
+    },
+    {
+      "text": "구",
+      "start": 6.67,
+      "end": 6.75
+    },
+    {
+      "text": "점",
+      "start": 6.75,
+      "end": 6.83
+    },
+    {
+      "text": "칠삼",
+      "start": 6.83,
+      "end": 6.99
+    },
+    {
+      "text": "퍼센트입니다.",
+      "start": 6.99,
+      "end": 8.38
+    }
+  ],
+  "speechEnd": 8.373,
+  "duration": 8.613,
+  "renderDuration": 8.913,
+  "globalStart": 4.192,
+  "total": 36.732
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /**
+         * 규정 태극기 SVG (행정안전부 도안: 3:2, 태극 지름=세로/2, 괘 길이 D/2·두께 D/12·간격 D/24,
+         * 태극-괘 거리 D/4, 작은 원 중심은 건-곤 대각선 위(빨강 좌상·파랑 우하), 건 좌상·감 우상·리 좌하·곤 우하)
+         */
+        taegukgi(parent, width) {
+          const NS = "http://www.w3.org/2000/svg";
+          const mk = (tag, attrs, into) => {
+            const e = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+            if (into) into.appendChild(e);
+            return e;
+          };
+          const W = width, Hh = (width * 2) / 3, D = Hh / 2, r = D / 2;
+          const a = (Math.atan2(Hh, W) * 180) / Math.PI;
+          const svg = mk("svg", { width: W, height: Hh, viewBox: `0 0 ${W} ${Hh}`, class: "taegukgi" }, parent);
+          mk("rect", { width: W, height: Hh, fill: "#fff" }, svg);
+          const tg = mk("g", { transform: `translate(${W / 2},${Hh / 2}) rotate(${a})` }, svg);
+          mk("circle", { r, fill: "#0047A0" }, tg);
+          mk("path", { d: `M ${-r} 0 A ${r} ${r} 0 0 1 ${r} 0 Z`, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: -r / 2, r: r / 2, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: r / 2, r: r / 2, fill: "#0047A0" }, tg);
+          const L = D / 2, th = D / 12, g = D / 24, dist = r + D / 4 + D / 6;
+          const rad = (a * Math.PI) / 180;
+          // [괘, 방향(x,y), 막대 회전] — split=true 인 효는 가운데가 끊긴 음효
+          const gwae = [
+            [[false, false, false], -1, -1, a + 90], // 건 좌상
+            [[true, true, true], 1, 1, a + 90], // 곤 우하
+            [[true, false, true], 1, -1, -a + 90], // 감 우상
+            [[false, true, false], -1, 1, -a + 90], // 리 좌하
+          ];
+          for (const [lines, sx, sy, rot] of gwae) {
+            const cg = mk("g", { transform: `translate(${W / 2 + sx * Math.cos(rad) * dist},${Hh / 2 + sy * Math.sin(rad) * dist}) rotate(${rot})` }, svg);
+            lines.forEach((split, i) => {
+              const y = (i - 1) * (th + g) - th / 2;
+              if (!split) mk("rect", { x: -L / 2, y, width: L, height: th, fill: "#000" }, cg);
+              else {
+                const half = (L - g) / 2;
+                mk("rect", { x: -L / 2, y, width: half, height: th, fill: "#000" }, cg);
+                mk("rect", { x: g / 2, y, width: half, height: th, fill: "#000" }, cg);
+              }
+            });
+          }
+          return svg;
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // 배경 그림: 느린 줌 인 (Ken Burns)
+      const bgImg = document.querySelector(".bgimg");
+      if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
+
+      // ── 차트 본문 (custom · 업비트 원화시장 일봉 실데이터) ──────
+      const o = S.onScreen;
+      const C = o.chart;
+
+      H.el("div", "k-head", o.heading, stage);
+      H.el("div", "k-sub", C.base, stage);
+
+      const legend = H.el("div", "k-legend", null, stage);
+      const mkLeg = (color, name) => {
+        const d = H.el("div", "k-leg", null, legend);
+        H.el("span", "k-dot", null, d).style.background = color;
+        H.el("span", null, name, d);
+      };
+      mkLeg("var(--accent)", "비트코인");
+      mkLeg("#5b8cff", "이더리움");
+
+      const wrap = H.el("div", "k-wrap", null, stage);
+      const NS = "http://www.w3.org/2000/svg";
+      const W = 900, Hh = 700, PAD = 52;
+      const svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("width", W); svg.setAttribute("height", Hh);
+      svg.setAttribute("viewBox", `0 0 ${W} ${Hh}`);
+      wrap.appendChild(svg);
+      const mk = (t, a, into) => {
+        const e = document.createElementNS(NS, t);
+        for (const [k, v] of Object.entries(a)) e.setAttribute(k, v);
+        (into || svg).appendChild(e);
+        return e;
+      };
+
+      const all = C.btc.concat(C.eth);
+      const lo = Math.floor(Math.min(...all) - 1), hi = Math.ceil(Math.max(...all) + 1);
+      const X = (i) => PAD + (i * (W - PAD * 2)) / (C.btc.length - 1);
+      const Y = (v) => Hh - PAD - ((v - lo) * (Hh - PAD * 2)) / (hi - lo);
+
+      // 기준선 100
+      mk("line", { x1: PAD, y1: Y(100), x2: W - PAD, y2: Y(100),
+                   stroke: "rgba(255,255,255,0.35)", "stroke-width": 3, "stroke-dasharray": "10 10" });
+      mk("text", { x: 4, y: Y(100) + 9, fill: "rgba(255,255,255,0.65)",
+                   "font-size": 28, "font-weight": 800 }).textContent = "100";
+
+      const path = (vals, color, width) => {
+        const d = vals.map((v, i) => `${i ? "L" : "M"} ${X(i).toFixed(1)} ${Y(v).toFixed(1)}`).join(" ");
+        return mk("path", { d, fill: "none", stroke: color, "stroke-width": width,
+                            "stroke-linecap": "round", "stroke-linejoin": "round" });
+      };
+      const ethLine = path(C.eth, "#5b8cff", 7);
+      const btcLine = path(C.btc, "var(--accent)", 11);
+
+      // 선이 왼쪽부터 그려지는 연출 (결정적)
+      [ethLine, btcLine].forEach((el, i) => {
+        const len = el.getTotalLength();
+        el.setAttribute("stroke-dasharray", len);
+        el.setAttribute("stroke-dashoffset", len);
+        tl.to(el, { attr: { "stroke-dashoffset": 0 }, duration: 2.2, ease: "none" }, 0.35 + i * 0.1);
+      });
+
+      // 마지막 점 강조
+      const last = C.btc.length - 1;
+      const dot = mk("circle", { cx: X(last), cy: Y(C.btc[last]), r: 0, fill: "var(--accent)" });
+      tl.to(dot, { attr: { r: 17 }, duration: 0.3, ease: "back.out(3)" }, 2.6);
+
+      // 라벨: 한 달 → 하루 순으로
+      const tagMonth = H.el("div", "k-tag month", o.monthLabel, wrap);
+      tagMonth.style.left = "300px"; tagMonth.style.top = "84px";
+      const tagDay = H.el("div", "k-tag day", o.dayLabel, wrap);
+      tagDay.style.left = "540px"; tagDay.style.top = "300px";
+      tl.fromTo(tagDay, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3 }, H.at("word:하루로는", 3.0));
+      tl.fromTo(tagMonth, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3 }, H.at("word:한", 5.2));
+
+      H.el("div", "k-src", "출처: " + C.source, stage);
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s02"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!-- alt-block-lines: 색블록이 글자를 쓸어내는 대구(對句). onScreen: { title?, rows: [{text, at?, accent?}] }
+     talkcraft cards/alt-block-lines.tsx 이식 — 명문은 "글자가 블록에 쓸려 나온다"(clip-path가 블록을 2프레임 지연 추종) -->
+<style>
+  .abl-title { font-size: 42px; font-weight: 600; color: var(--muted); letter-spacing: 5px;
+               margin-bottom: 46px; text-align: center; }
+  .abl-rows { display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .abl-row { position: relative; display: inline-block; padding: 14px 30px; }
+  .abl-block { position: absolute; inset: 0; border-radius: 14px; transform-origin: 0 50%; }
+  .abl-block.on { background: var(--accent); }
+  .abl-block.off { background: rgba(255, 255, 255, 0.14); }
+  .abl-text { position: relative; font-size: 64px; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+  .abl-text.on { color: var(--bg); }
+  .abl-text.off { color: var(--fg); }
+</style>
+<script>
+  // 원본: 블록 scaleX 0→1 (0.26s power3.out, origin left) + 글자 clip-path inset(0 100%→0) 를 2프레임(0.067s) 지연
+  const o = S.onScreen;
+  if (o.title) {
+    const ti = H.el("div", "abl-title", o.title, stage);
+    tl.fromTo(ti, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+  }
+  const box = H.el("div", "abl-rows", null, stage);
+  const rows = o.rows || [];
+  const even = H.spread(rows.length, 0.35, Math.max(0.5, S.speechEnd - 0.7));
+  rows.forEach((r, i) => {
+    const row = H.el("div", "abl-row", null, box);
+    const cls = r.accent ? "on" : "off";
+    const blk = H.el("div", `abl-block ${cls}`, null, row);
+    const txt = H.el("div", `abl-text ${cls}`, r.text, row);
+    const at = H.at(r.at, even[i]);
+    tl.fromTo(blk, { scaleX: 0 }, { scaleX: 1, duration: 0.26, ease: "power3.out" }, at);
+    // 글자는 블록에 "쓸려" 나온다 — 같은 곡선·같은 길이, 2프레임 늦게
+    tl.fromTo(txt, { clipPath: "inset(0 100% 0 0)" },
+                   { clipPath: "inset(0 0% 0 0)", duration: 0.26, ease: "power3.out" }, at + 0.067);
+  });
+</script>

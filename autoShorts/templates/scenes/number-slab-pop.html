@@ -1,0 +1,36 @@
+<!-- number-slab-pop: 결론감 있는 숫자 한 방. onScreen: { value, unit?, caption?, at? }
+     talkcraft(Remotion) cards/number-slab-pop.tsx 이식 — 3박(슬랩 낙하 → 숫자 팝 → 단위·캡션) 유지 -->
+<style>
+  .nsp-wrap { text-align: center; }
+  .nsp-slab {
+    display: inline-block; padding: 26px 44px 30px; border-radius: 28px;
+    background: var(--accent); transform-origin: 50% 50%;
+  }
+  .nsp-num {
+    display: flex; align-items: baseline; justify-content: center; white-space: nowrap;
+    font-variant-numeric: tabular-nums; color: var(--bg); font-weight: 800;
+    line-height: 1; letter-spacing: -0.02em; transform-origin: 50% 60%;
+  }
+  .nsp-value { font-size: 108px; }
+  .nsp-unit { font-size: 58px; margin-left: 8px; }
+  .nsp-cap { margin-top: 20px; font-size: 30px; font-weight: 400; color: var(--muted); letter-spacing: 3px; }
+</style>
+<script>
+  // 원본 타임테이블(카드 상대 초): 0.10–0.34 슬랩 / 0.34–0.62 숫자 / 0.54–0.72 단위 / 0.72–0.96 캡션
+  const o = S.onScreen;
+  const t0 = H.at(o.at, 0.1);                       // 단어 앵커로 시작점 지정 가능
+  const wrap = H.el("div", "nsp-wrap", null, stage);
+  const slab = H.el("div", "nsp-slab", null, wrap);
+  const num = H.el("div", "nsp-num", null, slab);
+  H.el("span", "nsp-value", o.value ?? "", num);
+  const unit = o.unit ? H.el("span", "nsp-unit", o.unit, num) : null;
+  const cap = o.caption ? H.el("div", "nsp-cap", o.caption, wrap) : null;
+
+  tl.fromTo(slab, { opacity: 0, y: -20, scale: 0.94 },
+                  { opacity: 1, y: 0, scale: 1, duration: 0.24, ease: "power3.out" }, t0);
+  tl.fromTo(num, { opacity: 0, scale: 0.72 },
+                 { opacity: 1, scale: 1, duration: 0.28, ease: "back.out(1.7)" }, t0 + 0.24);
+  if (unit) tl.fromTo(unit, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power2.out" }, t0 + 0.44);
+  if (cap) tl.fromTo(cap, { opacity: 0, y: 6 },
+                          { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, t0 + 0.62);
+</script>

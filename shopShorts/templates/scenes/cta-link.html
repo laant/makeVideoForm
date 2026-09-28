@@ -1,0 +1,26 @@
+<!-- cta-link: 링크 유도. onScreen: { headline, action, actionAt?, where?, handle? }
+     ⚠️ 링크 약속 문구를 쓰면 episode.links 에 실제 URL 이 있어야 verify 가 통과한다 -->
+<style>
+  .k-head { white-space: pre-line; font-size: 86px; font-weight: 900; line-height: 1.12; letter-spacing: -0.035em; }
+  .k-action { padding: 28px 40px; border-radius: 28px; background: var(--accent); color: #111; font-size: 56px; font-weight: 900; line-height: 1.2; text-align: center; }
+  .k-where { font-size: 40px; font-weight: 700; color: var(--muted); text-align: center; }
+  .k-handle { align-self: center; font-size: 44px; font-weight: 800; color: var(--muted); }
+</style>
+<script>
+  const o = S.onScreen;
+  const h = H.el("div", "k-head", o.headline || "", stage);
+  tl.fromTo(h, { scale: 1.1, y: 24 }, { scale: 1, y: 0, duration: 0.4, ease: "power4.out" }, 0);
+  if (o.action) {
+    const a = H.el("div", "k-action", o.action, stage);
+    tl.fromTo(a, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, H.at(o.actionAt, 0.7));
+    tl.to(a, { scale: 1.04, duration: 0.5, yoyo: true, repeat: -1, ease: "sine.inOut" }, H.at(o.actionAt, 0.7) + 0.4);
+  }
+  if (o.where) {
+    const w = H.el("div", "k-where", o.where, stage);
+    tl.fromTo(w, { opacity: 0 }, { opacity: 1, duration: 0.3 }, H.at(o.whereAt, 1.1));
+  }
+  if (o.handle) {
+    const n = H.el("div", "k-handle", o.handle, stage);
+    tl.fromTo(n, { opacity: 0 }, { opacity: 1, duration: 0.3 }, H.at(o.handleAt, 1.4));
+  }
+</script>

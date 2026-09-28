@@ -1,0 +1,40 @@
+<!-- product: 상품 한 개 소개. onScreen: { name, brand?, price?, was?, priceNote?, rating?, ratingCount?, tag?, tagAt? } -->
+<style>
+  .p-brand { font-size: 40px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; }
+  .p-name { font-size: 78px; font-weight: 900; line-height: 1.14; letter-spacing: -0.03em; }
+  .p-priceRow { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+  .p-price { font-size: 96px; font-weight: 900; color: var(--accent); letter-spacing: -0.03em; }
+  .p-was { font-size: 46px; font-weight: 600; color: var(--muted); text-decoration: line-through; }
+  .p-note { font-size: 34px; font-weight: 600; color: var(--muted); }
+  .p-rating { display: flex; align-items: center; gap: 16px; font-size: 42px; font-weight: 700; }
+  .p-star { color: var(--accent); }
+  .p-tag { align-self: flex-start; padding: 14px 30px; border-radius: 999px; background: var(--accent); color: #111; font-size: 40px; font-weight: 800; }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.brand) {
+    const b = H.el("div", "p-brand", o.brand, stage);
+    tl.fromTo(b, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, 0.05);
+  }
+  const n = H.el("div", "p-name", o.name || "", stage);
+  tl.fromTo(n, { scale: 1.12, y: 24 }, { scale: 1, y: 0, duration: 0.42, ease: "power4.out" }, 0);
+  if (o.price) {
+    const row = H.el("div", "p-priceRow", null, stage);
+    const price = H.el("div", "p-price", o.price, row);
+    if (o.was) H.el("div", "p-was", o.was, row);
+    if (o.priceNote) H.el("div", "p-note", o.priceNote, row);
+    const t = H.at(o.priceAt, 0.7);
+    tl.fromTo(price, { scale: 0.7 }, { scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t);
+    if (o.was) tl.fromTo(row.children[1], { opacity: 0 }, { opacity: 1, duration: 0.25 }, t + 0.12);
+  }
+  if (o.rating) {
+    const r = H.el("div", "p-rating", null, stage);
+    H.el("span", "p-star", "★", r);
+    H.el("span", null, o.ratingCount ? `${o.rating} (${o.ratingCount})` : String(o.rating), r);
+    tl.fromTo(r, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3 }, H.at(o.ratingAt, 1.1));
+  }
+  if (o.tag) {
+    const g = H.el("div", "p-tag", o.tag, stage);
+    tl.fromTo(g, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, H.at(o.tagAt, 1.4));
+  }
+</script>

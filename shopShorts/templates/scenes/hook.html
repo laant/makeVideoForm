@@ -1,0 +1,30 @@
+<!-- hook: 훅/표지. onScreen: { kicker?, title, subtitle?, subtitleAt?, badge? } -->
+<style>
+  .h-kicker { align-self: flex-start; padding: 14px 28px; border-radius: 999px; background: var(--accent); color: #111; font-size: 40px; font-weight: 800; }
+  .h-title { font-size: 108px; font-weight: 900; line-height: 1.08; letter-spacing: -0.04em; }
+  .h-title .line { display: block; transform-origin: 0 50%; }
+  .h-sub { white-space: pre-line; font-size: 48px; font-weight: 600; color: var(--muted); line-height: 1.35; }
+  .h-badge { align-self: flex-start; padding: 16px 34px; border-radius: 22px; background: rgba(255,255,255,0.1); border: 3px solid var(--accent); font-size: 46px; font-weight: 800; }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.kicker) {
+    const k = H.el("div", "h-kicker", o.kicker, stage);
+    tl.fromTo(k, { x: -40 }, { x: 0, duration: 0.35, ease: "power3.out" }, 0);
+  }
+  const title = H.el("div", "h-title", null, stage);
+  String(o.title || "").split("\n").forEach((line, i) => {
+    const l = H.el("span", "line", line, title);
+    // 첫 프레임부터 보이게(스크롤 멈춤용) — 투명도 대신 크기로 등장
+    tl.fromTo(l, { scale: 1.18, y: 30 }, { scale: 1, y: 0, duration: 0.45, ease: "power4.out" }, i * 0.08);
+  });
+  if (o.badge) {
+    const b = H.el("div", "h-badge", o.badge, stage);
+    tl.fromTo(b, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, H.at(o.badgeAt, 0.6));
+  }
+  if (o.subtitle) {
+    const s = H.el("div", "h-sub", o.subtitle, stage);
+    tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 }, H.at(o.subtitleAt, 0.9));
+  }
+  tl.to(title, { scale: 1.04, duration: S.duration, ease: "none" }, 0.6);
+</script>

@@ -1,0 +1,467 @@
+{
+  "slug": "miraclemuse-ahabha",
+  "topic": "이중기능성 크림 성분 확인법 — 미라클뮤즈 아하바하메디크림",
+  "audience": "미백·주름 기능성 화장품을 고르려는 30~50대",
+  "tone": "단정한 설명체, 과장 없이 성분과 제도로 근거를 댄다",
+  "cta": "구매처는 설명란 확인",
+  "theme": {
+    "bg": "#0e0c0d",
+    "fg": "#f7f3f1",
+    "accent": "#E8B4B8",
+    "muted": "#cfd0d8"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.22,
+  "transitionSeconds": 0.28,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "hook",
+      "narration": "이중기능성이라고, 다 같은 거 아닙니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-hero.mp4",
+        "bgDim": 0.38,
+        "title": "다 같은 거\n아닙니다",
+        "kicker": "이중기능성",
+        "highlight": [
+          "아닙니다"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "c7f4a0a7dabd",
+        "start": 0,
+        "duration": 3.112,
+        "speechEnd": 2.892,
+        "words": [
+          {
+            "text": "이중기능성이라고,",
+            "start": 0.05,
+            "end": 1.51
+          },
+          {
+            "text": "다",
+            "start": 1.62,
+            "end": 1.77
+          },
+          {
+            "text": "같은",
+            "start": 1.77,
+            "end": 2.11
+          },
+          {
+            "text": "거",
+            "start": 2.11,
+            "end": 2.28
+          },
+          {
+            "text": "아닙니다.",
+            "start": 2.28,
+            "end": 2.79
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "spec",
+      "narration": "식약처가 심사한 건 딱 두 가지. 미백 하나, 주름개선 하나입니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-detail.mp4",
+        "bgDim": 0.38,
+        "heading": "심사받은 항목",
+        "rows": [
+          {
+            "label": "하나",
+            "value": "피부 미백에 도움",
+            "at": "word:미백"
+          },
+          {
+            "label": "둘",
+            "value": "주름 개선에 도움",
+            "at": "word:주름개선"
+          }
+        ],
+        "highlight": [
+          "두 가지"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "word:미백",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "cbc1871c1ab1",
+        "start": 3.112,
+        "duration": 5.368,
+        "speechEnd": 5.148,
+        "words": [
+          {
+            "text": "식약처가",
+            "start": 0.09,
+            "end": 0.73
+          },
+          {
+            "text": "심사한",
+            "start": 0.76,
+            "end": 1.33
+          },
+          {
+            "text": "건",
+            "start": 1.33,
+            "end": 1.38
+          },
+          {
+            "text": "딱",
+            "start": 1.56,
+            "end": 1.64
+          },
+          {
+            "text": "두",
+            "start": 1.83,
+            "end": 2.28
+          },
+          {
+            "text": "가지.",
+            "start": 2.28,
+            "end": 2.32
+          },
+          {
+            "text": "미백",
+            "start": 3.02,
+            "end": 3.44
+          },
+          {
+            "text": "하나,",
+            "start": 3.44,
+            "end": 3.5
+          },
+          {
+            "text": "주름개선",
+            "start": 3.87,
+            "end": 4.41
+          },
+          {
+            "text": "하나입니다.",
+            "start": 4.41,
+            "end": 4.88
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "spec",
+      "narration": "근거는 성분에 있습니다. 미백은 나이아신아마이드, 주름은 아데노신. 둘 다 식약처 고시 성분입니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-detail.mp4",
+        "bgDim": 0.38,
+        "bgVideoStart": 2,
+        "heading": "고시 성분",
+        "rows": [
+          {
+            "label": "미백",
+            "value": "나이아신아마이드",
+            "at": "word:나이아신아마이드"
+          },
+          {
+            "label": "주름",
+            "value": "아데노신",
+            "at": "word:아데노신"
+          }
+        ],
+        "highlight": [
+          "나이아신아마이드",
+          "아데노신"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "ping",
+          "at": "word:아데노신",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "1a7e46c8fb9a",
+        "start": 8.48,
+        "duration": 8.981,
+        "speechEnd": 8.761,
+        "words": [
+          {
+            "text": "근거는",
+            "start": 0.08,
+            "end": 0.57
+          },
+          {
+            "text": "성분에",
+            "start": 0.57,
+            "end": 1.14
+          },
+          {
+            "text": "있습니다.",
+            "start": 1.14,
+            "end": 1.72
+          },
+          {
+            "text": "미백은",
+            "start": 2.56,
+            "end": 2.98
+          },
+          {
+            "text": "나이아신아마이드,",
+            "start": 2.98,
+            "end": 4.64
+          },
+          {
+            "text": "주름은",
+            "start": 5,
+            "end": 5.62
+          },
+          {
+            "text": "아데노신.",
+            "start": 5.62,
+            "end": 6.75
+          },
+          {
+            "text": "둘",
+            "start": 6.86,
+            "end": 6.94
+          },
+          {
+            "text": "다",
+            "start": 6.94,
+            "end": 7.1
+          },
+          {
+            "text": "식약처",
+            "start": 7.1,
+            "end": 7.49
+          },
+          {
+            "text": "고시",
+            "start": 7.6,
+            "end": 7.9
+          },
+          {
+            "text": "성분입니다.",
+            "start": 7.9,
+            "end": 8.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "verdict",
+      "narration": "대신 아하 성분이라, 낮에는 자외선차단제를 꼭 같이 써야 합니다.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-usage.mp4",
+        "bgDim": 0.38,
+        "call": "낮에는 자외선차단제",
+        "reason": "아하 성분 제품의\n법정 주의사항입니다",
+        "reasonAt": "word:자외선차단제",
+        "highlight": [
+          "자외선차단제"
+        ]
+      },
+      "sfx": [
+        {
+          "name": "tone",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "5d39fd220a4f",
+        "start": 17.461,
+        "duration": 5.508,
+        "speechEnd": 5.288,
+        "words": [
+          {
+            "text": "대신",
+            "start": 0.04,
+            "end": 0.49
+          },
+          {
+            "text": "아하",
+            "start": 0.49,
+            "end": 0.98
+          },
+          {
+            "text": "성분이라,",
+            "start": 0.98,
+            "end": 1.75
+          },
+          {
+            "text": "낮에는",
+            "start": 2.14,
+            "end": 2.57
+          },
+          {
+            "text": "자외선차단제를",
+            "start": 2.57,
+            "end": 3.84
+          },
+          {
+            "text": "꼭",
+            "start": 3.98,
+            "end": 4.09
+          },
+          {
+            "text": "같이",
+            "start": 4.09,
+            "end": 4.36
+          },
+          {
+            "text": "써야",
+            "start": 4.46,
+            "end": 4.78
+          },
+          {
+            "text": "합니다.",
+            "start": 4.78,
+            "end": 5.18
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "cta-link",
+      "narration": "지금 할인 중이고 무료배송입니다. 구매처는 설명란에서 확인하세요.",
+      "productId": "p01",
+      "onScreen": {
+        "bgVideo": "media/p01-package.mp4",
+        "bgDim": 0.38,
+        "headline": "지금\n할인 중",
+        "action": "구매처는 설명란 확인",
+        "actionAt": "word:설명란",
+        "where": "35g · 무료배송",
+        "highlight": [
+          "할인"
+        ]
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "c3640334b673",
+        "start": 22.969,
+        "duration": 5.651,
+        "speechEnd": 5.431,
+        "words": [
+          {
+            "text": "지금",
+            "start": 0.12,
+            "end": 0.32
+          },
+          {
+            "text": "할인",
+            "start": 0.32,
+            "end": 0.64
+          },
+          {
+            "text": "중이고",
+            "start": 0.64,
+            "end": 1.08
+          },
+          {
+            "text": "무료배송입니다.",
+            "start": 1.17,
+            "end": 2.52
+          },
+          {
+            "text": "구매처는",
+            "start": 3.24,
+            "end": 3.76
+          },
+          {
+            "text": "설명란에서",
+            "start": 3.79,
+            "end": 4.51
+          },
+          {
+            "text": "확인하세요.",
+            "start": 4.72,
+            "end": 5.08
+          }
+        ]
+      }
+    }
+  ],
+  "shopType": "a",
+  "header": {
+    "kicker": "성분 확인법",
+    "title": "이중기능성이라고\n다 같은 거 아닙니다",
+    "badge": "식약처\n기능성"
+  },
+  "disclosure": {
+    "affiliate": "제휴 링크가 포함되어 있으며 구매 시 수수료를 받습니다",
+    "aiGenerated": "제품 영상은 AI로 생성되었습니다",
+    "source": "가격·스펙은 2026-09-22 기준",
+    "banner": ""
+  },
+  "links": [
+    {
+      "label": "상품 페이지",
+      "url": "https://naver.me/GuCpw2d7"
+    }
+  ],
+  "cards": {
+    "footer": "출처: 판매 페이지 · 2026-09-22 기준 · 제휴 링크 포함"
+  },
+  "caption": "이중기능성이라고 다 같은 거 아닙니다 — 미백·주름개선 식약처 이중기능성 크림 성분 확인법.\n\n미백은 나이아신아마이드, 주름개선은 아데노신. 둘 다 식약처 고시 성분입니다.\n아하 성분 제품이라 낮에는 자외선차단제를 함께 쓰세요.\n\n상품 페이지: https://naver.me/GuCpw2d7\n\n※ 제휴 링크가 포함되어 있으며 구매 시 수수료를 받습니다.\n※ 제품 영상은 AI로 생성되었습니다. 가격·스펙은 2026-09-22 기준입니다.",
+  "hashtags": [
+    "#이중기능성",
+    "#미백크림",
+    "#주름개선",
+    "#나이아신아마이드",
+    "#아데노신",
+    "#기능성화장품",
+    "#성분확인",
+    "#화장품성분",
+    "#아하바하",
+    "#스킨케어",
+    "#미백",
+    "#주름",
+    "#더마코스메틱",
+    "#크림추천",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "이중기능성이라고 다 같은 거 아닙니다",
+    "instagram": true,
+    "youtube": true
+  }
+}

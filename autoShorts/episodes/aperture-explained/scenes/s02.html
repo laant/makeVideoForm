@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0a0c10; }
+      :root {
+        --bg: #0a0c10; --fg: #f2f5f8; --accent: #7cc4ff; --muted: #9aa8b8;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* onScreen.bgImage: 배경 그림 + 글자 가독성용 그라데이션 (onScreen.bgDim 0~1 로 어둡기 조절) */
+      .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
+      .bgshade { position: absolute; inset: 0; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      .ap-head { font-size: 76px; font-weight: 900; line-height: 1.1; letter-spacing: -0.035em; white-space: pre-line; }
+  .ap-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .ap-fbox { position: relative; height: 112px; width: 100%; }
+  .ap-fval { position: absolute; inset: 0; text-align: center; font-size: 112px; font-weight: 900;
+             color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
+  .ap-note { font-size: 30px; font-weight: 700; color: var(--muted); text-align: center; }
+  .ap-action { align-self: center; padding: 26px 44px; border-radius: 26px; background: var(--accent);
+               color: #08121c; font-size: 50px; font-weight: 900; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:generated hash=782ef3543767 template=aperture -->
+    <div id="root" data-composition-id="s02" data-start="0" data-duration="6.143" data-width="1080" data-height="1920">
+      <div id="s02-bg" class="layer bg-layer clip" data-start="0" data-duration="6.143">
+        <img class="bgimg" src="media/bg-s02.png" alt="" />
+        <div class="bgshade" style="background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.75) 100%)"></div>
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s02-content" class="layer content clip" data-start="0" data-duration="6.143">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s02",
+  "template": "aperture",
+  "onScreen": {
+    "headline": "빛이 들어오는\n구멍",
+    "note": "가변 조리개는 이 크기를 바꾼다",
+    "noteAt": "word:가변",
+    "stopsAt": "word:구멍입니다.",
+    "highlight": [
+      "크기를"
+    ],
+    "bgImage": "media/bg-s02.png",
+    "bgDim": 0.5
+  },
+  "highlight": [
+    "크기를"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "조리개는",
+      "start": 0.06,
+      "end": 0.75
+    },
+    {
+      "text": "빛이",
+      "start": 0.77,
+      "end": 1.3
+    },
+    {
+      "text": "들어오는",
+      "start": 1.3,
+      "end": 2.08
+    },
+    {
+      "text": "구멍입니다.",
+      "start": 2.08,
+      "end": 3
+    },
+    {
+      "text": "가변",
+      "start": 3.3,
+      "end": 3.66
+    },
+    {
+      "text": "조리개는",
+      "start": 3.71,
+      "end": 4.3
+    },
+    {
+      "text": "그",
+      "start": 4.3,
+      "end": 4.39
+    },
+    {
+      "text": "크기를",
+      "start": 4.49,
+      "end": 4.7
+    },
+    {
+      "text": "바꿉니다.",
+      "start": 4.7,
+      "end": 5.3
+    }
+  ],
+  "speechEnd": 5.603,
+  "duration": 5.843,
+  "renderDuration": 6.143,
+  "globalStart": 3.958,
+  "total": 49.235
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /**
+         * 규정 태극기 SVG (행정안전부 도안: 3:2, 태극 지름=세로/2, 괘 길이 D/2·두께 D/12·간격 D/24,
+         * 태극-괘 거리 D/4, 작은 원 중심은 건-곤 대각선 위(빨강 좌상·파랑 우하), 건 좌상·감 우상·리 좌하·곤 우하)
+         */
+        taegukgi(parent, width) {
+          const NS = "http://www.w3.org/2000/svg";
+          const mk = (tag, attrs, into) => {
+            const e = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+            if (into) into.appendChild(e);
+            return e;
+          };
+          const W = width, Hh = (width * 2) / 3, D = Hh / 2, r = D / 2;
+          const a = (Math.atan2(Hh, W) * 180) / Math.PI;
+          const svg = mk("svg", { width: W, height: Hh, viewBox: `0 0 ${W} ${Hh}`, class: "taegukgi" }, parent);
+          mk("rect", { width: W, height: Hh, fill: "#fff" }, svg);
+          const tg = mk("g", { transform: `translate(${W / 2},${Hh / 2}) rotate(${a})` }, svg);
+          mk("circle", { r, fill: "#0047A0" }, tg);
+          mk("path", { d: `M ${-r} 0 A ${r} ${r} 0 0 1 ${r} 0 Z`, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: -r / 2, r: r / 2, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: r / 2, r: r / 2, fill: "#0047A0" }, tg);
+          const L = D / 2, th = D / 12, g = D / 24, dist = r + D / 4 + D / 6;
+          const rad = (a * Math.PI) / 180;
+          // [괘, 방향(x,y), 막대 회전] — split=true 인 효는 가운데가 끊긴 음효
+          const gwae = [
+            [[false, false, false], -1, -1, a + 90], // 건 좌상
+            [[true, true, true], 1, 1, a + 90], // 곤 우하
+            [[true, false, true], 1, -1, -a + 90], // 감 우상
+            [[false, true, false], -1, 1, -a + 90], // 리 좌하
+          ];
+          for (const [lines, sx, sy, rot] of gwae) {
+            const cg = mk("g", { transform: `translate(${W / 2 + sx * Math.cos(rad) * dist},${Hh / 2 + sy * Math.sin(rad) * dist}) rotate(${rot})` }, svg);
+            lines.forEach((split, i) => {
+              const y = (i - 1) * (th + g) - th / 2;
+              if (!split) mk("rect", { x: -L / 2, y, width: L, height: th, fill: "#000" }, cg);
+              else {
+                const half = (L - g) / 2;
+                mk("rect", { x: -L / 2, y, width: half, height: th, fill: "#000" }, cg);
+                mk("rect", { x: g / 2, y, width: half, height: th, fill: "#000" }, cg);
+              }
+            });
+          }
+          return svg;
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // 배경 그림: 느린 줌 인 (Ken Burns)
+      const bgImg = document.querySelector(".bgimg");
+      if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      const o = S.onScreen;
+  if (o.headline) {
+    const h = H.el("div", "ap-head", o.headline, stage);
+    tl.fromTo(h, { scale: 1.1, y: 22 }, { scale: 1, y: 0, duration: 0.4, ease: "power4.out" }, 0);
+  }
+  const wrap = H.el("div", "ap-wrap", null, stage);
+  const NS = "http://www.w3.org/2000/svg";
+  const SZ = 430, R = 175, BLADES = o.blades ?? 6, TURN = 0.55;
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("width", SZ); svg.setAttribute("height", SZ);
+  svg.setAttribute("viewBox", `${-SZ / 2} ${-SZ / 2} ${SZ} ${SZ}`);
+  wrap.appendChild(svg);
+  const mk = (t, a, into) => {
+    const e = document.createElementNS(NS, t);
+    for (const [k, v] of Object.entries(a)) e.setAttribute(k, v);
+    (into || svg).appendChild(e); return e;
+  };
+  const hexPts = (r, rot) => Array.from({ length: BLADES }, (_, i) => {
+    const a = (Math.PI * 2 * i) / BLADES + rot;
+    return [r * Math.cos(a), r * Math.sin(a)];
+  });
+  const ringPath = (r, rot) => {
+    const outer = `M ${R} 0 A ${R} ${R} 0 1 0 ${-R} 0 A ${R} ${R} 0 1 0 ${R} 0 Z`;
+    const inner = hexPts(r, rot).map((pt, i) => `${i ? "L" : "M"} ${pt[0].toFixed(1)} ${pt[1].toFixed(1)}`).join(" ") + " Z";
+    return outer + " " + inner;
+  };
+  mk("circle", { r: R + 18, fill: "none", stroke: "rgba(255,255,255,0.22)", "stroke-width": 7 });
+  const iris = mk("path", { d: ringPath(R * 0.86, 0), "fill-rule": "evenodd", fill: "rgba(206,222,238,0.94)" });
+  const seams = Array.from({ length: BLADES }, () =>
+    mk("line", { x1: 0, y1: 0, x2: 0, y2: 0, stroke: "rgba(10,14,20,0.55)", "stroke-width": 3 }));
+
+  const state = { k: 0 };
+  const apply = () => {
+    const r = R * (0.86 - 0.66 * state.k), rot = TURN * state.k;
+    iris.setAttribute("d", ringPath(r, rot));
+    hexPts(r, rot).forEach((pt, i) => {
+      const a = (Math.PI * 2 * i) / BLADES + rot;
+      seams[i].setAttribute("x1", pt[0].toFixed(1)); seams[i].setAttribute("y1", pt[1].toFixed(1));
+      seams[i].setAttribute("x2", (R * Math.cos(a)).toFixed(1)); seams[i].setAttribute("y2", (R * Math.sin(a)).toFixed(1));
+    });
+  };
+  apply();
+
+  if (o.stops && o.stops.length) {
+    // 라벨은 미리 만들어 opacity 로 전환한다 — tl.call 은 HyperFrames 의 seek 렌더에서 억제된다
+    const fbox = H.el("div", "ap-fbox", null, wrap);
+    const labels = o.stops.map((st) => H.el("div", "ap-fval", st.label, fbox));
+    labels.forEach((el, i) => tl.set(el, { opacity: i === 0 ? 1 : 0 }, 0));
+    const t0 = H.at(o.stopsAt, 1.2);
+    const endAt = o.action ? H.at(o.actionAt, S.speechEnd - 1.4) : S.speechEnd - 0.3;
+    const span = Math.max(1.8, endAt - t0 - 0.3);
+    o.stops.forEach((st, i) => {
+      const at = t0 + (span * i) / Math.max(1, o.stops.length - 1);
+      tl.to(state, { k: st.k, duration: 0.36, ease: "power2.inOut", onUpdate: apply }, at);
+      if (i > 0) { tl.set(labels[i - 1], { opacity: 0 }, at); tl.set(labels[i], { opacity: 1 }, at); }
+    });
+  } else if (o.breathe !== false) {
+    // 개념 설명용: 천천히 조였다 열린다 — "크기를 바꾼다"를 한 번에 보여준다
+    const t0 = H.at(o.stopsAt, 0.6);
+    const half = Math.max(0.9, (S.speechEnd - t0 - 0.4) / 2);
+    tl.to(state, { k: 0.85, duration: half, ease: "power2.inOut", onUpdate: apply }, t0);
+    tl.to(state, { k: 0.05, duration: half, ease: "power2.inOut", onUpdate: apply }, t0 + half);
+  }
+  if (o.note) {
+    const n = H.el("div", "ap-note", o.note, wrap);
+    tl.fromTo(n, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, H.at(o.noteAt, 0.9));
+  }
+  if (o.action) {
+    const a = H.el("div", "ap-action", o.action, stage);
+    tl.fromTo(a, { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2.2)" },
+              H.at(o.actionAt, S.speechEnd - 1.4));
+  }
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s02"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

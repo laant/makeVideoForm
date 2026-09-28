@@ -1,0 +1,554 @@
+{
+  "slug": "aperture-return",
+  "topic": "삼성이 버린 가변 조리개를 애플이 8년 뒤에 넣은 이유",
+  "audience": "스마트폰 카메라 스펙을 챙겨 보는 테크 관심 시청자",
+  "tone": "차분한 설명체. 스펙 나열이 아니라 '왜'를 설명한다",
+  "cta": "자세한 건 설명란",
+  "reference": {
+    "url": "https://blog.naver.com/hot-signal/224415394697",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "훅(반전 단정) → 타임라인 → 왜 버렸나 → 왜 돌아왔나(반전) → 4단계 + CTA",
+    "notes": "테크시그널 블로그 '아이폰 18프로/맥스의 핵심 가변조리개' 기반. 블로그의 '삼성이 세계 최초' 주장은 부정확(2009 노키아 N86이 선행)하여 최초 표현은 쓰지 않고 연도 사실만 사용. 아이폰 18 Pro 4단 조리개 f/1.48·f/1.8·f/2.8·f/4.0 및 블레이드 6장은 2026-09-22 웹 검증(Apple 발표 9/9, 출시 9/18)."
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#0a0c10",
+    "fg": "#f2f5f8",
+    "accent": "#7cc4ff",
+    "muted": "#9aa8b8"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.24,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "삼성이 버린 기술을, 애플이 팔 년 뒤에 넣었습니다.",
+      "onScreen": {
+        "kicker": "아이폰 18 프로",
+        "title": "삼성이 버린 기술\n애플이 넣었다",
+        "subtitle": "가변 조리개",
+        "subtitleAt": "word:넣었습니다.",
+        "highlight": [
+          "버린"
+        ],
+        "bgImage": "media/bg-s01.png",
+        "bgDim": 0.3
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "a8916257cc56",
+        "start": 0,
+        "duration": 4.052,
+        "speechEnd": 3.812,
+        "words": [
+          {
+            "text": "삼성이",
+            "start": 0.07,
+            "end": 0.42
+          },
+          {
+            "text": "버린",
+            "start": 0.42,
+            "end": 0.98
+          },
+          {
+            "text": "기술을,",
+            "start": 0.98,
+            "end": 1.4
+          },
+          {
+            "text": "애플이",
+            "start": 1.4,
+            "end": 1.82
+          },
+          {
+            "text": "팔",
+            "start": 1.89,
+            "end": 2.24
+          },
+          {
+            "text": "년",
+            "start": 2.24,
+            "end": 2.36
+          },
+          {
+            "text": "뒤에",
+            "start": 2.47,
+            "end": 2.66
+          },
+          {
+            "text": "넣었습니다.",
+            "start": 2.66,
+            "end": 3.35
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "list",
+      "narration": "이천십팔 년 갤럭시 에스나인에 두 단계 가변 조리개가 들어갔고, 이천이십 년에 사라졌습니다.",
+      "onScreen": {
+        "heading": "사라진 기능",
+        "items": [
+          {
+            "text": "2018  갤럭시 S9 · 2단계",
+            "at": "word:갤럭시"
+          },
+          {
+            "text": "2020  갤럭시 S20에서 폐지",
+            "at": "word:사라졌습니다."
+          }
+        ],
+        "highlight": [
+          "두 단계",
+          "사라졌습니다"
+        ],
+        "bgImage": "media/bg-s02.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:갤럭시",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "def43d485e2f",
+        "start": 4.052,
+        "duration": 7.396,
+        "speechEnd": 7.156,
+        "words": [
+          {
+            "text": "이천십팔",
+            "start": 0.05,
+            "end": 1.34
+          },
+          {
+            "text": "년",
+            "start": 1.34,
+            "end": 1.45
+          },
+          {
+            "text": "갤럭시",
+            "start": 1.45,
+            "end": 2.22
+          },
+          {
+            "text": "에스나인에",
+            "start": 2.22,
+            "end": 2.76
+          },
+          {
+            "text": "두",
+            "start": 2.85,
+            "end": 2.92
+          },
+          {
+            "text": "단계",
+            "start": 2.92,
+            "end": 3.16
+          },
+          {
+            "text": "가변",
+            "start": 3.16,
+            "end": 3.66
+          },
+          {
+            "text": "조리개가",
+            "start": 3.66,
+            "end": 4.44
+          },
+          {
+            "text": "들어갔고,",
+            "start": 4.44,
+            "end": 5.24
+          },
+          {
+            "text": "이천이십",
+            "start": 5.29,
+            "end": 6.33
+          },
+          {
+            "text": "년에",
+            "start": 6.33,
+            "end": 6.51
+          },
+          {
+            "text": "사라졌습니다.",
+            "start": 6.51,
+            "end": 7.22
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "list",
+      "narration": "센서가 커지면서 모터와 날개를 넣을 자리가 없었고, 어두운 곳은 소프트웨어가 대신했습니다.",
+      "onScreen": {
+        "heading": "왜 버렸나",
+        "items": [
+          {
+            "text": "커진 센서에 구동부를 넣을 공간 부족",
+            "at": "word:자리가"
+          },
+          {
+            "text": "픽셀 비닝·야간 합성이 대체",
+            "at": "word:소프트웨어가"
+          }
+        ],
+        "highlight": [
+          "자리가 없었고"
+        ],
+        "bgImage": "media/bg-s03.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "tone",
+          "at": "word:소프트웨어가",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "45c9c81f5ee3",
+        "start": 11.448,
+        "duration": 7.097,
+        "speechEnd": 6.857,
+        "words": [
+          {
+            "text": "센서가",
+            "start": 0.13,
+            "end": 0.71
+          },
+          {
+            "text": "커지면서",
+            "start": 0.71,
+            "end": 1.58
+          },
+          {
+            "text": "모터와",
+            "start": 1.58,
+            "end": 2
+          },
+          {
+            "text": "날개를",
+            "start": 2,
+            "end": 2.43
+          },
+          {
+            "text": "넣을",
+            "start": 2.43,
+            "end": 2.71
+          },
+          {
+            "text": "자리가",
+            "start": 2.71,
+            "end": 3.39
+          },
+          {
+            "text": "없었고,",
+            "start": 3.55,
+            "end": 3.72
+          },
+          {
+            "text": "어두운",
+            "start": 4.13,
+            "end": 4.7
+          },
+          {
+            "text": "곳은",
+            "start": 4.7,
+            "end": 4.98
+          },
+          {
+            "text": "소프트웨어가",
+            "start": 4.98,
+            "end": 6.1
+          },
+          {
+            "text": "대신했습니다.",
+            "start": 6.1,
+            "end": 6.99
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "title",
+      "narration": "그런데 센서가 더 커지자, 초점이 맞는 구간이 너무 얕아졌습니다. 소프트웨어는 흐리게는 만들어도, 흐린 걸 선명하게 되돌리지는 못합니다.",
+      "onScreen": {
+        "kicker": "왜 돌아왔나",
+        "title": "흐리게는 만들어도\n되돌리진 못한다",
+        "subtitle": "얕아진 심도는 소프트웨어로 복구되지 않는다",
+        "subtitleAt": "word:되돌리지는",
+        "highlight": [
+          "되돌리진"
+        ],
+        "bgImage": "media/bg-s04.png",
+        "bgDim": 0.3
+      },
+      "sfx": [
+        {
+          "name": "impact",
+          "at": "word:못합니다.",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "a97a7c8ed90c",
+        "start": 18.545,
+        "duration": 10.574,
+        "speechEnd": 10.334,
+        "words": [
+          {
+            "text": "그런데",
+            "start": 0.05,
+            "end": 0.54
+          },
+          {
+            "text": "센서가",
+            "start": 0.54,
+            "end": 1.41
+          },
+          {
+            "text": "더",
+            "start": 1.41,
+            "end": 1.58
+          },
+          {
+            "text": "커지자,",
+            "start": 1.64,
+            "end": 2.16
+          },
+          {
+            "text": "초점이",
+            "start": 2.25,
+            "end": 2.64
+          },
+          {
+            "text": "맞는",
+            "start": 2.64,
+            "end": 2.97
+          },
+          {
+            "text": "구간이",
+            "start": 2.97,
+            "end": 3.48
+          },
+          {
+            "text": "너무",
+            "start": 3.48,
+            "end": 3.78
+          },
+          {
+            "text": "얕아졌습니다.",
+            "start": 3.78,
+            "end": 4.49
+          },
+          {
+            "text": "소프트웨어는",
+            "start": 5.42,
+            "end": 5.91
+          },
+          {
+            "text": "흐리게는",
+            "start": 5.91,
+            "end": 7
+          },
+          {
+            "text": "만들어도,",
+            "start": 7.06,
+            "end": 7.74
+          },
+          {
+            "text": "흐린",
+            "start": 7.74,
+            "end": 8.28
+          },
+          {
+            "text": "걸",
+            "start": 8.28,
+            "end": 8.37
+          },
+          {
+            "text": "선명하게",
+            "start": 8.37,
+            "end": 8.91
+          },
+          {
+            "text": "되돌리지는",
+            "start": 8.91,
+            "end": 9.68
+          },
+          {
+            "text": "못합니다.",
+            "start": 9.74,
+            "end": 10.07
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "cta",
+      "narration": "그래서 물리 조리개가 돌아왔습니다. 아이폰 십팔 프로는 네 단계입니다. 자세한 건 아래 설명란을 참고하세요.",
+      "onScreen": {
+        "headline": "네 단계로\n돌아왔다",
+        "action": "자세한 건 설명란에",
+        "actionAt": "word:자세한",
+        "highlight": [
+          "네 단계"
+        ],
+        "bgImage": "media/bg-s05.png",
+        "bgDim": 0.55
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "afa5bbc86395",
+        "start": 29.119,
+        "duration": 8.509,
+        "speechEnd": 8.269,
+        "words": [
+          {
+            "text": "그래서",
+            "start": 0.04,
+            "end": 0.37
+          },
+          {
+            "text": "물리",
+            "start": 0.37,
+            "end": 0.87
+          },
+          {
+            "text": "조리개가",
+            "start": 0.87,
+            "end": 1.59
+          },
+          {
+            "text": "돌아왔습니다.",
+            "start": 1.61,
+            "end": 2.27
+          },
+          {
+            "text": "아이폰",
+            "start": 2.84,
+            "end": 3.03
+          },
+          {
+            "text": "십팔",
+            "start": 3.03,
+            "end": 3.87
+          },
+          {
+            "text": "프로는",
+            "start": 3.89,
+            "end": 4.29
+          },
+          {
+            "text": "네",
+            "start": 4.34,
+            "end": 4.75
+          },
+          {
+            "text": "단계입니다.",
+            "start": 4.75,
+            "end": 5.08
+          },
+          {
+            "text": "자세한",
+            "start": 5.8,
+            "end": 5.95
+          },
+          {
+            "text": "건",
+            "start": 5.95,
+            "end": 6.04
+          },
+          {
+            "text": "아래",
+            "start": 6.12,
+            "end": 6.69
+          },
+          {
+            "text": "설명란을",
+            "start": 6.73,
+            "end": 7.6
+          },
+          {
+            "text": "참고하세요.",
+            "start": 7.6,
+            "end": 8.07
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "출처: Apple 공식 사양 · 2026-09-22 확인 기준"
+  },
+  "caption": "삼성이 버린 가변 조리개를 애플이 8년 뒤에 넣은 이유\n\n2018년 갤럭시 S9에 2단계 가변 조리개(f/1.5↔f/2.4)가 들어갔지만 2020년 갤럭시 S20에서 빠졌습니다.\n센서가 커지며 구동부를 넣을 공간이 부족했고, 저조도는 픽셀 비닝과 야간 다중 프레임 합성이 대신했기 때문입니다.\n\n그런데 센서가 더 커지자 피사계 심도가 지나치게 얕아졌습니다. 배경을 흐리게 만드는 것은 소프트웨어로 가능하지만, 이미 초점이 빗나가 흐리게 찍힌 원본을 선명하게 되돌리는 것은 불가능합니다.\n\n아이폰 18 Pro의 48MP 메인 카메라는 f/1.48 · f/1.8(기본) · f/2.8 · f/4.0 네 단계를 지원하며, 레이저로 자른 블레이드 6장이 조리개를 여닫습니다. (2026년 9월 9일 공개, 9월 18일 출시)\n\n참고 글: https://blog.naver.com/hot-signal/224415394697",
+  "hashtags": [
+    "#아이폰18프로",
+    "#가변조리개",
+    "#아이폰",
+    "#갤럭시",
+    "#스마트폰카메라",
+    "#카메라",
+    "#테크",
+    "#IT",
+    "#애플",
+    "#삼성",
+    "#사진",
+    "#조리개",
+    "#스펙비교",
+    "#전자기기",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "삼성이 버린 기술, 애플이 8년 뒤에 넣었습니다",
+    "instagram": false,
+    "youtube": false
+  }
+}

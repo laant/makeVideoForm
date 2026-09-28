@@ -1,0 +1,88 @@
+<!-- aperture: 조리개 날개. onScreen: { headline?, note?, breathe?, stops?, stopsAt?, action?, actionAt? }
+     실제 조리개는 바깥 지름이 고정되고 가운데 구멍만 좁아진다 → 바깥 원에서 안쪽 육각 구멍을 evenodd 로 빼고
+     구멍 반지름만 애니메이션한다. blades 기본 6장(아이폰 18 프로 공식 사양).
+     breathe: 천천히 열고 닫기(개념 설명용) / stops: [{label, k}] 단계 전환(k 0=개방 1=조임) -->
+<style>
+  .ap-head { font-size: 76px; font-weight: 900; line-height: 1.1; letter-spacing: -0.035em; white-space: pre-line; }
+  .ap-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .ap-fbox { position: relative; height: 112px; width: 100%; }
+  .ap-fval { position: absolute; inset: 0; text-align: center; font-size: 112px; font-weight: 900;
+             color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
+  .ap-note { font-size: 30px; font-weight: 700; color: var(--muted); text-align: center; }
+  .ap-action { align-self: center; padding: 26px 44px; border-radius: 26px; background: var(--accent);
+               color: #08121c; font-size: 50px; font-weight: 900; text-align: center; }
+</style>
+<script>
+  const o = S.onScreen;
+  if (o.headline) {
+    const h = H.el("div", "ap-head", o.headline, stage);
+    tl.fromTo(h, { scale: 1.1, y: 22 }, { scale: 1, y: 0, duration: 0.4, ease: "power4.out" }, 0);
+  }
+  const wrap = H.el("div", "ap-wrap", null, stage);
+  const NS = "http://www.w3.org/2000/svg";
+  const SZ = 430, R = 175, BLADES = o.blades ?? 6, TURN = 0.55;
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("width", SZ); svg.setAttribute("height", SZ);
+  svg.setAttribute("viewBox", `${-SZ / 2} ${-SZ / 2} ${SZ} ${SZ}`);
+  wrap.appendChild(svg);
+  const mk = (t, a, into) => {
+    const e = document.createElementNS(NS, t);
+    for (const [k, v] of Object.entries(a)) e.setAttribute(k, v);
+    (into || svg).appendChild(e); return e;
+  };
+  const hexPts = (r, rot) => Array.from({ length: BLADES }, (_, i) => {
+    const a = (Math.PI * 2 * i) / BLADES + rot;
+    return [r * Math.cos(a), r * Math.sin(a)];
+  });
+  const ringPath = (r, rot) => {
+    const outer = `M ${R} 0 A ${R} ${R} 0 1 0 ${-R} 0 A ${R} ${R} 0 1 0 ${R} 0 Z`;
+    const inner = hexPts(r, rot).map((pt, i) => `${i ? "L" : "M"} ${pt[0].toFixed(1)} ${pt[1].toFixed(1)}`).join(" ") + " Z";
+    return outer + " " + inner;
+  };
+  mk("circle", { r: R + 18, fill: "none", stroke: "rgba(255,255,255,0.22)", "stroke-width": 7 });
+  const iris = mk("path", { d: ringPath(R * 0.86, 0), "fill-rule": "evenodd", fill: "rgba(206,222,238,0.94)" });
+  const seams = Array.from({ length: BLADES }, () =>
+    mk("line", { x1: 0, y1: 0, x2: 0, y2: 0, stroke: "rgba(10,14,20,0.55)", "stroke-width": 3 }));
+
+  const state = { k: 0 };
+  const apply = () => {
+    const r = R * (0.86 - 0.66 * state.k), rot = TURN * state.k;
+    iris.setAttribute("d", ringPath(r, rot));
+    hexPts(r, rot).forEach((pt, i) => {
+      const a = (Math.PI * 2 * i) / BLADES + rot;
+      seams[i].setAttribute("x1", pt[0].toFixed(1)); seams[i].setAttribute("y1", pt[1].toFixed(1));
+      seams[i].setAttribute("x2", (R * Math.cos(a)).toFixed(1)); seams[i].setAttribute("y2", (R * Math.sin(a)).toFixed(1));
+    });
+  };
+  apply();
+
+  if (o.stops && o.stops.length) {
+    // 라벨은 미리 만들어 opacity 로 전환한다 — tl.call 은 HyperFrames 의 seek 렌더에서 억제된다
+    const fbox = H.el("div", "ap-fbox", null, wrap);
+    const labels = o.stops.map((st) => H.el("div", "ap-fval", st.label, fbox));
+    labels.forEach((el, i) => tl.set(el, { opacity: i === 0 ? 1 : 0 }, 0));
+    const t0 = H.at(o.stopsAt, 1.2);
+    const endAt = o.action ? H.at(o.actionAt, S.speechEnd - 1.4) : S.speechEnd - 0.3;
+    const span = Math.max(1.8, endAt - t0 - 0.3);
+    o.stops.forEach((st, i) => {
+      const at = t0 + (span * i) / Math.max(1, o.stops.length - 1);
+      tl.to(state, { k: st.k, duration: 0.36, ease: "power2.inOut", onUpdate: apply }, at);
+      if (i > 0) { tl.set(labels[i - 1], { opacity: 0 }, at); tl.set(labels[i], { opacity: 1 }, at); }
+    });
+  } else if (o.breathe !== false) {
+    // 개념 설명용: 천천히 조였다 열린다 — "크기를 바꾼다"를 한 번에 보여준다
+    const t0 = H.at(o.stopsAt, 0.6);
+    const half = Math.max(0.9, (S.speechEnd - t0 - 0.4) / 2);
+    tl.to(state, { k: 0.85, duration: half, ease: "power2.inOut", onUpdate: apply }, t0);
+    tl.to(state, { k: 0.05, duration: half, ease: "power2.inOut", onUpdate: apply }, t0 + half);
+  }
+  if (o.note) {
+    const n = H.el("div", "ap-note", o.note, wrap);
+    tl.fromTo(n, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, H.at(o.noteAt, 0.9));
+  }
+  if (o.action) {
+    const a = H.el("div", "ap-action", o.action, stage);
+    tl.fromTo(a, { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(2.2)" },
+              H.at(o.actionAt, S.speechEnd - 1.4));
+  }
+</script>

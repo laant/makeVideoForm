@@ -1,0 +1,696 @@
+{
+  "slug": "aperture-explained",
+  "topic": "가변 조리개 — 뭔지, 왜 버렸고, 왜 돌아왔는지",
+  "audience": "아이폰 18 프로 카메라 변화가 궁금한 일반 시청자 (조리개를 몰라도 따라올 수 있게)",
+  "tone": "차분한 설명체. 개념 → 트레이드오프 → 역사 → 결론 순으로 쌓는다",
+  "cta": "자세한 건 설명란",
+  "reference": {
+    "url": "https://blog.naver.com/hot-signal/224415394697",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "훅(반전) → 조리개란 → 트레이드오프 → 왜 버렸나 → 왜 돌아왔나 → 4단계+CTA",
+    "notes": "12번(aperture-return)의 역사·반전 구조에, 원글 제작자 영상(41.2초)의 강점인 '개념 정의 → 트레이드오프 → 실사용 예시'를 합친 판. 원본 영상은 Apple 공식 마케팅 이미지·샘플 사진을 사용하나 저작권상 차용하지 않고 조리개 SVG + OpenMontage 생성 배경으로 대체한다. 원본 나레이션은 질문형 훅('왜 움직이게 했을까요?')이라 가이드(질문형 금지)에 맞춰 단정문으로 교체. f/1.48·1.8·2.8·4.0 및 블레이드 6장은 Apple 공식 사양(2026-09-22 검증)."
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#0a0c10",
+    "fg": "#f2f5f8",
+    "accent": "#7cc4ff",
+    "muted": "#9aa8b8"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.24,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "삼성이 버린 기술을, 애플이 팔 년 뒤에 넣었습니다.",
+      "onScreen": {
+        "kicker": "아이폰 18 프로",
+        "title": "삼성이 버린 기술\n애플이 넣었다",
+        "subtitle": "가변 조리개",
+        "subtitleAt": "word:넣었습니다.",
+        "highlight": [
+          "버린"
+        ],
+        "bgImage": "media/bg-s01.png",
+        "bgDim": 0.3
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "a8916257cc56",
+        "start": 0,
+        "duration": 3.958,
+        "speechEnd": 3.718,
+        "words": [
+          {
+            "text": "삼성이",
+            "start": 0.11,
+            "end": 0.46
+          },
+          {
+            "text": "버린",
+            "start": 0.46,
+            "end": 1.08
+          },
+          {
+            "text": "기술을,",
+            "start": 1.08,
+            "end": 1.42
+          },
+          {
+            "text": "애플이",
+            "start": 1.68,
+            "end": 1.87
+          },
+          {
+            "text": "팔",
+            "start": 2.04,
+            "end": 2.45
+          },
+          {
+            "text": "년",
+            "start": 2.45,
+            "end": 2.6
+          },
+          {
+            "text": "뒤에",
+            "start": 2.6,
+            "end": 2.91
+          },
+          {
+            "text": "넣었습니다.",
+            "start": 2.91,
+            "end": 3.64
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "aperture",
+      "narration": "조리개는 빛이 들어오는 구멍입니다. 가변 조리개는 그 크기를 바꿉니다.",
+      "onScreen": {
+        "headline": "빛이 들어오는\n구멍",
+        "note": "가변 조리개는 이 크기를 바꾼다",
+        "noteAt": "word:가변",
+        "stopsAt": "word:구멍입니다.",
+        "highlight": [
+          "크기를"
+        ],
+        "bgImage": "media/bg-s02.png",
+        "bgDim": 0.5
+      },
+      "sfx": [
+        {
+          "name": "tone",
+          "at": "word:가변",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "e839cb0ceb57",
+        "start": 3.958,
+        "duration": 5.843,
+        "speechEnd": 5.603,
+        "words": [
+          {
+            "text": "조리개는",
+            "start": 0.06,
+            "end": 0.75
+          },
+          {
+            "text": "빛이",
+            "start": 0.77,
+            "end": 1.3
+          },
+          {
+            "text": "들어오는",
+            "start": 1.3,
+            "end": 2.08
+          },
+          {
+            "text": "구멍입니다.",
+            "start": 2.08,
+            "end": 3
+          },
+          {
+            "text": "가변",
+            "start": 3.3,
+            "end": 3.66
+          },
+          {
+            "text": "조리개는",
+            "start": 3.71,
+            "end": 4.3
+          },
+          {
+            "text": "그",
+            "start": 4.3,
+            "end": 4.39
+          },
+          {
+            "text": "크기를",
+            "start": 4.49,
+            "end": 4.7
+          },
+          {
+            "text": "바꿉니다.",
+            "start": 4.7,
+            "end": 5.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "compare",
+      "narration": "크게 열면 빛이 많이 들어오고 배경이 흐려집니다. 조이면 앞뒤가 선명해지는 대신 빛이 줍니다.",
+      "onScreen": {
+        "heading": "열거나, 조이거나",
+        "left": {
+          "label": "열면",
+          "items": [
+            "빛이 많다",
+            "배경이 흐려진다"
+          ]
+        },
+        "right": {
+          "label": "조이면",
+          "items": [
+            "앞뒤가 선명하다",
+            "빛이 준다"
+          ]
+        },
+        "rightAt": "word:조이면",
+        "verdict": "둘 다 가질 수는 없다",
+        "highlight": [
+          "흐려집니다",
+          "줍니다"
+        ],
+        "bgImage": "media/bg-s03.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:조이면",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "a95e07f6978f",
+        "start": 9.801,
+        "duration": 8.215,
+        "speechEnd": 7.975,
+        "words": [
+          {
+            "text": "크게",
+            "start": 0.04,
+            "end": 0.26
+          },
+          {
+            "text": "열면",
+            "start": 0.27,
+            "end": 0.81
+          },
+          {
+            "text": "빛이",
+            "start": 0.81,
+            "end": 1.33
+          },
+          {
+            "text": "많이",
+            "start": 1.34,
+            "end": 1.61
+          },
+          {
+            "text": "들어오고",
+            "start": 1.61,
+            "end": 2.37
+          },
+          {
+            "text": "배경이",
+            "start": 2.55,
+            "end": 2.81
+          },
+          {
+            "text": "흐려집니다.",
+            "start": 2.81,
+            "end": 3.69
+          },
+          {
+            "text": "조이면",
+            "start": 4.42,
+            "end": 4.42
+          },
+          {
+            "text": "앞뒤가",
+            "start": 4.46,
+            "end": 5.1
+          },
+          {
+            "text": "선명해지는",
+            "start": 5.1,
+            "end": 6.5
+          },
+          {
+            "text": "대신",
+            "start": 6.59,
+            "end": 6.79
+          },
+          {
+            "text": "빛이",
+            "start": 6.97,
+            "end": 7.34
+          },
+          {
+            "text": "줍니다.",
+            "start": 7.34,
+            "end": 7.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "list",
+      "narration": "삼성은 이천십팔 년에 넣었다가 이천이십 년에 뺐습니다. 센서가 커지면서 넣을 자리가 없었고, 어두운 곳은 소프트웨어가 대신했습니다.",
+      "onScreen": {
+        "heading": "왜 버렸나",
+        "items": [
+          {
+            "text": "2018 갤럭시 S9 → 2020 폐지",
+            "at": "word:뺐습니다."
+          },
+          {
+            "text": "커진 센서에 구동부 넣을 공간 부족",
+            "at": "word:자리가"
+          },
+          {
+            "text": "픽셀 비닝·야간 합성이 대체",
+            "at": "word:소프트웨어가"
+          }
+        ],
+        "highlight": [
+          "뺐습니다"
+        ],
+        "bgImage": "media/bg-s04.png",
+        "bgDim": 0.32
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "665c631bcd0e",
+        "start": 18.016,
+        "duration": 10.839,
+        "speechEnd": 10.599,
+        "words": [
+          {
+            "text": "삼성은",
+            "start": 0.1,
+            "end": 0.36
+          },
+          {
+            "text": "이천십팔",
+            "start": 0.36,
+            "end": 1.84
+          },
+          {
+            "text": "년에",
+            "start": 1.84,
+            "end": 2.08
+          },
+          {
+            "text": "넣었다가",
+            "start": 2.08,
+            "end": 2.41
+          },
+          {
+            "text": "이천이십",
+            "start": 2.75,
+            "end": 3.65
+          },
+          {
+            "text": "년에",
+            "start": 3.71,
+            "end": 3.78
+          },
+          {
+            "text": "뺐습니다.",
+            "start": 3.9,
+            "end": 4.23
+          },
+          {
+            "text": "센서가",
+            "start": 5.14,
+            "end": 5.19
+          },
+          {
+            "text": "커지면서",
+            "start": 5.24,
+            "end": 6.06
+          },
+          {
+            "text": "넣을",
+            "start": 6.18,
+            "end": 6.41
+          },
+          {
+            "text": "자리가",
+            "start": 6.5,
+            "end": 7.31
+          },
+          {
+            "text": "없었고,",
+            "start": 7.38,
+            "end": 7.92
+          },
+          {
+            "text": "어두운",
+            "start": 7.92,
+            "end": 8.46
+          },
+          {
+            "text": "곳은",
+            "start": 8.47,
+            "end": 8.69
+          },
+          {
+            "text": "소프트웨어가",
+            "start": 8.69,
+            "end": 9.39
+          },
+          {
+            "text": "대신했습니다.",
+            "start": 9.55,
+            "end": 10.23
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "그런데 센서가 더 커지자, 가까운 음식이나 여러 줄 단체 사진에서 뒤가 날아갔습니다. 흐리게는 만들어도, 흐린 걸 선명하게 되돌리진 못합니다.",
+      "onScreen": {
+        "kicker": "왜 돌아왔나",
+        "title": "흐리게는 만들어도\n되돌리진 못한다",
+        "subtitle": "가까운 음식 · 여러 줄 단체 사진에서 티가 난다",
+        "subtitleAt": "word:단체",
+        "highlight": [
+          "되돌리진"
+        ],
+        "bgImage": "media/bg-s05.png",
+        "bgDim": 0.3
+      },
+      "sfx": [
+        {
+          "name": "impact",
+          "at": "word:못합니다.",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "61f00e32dfd1",
+        "start": 28.855,
+        "duration": 11.086,
+        "speechEnd": 10.846,
+        "words": [
+          {
+            "text": "그런데",
+            "start": 0.05,
+            "end": 0.51
+          },
+          {
+            "text": "센서가",
+            "start": 0.51,
+            "end": 1.33
+          },
+          {
+            "text": "더",
+            "start": 1.33,
+            "end": 1.49
+          },
+          {
+            "text": "커지자,",
+            "start": 1.5,
+            "end": 2.04
+          },
+          {
+            "text": "가까운",
+            "start": 2.16,
+            "end": 2.64
+          },
+          {
+            "text": "음식이나",
+            "start": 2.64,
+            "end": 3.26
+          },
+          {
+            "text": "여러",
+            "start": 3.51,
+            "end": 3.8
+          },
+          {
+            "text": "줄",
+            "start": 3.83,
+            "end": 3.99
+          },
+          {
+            "text": "단체",
+            "start": 3.99,
+            "end": 4.35
+          },
+          {
+            "text": "사진에서",
+            "start": 4.35,
+            "end": 5.08
+          },
+          {
+            "text": "뒤가",
+            "start": 5.08,
+            "end": 5.56
+          },
+          {
+            "text": "날아갔습니다.",
+            "start": 5.62,
+            "end": 7.04
+          },
+          {
+            "text": "흐리게는",
+            "start": 7.09,
+            "end": 7.83
+          },
+          {
+            "text": "만들어도,",
+            "start": 7.92,
+            "end": 8.23
+          },
+          {
+            "text": "흐린",
+            "start": 8.31,
+            "end": 8.83
+          },
+          {
+            "text": "걸",
+            "start": 8.83,
+            "end": 8.84
+          },
+          {
+            "text": "선명하게",
+            "start": 9.17,
+            "end": 9.51
+          },
+          {
+            "text": "되돌리진",
+            "start": 9.51,
+            "end": 10.18
+          },
+          {
+            "text": "못합니다.",
+            "start": 10.18,
+            "end": 10.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "aperture",
+      "narration": "그래서 물리 조리개가 돌아왔습니다. 아이폰 십팔 프로는 네 단계입니다. 자세한 건 아래 설명란을 참고하세요.",
+      "onScreen": {
+        "headline": "네 단계로\n돌아왔다",
+        "note": "블레이드 6장 · Apple 공식 사양",
+        "stopsAt": "word:아이폰",
+        "stops": [
+          {
+            "label": "f/1.48",
+            "k": 0
+          },
+          {
+            "label": "f/1.8",
+            "k": 0.3
+          },
+          {
+            "label": "f/2.8",
+            "k": 0.66
+          },
+          {
+            "label": "f/4.0",
+            "k": 1
+          }
+        ],
+        "action": "자세한 건 설명란에",
+        "actionAt": "word:자세한",
+        "highlight": [
+          "네 단계"
+        ],
+        "bgImage": "media/bg-s06.png",
+        "bgDim": 0.55
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "afa5bbc86395",
+        "start": 39.941,
+        "duration": 9.294,
+        "speechEnd": 9.054,
+        "words": [
+          {
+            "text": "그래서",
+            "start": 0.04,
+            "end": 0.37
+          },
+          {
+            "text": "물리",
+            "start": 0.37,
+            "end": 0.85
+          },
+          {
+            "text": "조리개가",
+            "start": 0.85,
+            "end": 1.56
+          },
+          {
+            "text": "돌아왔습니다.",
+            "start": 1.61,
+            "end": 2.3
+          },
+          {
+            "text": "아이폰",
+            "start": 3.4,
+            "end": 3.44
+          },
+          {
+            "text": "십팔",
+            "start": 3.45,
+            "end": 4.18
+          },
+          {
+            "text": "프로는",
+            "start": 4.18,
+            "end": 4.48
+          },
+          {
+            "text": "네",
+            "start": 4.59,
+            "end": 4.88
+          },
+          {
+            "text": "단계입니다.",
+            "start": 4.93,
+            "end": 5.46
+          },
+          {
+            "text": "자세한",
+            "start": 6.52,
+            "end": 6.52
+          },
+          {
+            "text": "건",
+            "start": 6.56,
+            "end": 6.787
+          },
+          {
+            "text": "아래",
+            "start": 6.787,
+            "end": 7.24
+          },
+          {
+            "text": "설명란을",
+            "start": 7.24,
+            "end": 8.2
+          },
+          {
+            "text": "참고하세요.",
+            "start": 8.2,
+            "end": 9.08
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "출처: Apple 공식 사양 · 2026-09-22 확인 기준"
+  },
+  "caption": "가변 조리개 — 뭔지, 왜 버렸고, 왜 돌아왔는지\n\n조리개는 빛이 들어오는 구멍입니다. 크게 열면 빛이 많이 들어오지만 배경이 흐려지고, 조이면 앞뒤가 선명해지는 대신 빛이 줍니다.\n\n삼성은 2018년 갤럭시 S9에 2단계 가변 조리개(f/1.5↔f/2.4)를 넣었다가 2020년 갤럭시 S20에서 뺐습니다. 센서가 커지며 구동부를 넣을 공간이 부족했고, 저조도는 픽셀 비닝과 야간 다중 프레임 합성이 대신했기 때문입니다.\n\n그런데 센서가 더 커지자 피사계 심도가 지나치게 얕아졌습니다. 가까운 음식 사진이나 여러 줄 단체 사진에서 뒤가 날아가는 문제입니다. 배경을 흐리게 만드는 것은 소프트웨어로 가능하지만, 이미 초점이 빗나가 흐리게 찍힌 원본을 선명하게 되돌리는 것은 불가능합니다.\n\n아이폰 18 Pro의 48MP 메인 카메라는 f/1.48 · f/1.8(기본) · f/2.8 · f/4.0 네 단계를 지원하며, 레이저로 자른 블레이드 6장이 조리개를 여닫습니다. (2026년 9월 9일 공개, 9월 18일 출시)\n\n참고 글: https://blog.naver.com/hot-signal/224415394697",
+  "hashtags": [
+    "#아이폰18프로",
+    "#가변조리개",
+    "#아이폰",
+    "#갤럭시",
+    "#스마트폰카메라",
+    "#카메라",
+    "#테크",
+    "#IT",
+    "#애플",
+    "#삼성",
+    "#사진",
+    "#조리개",
+    "#피사계심도",
+    "#전자기기",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "조리개가 뭔지부터, 왜 돌아왔는지까지",
+    "instagram": false,
+    "youtube": false
+  }
+}
