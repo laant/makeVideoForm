@@ -1,0 +1,23 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "file": "/Users/jlee/.codex/generated_images/01a0ebac-aac9-7e70-9377-62ab4ec1199e/exec-6e1a7d3a-7392-4a55-b9c2-fc9882edc50f.png",
+      "destination": "pause.png",
+      "prompt": "Use case: photorealistic-natural. Create ONE portrait 9:16 editorial photograph for a gentle breathing explainer. An adult Korean woman in her early thirties with natural dark shoulder-length hair, in a soft oatmeal linen blouse, seated at a simple warm oak desk, pausing work with hands resting naturally on the desk, shoulders relaxed, quiet thoughtful expression, looking softly past the laptop rather than smiling at camera. Laptop is barely present at lower edge, no visible UI. Not visibly ill or in distress. Soft late-afternoon daylight through ivory curtains, restrained pale teal and warm apricot accents, real skin and fabric texture, refined intimate lifestyle magazine photography, subtle film grain. Camera at her eye level in three quarter profile, subject on right-middle/lower portion of frame, head around 45% frame height. Upper 35% is uncluttered warm ivory wall with soft window shadow for later dark Korean title overlay. Show grounded believable posture, anatomically correct hands with five fingers, realistic everyday setting. No text, no logos, no medical apparatus, no anatomical overlays, no exaggerated healing glow, no stock photo grin. Full bleed vertical single image.",
+      "reference": null
+    },
+    {
+      "file": "/Users/jlee/.codex/generated_images/01a0ebac-aac9-7e70-9377-62ab4ec1199e/exec-442475da-8550-4045-9801-a80368c8c708.png",
+      "destination": "posture.png",
+      "prompt": "Create a NEW portrait 9:16 photograph in the same editorial series. Input image is a CHARACTER AND COLOR reference only: preserve the same adult Korean woman's natural facial identity, shoulder-length dark hair and oatmeal linen blouse. New shot: full-body three-quarter view of her seated upright but relaxed on a comfortable simple oak chair with back support in an airy ivory room with pale teal curtains and warm window light. Both feet visibly flat on floor, wearing beige trousers and plain soft slippers, knees at a comfortable angle, shoulders loose, each hand resting naturally on her own thigh, relaxed neutral facial expression, eyes gently closed. No strenuous breath-holding face, no yoga pose, no chest expansion exaggeration. Show whole chair and both feet, body entirely between 35% and 85% of portrait height, with clean ivory wall filling upper third for Korean headline overlay. Refined quiet lifestyle editorial photography, tactile linen, real skin, soft shadows, no mystical or medical effects. No words, letters, numbers, logos, watermark, anatomical diagram or UI. One full bleed composition.",
+      "reference": "pause.png (character and wardrobe reference)"
+    },
+    {
+      "file": "/Users/jlee/.codex/generated_images/01a0ebac-aac9-7e70-9377-62ab4ec1199e/exec-91127354-a88d-4eca-b1d2-5946ddb60575.png",
+      "destination": "calm.png",
+      "prompt": "Create ONE new portrait 9:16 editorial photograph for the closing scene of the same breathing video. Input image is a CHARACTER / WARDROBE / COLOR reference: same adult Korean woman with natural shoulder-length dark hair, oatmeal linen blouse, beige trousers in the same ivory room and pale teal curtain light. New medium portrait from waist up, seated comfortably near window, eyes gently open looking toward daylight, naturally relaxed neutral expression with just a trace of a smile, hands loose in lap at bottom edge. Camera side profile at eye level, subject occupies middle-right and lower half; head around 46% height, clean ivory wall across top 35% for large dark Korean typography. Slight soft foreground blur of curtain, warm apricot sunlight, real skin texture, tactile fabrics, graceful editorial composition. This is an ordinary calm pause, NOT a miraculous before-and-after cure, no glow, no medical effects, no spiritual symbols. No text, no logos, no numbers, no watermark. Full bleed composition.",
+      "reference": "pause.png (character and wardrobe reference)"
+    }
+  ]
+}

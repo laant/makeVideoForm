@@ -1,0 +1,14 @@
+{
+  "fps": 30,
+  "totalFrames": 1451,
+  "duration": 48.36666666666667,
+  "guideStart": 20.966667,
+  "guideEnd": 32.966667,
+  "phaseFrames": {
+    "inhale": 120,
+    "hold": 60,
+    "exhale": 180
+  },
+  "audio": "Original Gemini Aoede clips padded to exact frame boundaries; quiet original harmonic bed mixed underneath. No therapy claims about sound.",
+  "recognitionNote": "s02 recognized 4/2/6 as digits, explaining lower character match. Sequence and timings match intended spoken script."
+}

@@ -19,6 +19,7 @@ OUT = ROOT / "output"
 
 # (프로젝트, 모듈) → 소스 후보 목록 (앞선 것 우선; final_send 우선 배치)
 MAPPING: dict[tuple[str, str], list[str]] = {
+    ("15-breathing-426", "codex"): ["autoShorts/episodes/breathing-426/final.mp4"],
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],
@@ -77,11 +78,11 @@ MAPPING: dict[tuple[str, str], list[str]] = {
         "autoShorts/episodes/guri-flags-45/final.mp4"],  # 45초 압축판 · 페이퍼 콜라주 배경 + 규정 태극기
     ("04-guri-flags", "autoshorts-text"): [
         "autoShorts/episodes/guri-flags-45-text/final.mp4"],  # 45초 압축판 · 글자 카드
-    ("04-guri-flags", "talkcraft"): [
     ("04-guri-flags", "autoshorts-visit"): [
         "autoShorts/episodes/guri-flags-45-visit/final.mp4"],  # 45초판 재제작 · 결말 '구리시에 방문해 보세요'
     ("04-guri-flags", "opus-paper"): [
         "experiments/opus-paper-04/out/final.mp4"],  # 모듈 없이 절차적 종이 공작 렌더(실험) · 같은 나레이션
+    ("04-guri-flags", "talkcraft"): [
         "talkcraft/guri/remotion/out/final_send.mp4",
         "talkcraft/guri/remotion/out/final.mp4"],
     ("14-optimal-plan", "autoshorts"): [
@@ -102,6 +103,7 @@ MAPPING: dict[tuple[str, str], list[str]] = {
 
 # 프로젝트 → autoShorts 카드뉴스 폴더 (npm run cards 결과, PNG만 복사 · src/ HTML 제외)
 CARDS: dict[str, str] = {
+    "15-breathing-426": "autoShorts/episodes/breathing-426/cards",
     "09-youth-savings-2nd": "autoShorts/episodes/youth-savings-2nd/cards",
 }
 

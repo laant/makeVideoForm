@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #f5f0e8; }
+      :root {
+        --bg: #f5f0e8; --fg: #183e42; --accent: #3c7c7b; --muted: #647f80;
+        --font: BreathEditorial, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* onScreen.bgImage: 배경 그림 + 글자 가독성용 그라데이션 (onScreen.bgDim 0~1 로 어둡기 조절) */
+      .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
+      .bgshade { position: absolute; inset: 0; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+
+@font-face{font-family:BreathEditorial;src:url('vendor/Pretendard-Bold.ttf');font-weight:700 900}
+@font-face{font-family:BreathEditorial;src:url('vendor/Pretendard-SemiBold.ttf');font-weight:400 600}
+#root{font-family:BreathEditorial,sans-serif;color:#183e42;background:#f5f0e8}.stage{display:block;inset:0}.glow,.progress{display:none}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:55% 58%}
+.wash{position:absolute;inset:0;background:linear-gradient(180deg,#f7f1e988 0%,#f7f1e92c 42%,transparent 58%,#f5f0e855 70%,#f5f0e8 92%)}
+.ambient{position:absolute;width:900px;height:900px;background:radial-gradient(circle,#d6e7e277,transparent 69%);right:-250px;top:600px}.ambient.two{background:radial-gradient(circle,#edc7ab55,transparent 69%);left:-340px;top:400px}
+.eyebrow{position:absolute;left:78px;top:280px;font-size:27px;font-weight:600;letter-spacing:4px;color:#547879}.edition{position:absolute;right:99px;top:283px;font-size:25px;color:#688587;letter-spacing:2px}
+.headline{position:absolute;top:370px;left:74px;right:100px;font-size:110px;font-weight:800;letter-spacing:-5px;line-height:1.13;word-break:keep-all}.headline em{font-style:normal;color:#3c7c7b}.hairline{position:absolute;left:78px;top:335px;width:65px;height:5px;background:#ba7756}.lede{position:absolute;left:78px;right:100px;top:645px;font-size:37px;line-height:1.5;letter-spacing:-1px;color:#486b6c}
+.mini{display:inline-flex;align-items:center;gap:12px;border-radius:99px;padding:14px 23px;background:#f8f4e9ed;border:1px solid #acbeb388;font-size:32px;font-weight:700;color:#346869}
+.captions{left:68px;right:100px;bottom:430px;height:110px}.cap{font-family:BreathEditorial,sans-serif;font-size:43px;font-weight:700;line-height:1.4;letter-spacing:-1px;text-shadow:none;color:#fdfaf3}.cap>span{display:block;background:#193e40f0;border-radius:16px;padding:15px 24px;box-shadow:0 8px 30px #14323616}.cap em{color:#eec39f}
+.steps{position:absolute;left:77px;right:102px;top:734px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{height:410px;border:2px solid #c9d9d5;border-radius:130px 130px 25px 25px;background:#fbf9f3;padding:34px 12px;text-align:center;transform-origin:50% 90%;color:#365f60}.step b{font-size:176px;line-height:1.3;letter-spacing:-7px;display:block}.step span{font-size:39px;letter-spacing:-1px;display:block}.step small{font-size:27px;display:block;margin-top:18px;color:#647e7a}.step.two{background:#f1e7d7;border-color:#dfc8ad}.step.two b{color:#a36b4e}.step.three{background:#d9e7e2;border-color:#bdd2ca}.rhythm{position:absolute;left:82px;right:106px;top:1210px;display:flex;gap:8px;height:14px}.rhythm i{display:block;border-radius:10px;background:#78a5a1}.rhythm i:nth-child(2){background:#c99b75}.rhythm i:nth-child(3){background:#3c7c7b}.rhythm-label{position:absolute;top:1251px;left:82px;font-size:31px;color:#647e7a;letter-spacing:1px}
+.posture-window{position:absolute;left:479px;top:639px;width:495px;height:616px;overflow:hidden;border-radius:230px 230px 28px 28px;background:#e5dfd1}.posture-window img{width:100%;height:100%;object-fit:cover;object-position:50% 65%}
+.pointers{position:absolute;left:80px;top:710px;width:375px;display:flex;flex-direction:column;gap:49px}.pointer{font-size:38px;line-height:1.35;letter-spacing:-1.5px}.pointer small{display:block;font-size:26px;color:#647e7a;letter-spacing:-.5px;margin-top:12px}.pointer i{display:block;width:27px;height:5px;background:#a3beba;margin-bottom:18px}.safety{position:absolute;left:79px;right:103px;top:1280px;background:#e9dfd1;border:1px solid #d1bc9d;border-radius:15px;padding:20px 20px;text-align:center;font-size:32px;color:#704f3c;letter-spacing:-.5px}
+.guide-title{position:absolute;left:65px;right:95px;top:376px;font-size:88px;line-height:1.2;letter-spacing:-4px;text-align:center;font-weight:800}.guide-hint{position:absolute;left:70px;right:100px;top:503px;text-align:center;font-size:31px;color:#5d7d7a;letter-spacing:-.6px}.breath-stage{position:absolute;left:510px;top:889px;width:0;height:0}.orbit{position:absolute;left:-285px;top:-285px;width:570px;height:570px;border:1.5px solid #b5cbc480;border-radius:50%}.orbit:after{content:'';position:absolute;inset:22px;border:1px solid #b5cbc440;border-radius:50%}.breath-disc{position:absolute;left:-275px;top:-275px;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#e5eee5,#b4d2c9 57%,#86b3ab);box-shadow:0 24px 60px #659f8c20,inset 0 1px 1px #fff;transform-origin:center}.countwrap{position:absolute;left:-220px;top:-135px;width:440px;height:240px;text-align:center}.count{position:absolute;inset:0;font-size:207px;line-height:1.1;font-weight:600;color:#194c4e;letter-spacing:-10px;opacity:0}.seconds{position:absolute;left:-100px;top:102px;width:200px;text-align:center;font-size:30px;color:#456d67;letter-spacing:3px}.phase-nav{position:absolute;left:79px;right:103px;top:1200px;display:grid;grid-template-columns:4fr 2fr 6fr;gap:10px}.phase-nav span{padding:17px 5px;border-top:5px solid #d4ded4;text-align:center;font-size:27px;color:#81918a;white-space:nowrap}.phase-nav .active{border-color:#3c7c7b;color:#234f50;font-weight:700}.guide-safety{position:absolute;left:60px;right:90px;top:1290px;text-align:center;color:#6f796f;font-size:24px;line-height:1.4}.guide-safety b{font-weight:700;color:#8e6147}.tiny-source{position:absolute;left:80px;right:105px;top:1322px;font-size:24px;color:#587b77;line-height:1.45}
+.calm-window{position:absolute;left:75px;right:101px;top:691px;height:479px;border-radius:25px;overflow:hidden}.calm-window img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}.evidence{position:absolute;left:78px;right:103px;top:1209px;border-top:1px solid #b6cbc2;padding-top:21px;display:flex;gap:18px;font-size:33px;letter-spacing:-.7px;color:#476e68}.evidence b{color:#a26648;font-weight:700}.return-note{position:absolute;left:77px;right:101px;top:1100px;border-radius:17px;background:#f8f3e8ed;padding:24px 27px;font-size:36px;line-height:1.45;color:#325f60;letter-spacing:-.9px}.save{position:absolute;left:78px;right:103px;top:1260px;display:flex;justify-content:space-between;align-items:center;background:#356f6e;color:#fff9ef;padding:23px 31px;border-radius:18px;font-size:38px;font-weight:700}.save strong{letter-spacing:9px;font-size:36px}.ending-first{position:absolute;inset:0}.ending-second{position:absolute;inset:0}
+
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:custom breathing-426 codex-director-v1 -->
+    <div id="root" data-composition-id="s06" data-start="0" data-duration="6" data-width="1080" data-height="1920">
+      <div id="s06-bg" class="layer bg-layer clip" data-start="0" data-duration="6">
+        <div class="ambient"></div><div class="ambient two"></div>
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s06-content" class="layer content clip" data-start="0" data-duration="6">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {"id": "s06", "onScreen": {"title": "천천히 내쉬어요", "headline": "천천히 내쉬어요", "showCaptions": false, "breathPhase": "exhale", "phaseSeconds": 6}, "highlight": [], "showCaptions": false, "words": [{"text": "천천히", "start": 0.06, "end": 1.15}, {"text": "내쉬어요.", "start": 1.15, "end": 1.8}], "speechEnd": 1.80034, "duration": 6, "renderDuration": 6, "globalStart": 26.966667, "total": 48.367};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /**
+         * 규정 태극기 SVG (행정안전부 도안: 3:2, 태극 지름=세로/2, 괘 길이 D/2·두께 D/12·간격 D/24,
+         * 태극-괘 거리 D/4, 작은 원 중심은 건-곤 대각선 위(빨강 좌상·파랑 우하), 건 좌상·감 우상·리 좌하·곤 우하)
+         */
+        taegukgi(parent, width) {
+          const NS = "http://www.w3.org/2000/svg";
+          const mk = (tag, attrs, into) => {
+            const e = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+            if (into) into.appendChild(e);
+            return e;
+          };
+          const W = width, Hh = (width * 2) / 3, D = Hh / 2, r = D / 2;
+          const a = (Math.atan2(Hh, W) * 180) / Math.PI;
+          const svg = mk("svg", { width: W, height: Hh, viewBox: `0 0 ${W} ${Hh}`, class: "taegukgi" }, parent);
+          mk("rect", { width: W, height: Hh, fill: "#fff" }, svg);
+          const tg = mk("g", { transform: `translate(${W / 2},${Hh / 2}) rotate(${a})` }, svg);
+          mk("circle", { r, fill: "#0047A0" }, tg);
+          mk("path", { d: `M ${-r} 0 A ${r} ${r} 0 0 1 ${r} 0 Z`, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: -r / 2, r: r / 2, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: r / 2, r: r / 2, fill: "#0047A0" }, tg);
+          const L = D / 2, th = D / 12, g = D / 24, dist = r + D / 4 + D / 6;
+          const rad = (a * Math.PI) / 180;
+          // [괘, 방향(x,y), 막대 회전] — split=true 인 효는 가운데가 끊긴 음효
+          const gwae = [
+            [[false, false, false], -1, -1, a + 90], // 건 좌상
+            [[true, true, true], 1, 1, a + 90], // 곤 우하
+            [[true, false, true], 1, -1, -a + 90], // 감 우상
+            [[false, true, false], -1, 1, -a + 90], // 리 좌하
+          ];
+          for (const [lines, sx, sy, rot] of gwae) {
+            const cg = mk("g", { transform: `translate(${W / 2 + sx * Math.cos(rad) * dist},${Hh / 2 + sy * Math.sin(rad) * dist}) rotate(${rot})` }, svg);
+            lines.forEach((split, i) => {
+              const y = (i - 1) * (th + g) - th / 2;
+              if (!split) mk("rect", { x: -L / 2, y, width: L, height: th, fill: "#000" }, cg);
+              else {
+                const half = (L - g) / 2;
+                mk("rect", { x: -L / 2, y, width: half, height: th, fill: "#000" }, cg);
+                mk("rect", { x: g / 2, y, width: half, height: th, fill: "#000" }, cg);
+              }
+            });
+          }
+          return svg;
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // 배경 그림: 느린 줌 인 (Ken Burns)
+      const bgImg = document.querySelector(".bgimg");
+      if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      stage.innerHTML=`<div class="eyebrow">함께 한 번 · 총 12초</div><div class="edition">FOLLOW YOUR BREATH</div><div class="guide-title">천천히 내쉬어요</div><div class="guide-hint">힘을 빼고 부드럽게 내쉬어요</div><div class="breath-stage"><div class="orbit"></div><div class="breath-disc"></div><div class="countwrap"><span class="count n0">6</span><span class="count n1">5</span><span class="count n2">4</span><span class="count n3">3</span><span class="count n4">2</span><span class="count n5">1</span></div><div class="seconds">초</div></div><div class="phase-nav"><span class="">4초 들숨</span><span class="">2초 멈춤</span><span class="active">6초 날숨</span></div><div class="guide-safety">멈춤이 불편하면 평소처럼 호흡하세요<br><b>어지럽거나 답답하면 중단</b></div>`;
+tl.fromTo('.breath-disc',{scale:1},{scale:0.48,duration:6,ease:'none'},0);
+for(let k=0;k<6;k++){tl.set('.n'+k,{opacity:1},k);tl.set('.n'+k,{opacity:0},k+1);}
+window.__breathSpec={phase:'exhale',seconds:6,frames:180,initialScale:1,endScale:0.48};
+
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s06"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

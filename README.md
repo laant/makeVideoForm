@@ -77,6 +77,8 @@ myNextSeason/
 | 13 | 조리개가 뭔지부터, 왜 돌아왔는지까지 | 테크(12번 + 원글 제작자판 조합) | autoshorts(49초)·openmontage(52초) | `output/13-aperture-explained/` — 테크 채널용 |
 | 14 | 통신사 최적요금제 안내, 바로 바꾸면 손해일 수도 | 머니 정보(10/1 시행 시의성) | autoshorts | `output/14-optimal-plan/` |
 
+| 15 | 426 호흡법, 12초 동안 같이 해보세요 | 생활 건강 · 근거와 주의사항 포함 | autoshorts · Codex 연출 (48.4초) | `output/15-breathing-426/` |
+
 ## 환경 메모
 
 - API 키: ElevenLabs → `flow-pipeline/.env` · Google(GOOGLE_API_KEY, 결제 연결) → `OpenMontage/.env` · autoShorts(Gemini TTS·ElevenLabs·YT/IG) → `autoShorts/.env` · shopShorts(Higgsfield·Gemini TTS) → `shopShorts/.env`
