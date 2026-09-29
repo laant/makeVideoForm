@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0b0f0e; }
+      :root {
+        --bg: #0b0f0e; --fg: #f2f6f4; --accent: #3DDC97; --muted: #94a8a0;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* onScreen.bgImage: 배경 그림 + 글자 가독성용 그라데이션 (onScreen.bgDim 0~1 로 어둡기 조절) */
+      .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
+      .bgshade { position: absolute; inset: 0; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      .sr-line { text-align: center; font-size: 74px; font-weight: 700; line-height: 1.5; white-space: nowrap; color: var(--fg); }
+  .sr-slot { position: relative; display: inline-block; vertical-align: baseline; }
+  .sr-ghost { visibility: hidden; white-space: nowrap; }
+  .sr-val { position: absolute; left: 50%; top: 0; white-space: nowrap; transform: translateX(-50%); }
+  .sr-from { color: var(--fg); }
+  .sr-to { color: var(--accent); }
+  .sr-strike {
+    position: absolute; left: 0; top: 50%; height: 6px; width: 100%;
+    background: #E5372F; border-radius: 3px; transform-origin: left center;
+  }
+  .sr-sub { margin-top: 46px; font-size: 40px; font-weight: 600; color: var(--muted); letter-spacing: 2px; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:generated hash=e9e632cb1fbb template=strike-and-replace -->
+    <div id="root" data-composition-id="s03" data-start="0" data-duration="8.485" data-width="1080" data-height="1920">
+      <div id="s03-bg" class="layer bg-layer clip" data-start="0" data-duration="8.485">
+        <img class="bgimg" src="media/bg-s03.png" alt="" />
+        <div class="bgshade" style="background: linear-gradient(180deg, rgba(0,0,0,0.13999999999999999) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.6) 100%)"></div>
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s03-content" class="layer content clip" data-start="0" data-duration="8.485">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {
+  "id": "s03",
+  "template": "strike-and-replace",
+  "onScreen": {
+    "prefix": "요금제 변경,",
+    "from": "무조건 이득",
+    "to": "손해일 수도",
+    "strikeAt": "word:무조건",
+    "swapDelay": 1.6,
+    "subline": "약정 위약금 · 가족 결합 할인 확인",
+    "highlight": [
+      "손해일"
+    ],
+    "bgPrompt": "a heavy chain loosely looped around a plain smartphone lying on the floor",
+    "bgImage": "media/bg-s03.png",
+    "bgDim": 0.35
+  },
+  "highlight": [
+    "손해일"
+  ],
+  "showCaptions": true,
+  "words": [
+    {
+      "text": "그런데",
+      "start": 0.09,
+      "end": 0.43
+    },
+    {
+      "text": "바꾸면",
+      "start": 0.43,
+      "end": 1.4
+    },
+    {
+      "text": "무조건",
+      "start": 1.41,
+      "end": 2.11
+    },
+    {
+      "text": "이득은",
+      "start": 2.11,
+      "end": 2.81
+    },
+    {
+      "text": "아닙니다.",
+      "start": 2.81,
+      "end": 3.44
+    },
+    {
+      "text": "약정이나",
+      "start": 3.53,
+      "end": 4.08
+    },
+    {
+      "text": "가족",
+      "start": 4.08,
+      "end": 4.35
+    },
+    {
+      "text": "결합",
+      "start": 4.5,
+      "end": 4.72
+    },
+    {
+      "text": "할인이",
+      "start": 4.72,
+      "end": 5.2
+    },
+    {
+      "text": "걸려",
+      "start": 5.2,
+      "end": 5.84
+    },
+    {
+      "text": "있으면,",
+      "start": 5.84,
+      "end": 6.33
+    },
+    {
+      "text": "오히려",
+      "start": 6.33,
+      "end": 6.78
+    },
+    {
+      "text": "손해일",
+      "start": 6.88,
+      "end": 7.03
+    },
+    {
+      "text": "수",
+      "start": 7.18,
+      "end": 7.264
+    },
+    {
+      "text": "있습니다.",
+      "start": 7.264,
+      "end": 7.6
+    }
+  ],
+  "speechEnd": 7.945,
+  "duration": 8.185,
+  "renderDuration": 8.485,
+  "globalStart": 11.153,
+  "total": 39.773
+};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /**
+         * 규정 태극기 SVG (행정안전부 도안: 3:2, 태극 지름=세로/2, 괘 길이 D/2·두께 D/12·간격 D/24,
+         * 태극-괘 거리 D/4, 작은 원 중심은 건-곤 대각선 위(빨강 좌상·파랑 우하), 건 좌상·감 우상·리 좌하·곤 우하)
+         */
+        taegukgi(parent, width) {
+          const NS = "http://www.w3.org/2000/svg";
+          const mk = (tag, attrs, into) => {
+            const e = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+            if (into) into.appendChild(e);
+            return e;
+          };
+          const W = width, Hh = (width * 2) / 3, D = Hh / 2, r = D / 2;
+          const a = (Math.atan2(Hh, W) * 180) / Math.PI;
+          const svg = mk("svg", { width: W, height: Hh, viewBox: `0 0 ${W} ${Hh}`, class: "taegukgi" }, parent);
+          mk("rect", { width: W, height: Hh, fill: "#fff" }, svg);
+          const tg = mk("g", { transform: `translate(${W / 2},${Hh / 2}) rotate(${a})` }, svg);
+          mk("circle", { r, fill: "#0047A0" }, tg);
+          mk("path", { d: `M ${-r} 0 A ${r} ${r} 0 0 1 ${r} 0 Z`, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: -r / 2, r: r / 2, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: r / 2, r: r / 2, fill: "#0047A0" }, tg);
+          const L = D / 2, th = D / 12, g = D / 24, dist = r + D / 4 + D / 6;
+          const rad = (a * Math.PI) / 180;
+          // [괘, 방향(x,y), 막대 회전] — split=true 인 효는 가운데가 끊긴 음효
+          const gwae = [
+            [[false, false, false], -1, -1, a + 90], // 건 좌상
+            [[true, true, true], 1, 1, a + 90], // 곤 우하
+            [[true, false, true], 1, -1, -a + 90], // 감 우상
+            [[false, true, false], -1, 1, -a + 90], // 리 좌하
+          ];
+          for (const [lines, sx, sy, rot] of gwae) {
+            const cg = mk("g", { transform: `translate(${W / 2 + sx * Math.cos(rad) * dist},${Hh / 2 + sy * Math.sin(rad) * dist}) rotate(${rot})` }, svg);
+            lines.forEach((split, i) => {
+              const y = (i - 1) * (th + g) - th / 2;
+              if (!split) mk("rect", { x: -L / 2, y, width: L, height: th, fill: "#000" }, cg);
+              else {
+                const half = (L - g) / 2;
+                mk("rect", { x: -L / 2, y, width: half, height: th, fill: "#000" }, cg);
+                mk("rect", { x: g / 2, y, width: half, height: th, fill: "#000" }, cg);
+              }
+            });
+          }
+          return svg;
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // 배경 그림: 느린 줌 인 (Ken Burns)
+      const bgImg = document.querySelector(".bgimg");
+      if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      const o = S.onScreen;
+  const from = o.from ?? "", to = o.to ?? "";
+  const strikeAt = H.at(o.strikeAt, 0.25);
+  const swapAt = strikeAt + 0.15 + (o.swapDelay ?? 0.35);   // 快斬 종료 후 교체
+  const keepStrike = o.keepStrike === true;   // 기본: 옛 값과 함께 사라짐
+
+  const line = H.el("div", "sr-line", null, stage);
+  if (o.prefix) line.appendChild(document.createTextNode(o.prefix + " "));
+  const slot = H.el("span", "sr-slot", null, line);
+  // 두 값이 같은 자리에 겹쳐야 "교체"로 읽힌다 → 긴 쪽으로 자리를 잡아둔다(값 교체 시 0 이동)
+  H.el("span", "sr-ghost", from.length >= to.length ? from : to, slot);
+  const elFrom = H.el("span", "sr-val sr-from", from, slot);
+  const elTo = H.el("span", "sr-val sr-to", to, slot);
+  // 취소선은 slot 직속 — from 이 사라져도 남는다
+  const strike = H.el("span", "sr-strike", null, slot);
+  if (o.suffix) line.appendChild(document.createTextNode(" " + o.suffix));
+  const sub = o.subline ? H.el("div", "sr-sub", o.subline, stage) : null;
+
+  tl.fromTo(line, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0);
+  tl.set(elTo, { opacity: 0 }, 0);
+  tl.set(strike, { scaleX: 0 }, 0);
+
+  tl.to(strike, { scaleX: 1, duration: 0.15, ease: "power3.out" }, strikeAt);   // 快斬
+  tl.to(elFrom, { opacity: 0, duration: 0.25, ease: "power1.out" }, swapAt);    // 立換
+  tl.fromTo(elTo, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }, swapAt);
+  if (!keepStrike) tl.to(strike, { opacity: 0, duration: 0.25, ease: "power1.out" }, swapAt);
+  if (sub) tl.fromTo(sub, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+                           swapAt + (o.sublineDelay ?? 0.2));
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s03"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

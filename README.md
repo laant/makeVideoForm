@@ -74,7 +74,8 @@ myNextSeason/
 | 10 | 미라클뮤즈 아하바하메디크림 | **쇼핑 쇼츠(a 제휴 리뷰, 28초)** | shopshorts | `output/10-miraclemuse-ahabha/` |
 | 11 | '5% 올랐다'만 보면 안 되는 이유 | 머니 정보(코인 시황 읽는 법, 차트 custom 씬) | autoshorts | `output/11-bitcoin-check/` |
 | 12 | 삼성이 버린 기술, 애플이 8년 뒤에 | **테크**(가변 조리개, 조리개 SVG custom 씬) | autoshorts | `output/12-aperture-return/` — ⚠️ 테크 채널 신설 예정, 업로드 보류 |
-| 13 | 조리개가 뭔지부터, 왜 돌아왔는지까지 | 테크(12번 + 원글 제작자판 조합, 49초) | autoshorts | `output/13-aperture-explained/` — 테크 채널용 |
+| 13 | 조리개가 뭔지부터, 왜 돌아왔는지까지 | 테크(12번 + 원글 제작자판 조합) | autoshorts(49초)·openmontage(52초) | `output/13-aperture-explained/` — 테크 채널용 |
+| 14 | 통신사 최적요금제 안내, 바로 바꾸면 손해일 수도 | 머니 정보(10/1 시행 시의성) | autoshorts | `output/14-optimal-plan/` |
 
 ## 환경 메모
 

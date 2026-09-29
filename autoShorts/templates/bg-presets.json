@@ -1,0 +1,75 @@
+{
+  "_note": "배경 이미지 스타일 프리셋. 프롬프트 = style + SUBJECT(씬별 bgPrompt) + layout + accent + prohibit. style·layout·prohibit 는 에피소드 안에서 토씨 하나 안 바뀌어야 분위기가 통일된다. 씬의 bgPrompt 에는 재질(clay·paper·glass 등)을 쓰지 말 것 — 재질은 프리셋이 정한다.",
+  "_layouts": {
+    "plate": "COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text.",
+    "hero": "COMPOSITION: the subject fills the lower two thirds of the frame and is clearly readable, the top quarter stays calm and uncluttered for a headline. Moderate contrast."
+  },
+  "_accent": "A single faint {accent} rim light touches one edge of the subject. No other colour anywhere.",
+  "_prohibit": "No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+  "clay": {
+    "label": "찰흙 3D — 어두운 스튜디오",
+    "verified": "09·11~14번",
+    "style": "A vertical 9:16 still frame, minimalist monochrome charcoal-gray 3D render, matte clay material, soft diffused studio light, gentle ambient occlusion, isometric camera, very dark near-black background.",
+    "dim": 0.32,
+    "use": "재테크 기본"
+  },
+  "paper": {
+    "label": "페이퍼 콜라주 — 팝업북 디오라마",
+    "verified": "04번",
+    "style": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop.",
+    "dim": 0.4,
+    "use": "따뜻한 이야기·생활"
+  },
+  "blueprint": {
+    "label": "청사진 — 기술 도면",
+    "verified": "견본",
+    "style": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid.",
+    "dim": 0.35,
+    "use": "테크 기본"
+  },
+  "glass": {
+    "label": "반투명 유리 3D",
+    "verified": "견본",
+    "style": "A vertical 9:16 still frame, minimalist 3D render where every object is made entirely of frosted translucent glass, you can see soft light passing through the objects with gentle internal glow and refraction, smooth rounded edges, no matte or opaque surfaces, soft diffused studio light, very dark near-black background.",
+    "dim": 0.35,
+    "use": "미래·AI·핀테크"
+  },
+  "isometric": {
+    "label": "플랫 아이소메트릭 — 핀테크 앱 일러스트",
+    "verified": "14번 비교판",
+    "style": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background.",
+    "accent": "Only one accent colour, {accent}, used on a single small detail. No other colour anywhere.",
+    "dim": 0.35,
+    "use": "재테크·테크 공용 — 앱·서비스 설명"
+  },
+  "engraving": {
+    "label": "신문 판화 — 스티플·에칭 에디토리얼",
+    "verified": "14번 비교판",
+    "style": "A vertical 9:16 still frame, fine editorial engraving illustration in the style of a financial newspaper, stipple dots and cross-hatched ink lines, off-white ink on a very dark charcoal paper background.",
+    "accent": "Only one accent colour, {accent}, as a thin wash on a single detail. No other colour anywhere.",
+    "dim": 0.38,
+    "use": "재테크 — 제도·법·시황처럼 진지한 주제"
+  },
+  "studio": {
+    "label": "제품 스튜디오 — 키노트풍 렌더",
+    "verified": "14번 비교판",
+    "style": "A vertical 9:16 still frame, premium product studio 3D render like a tech keynote, smooth satin surfaces, soft top light, gentle gradient backdrop fading from dark graphite to black, subtle reflection on the floor.",
+    "dim": 0.35,
+    "use": "테크 — 신제품 소개 (가장 차분, clay 와 차이 작음)"
+  },
+  "exploded": {
+    "label": "분해도 — 부품이 떠 있는 기술 3D",
+    "verified": "14번 비교판",
+    "style": "A vertical 9:16 still frame, technical exploded-view 3D render, the subject's parts separated and floating apart along one common axis with small even gaps, clean matte gray surfaces, soft studio light, very dark background.",
+    "dim": 0.35,
+    "use": "테크 — 구조·작동 원리"
+  },
+  "riso": {
+    "label": "리소그래프 — 2도 인쇄 질감",
+    "verified": "14번 비교판",
+    "style": "A vertical 9:16 still frame, risograph print illustration, grainy two-tone ink texture with slight misregistration, bold simple shapes, dark graphite ink on deep charcoal paper.",
+    "accent": "The second ink colour is {accent}. No other colour anywhere.",
+    "dim": 0.38,
+    "use": "가벼운 생활정보 (가장 거친 질감)"
+  }
+}

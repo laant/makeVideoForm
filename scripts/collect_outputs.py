@@ -80,8 +80,14 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("04-guri-flags", "talkcraft"): [
         "talkcraft/guri/remotion/out/final_send.mp4",
         "talkcraft/guri/remotion/out/final.mp4"],
+    ("14-optimal-plan", "autoshorts"): [
+        "autoShorts/episodes/optimal-plan/final.mp4"],  # 최적요금제 안내 (10/1 시행) · 재테크 채널
+    ("14-optimal-plan", "engraving"): [
+        "autoShorts/episodes/optimal-plan-engraving/final.mp4"],  # 같은 대본 · bg.preset=engraving (업로드판)
     ("13-aperture-explained", "autoshorts"): [
         "autoShorts/episodes/aperture-explained/final.mp4"],  # 12번 + 원글 제작자판 조합 (개념·트레이드오프 보강)
+    ("13-aperture-explained", "openmontage"): [
+        "OpenMontage/projects/aperture-explained/renders/final.mp4"],  # 같은 대본 병렬판 (찰흙 3D + stat_card)
     ("12-aperture-return", "autoshorts"): [
         "autoShorts/episodes/aperture-return/final.mp4"],  # 테크 · 조리개 SVG custom 씬 (테크 채널 예정)
     ("11-bitcoin-check", "autoshorts"): [

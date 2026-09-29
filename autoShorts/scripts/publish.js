@@ -3,7 +3,7 @@
 // 기본은 dry-run(무엇을 올릴지 출력만). 실제 업로드는 --yes (사용자가 요청했을 때만)
 //
 //   npm run publish -- <프로젝트> --module <모듈> [--title <번호>] [--thumb 1|2|none]
-//                      [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--privacy private|unlisted|public]
+//                      [--channel finance|tech] [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--privacy private|unlisted|public]
 //                      [--yes] [--again]
 //
 //   기본     YouTube 는 업로드 시점 + YT_SCHEDULE_DELAY_MIN(기본 10)분 뒤 예약 공개 (비공개로 올린 뒤 자동 공개)
@@ -17,6 +17,7 @@ import path from "node:path";
 import { ROOT } from "./lib/paths.js";
 import { ffprobeJson } from "./lib/proc.js";
 import { youtubeReady, uploadYouTubeWith, youtubeChannel, youtubeTokenAgeDays, explainAuthError } from "./upload/youtube.js";
+import { channelKey, channelHandle } from "./upload/channels.js";
 import { instagramReady, uploadInstagramWith } from "./upload/instagram.js";
 import { precheck, printPrecheck } from "./lib/precheck.js";
 
@@ -157,6 +158,7 @@ const pre = await precheck({
 });
 const BLOCKED = pre.fails.length > 0 && !flag("skip-precheck");
 
+const CH = channelKey(opt("channel"));   // YouTube 채널 키 (finance | tech …, 기본 YT_CHANNEL_DEFAULT)
 const logFile = path.join(dir, "publish-log.json");
 const log = fs.existsSync(logFile) ? JSON.parse(fs.readFileSync(logFile, "utf8")) : {};
 const YES = flag("yes");
@@ -164,23 +166,23 @@ const YES = flag("yes");
 const targets = [
   {
     key: "youtube",
-    ready: youtubeReady,
+    ready: () => youtubeReady(CH),
     preview: { ...ytMeta, publishAt: schedulePreview(), description: `${ytMeta.description.slice(0, 120)}… (${ytMeta.description.length}자)`, thumbnail: thumbnail && path.basename(thumbnail) },
     upload: () =>
       uploadYouTubeWith(
         autoSchedule ? { ...ytMeta, publishAt: new Date(Date.now() + delayMin * 60 * 1000).toISOString() } : ytMeta,
         video,
-        { thumbnail },
+        { thumbnail, channel: CH },
       ),
-    // 토큰 채널이 .env YT_CHANNEL_HANDLE 과 다르면 중단 (개인 채널 오업로드 방지)
+    // 토큰 채널이 .env YT_CHANNEL_<키> 와 다르면 중단 (다른 채널 오업로드 방지)
     precheck: async () => {
-      const age = youtubeTokenAgeDays();
-      if (age !== null && age > 6) console.warn(`  ⚠ 토큰 발급 ${age.toFixed(1)}일 경과 — OAuth '테스트' 상태면 7일에 만료됩니다 (npm run yt:auth)`);
-      const ch = await youtubeChannel();
-      console.log(`  채널: ${ch.title} ${ch.handle ?? ""}`);
-      const want = process.env.YT_CHANNEL_HANDLE?.trim().toLowerCase();
-      if (!want) return "YT_CHANNEL_HANDLE 미설정 — .env 에 올릴 채널 핸들(@…)을 적으세요";
-      if ((ch.handle ?? "").toLowerCase() !== want) return `채널 불일치: 토큰=${ch.handle ?? ch.title}, 설정=${want} — npm run yt:auth 에서 브랜드 채널을 선택하세요`;
+      const age = youtubeTokenAgeDays(CH);
+      if (age !== null && age > 6) console.warn(`  ⚠ [${CH}] 토큰 발급 ${age.toFixed(1)}일 경과 — OAuth '테스트' 상태면 7일에 만료됩니다 (npm run yt:auth -- --channel ${CH})`);
+      const ch = await youtubeChannel(CH);
+      console.log(`  채널 [${CH}]: ${ch.title} ${ch.handle ?? ""}`);
+      const want = channelHandle(CH)?.toLowerCase();
+      if (!want) return `YT_CHANNEL_${CH.toUpperCase()} 미설정 — .env 에 채널 핸들(@…)을 적으세요`;
+      if ((ch.handle ?? "").toLowerCase() !== want) return `채널 불일치: 토큰=${ch.handle ?? ch.title}, [${CH}]=${want} — npm run yt:auth -- --channel ${CH}`;
       return null;
     },
   },
@@ -243,7 +245,7 @@ for (const t of targets) {
     const result = await t.upload();
     // --again 재게시: 이전 기록은 history 로 보존
     if (log[t.key]) (log.history ??= []).push({ platform: t.key, ...log[t.key] });
-    log[t.key] = { module, titleNo: entry.no, title: entry.title, ...result, at: new Date().toISOString() };
+    log[t.key] = { module, ...(t.key === "youtube" ? { channel: CH } : {}), titleNo: entry.no, title: entry.title, ...result, at: new Date().toISOString() };
     fs.writeFileSync(logFile, JSON.stringify(log, null, 2));
     const kst = result.publishAt && new Date(result.publishAt).toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
     console.log(`✓ ${t.key}: ${result.url ?? result.id}${kst ? ` (예약 공개 ${kst} KST)` : ""}`);

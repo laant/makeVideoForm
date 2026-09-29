@@ -19,6 +19,40 @@
 | `demo` | 입력→결과 시연 | `app?`, `heading?`, `input`, `inputAt?`, `output: "…" \| ["줄"]`, `outputAt?` |
 | `cta` | 행동 유도 | `headline`, `action`, `actionAt?`, `handle?`, `emoji?` |
 
+## 배경 이미지 생성 — `npm run bg` (2026-09-29)
+
+씬에 `onScreen.bgPrompt`(**피사체 한 줄, 영어**)를 적고 `npm run bg -- <slug>` 를 돌리면
+`media/bg-sNN.png` 를 만들고 `bgImage`·`bgDim` 까지 채운다. 스타일은 에피소드의 `bg.preset`.
+
+```json
+"bg": { "preset": "clay", "layout": "plate" },            // 에피소드
+"onScreen": { "bgPrompt": "a single round coin standing on its edge on the floor" }   // 씬
+```
+
+| preset | 느낌 | 쓰임 | 확인 |
+|---|---|---|---|
+| `clay` (기본) | 찰흙 3D · 어두운 스튜디오 | 재테크 기본 | 09·11~14번 |
+| `paper` | 페이퍼 콜라주 · 팝업북 | 따뜻한 이야기·생활 | 04번 |
+| `blueprint` | 청사진 선도면 · 격자 | 테크 기본 | 견본 |
+| `glass` | 반투명 유리 3D | 미래·AI·핀테크 | 견본 |
+| `isometric` | 플랫 아이소메트릭 일러스트 | 재테크·테크 공용 — 앱·서비스 | 14번 비교판 |
+| `engraving` | 신문 판화 · 스티플·해칭 | 재테크 — 제도·법·시황 | 14번 비교판 |
+| `studio` | 키노트풍 제품 렌더 · 반사 바닥 | 테크 — 신제품 (가장 차분) | 14번 비교판 |
+| `exploded` | 분해도 · 부품이 떠 있는 3D | 테크 — 구조·작동 원리 | 14번 비교판 |
+| `riso` | 리소그래프 2도 인쇄 질감 | 가벼운 생활정보 (가장 거침) | 14번 비교판 |
+
+같은 대본(14번)을 9종 중 6종으로 만든 비교 영상: `output/14-optimal-plan/_style-compare/compare_all6.mp4`
+(clay·isometric·engraving·studio·exploded·riso 동기 재생). 변형 에피소드는 `episodes/optimal-plan-<preset>/`.
+체감 차이 크기: engraving ≈ exploded > riso > isometric > studio ≈ clay.
+
+- 프롬프트 = `style + SUBJECT + layout + accent + prohibit` (`templates/bg-presets.json`). 피사체 말고는 전부 고정이라 분위기가 통일된다
+- **`bgPrompt` 에 재질(clay·paper·glass…)을 쓰지 않는다** — 재질은 프리셋이 정한다. 피사체에 재질을 쓰면 프리셋을 이긴다(glass 견본이 찰흙으로 나온 원인)
+- 글자·숫자는 금지 블록으로 막혀 있다. 숫자·한글은 템플릿이 코드로 그린다
+- 림라이트 색은 `theme.accent` 에서 자동(`bg.accent` 로 덮어쓰기). `layout`: `plate`(글 뒤 배경판, 기본) / `hero`(피사체 크게)
+- 견본 비교: `npm run bg -- --preview all` → `.cache/bg-previews/`
+- 유료라 `make` 에 넣지 않았다. 이미 있는 파일은 건너뛴다(`--force` 로 재생성, `--only sNN`, `--dry`)
+- 사용 프롬프트는 `refs/bg_manifest.json` 에 남는다
+
 ## 모션 어휘 (talkcraft 이식, 2026-09-23)
 
 talkcraft(Remotion, PolyForm Noncommercial)의 공통 카드 4종을 HyperFrames 로 이식한 것.
@@ -36,9 +70,9 @@ GSAP 의 `power2.out/power3.out/back.out()` 과 정확히 같은 곡선이라 �
 - `at` 류는 다른 템플릿과 같이 `"word:키워드"` 앵커를 받는다. talkcraft 는 이 값을 손으로 주입했지만
   여기서는 `H.at()` 이 나레이션 타임스탬프에서 바로 계산한다.
 - `number-counter` 의 카운트는 1~1.5초가 원칙이다(원본 주석: 2초 넘으면 시청자가 이미 문장을 다 들었다).
-- `strike-and-replace` 는 **원본의 잠복 버그를 고쳤다.** 원본은 취소선을 `from` 스팬 안에 두어
-  부모 opacity 가 0 이 되면 함께 사라졌다(`keepStrike` 무력화). 여기서는 형제로 빼내 주석에 적힌
-  `定格`(취소선과 새 값이 함께 남는 3박째)을 실제로 구현한다. `keepStrike: false` 로 원본 거동 재현.
+- `strike-and-replace` 는 새 값이 옛 값과 **같은 자리**에 들어오므로 취소선이 옛 값과 함께 사라진다(원본 거동 그대로).
+  이식 초기에 이걸 '버그'로 보고 취소선을 남기게 바꿨다가, 새 값 위에 선이 그어져 의미가 뒤집히는 것을 14번에서 확인하고 되돌렸다.
+  `keepStrike: true` 는 옛 값·새 값을 겹치지 않게 배치할 때만 쓴다.
 
 ## 연출 라이브러리 (Shorts Factory 가이드 16 트랜지션 · 18 화면 효과 · 17 효과음)
 

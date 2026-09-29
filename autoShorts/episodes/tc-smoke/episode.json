@@ -38,6 +38,11 @@
     "style": 0.15,
     "speed": 1.05
   },
+  "bg": {
+    "preset": "blueprint",
+    "layout": "plate",
+    "accent": ""
+  },
   "gapSeconds": 0.25,
   "transitionSeconds": 0.3,
   "scenes": [
@@ -49,7 +54,10 @@
         "value": "23",
         "unit": "%",
         "caption": "전년 대비 증가",
-        "at": "word:이십삼"
+        "at": "word:이십삼",
+        "bgPrompt": "a single round coin standing on its edge on the floor",
+        "bgImage": "media/bg-s01.png",
+        "bgDim": 0.35
       },
       "sfx": [],
       "transitionOut": "crossfade",

@@ -1,0 +1,14 @@
+{
+ "assets": [
+  {
+   "file": "media/bg-s01.png",
+   "scene": "s01",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a single round coin standing on its edge on the floor. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint warm amber rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T02:15:22.498Z"
+  }
+ ]
+}

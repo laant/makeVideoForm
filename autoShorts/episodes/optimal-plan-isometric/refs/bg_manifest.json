@@ -1,0 +1,64 @@
+{
+ "assets": [
+  {
+   "file": "media/bg-s01.png",
+   "scene": "s01",
+   "preset": "isometric",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background. SUBJECT: a small plain smartphone lying face up on the floor with a soft glow on its blank screen. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. Only one accent colour, soft mint-green, used on a single small detail. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T04:01:54.477Z"
+  },
+  {
+   "file": "media/bg-s02.png",
+   "scene": "s02",
+   "preset": "isometric",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background. SUBJECT: six small plain calendar tiles standing in a neat row on the floor, all blank. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. Only one accent colour, soft mint-green, used on a single small detail. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T04:01:54.478Z"
+  },
+  {
+   "file": "media/bg-s03.png",
+   "scene": "s03",
+   "preset": "isometric",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background. SUBJECT: a heavy chain loosely looped around a plain smartphone lying on the floor. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. Only one accent colour, soft mint-green, used on a single small detail. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T04:01:54.478Z"
+  },
+  {
+   "file": "media/bg-s04.png",
+   "scene": "s04",
+   "preset": "isometric",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background. SUBJECT: three small blank cards laid out in a row on the floor, each slightly tilted. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. Only one accent colour, soft mint-green, used on a single small detail. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T04:01:54.478Z"
+  },
+  {
+   "file": "media/bg-s05.png",
+   "scene": "s05",
+   "preset": "isometric",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background. SUBJECT: a small closed box on the left and a wide open shelf on the right holding several plain phones. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. Only one accent colour, soft mint-green, used on a single small detail. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T04:01:54.478Z"
+  },
+  {
+   "file": "media/bg-s06.png",
+   "scene": "s06",
+   "preset": "isometric",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, clean flat vector isometric illustration, simple geometric shapes with crisp edges and subtle soft shading, muted palette of slate grays, on a very dark slate background. SUBJECT: a plain smartphone standing upright with a small blank note card leaning against it. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. Only one accent colour, soft mint-green, used on a single small detail. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-09-29T04:01:54.478Z"
+  }
+ ]
+}

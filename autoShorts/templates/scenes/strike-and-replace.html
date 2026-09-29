@@ -1,7 +1,8 @@
 <!-- strike-and-replace: "A가 아니라 B" 정정. onScreen: { prefix?, from, to, suffix?, strikeAt?, swapDelay?, keepStrike?, subline?, sublineDelay? }
-     talkcraft cards/strike-and-replace.tsx 이식 — 快斬(0.15s) → 立換(0.25s 동위 교체) → 定格(취소선 유지)
-     ※ 원본은 취소선을 from 스팬 안에 두어 부모 opacity 가 0 이 되면 함께 사라졌다(keepStrike 가 무력화된 잠복 버그).
-        여기서는 취소선을 형제 요소로 빼내 주석에 적힌 定格 을 실제로 구현한다. keepStrike:false 로 원본 거동 재현 가능. -->
+     talkcraft cards/strike-and-replace.tsx 이식 — 快斬(0.15s) → 立換(0.25s 동위 교체) → 定格
+     ※ 새 값이 옛 값과 **같은 자리**에 들어오므로 취소선은 옛 값과 함께 사라져야 한다(원본 렌더 거동과 같음).
+        취소선을 남기면 새 값 위에 그어져 "새 값이 틀렸다"로 읽힌다 — 2026-09-29 14번 s03 에서 의미가 뒤집혀 확인.
+        keepStrike:true 는 옛 값과 새 값을 겹치지 않게 쓸 때만 켠다. -->
 <style>
   .sr-line { text-align: center; font-size: 74px; font-weight: 700; line-height: 1.5; white-space: nowrap; color: var(--fg); }
   .sr-slot { position: relative; display: inline-block; vertical-align: baseline; }
@@ -20,7 +21,7 @@
   const from = o.from ?? "", to = o.to ?? "";
   const strikeAt = H.at(o.strikeAt, 0.25);
   const swapAt = strikeAt + 0.15 + (o.swapDelay ?? 0.35);   // 快斬 종료 후 교체
-  const keepStrike = o.keepStrike !== false;
+  const keepStrike = o.keepStrike === true;   // 기본: 옛 값과 함께 사라짐
 
   const line = H.el("div", "sr-line", null, stage);
   if (o.prefix) line.appendChild(document.createTextNode(o.prefix + " "));

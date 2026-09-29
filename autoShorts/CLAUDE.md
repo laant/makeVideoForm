@@ -15,6 +15,8 @@ npm run new -- <slug> "주제"          # 에피소드 뼈대 + 입력 페이지
 npm run intake -- <slug>               # 입력 페이지 다시 열기 (episode.json brief/reference, refs/, media/)
 npm run make -- <slug> [--mock]        # tts → scenes → render → assemble → verify
 npm run tts -- <slug> [--mock|--force] # 바뀐 씬만 ElevenLabs 호출 (해시 캐시)
+npm run bg -- <slug> [--dry|--force|--only s02]   # 배경 이미지 생성 (씬 onScreen.bgPrompt + bg.preset, 유료)
+npm run bg -- --preview all             # 스타일 프리셋 견본
 npm run scenes -- <slug> [--force]
 npm run render -- <slug> [--only s02] [--draft]
 npm run assemble -- <slug>
@@ -22,7 +24,8 @@ npm run verify -- <slug>               # 결과: renders/check/contact-sheet.jpg
 npm run cards -- <slug> [--only s02]   # 인스타 카드뉴스 1080x1080 → cards/01.png… (자막 없음, 음성 없어도 가능)
 npm run preview -- <slug> [--stop]     # HyperFrames Studio (씬 + 나레이션 합본)
 npm run upload -- <slug>               # dry-run. 실제 업로드는 --yes (사용자 확인 후에만)
-npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|none] [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--yes] [--again]
+npm run yt:auth -- --channel finance|tech    # 채널별 토큰 → .secrets/youtube-token.<키>.json (7일 만료 시 해당 채널만)
+npm run publish -- <프로젝트> --module <모듈> [--channel finance|tech] [--title N] [--thumb 1|2|none] [--only youtube|instagram] [--at "YYYY-MM-DD HH:mm"] [--yes] [--again]
                                        # myNextSeason output/ 완성본(모든 모듈판) 배포 — 제목·설명은 titles.txt(★ 기본)
                                        # YouTube 기본 = 업로드 +10분 예약 공개 (YT_SCHEDULE_DELAY_MIN), --privacy 지정 시 예약 없음
 ```
@@ -49,11 +52,15 @@ npm run publish -- <프로젝트> --module <모듈> [--title N] [--thumb 1|2|non
 - 연출 라이브러리: `transitionOut`(20종) · `effects`(화면 효과 19종) · `sfx`(17종) — 표는 `templates/scenes/README.md`, 정의는 `scripts/lib/fx.js`·`scripts/gen-sfx.js`.
   트랜지션·화면 효과는 합성 단계(FFmpeg)에서 적용되어 preview 에는 보이지 않는다.
 - 외부 이미지·폰트·음원은 출처·라이선스를 확인하고 에셋 매니페스트로 보고한다.
+- 배경 그림은 `npm run bg` 로 만든다(기본 '그림판'). 씬마다 `onScreen.bgPrompt` 에 **재질 없는 피사체 한 줄**만 쓰고,
+  스타일은 에피소드 `bg.preset` — 9종(clay·paper·blueprint·glass·isometric·engraving·studio·exploded·riso), 쓰임은 `templates/scenes/README.md`. 스크래치 스크립트로 따로 만들지 않는다.
 - HyperFrames 규칙: `Date.now()`/`Math.random()`/네트워크 금지, 타임라인은 `{ paused: true }` 로 `window.__timelines[id]` 등록,
   에셋 경로는 에피소드 폴더 기준(`vendor/…`, `audio/…`, `../` 금지). 문서: `npx hyperframes docs <topic>`.
 
 ## 안전
 - 업로드는 사용자가 명시적으로 요청했을 때만 `--yes`. YouTube 기본 `private`.
+- YouTube 채널은 둘이다 — `finance`(@knowledge-f-financial, 재테크·생활정보, 기본) / `tech`(@upup__tech, 테크 상식).
+  `.env` `YT_CHANNEL_<키>` 에 핸들, 토큰은 채널별 파일. 인증 때 다른 채널을 고르면 저장하지 않고, 업로드 때 토큰 채널이 다르면 멈춘다.
 - `upload`·`publish` 는 업로드 전 점검(`scripts/lib/precheck.js`)이 ✗ 면 멈춘다. `--skip-precheck` 는 사용자가 원할 때만.
 - 결과 보고는 **실행·확인한 것** / **사람이 확인할 것** 을 나눠 쓴다.
 - `.env`, `.secrets/` 내용은 출력하지 않는다.

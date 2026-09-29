@@ -104,6 +104,14 @@ export const EpisodeSchema = z.object({
       speed: z.number().default(1.05),
     })
     .prefault({}),
+  // 배경 이미지 생성(npm run bg) 설정. 씬별 피사체는 onScreen.bgPrompt, 스타일은 templates/bg-presets.json
+  bg: z
+    .object({
+      preset: z.string().default("clay"), // templates/bg-presets.json 9종 — clay(기본)·paper·blueprint·glass·isometric·engraving·studio·exploded·riso
+      layout: z.enum(["plate", "hero"]).default("plate"), // plate: 글 뒤 배경판 / hero: 피사체 크게
+      accent: z.string().default(""), // 림라이트 색 이름. 비우면 theme.accent 에서 자동
+    })
+    .prefault({}),
   gapSeconds: z.number().min(0).default(0.25), // 씬 사이 무음 여백
   transitionSeconds: z.number().min(0).max(1).default(0.3),
   scenes: z.array(Scene).min(1),
@@ -120,8 +128,9 @@ export const EpisodeSchema = z.object({
       title: z.string().default(""),
       instagram: z.boolean().default(true),
       youtube: z.boolean().default(true),
+      channel: z.string().default(""), // YouTube 채널 키 (finance | tech …). 비우면 YT_CHANNEL_DEFAULT
     })
-    .default({ title: "", instagram: true, youtube: true }),
+    .default({ title: "", instagram: true, youtube: true, channel: "" }),
 });
 
 export function slugArg() {
