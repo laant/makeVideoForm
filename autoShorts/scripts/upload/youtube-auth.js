@@ -8,15 +8,14 @@ import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { google } from "googleapis";
-import { channelKey, channelHandle, tokenWritePath, listChannels } from "./channels.js";
+import { channelKey, channelHandle, tokenWritePath, listChannels, sameChannel, registerChannel } from "./channels.js";
 
 const ai = process.argv.indexOf("--channel");
 const KEY = channelKey(ai >= 0 ? process.argv[ai + 1] : undefined);
 const WANT = channelHandle(KEY);
-if (!WANT) {
-  console.error(`YT_CHANNEL_${KEY.toUpperCase()} 가 .env 에 없습니다. 등록된 채널: ${listChannels().map((c) => `${c.key}=${c.handle}`).join(", ") || "(없음)"}`);
-  process.exit(1);
-}
+// .env 에 없는 키면 등록 모드 — 브라우저에서 고른 채널을 이 키로 등록한다(이미 다른 키로 등록된 채널이면 거부)
+const REGISTER = !WANT;
+if (REGISTER) console.log(`[${KEY}] 새 채널 등록 모드 — 고른 채널이 YT_CHANNEL_${KEY.toUpperCase()} 로 .env 에 추가됩니다.`);
 export const TOKEN_PATH = tokenWritePath(KEY);
 const PORT = 53682;
 
@@ -34,7 +33,7 @@ const url = oauth.generateAuthUrl({
           "https://www.googleapis.com/auth/youtube.force-ssl"],
 });
 
-console.log(`[${KEY}] ${WANT} 채널로 인증합니다 — 브라우저에서 반드시 이 브랜드 채널을 고르세요.\n\n${url}\n`);
+console.log(REGISTER ? `\n${url}\n` : `[${KEY}] ${WANT} 채널로 인증합니다 — 브라우저에서 반드시 이 브랜드 채널을 고르세요.\n\n${url}\n`);
 const server = http.createServer(async (req, res) => {
   const u = new URL(req.url, redirect);
   if (u.pathname !== "/oauth2callback") return res.end();
@@ -43,16 +42,27 @@ const server = http.createServer(async (req, res) => {
     oauth.setCredentials(tokens);
     const ch = await google.youtube({ version: "v3", auth: oauth }).channels.list({ part: ["snippet"], mine: true });
     const c = ch.data.items?.[0];
-    const got = (c?.snippet.customUrl ?? "").toLowerCase();
-    if (!c || got !== WANT.toLowerCase()) {
-      res.end(`채널 불일치 — 저장하지 않았습니다. 다시 실행해 ${WANT} 를 고르세요.`);
-      console.error(`✗ 선택한 채널 ${c ? `${c.snippet.title} ${c.snippet.customUrl ?? ""}` : "(없음)"} ≠ [${KEY}] ${WANT} — 토큰을 저장하지 않았습니다`);
+    const chInfo = c && { handle: c.snippet.customUrl ?? null, id: c.id };
+    if (c && REGISTER) {
+      const taken = listChannels().find((x) => sameChannel(x.handle, chInfo));
+      if (taken) {
+        res.end(`이미 [${taken.key}] 로 등록된 채널입니다 — 저장하지 않았습니다.`);
+        console.error(`✗ ${c.snippet.title} 는 이미 [${taken.key}] ${taken.handle} 로 등록돼 있습니다 — 다른 채널을 고르세요`);
+        return;
+      }
+      registerChannel(KEY, chInfo.handle || chInfo.id);
+      console.log(`✓ .env 에 YT_CHANNEL_${KEY.toUpperCase()}=${chInfo.handle || chInfo.id} 등록`);
+    }
+    const want = channelHandle(KEY);
+    if (!c || !sameChannel(want, chInfo)) {
+      res.end(`채널 불일치 — 저장하지 않았습니다. 다시 실행해 ${want} 를 고르세요.`);
+      console.error(`✗ 선택한 채널 ${c ? `${c.snippet.title} ${c.snippet.customUrl ?? ""}` : "(없음)"} ≠ [${KEY}] ${want} — 토큰을 저장하지 않았습니다`);
       return;
     }
     fs.mkdirSync(path.dirname(TOKEN_PATH), { recursive: true });
-    fs.writeFileSync(TOKEN_PATH, JSON.stringify({ ...tokens, obtained_at: new Date().toISOString(), channel: { key: KEY, handle: c.snippet.customUrl, id: c.id } }, null, 2), { mode: 0o600 });
+    fs.writeFileSync(TOKEN_PATH, JSON.stringify({ ...tokens, obtained_at: new Date().toISOString(), channel: { key: KEY, handle: c.snippet.customUrl ?? null, id: c.id } }, null, 2), { mode: 0o600 });
     res.end("인증 완료. 터미널로 돌아가세요.");
-    console.log(`✓ [${KEY}] 채널: ${c.snippet.title} ${c.snippet.customUrl} (${c.id})`);
+    console.log(`✓ [${KEY}] 채널: ${c.snippet.title} ${c.snippet.customUrl ?? "(핸들 없음)"} (${c.id})`);
     console.log(`✓ 토큰 저장: ${path.relative(process.cwd(), TOKEN_PATH)}`);
   } catch (e) {
     res.end("인증 실패: " + e.message);

@@ -48,3 +48,21 @@ export function tokenPath(key) {
 export function tokenWritePath(key) {
   return path.join(SECRETS, `youtube-token.${channelKey(key)}.json`);
 }
+
+/** 설정값(@핸들 또는 UC… 채널 ID)이 실제 채널 {handle,id} 와 같은가 — 핸들이 없는 채널은 ID 로 등록된다 */
+export function sameChannel(want, ch) {
+  if (!want || !ch) return false;
+  const w = want.trim().toLowerCase();
+  return w === (ch.handle ?? "").toLowerCase() || w === (ch.id ?? "").toLowerCase();
+}
+
+/** 새 채널 키를 .env 에 등록 (YT_CHANNEL_<KEY>=@핸들|UC…) */
+export function registerChannel(key, value) {
+  const envPath = path.join(ROOT, ".env");
+  const name = `YT_CHANNEL_${channelKey(key).toUpperCase()}`;
+  const cur = fs.existsSync(envPath) ? fs.readFileSync(envPath, "utf8") : "";
+  if (new RegExp(`^${name}=`, "m").test(cur)) return false;
+  fs.appendFileSync(envPath, `${cur.endsWith("\n") ? "" : "\n"}${name}=${value}\n`);
+  process.env[name] = value;
+  return true;
+}

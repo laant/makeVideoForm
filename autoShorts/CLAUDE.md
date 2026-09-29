@@ -63,8 +63,10 @@ npm run publish -- <프로젝트> --module <모듈> [--channel finance|tech] [--
 
 ## 안전
 - 업로드는 사용자가 명시적으로 요청했을 때만 `--yes`. YouTube 기본 `private`.
-- YouTube 채널은 둘이다 — `finance`(@knowledge-f-financial, 재테크·생활정보, 기본) / `tech`(@upup__tech, 테크 상식).
-  `.env` `YT_CHANNEL_<키>` 에 핸들, 토큰은 채널별 파일. 인증 때 다른 채널을 고르면 저장하지 않고, 업로드 때 토큰 채널이 다르면 멈춘다.
+- YouTube 채널은 셋이다 — `finance`(@knowledge-f-financial, 재테크·생활정보, 기본) / `tech`(@upup__tech, 테크 상식) /
+  `personal`(사용자 계정 기본 채널 — 그 외 영상: 건축쇼츠·개인 프로젝트 등). **업로드 전 어느 채널인지 정하고 `--channel` 을 명시한다.**
+  `.env` `YT_CHANNEL_<키>`(@핸들 또는 UC… ID), 토큰은 채널별 파일. 인증 때 다른 채널을 고르면 저장하지 않고, 업로드 때 토큰 채널이 다르면 멈춘다.
+  새 채널 키는 `npm run yt:auth -- --channel <새키>` 한 번이면 고른 채널이 `.env` 에 자동 등록된다(이미 다른 키로 등록된 채널은 거부).
 - `upload`·`publish` 는 업로드 전 점검(`scripts/lib/precheck.js`)이 ✗ 면 멈춘다. `--skip-precheck` 는 사용자가 원할 때만.
 - 결과 보고는 **실행·확인한 것** / **사람이 확인할 것** 을 나눠 쓴다.
 - `.env`, `.secrets/` 내용은 출력하지 않는다.

@@ -17,7 +17,7 @@ import path from "node:path";
 import { ROOT } from "./lib/paths.js";
 import { ffprobeJson } from "./lib/proc.js";
 import { youtubeReady, uploadYouTubeWith, youtubeChannel, youtubeTokenAgeDays, explainAuthError } from "./upload/youtube.js";
-import { channelKey, channelHandle } from "./upload/channels.js";
+import { channelKey, channelHandle, sameChannel } from "./upload/channels.js";
 import { instagramReady, uploadInstagramWith } from "./upload/instagram.js";
 import { precheck, printPrecheck } from "./lib/precheck.js";
 
@@ -180,9 +180,9 @@ const targets = [
       if (age !== null && age > 6) console.warn(`  ⚠ [${CH}] 토큰 발급 ${age.toFixed(1)}일 경과 — OAuth '테스트' 상태면 7일에 만료됩니다 (npm run yt:auth -- --channel ${CH})`);
       const ch = await youtubeChannel(CH);
       console.log(`  채널 [${CH}]: ${ch.title} ${ch.handle ?? ""}`);
-      const want = channelHandle(CH)?.toLowerCase();
-      if (!want) return `YT_CHANNEL_${CH.toUpperCase()} 미설정 — .env 에 채널 핸들(@…)을 적으세요`;
-      if ((ch.handle ?? "").toLowerCase() !== want) return `채널 불일치: 토큰=${ch.handle ?? ch.title}, [${CH}]=${want} — npm run yt:auth -- --channel ${CH}`;
+      const want = channelHandle(CH);
+      if (!want) return `YT_CHANNEL_${CH.toUpperCase()} 미설정 — npm run yt:auth -- --channel ${CH} 로 등록하세요`;
+      if (!sameChannel(want, ch)) return `채널 불일치: 토큰=${ch.handle ?? ch.id}, [${CH}]=${want} — npm run yt:auth -- --channel ${CH}`;
       return null;
     },
   },

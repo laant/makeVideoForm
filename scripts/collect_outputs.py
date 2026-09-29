@@ -78,6 +78,10 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("04-guri-flags", "autoshorts-text"): [
         "autoShorts/episodes/guri-flags-45-text/final.mp4"],  # 45초 압축판 · 글자 카드
     ("04-guri-flags", "talkcraft"): [
+    ("04-guri-flags", "autoshorts-visit"): [
+        "autoShorts/episodes/guri-flags-45-visit/final.mp4"],  # 45초판 재제작 · 결말 '구리시에 방문해 보세요'
+    ("04-guri-flags", "opus-paper"): [
+        "experiments/opus-paper-04/out/final.mp4"],  # 모듈 없이 절차적 종이 공작 렌더(실험) · 같은 나레이션
         "talkcraft/guri/remotion/out/final_send.mp4",
         "talkcraft/guri/remotion/out/final.mp4"],
     ("14-optimal-plan", "autoshorts"): [
