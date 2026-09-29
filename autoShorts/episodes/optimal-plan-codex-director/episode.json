@@ -1,0 +1,612 @@
+{
+  "slug": "optimal-plan-codex-director",
+  "topic": "10월부터 통신사 '최적요금제' 안내 — 문자 받으면 바로 바꿔도 될까",
+  "audience": "SKT·KT·LG U+ 후불 요금제를 쓰는 일반 가입자",
+  "tone": "차분한 생활 정보체. 제도 소개 → 반전 → 확인법 → 대안",
+  "cta": "나머지 확인 항목은 설명란",
+  "reference": {
+    "url": "",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "훅 → 6개월마다 → 반전(무조건 이득 아님) → 확인 3가지 → 통신사 내 추천 한계 → 설명란",
+    "notes": "사용자 본인 Blogger 글 '10월부터 통신사가 더 싼 요금제를 알려준다는데…'(2026-09-29 확인 기준) 기반. 전기통신사업법 제32조의21 신설·10/1 시행·매출 1조원 초과(사실상 3사)·6개월마다 고지는 2026-09-29 보도(헤럴드경제·머니투데이)로 재확인. 세부는 과기정통부 행정예고 고시안 기준이라 최종 고시와 다를 수 있음."
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "Codex director cut: editorial photography, ivory/forest green typography, narration-synchronized explanatory motion. Original narration and timing retained.",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#08271f",
+    "fg": "#f6f1e7",
+    "accent": "#a3e4bf",
+    "muted": "#c4d0c8"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.24,
+  "transitionSeconds": 0.18,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "시월부터, 통신사가 더 싼 요금제를 먼저 알려줍니다.",
+      "onScreen": {
+        "kicker": "10월 1일 시행",
+        "title": "통신사가\n더 싼 요금제를\n알려준다",
+        "highlight": [
+          "더 싼"
+        ],
+        "bgImage": "media/bg-s01.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 0.45
+        }
+      ],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "7ec220207f96",
+        "start": 0,
+        "duration": 4.243,
+        "speechEnd": 4.003,
+        "words": [
+          {
+            "text": "시월부터,",
+            "start": 0.395,
+            "end": 1.52
+          },
+          {
+            "text": "통신사가",
+            "start": 1.52,
+            "end": 1.97
+          },
+          {
+            "text": "더",
+            "start": 1.97,
+            "end": 2
+          },
+          {
+            "text": "싼",
+            "start": 2.11,
+            "end": 2.41
+          },
+          {
+            "text": "요금제를",
+            "start": 2.47,
+            "end": 2.9
+          },
+          {
+            "text": "먼저",
+            "start": 3,
+            "end": 3.14
+          },
+          {
+            "text": "알려줍니다.",
+            "start": 3.14,
+            "end": 3.77
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "number-slab-pop",
+      "narration": "에스케이티, 케이티, 엘지유플러스가 여섯 달마다 내 사용량을 보고 문자로 보냅니다.",
+      "onScreen": {
+        "value": "6",
+        "unit": "개월마다",
+        "caption": "SKT · KT · LG U+ 후불 가입자 · 알뜰폰 제외",
+        "at": "word:여섯",
+        "bgImage": "media/bg-s02.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "word:여섯",
+          "volume": 0.45
+        }
+      ],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "e8e361228349",
+        "start": 4.243,
+        "duration": 6.91,
+        "speechEnd": 6.67,
+        "words": [
+          {
+            "text": "에스케이티,",
+            "start": 0,
+            "end": 0.033
+          },
+          {
+            "text": "케이티,",
+            "start": 0.033,
+            "end": 0.46
+          },
+          {
+            "text": "엘지유플러스가",
+            "start": 0.46,
+            "end": 3.03
+          },
+          {
+            "text": "여섯",
+            "start": 3.03,
+            "end": 3.6
+          },
+          {
+            "text": "달마다",
+            "start": 3.7,
+            "end": 4.22
+          },
+          {
+            "text": "내",
+            "start": 4.33,
+            "end": 4.41
+          },
+          {
+            "text": "사용량을",
+            "start": 4.41,
+            "end": 5.19
+          },
+          {
+            "text": "보고",
+            "start": 5.19,
+            "end": 5.44
+          },
+          {
+            "text": "문자로",
+            "start": 5.58,
+            "end": 5.92
+          },
+          {
+            "text": "보냅니다.",
+            "start": 5.92,
+            "end": 6.43
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "strike-and-replace",
+      "narration": "그런데 바꾸면 무조건 이득은 아닙니다. 약정이나 가족 결합 할인이 걸려 있으면, 오히려 손해일 수 있습니다.",
+      "onScreen": {
+        "prefix": "요금제 변경,",
+        "from": "무조건 이득",
+        "to": "손해일 수도",
+        "strikeAt": "word:무조건",
+        "swapDelay": 1.6,
+        "subline": "약정 위약금 · 가족 결합 할인 확인",
+        "highlight": [
+          "손해일"
+        ],
+        "bgImage": "media/bg-s03.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "error",
+          "at": "word:무조건",
+          "volume": 0.45
+        }
+      ],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "ed09a829e63e",
+        "start": 11.153,
+        "duration": 8.185,
+        "speechEnd": 7.945,
+        "words": [
+          {
+            "text": "그런데",
+            "start": 0.09,
+            "end": 0.43
+          },
+          {
+            "text": "바꾸면",
+            "start": 0.43,
+            "end": 1.4
+          },
+          {
+            "text": "무조건",
+            "start": 1.41,
+            "end": 2.11
+          },
+          {
+            "text": "이득은",
+            "start": 2.11,
+            "end": 2.81
+          },
+          {
+            "text": "아닙니다.",
+            "start": 2.81,
+            "end": 3.44
+          },
+          {
+            "text": "약정이나",
+            "start": 3.53,
+            "end": 4.08
+          },
+          {
+            "text": "가족",
+            "start": 4.08,
+            "end": 4.35
+          },
+          {
+            "text": "결합",
+            "start": 4.5,
+            "end": 4.72
+          },
+          {
+            "text": "할인이",
+            "start": 4.72,
+            "end": 5.2
+          },
+          {
+            "text": "걸려",
+            "start": 5.2,
+            "end": 5.84
+          },
+          {
+            "text": "있으면,",
+            "start": 5.84,
+            "end": 6.33
+          },
+          {
+            "text": "오히려",
+            "start": 6.33,
+            "end": 6.78
+          },
+          {
+            "text": "손해일",
+            "start": 6.88,
+            "end": 7.03
+          },
+          {
+            "text": "수",
+            "start": 7.18,
+            "end": 7.264
+          },
+          {
+            "text": "있습니다.",
+            "start": 7.264,
+            "end": 7.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "list",
+      "narration": "문자를 받으면 세 가지를 보세요. 평균 말고 최대 사용량, 약정 위약금, 가족 결합 할인입니다.",
+      "onScreen": {
+        "heading": "문자 받으면 확인",
+        "items": [
+          {
+            "text": "평균 말고 '최대' 사용량",
+            "at": "word:최대"
+          },
+          {
+            "text": "약정 위약금",
+            "at": "word:위약금,"
+          },
+          {
+            "text": "가족·인터넷 결합 할인",
+            "at": "word:결합"
+          }
+        ],
+        "highlight": [
+          "최대"
+        ],
+        "bgImage": "media/bg-s04.png",
+        "bgDim": 0.32
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "b19fa4f09f54",
+        "start": 19.338,
+        "duration": 8.321,
+        "speechEnd": 8.081,
+        "words": [
+          {
+            "text": "문자를",
+            "start": 0.05,
+            "end": 0.45
+          },
+          {
+            "text": "받으면",
+            "start": 0.45,
+            "end": 0.9
+          },
+          {
+            "text": "세",
+            "start": 0.9,
+            "end": 1.33
+          },
+          {
+            "text": "가지를",
+            "start": 1.38,
+            "end": 1.8
+          },
+          {
+            "text": "보세요.",
+            "start": 1.8,
+            "end": 2.25
+          },
+          {
+            "text": "평균",
+            "start": 2.77,
+            "end": 3.48
+          },
+          {
+            "text": "말고",
+            "start": 3.48,
+            "end": 3.83
+          },
+          {
+            "text": "최대",
+            "start": 3.99,
+            "end": 4.19
+          },
+          {
+            "text": "사용량,",
+            "start": 4.27,
+            "end": 4.97
+          },
+          {
+            "text": "약정",
+            "start": 5.61,
+            "end": 6.01
+          },
+          {
+            "text": "위약금,",
+            "start": 6.01,
+            "end": 6.64
+          },
+          {
+            "text": "가족",
+            "start": 6.84,
+            "end": 7.04
+          },
+          {
+            "text": "결합",
+            "start": 7.04,
+            "end": 7.24
+          },
+          {
+            "text": "할인입니다.",
+            "start": 7.24,
+            "end": 7.74
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "compare",
+      "narration": "그리고 이 추천은 내 통신사 안에서만 고른 겁니다. 알뜰폰까지 비교하려면 스마트초이스를 쓰세요.",
+      "onScreen": {
+        "heading": "추천 범위가 다르다",
+        "left": {
+          "label": "통신사 안내",
+          "items": [
+            "지금 통신사 요금제만"
+          ]
+        },
+        "right": {
+          "label": "스마트초이스",
+          "items": [
+            "알뜰폰·타사까지 비교"
+          ]
+        },
+        "rightAt": "word:알뜰폰까지",
+        "verdict": "최저가라는 뜻은 아니다",
+        "verdictAt": "word:스마트초이스를",
+        "highlight": [
+          "안에서만"
+        ],
+        "bgImage": "media/bg-s05.png",
+        "bgDim": 0.32
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:알뜰폰까지",
+          "volume": 0.45
+        }
+      ],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "a25e68962de3",
+        "start": 27.659,
+        "duration": 7.862,
+        "speechEnd": 7.622,
+        "words": [
+          {
+            "text": "그리고",
+            "start": 0.05,
+            "end": 0.47
+          },
+          {
+            "text": "이",
+            "start": 0.47,
+            "end": 0.54
+          },
+          {
+            "text": "추천은",
+            "start": 0.67,
+            "end": 1
+          },
+          {
+            "text": "내",
+            "start": 1.11,
+            "end": 1.23
+          },
+          {
+            "text": "통신사",
+            "start": 1.23,
+            "end": 1.68
+          },
+          {
+            "text": "안에서만",
+            "start": 1.68,
+            "end": 2.61
+          },
+          {
+            "text": "고른",
+            "start": 2.61,
+            "end": 3.23
+          },
+          {
+            "text": "겁니다.",
+            "start": 3.23,
+            "end": 3.7
+          },
+          {
+            "text": "알뜰폰까지",
+            "start": 4.36,
+            "end": 5.02
+          },
+          {
+            "text": "비교하려면",
+            "start": 5.02,
+            "end": 5.87
+          },
+          {
+            "text": "스마트초이스를",
+            "start": 5.98,
+            "end": 7.02
+          },
+          {
+            "text": "쓰세요.",
+            "start": 7.02,
+            "end": 7.32
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "cta",
+      "narration": "나머지 확인할 것 두 가지는 아래 설명란에 정리해 뒀습니다.",
+      "onScreen": {
+        "emoji": "📱",
+        "headline": "나머지 두 가지는\n설명란에",
+        "action": "설명란 확인",
+        "actionAt": "word:설명란에",
+        "highlight": [
+          "두 가지"
+        ],
+        "bgImage": "media/bg-s06.png",
+        "bgDim": 0.32
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "aac0ea5d1b36",
+        "start": 35.521,
+        "duration": 4.252,
+        "speechEnd": 4.012,
+        "words": [
+          {
+            "text": "나머지",
+            "start": 0.05,
+            "end": 0.75
+          },
+          {
+            "text": "확인할",
+            "start": 0.75,
+            "end": 1.19
+          },
+          {
+            "text": "것",
+            "start": 1.24,
+            "end": 1.35
+          },
+          {
+            "text": "두",
+            "start": 1.35,
+            "end": 1.46
+          },
+          {
+            "text": "가지는",
+            "start": 1.55,
+            "end": 1.87
+          },
+          {
+            "text": "아래",
+            "start": 2.08,
+            "end": 2.35
+          },
+          {
+            "text": "설명란에",
+            "start": 2.38,
+            "end": 2.79
+          },
+          {
+            "text": "정리해",
+            "start": 2.79,
+            "end": 3.09
+          },
+          {
+            "text": "뒀습니다.",
+            "start": 3.09,
+            "end": 3.72
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "출처: 전기통신사업법 제32조의21 · 과기정통부 고시안 · 2026-09-29 기준"
+  },
+  "caption": "10월 1일부터 SKT·KT·LG U+가 6개월마다 '더 싼 요금제'를 문자로 알려줍니다.\n하지만 바꾸면 무조건 이득은 아니에요 — 약정 위약금·가족 결합 할인부터 확인하세요.\n\n영상에서 말한 나머지 확인 항목과 알뜰폰 비교 방법은 블로그에 정리했어요 👉 https://pullupfinance.blogspot.com/2026/09/optimal-mobile-plan-notice.html\n\n※ 2026년 9월 29일 기준 · 최종 고시와 통신사별 안내 방식은 달라질 수 있습니다.",
+  "hashtags": [
+    "#최적요금제",
+    "#통신비",
+    "#통신비절약",
+    "#요금제",
+    "#알뜰폰",
+    "#스마트초이스",
+    "#SKT",
+    "#KT",
+    "#LG유플러스",
+    "#생활정보",
+    "#절약",
+    "#재테크",
+    "#10월부터",
+    "#돈공부",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "통신사가 알려주는 '더 싼 요금제', 바로 바꾸면 손해일 수도",
+    "instagram": true,
+    "youtube": true
+  }
+}

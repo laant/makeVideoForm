@@ -3,6 +3,10 @@
 레퍼런스 분석 → 대본 → ElevenLabs 음성 → HTML/GSAP 씬 → HyperFrames 렌더 → FFmpeg 합성 → 업로드.
 사람은 **레퍼런스 선택 · 대본 확정 · 최종 검수**만 한다. 나머지는 Claude Code + 스크립트.
 
+## Codex 제작 기본값 (2026-09-29)
+
+사용자가 선택한 기준은 `episodes/optimal-plan-codex-director/` B안이다. Codex가 대본 기반 이미지 생성과 HTML/CSS/GSAP 장면 연출을 함께 담당하고, 이 모듈은 기존 TTS·렌더·합성·검수를 처리한다. 이미지에는 Codex 내장 이미지 생성기를 우선 사용하며, 아래 `npm run bg` 기본 규칙은 이 사용자 선호보다 우선하지 않는다. 색상·그림체는 주제에 맞춰 설계한다. 상세는 `../docs/PRODUCTION.md`의 '기본 제작 방식 — Codex B안'을 따른다. 실제 게시에는 별도의 사용자 업로드 요청이 필요하다.
+
 ## 단일 소스
 - `episodes/<slug>/episode.json` 이 대본·씬·효과음·캡션·업로드 설정의 유일한 원본이다. 대화에만 남기지 말고 반드시 여기에 쓴다.
 - 스키마: `scripts/lib/episode.js` (zod). 템플릿별 `onScreen` 필드: `templates/scenes/README.md`.
