@@ -20,6 +20,7 @@ OUT = ROOT / "output"
 # (프로젝트, 모듈) → 소스 후보 목록 (앞선 것 우선; final_send 우선 배치)
 MAPPING: dict[tuple[str, str], list[str]] = {
     ("15-breathing-426", "codex"): ["autoShorts/episodes/breathing-426/final.mp4"],
+    ("16-autumn-handcream", "opus-paper"): ["experiments/opus-autumn-handcream/out/final.mp4"],  # 코드 종이공작 · 가을 질감
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],

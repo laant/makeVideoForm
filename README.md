@@ -76,8 +76,8 @@ myNextSeason/
 | 12 | 삼성이 버린 기술, 애플이 8년 뒤에 | **테크**(가변 조리개, 조리개 SVG custom 씬) | autoshorts | `output/12-aperture-return/` — ⚠️ 테크 채널 신설 예정, 업로드 보류 |
 | 13 | 조리개가 뭔지부터, 왜 돌아왔는지까지 | 테크(12번 + 원글 제작자판 조합) | autoshorts(49초)·openmontage(52초) | `output/13-aperture-explained/` — 테크 채널용 |
 | 14 | 통신사 최적요금제 안내, 바로 바꾸면 손해일 수도 | 머니 정보(10/1 시행 시의성) | autoshorts | `output/14-optimal-plan/` |
-
 | 15 | 426 호흡법, 12초 동안 같이 해보세요 | 생활 건강 · 근거와 주의사항 포함 | autoshorts · Codex 연출 (48.4초) | `output/15-breathing-426/` |
+| 16 | '무향' 핸드크림이면 정말 향료가 없을까? | 쇼핑(쇼핑커넥트) · AAD·표시규정 보강 | opus-paper(코드 종이공작 · 가을 질감, 49.7초) | `output/16-autumn-handcream/` — 재테크 채널 업로드 |
 
 ## 환경 메모
 

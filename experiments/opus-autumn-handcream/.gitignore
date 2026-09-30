@@ -1,0 +1,5 @@
+out/
+audio/*.pcm
+.venv
+audio/concat.txt
+audio/gap.mp3
