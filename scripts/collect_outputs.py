@@ -21,6 +21,7 @@ OUT = ROOT / "output"
 MAPPING: dict[tuple[str, str], list[str]] = {
     ("15-breathing-426", "codex"): ["autoShorts/episodes/breathing-426/final.mp4"],
     ("16-autumn-handcream", "opus-paper"): ["experiments/opus-autumn-handcream/out/final.mp4"],  # 코드 종이공작 · 가을 질감
+    ("17-donggubat-handcream", "gemini-opus"): ["experiments/opus-donggubat-clip/out/final.mp4"],  # Gemini 제품영상 9:16 + 나레이션·자막·BGM
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],

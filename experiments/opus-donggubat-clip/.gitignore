@@ -1,0 +1,5 @@
+out/
+.venv
+audio/concat.txt
+audio/gap.mp3
+src/
