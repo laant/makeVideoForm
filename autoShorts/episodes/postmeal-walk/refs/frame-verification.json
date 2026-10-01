@@ -1,0 +1,62 @@
+{
+  "reason": "Normalize sub-millisecond HTML duration rounding from HyperFrames to integer frame slots before assembly.",
+  "scenes": [
+    {
+      "scene": "s01",
+      "expectedFrames": 143,
+      "beforeFrames": 144,
+      "finalFrames": 143,
+      "duration": "4.766667"
+    },
+    {
+      "scene": "s02",
+      "expectedFrames": 158,
+      "beforeFrames": 158,
+      "finalFrames": 158,
+      "duration": "5.266667"
+    },
+    {
+      "scene": "s03",
+      "expectedFrames": 139,
+      "beforeFrames": 139,
+      "finalFrames": 139,
+      "duration": "4.633333"
+    },
+    {
+      "scene": "s04",
+      "expectedFrames": 289,
+      "beforeFrames": 289,
+      "finalFrames": 289,
+      "duration": "9.633333"
+    },
+    {
+      "scene": "s05",
+      "expectedFrames": 138,
+      "beforeFrames": 138,
+      "finalFrames": 138,
+      "duration": "4.600000"
+    },
+    {
+      "scene": "s06",
+      "expectedFrames": 143,
+      "beforeFrames": 143,
+      "finalFrames": 143,
+      "duration": "4.766667"
+    },
+    {
+      "scene": "s07",
+      "expectedFrames": 188,
+      "beforeFrames": 188,
+      "finalFrames": 188,
+      "duration": "6.266667"
+    },
+    {
+      "scene": "s08",
+      "expectedFrames": 111,
+      "beforeFrames": 111,
+      "finalFrames": 111,
+      "duration": "3.700000"
+    }
+  ],
+  "totalFrames": 1309
+}

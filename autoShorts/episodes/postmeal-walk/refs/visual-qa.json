@@ -1,0 +1,83 @@
+[
+  {
+    "text": "작은 습관 · 건강한 일상\nWALK / AFTER MEALS\n식후에 걷는\n10분\n혈당 관리에 도움이 되는 작은 습관",
+    "images": [
+      {
+        "src": "media/meal.png",
+        "loaded": true
+      }
+    ],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "SCIENCE / 01\nWALK / AFTER MEALS\n움직이는 근육은\n포도당을 씁니다\n혈액 속 포도당\n수축하는 근육\n에너지 이용\n원리 설명용 도식 · 실제 해부 구조와 축척은 다릅니다\n근수축 → 포도당 흡수·이용\n출처: 미국당뇨병학회(ADA)",
+    "images": [],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "EVIDENCE / 02\nWALK / AFTER MEALS\n제2형 당뇨병\n성인을 연구했습니다\n41명\n무작위 교차시험 · 각 조건 2주 비교\nReynolds et al. · Diabetologia, 2016",
+    "images": [],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "EVIDENCE / 02\nWALK / AFTER MEALS\n같은 30분,\n식사 뒤 나눠 걷기\n하루 30분 걷기\n100\n매 끼니 뒤 10분 × 3회\n88\n약 12% ↓\n식후 혈당 상승의\n누적 지표\n식후 3시간 iAUC · 비교군을 100으로 환산\n제2형 당뇨병 성인 41명 · 각 조건 2주\nReynolds et al., 2016 · 혈당 농도 12% 감소를 뜻하지 않음",
+    "images": [],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "작은 습관 · 건강한 일상\nWALK / AFTER MEALS\n10분 만에\n정상화는 아닙니다\n효과는 사람마다 다릅니다.\n연구 결과가 정상 수치 도달을 보장하지 않아요.",
+    "images": [
+      {
+        "src": "media/walk.png",
+        "loaded": true
+      }
+    ],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "작은 습관 · 건강한 일상\nWALK / AFTER MEALS\n식사 뒤,\n편안한 걸음으로\n짧게, 무리하지 않는 속도로",
+    "images": [
+      {
+        "src": "media/steps.png",
+        "loaded": true
+      }
+    ],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "작은 습관 · 건강한 일상\nWALK / AFTER MEALS\n당뇨약을 쓴다면\n저혈당 확인\n인슐린·일부 당뇨약 사용 시\n저혈당 예방 방법을 의료진과 확인하세요.",
+    "images": [
+      {
+        "src": "media/walk.png",
+        "loaded": true
+      }
+    ],
+    "overflow": [
+      "headline"
+    ]
+  },
+  {
+    "text": "작은 습관 · 건강한 일상\nWALK / AFTER MEALS\n다음 식사 뒤,\n기억해 두세요\n저장하고, 편안하게 한 걸음",
+    "images": [
+      {
+        "src": "media/walk.png",
+        "loaded": true
+      }
+    ],
+    "overflow": [
+      "headline"
+    ]
+  }
+]

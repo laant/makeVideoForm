@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #f4f0e6; }
+      :root {
+        --bg: #f4f0e6; --fg: #273c31; --accent: #657a48; --muted: #78816c;
+        --font: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        background: var(--bg); color: var(--fg); font-family: var(--font);
+        word-break: keep-all;
+      }
+      .layer { position: absolute; inset: 0; }
+      .glow {
+        position: absolute; width: 900px; height: 900px; border-radius: 50%;
+        filter: blur(140px); opacity: 0.22;
+      }
+      .glow.a { background: var(--accent); left: -300px; top: 120px; }
+      .glow.b { background: #5b8cff; right: -360px; bottom: 260px; opacity: 0.16; }
+      /* onScreen.bgImage: 배경 그림 + 글자 가독성용 그라데이션 (onScreen.bgDim 0~1 로 어둡기 조절) */
+      .bgimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 40%; }
+      .bgshade { position: absolute; inset: 0; }
+      /* 안전 영역: 상단 250px, 하단 420px 은 플랫폼 UI 가 가림 */
+      .stage {
+        position: absolute; left: 90px; right: 90px; top: 260px; bottom: 560px;
+        display: flex; flex-direction: column; justify-content: center; gap: 36px;
+      }
+      .progress { position: absolute; left: 0; top: 0; height: 10px; width: 1080px; background: var(--accent); transform-origin: 0 50%; }
+      .captions { position: absolute; left: 70px; right: 70px; bottom: 440px; height: 120px; }
+      .cap {
+        position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+        text-align: center; font-size: 58px; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+        color: #fff; opacity: 0;
+        text-shadow: 0 4px 0 rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 0, 0, 0.6);
+      }
+      .cap em { font-style: normal; color: var(--accent); }
+      
+@font-face{font-family:Editorial;src:url('vendor/Pretendard-Bold.ttf');font-weight:700 900}@font-face{font-family:Editorial;src:url('vendor/Pretendard-SemiBold.ttf');font-weight:400 600}
+#root{font-family:Editorial,sans-serif}.stage{display:block;inset:0}.glow,.progress{display:none}.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 55%}.wash{position:absolute;inset:0;background:linear-gradient(180deg,#f4f0e6c9 8%,#f4f0e655 35%,transparent 57%,#f4f0e6b0 76%,#f4f0e6 95%)}.paper{position:absolute;inset:0;background:radial-gradient(ellipse at 90% 45%,#e1e4d4,transparent 65%),#f4f0e6}.eyebrow{position:absolute;top:278px;left:76px;font-size:25px;letter-spacing:3px;color:#657557}.edition{position:absolute;right:103px;top:280px;font-size:23px;letter-spacing:2px;color:#78816c}.rule{position:absolute;left:78px;top:330px;width:62px;height:5px;background:#b9845c}.headline{position:absolute;left:73px;right:105px;top:370px;font-size:103px;line-height:1.12;letter-spacing:-4px;font-weight:800}.headline em{color:#657a48;font-style:normal}.lede{position:absolute;left:79px;right:110px;top:644px;font-size:34px;line-height:1.45;color:#5d6e58}.badge{position:absolute;left:78px;top:1150px;padding:23px 29px;background:#f8f5edeF;border:1px solid #d5d8c4;border-radius:20px;font-size:35px}.captions{left:65px;right:110px;bottom:565px;height:98px}.cap{font-family:Editorial,sans-serif;font-size:40px;line-height:1.35;text-shadow:none;font-weight:700}.cap>span{background:#293d32ed;border-radius:14px;padding:14px 22px}.cap em{color:#efd2a2}.source{position:absolute;left:79px;right:110px;top:1190px;font-size:24px;line-height:1.45;color:#6c7862}.panel{position:absolute;left:77px;right:110px;top:730px;border-radius:27px;background:#fbf9f0;border:1px solid #d4dac8;padding:31px}.fact{font-size:31px;line-height:1.5}.study-number{position:absolute;top:600px;left:68px;font-size:250px;font-weight:700;letter-spacing:-13px;color:#657a48}.study-number small{font-size:55px;letter-spacing:0;margin-left:18px}.people{position:absolute;top:925px;left:80px;width:895px;display:grid;grid-template-columns:repeat(14,1fr);gap:10px}.person{height:40px;width:30px;background:#83936b;border-radius:20px 20px 6px 6px;opacity:.8}.study-caption{position:absolute;top:1090px;left:78px;font-size:31px;color:#5e6c54}.bars{position:absolute;left:79px;right:110px;top:645px}.barrow{margin-bottom:34px}.barlabel{font-size:33px;margin-bottom:14px;display:flex;justify-content:space-between}.track{height:80px;border-radius:10px;background:#e2e5d8;overflow:hidden;width:100%}.bar{height:80px;background:#a6af98;width:100%;transform-origin:left}.bar.green{width:88%;background:#657a48}.result{position:absolute;top:985px;left:76px;right:110px;display:flex;align-items:center;gap:26px}.result strong{font-size:103px;letter-spacing:-5px;color:#657a48}.result span{font-size:29px;line-height:1.4}.metric{position:absolute;top:1122px;left:79px;font-size:26px;color:#5f6d56}.inset{position:absolute;left:78px;top:650px;width:890px;height:420px;overflow:hidden;border-radius:30px}.inset img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}.notebox{position:absolute;top:1100px;left:79px;right:110px;background:#f8f3e9ef;border-radius:20px;padding:25px;font-size:31px;line-height:1.4}.pill{position:absolute;left:78px;top:1130px;background:#657a48;color:#faf7ee;border-radius:99px;padding:23px 35px;font-size:35px}.diagram{position:absolute;left:65px;top:640px;width:910px;height:515px}.diagram svg{width:100%;height:100%}.diagram text{font-family:Editorial,sans-serif}.disclaimer{position:absolute;top:1124px;left:79px;right:110px;font-size:27px;color:#627159;line-height:1.45}
+
+    </style>
+  </head>
+  <body>
+    <!-- autoshorts:custom postmeal-walk codex-director-v1 -->
+    <div id="root" data-composition-id="s02" data-start="0" data-duration="5.267" data-width="1080" data-height="1920">
+      <div id="s02-bg" class="layer bg-layer clip" data-start="0" data-duration="5.267">
+        <div class="paper"></div>
+        <div class="glow a"></div>
+        <div class="glow b"></div>
+      </div>
+      <div id="s02-content" class="layer content clip" data-start="0" data-duration="5.267">
+        <div class="stage"></div>
+        <div class="captions"></div>
+        <div class="progress"></div>
+      </div>
+    </div>
+    <script>
+      // ── 씬 데이터 (build-scenes.js 가 주입) ─────────────────────
+      const S = {"id": "s02", "onScreen": {"title": "움직이는 근육은\n포도당을 씁니다", "headline": "움직이는 근육은\n포도당을 씁니다", "showCaptions": true}, "highlight": [], "showCaptions": true, "words": [{"text": "걷는", "start": 0.05, "end": 0.57}, {"text": "동안", "start": 0.57, "end": 0.86}, {"text": "근육이", "start": 0.86, "end": 1.28}, {"text": "혈액", "start": 1.28, "end": 1.85}, {"text": "속", "start": 1.85, "end": 1.95}, {"text": "포도당을", "start": 1.98, "end": 3.2}, {"text": "에너지로", "start": 3.27, "end": 4}, {"text": "쓰기", "start": 4, "end": 4.26}, {"text": "때문인데요.", "start": 4.26, "end": 4.88}], "speechEnd": 4.945714, "duration": 5.266667, "renderDuration": 5.267, "globalStart": 4.766667, "total": 43.633334};
+
+      // ── 공통 헬퍼: 결정적(deterministic) 로직만 사용 ─────────────
+      const H = {
+        el(tag, cls, text, parent) {
+          const e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          if (parent) parent.appendChild(e);
+          return e;
+        },
+        /** "word:비교" / 숫자 / "start" / "end" → 씬 기준 초 */
+        at(spec, fallback = 0) {
+          if (typeof spec === "number") return spec;
+          if (spec === "start" || spec == null) return fallback;
+          if (spec === "end") return S.speechEnd;
+          const key = String(spec).replace(/^word:/, "");
+          const w = S.words.find((w) => w.text.includes(key));
+          return w ? w.start : fallback;
+        },
+        /** start~end 사이에 n개를 고르게 분배 */
+        spread(n, start, end) {
+          if (n <= 1) return [start];
+          return Array.from({ length: n }, (_, i) => start + ((end - start) * i) / (n - 1));
+        },
+        /** 단어를 한 줄 ~maxChars 로 묶어 자막 생성. S.highlight 단어는 강조 */
+        captions(tl, maxChars = 14) {
+          const box = document.querySelector(".captions");
+          const chunks = [];
+          let cur = [];
+          for (const w of S.words) {
+            const len = cur.reduce((n, x) => n + x.text.length + 1, 0);
+            if (cur.length && len + w.text.length > maxChars) { chunks.push(cur); cur = []; }
+            cur.push(w);
+            if (/[.?!,]$/.test(w.text)) { chunks.push(cur); cur = []; }
+          }
+          if (cur.length) chunks.push(cur);
+          const hl = S.highlight || [];
+          chunks.forEach((c, i) => {
+            const d = H.el("div", "cap", null, box);
+            const line = H.el("span", null, null, d); // flex 컨테이너 직속 텍스트노드는 공백이 사라지므로 span 으로 감쌈
+            c.forEach((w, j) => {
+              const t = w.text.replace(/[.,]$/, "");
+              const node = hl.some((h) => t.includes(h)) ? H.el("em", null, t) : document.createTextNode(t);
+              line.appendChild(node);
+              if (j < c.length - 1) line.appendChild(document.createTextNode(" "));
+            });
+            const start = c[0].start;
+            const end = i < chunks.length - 1 ? chunks[i + 1][0].start : Math.min(c[c.length - 1].end + 0.4, S.duration);
+            tl.fromTo(d, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.12, ease: "power2.out" }, start);
+            tl.set(d, { opacity: 0 }, end);
+          });
+        },
+        /**
+         * 규정 태극기 SVG (행정안전부 도안: 3:2, 태극 지름=세로/2, 괘 길이 D/2·두께 D/12·간격 D/24,
+         * 태극-괘 거리 D/4, 작은 원 중심은 건-곤 대각선 위(빨강 좌상·파랑 우하), 건 좌상·감 우상·리 좌하·곤 우하)
+         */
+        taegukgi(parent, width) {
+          const NS = "http://www.w3.org/2000/svg";
+          const mk = (tag, attrs, into) => {
+            const e = document.createElementNS(NS, tag);
+            for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+            if (into) into.appendChild(e);
+            return e;
+          };
+          const W = width, Hh = (width * 2) / 3, D = Hh / 2, r = D / 2;
+          const a = (Math.atan2(Hh, W) * 180) / Math.PI;
+          const svg = mk("svg", { width: W, height: Hh, viewBox: `0 0 ${W} ${Hh}`, class: "taegukgi" }, parent);
+          mk("rect", { width: W, height: Hh, fill: "#fff" }, svg);
+          const tg = mk("g", { transform: `translate(${W / 2},${Hh / 2}) rotate(${a})` }, svg);
+          mk("circle", { r, fill: "#0047A0" }, tg);
+          mk("path", { d: `M ${-r} 0 A ${r} ${r} 0 0 1 ${r} 0 Z`, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: -r / 2, r: r / 2, fill: "#CD2E3A" }, tg);
+          mk("circle", { cx: r / 2, r: r / 2, fill: "#0047A0" }, tg);
+          const L = D / 2, th = D / 12, g = D / 24, dist = r + D / 4 + D / 6;
+          const rad = (a * Math.PI) / 180;
+          // [괘, 방향(x,y), 막대 회전] — split=true 인 효는 가운데가 끊긴 음효
+          const gwae = [
+            [[false, false, false], -1, -1, a + 90], // 건 좌상
+            [[true, true, true], 1, 1, a + 90], // 곤 우하
+            [[true, false, true], 1, -1, -a + 90], // 감 우상
+            [[false, true, false], -1, 1, -a + 90], // 리 좌하
+          ];
+          for (const [lines, sx, sy, rot] of gwae) {
+            const cg = mk("g", { transform: `translate(${W / 2 + sx * Math.cos(rad) * dist},${Hh / 2 + sy * Math.sin(rad) * dist}) rotate(${rot})` }, svg);
+            lines.forEach((split, i) => {
+              const y = (i - 1) * (th + g) - th / 2;
+              if (!split) mk("rect", { x: -L / 2, y, width: L, height: th, fill: "#000" }, cg);
+              else {
+                const half = (L - g) / 2;
+                mk("rect", { x: -L / 2, y, width: half, height: th, fill: "#000" }, cg);
+                mk("rect", { x: g / 2, y, width: half, height: th, fill: "#000" }, cg);
+              }
+            });
+          }
+          return svg;
+        },
+        /** 한 글자씩 타이핑 (span opacity 스텝) */
+        type(tl, parent, text, start, cps = 22) {
+          const spans = [...text].map((ch) => H.el("span", null, ch, parent));
+          spans.forEach((s, i) => {
+            tl.set(s, { opacity: 0 }, 0);
+            tl.set(s, { opacity: 1 }, start + i / cps);
+          });
+          return start + spans.length / cps;
+        },
+      };
+
+      const tl = gsap.timeline({ paused: true });
+      const stage = document.querySelector(".stage");
+
+      // 배경 드리프트 + 진행 바 (전체 영상 기준)
+      tl.fromTo(".glow.a", { x: 0, y: 0 }, { x: 160, y: 120, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(".glow.b", { x: 0, y: 0 }, { x: -140, y: -160, duration: S.renderDuration, ease: "none" }, 0);
+      tl.fromTo(
+        ".progress",
+        { scaleX: S.globalStart / S.total },
+        { scaleX: Math.min(1, (S.globalStart + S.renderDuration) / S.total), duration: S.renderDuration, ease: "none" },
+        0,
+      );
+
+      // 배경 그림: 느린 줌 인 (Ken Burns)
+      const bgImg = document.querySelector(".bgimg");
+      if (bgImg) tl.fromTo(bgImg, { scale: 1.03 }, { scale: 1.1, duration: S.renderDuration, ease: "none" }, 0);
+
+      // ── 템플릿 본문 ──────────────────────────────────────────
+      stage.innerHTML="<div class=\"eyebrow\">SCIENCE / 01</div><div class=\"edition\">WALK / AFTER MEALS</div><div class=\"rule\"></div><div class=\"headline\">움직이는 근육은<br><em>포도당을 씁니다</em></div><div class=\"diagram\"><svg viewBox=\"0 0 910 515\"><defs><linearGradient id=\"v\"><stop stop-color=\"#e8c4af\"/><stop offset=\"1\" stop-color=\"#dca98f\"/></linearGradient></defs><text x=\"35\" y=\"35\" font-size=\"33\" fill=\"#86634e\">혈액 속 포도당</text><rect x=\"25\" y=\"77\" width=\"255\" height=\"355\" rx=\"110\" fill=\"url(#v)\"/><path d=\"M315 240 L410 240 M390 220 L410 240 L390 260\" stroke=\"#7b8d65\" stroke-width=\"7\" fill=\"none\"/><g class=\"muscle\"><rect x=\"445\" y=\"77\" width=\"430\" height=\"355\" rx=\"135\" fill=\"#d3ddc3\" stroke=\"#83986b\" stroke-width=\"3\"/><path d=\"M480 150 Q650 110 837 150 M478 207 Q650 168 842 207 M478 267 Q650 228 842 267 M485 330 Q650 290 835 330\" fill=\"none\" stroke=\"#a5b78e\" stroke-width=\"17\" stroke-linecap=\"round\"/></g><text x=\"523\" y=\"35\" font-size=\"33\" fill=\"#49613c\">수축하는 근육</text><g fill=\"#b17c50\" stroke=\"#f4e6d5\" stroke-width=\"3\"><circle class=\"glucose g1\" cx=\"90\" cy=\"155\" r=\"21\"/><circle class=\"glucose g2\" cx=\"190\" cy=\"235\" r=\"21\"/><circle class=\"glucose g3\" cx=\"110\" cy=\"345\" r=\"21\"/></g><rect x=\"545\" y=\"207\" width=\"220\" height=\"82\" rx=\"40\" fill=\"#f5f4e9\"/><text x=\"655\" y=\"260\" text-anchor=\"middle\" fill=\"#4c673c\" font-size=\"36\">에너지 이용</text><text x=\"455\" y=\"489\" text-anchor=\"middle\" font-size=\"25\" fill=\"#7a826f\">원리 설명용 도식 · 실제 해부 구조와 축척은 다릅니다</text></svg></div><div class=\"source\">근수축 → 포도당 흡수·이용<br>출처: 미국당뇨병학회(ADA)</div>";
+tl.fromTo('.headline',{y:15,opacity:.4},{y:0,opacity:1,duration:.5,ease:'power2.out'},0);
+tl.fromTo('.muscle',{scaleX:1,transformOrigin:'50% 50%'},{scaleX:.96,duration:1,yoyo:true,repeat:4,ease:'sine.inOut'},0);document.querySelectorAll('.glucose').forEach((el,i)=>{tl.to(el,{x:440,y:40-i*30,duration:1.8,repeat:2,repeatDelay:.3,ease:'power1.inOut'},.4+i*.3);});
+
+      if (S.showCaptions !== false) H.captions(tl);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["s02"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

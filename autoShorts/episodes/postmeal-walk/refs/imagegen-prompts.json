@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "prompt": "Photorealistic editorial photograph for a vertical health short, portrait 9:16. An ordinary Korean woman in her early forties wearing a pale oatmeal cardigan over a cream T-shirt, at a modest contemporary Korean apartment dining table just after finishing a balanced everyday meal. She is calmly beginning to stand up from her chair, natural candid gesture. Simple bowls, a small amount of rice and vegetable side dishes, no exaggerated perfect diet styling. Warm afternoon window light, ivory and muted olive palette, premium magazine photography with realistic skin and hands. Place the woman primarily in the middle and lower portion, keep the upper third softly uncluttered for later typography. No text, no numbers, no labels, no logos, no medical props.",
+      "file": "/Users/jlee/.codex/generated_images/01a0ebac-aac9-7e70-9377-62ab4ec1199e/exec-f9eab8d4-7861-49fc-9c55-82ae8f2485fb.png",
+      "destination": "meal.png"
+    },
+    {
+      "prompt": "Use the provided image only as a character and cardigan reference. Photorealistic editorial portrait-format 9:16 photograph of the same Korean woman, same oatmeal cardigan and cream T-shirt, comfortable dark trousers and plain walking shoes, enjoying an easy unhurried walk on a quiet level neighborhood park path in early autumn. Full body visible, natural relaxed stride and arms, not running, no athletic performance pose. Dappled afternoon light, restrained olive foliage and warm ivory highlights, realistic anatomy, premium documentary lifestyle photography. Leave clean soft background in the upper third for later titles. No text, numbers, logos, medical devices or charts.",
+      "file": "/Users/jlee/.codex/generated_images/01a0ebac-aac9-7e70-9377-62ab4ec1199e/exec-74121ca5-6313-4d7a-aaf5-a41a0ccb496c.png",
+      "destination": "walk.png"
+    },
+    {
+      "prompt": "Use the provided walking image as wardrobe and lighting reference. Photorealistic editorial detail photograph, portrait 9:16, of the same woman's comfortable plain walking shoes and lower dark trouser legs taking one relaxed step on a flat neighborhood path. A few early autumn leaves, warm side light, subtle natural motion in the trailing foot but crisp leading shoe, cinematic intimate framing, olive and warm neutral palette. Everyday approachable walking, not strenuous exercise. Space above the feet for later typography. No text, numbers, logos, medical symbols or visual claims of weight loss.",
+      "file": "/Users/jlee/.codex/generated_images/01a0ebac-aac9-7e70-9377-62ab4ec1199e/exec-d66f83c5-16af-4165-9a0c-5c36d154cdab.png",
+      "destination": "steps.png"
+    }
+  ]
+}

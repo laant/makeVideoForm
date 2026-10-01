@@ -1,0 +1,640 @@
+{
+  "slug": "postmeal-walk",
+  "topic": "몇 분 걸으면 혈당이 내려갈까?",
+  "audience": "생활 속 건강 습관에 관심 있는 성인",
+  "tone": "부드럽고 차분한 한국어 안내",
+  "cta": "다음 식사 뒤에 떠올릴 수 있게 저장해 두세요",
+  "reference": {
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27747394/",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "",
+    "notes": "대본 및 프롬프트 사용자 승인: 2026-10-01. refs/production-plan-approved.md"
+  },
+  "brief": {
+    "goal": "식후 걷기의 근거와 한계를 알고 일상에 적용",
+    "hook": "",
+    "lengthSec": 55,
+    "mustShow": "",
+    "avoid": "혈당 정상화 보장, 가짜 CGM 수치, 혈당 농도 12% 감소로 오인",
+    "draft": "",
+    "visual": "B안 실사 에디토리얼 + 근육 도식과 연구 비교",
+    "files": [],
+    "submittedAt": "2026-10-01"
+  },
+  "theme": {
+    "bg": "#f4f0e6",
+    "fg": "#273c31",
+    "accent": "#657a48",
+    "muted": "#78816c"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "따뜻하고 또렷한 한국어 교양 다큐멘터리 목소리로 아래 대본만 읽어 주세요. 차분하지만 늘어지지 않는 자연스러운 속도. 숫자와 전문 용어를 정확하게 읽고, 과장하지 마세요.",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1
+  },
+  "bg": {
+    "preset": "clay",
+    "layout": "plate",
+    "accent": ""
+  },
+  "gapSeconds": 0.3,
+  "transitionSeconds": 0,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "식후에 걷는 십 분, 혈당 관리에 도움이 될 수 있습니다.",
+      "onScreen": {
+        "title": "식후에 걷는\n10분",
+        "headline": "식후에 걷는\n10분",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "485af2710739",
+        "start": 0.0,
+        "duration": 4.766667,
+        "speechEnd": 4.519501,
+        "words": [
+          {
+            "text": "식후에",
+            "start": 0.11,
+            "end": 0.48
+          },
+          {
+            "text": "걷는",
+            "start": 0.48,
+            "end": 1.04
+          },
+          {
+            "text": "십",
+            "start": 1.325,
+            "end": 1.61
+          },
+          {
+            "text": "분,",
+            "start": 1.85,
+            "end": 2.05
+          },
+          {
+            "text": "혈당",
+            "start": 2.34,
+            "end": 2.62
+          },
+          {
+            "text": "관리에",
+            "start": 2.62,
+            "end": 3.09
+          },
+          {
+            "text": "도움이",
+            "start": 3.09,
+            "end": 3.56
+          },
+          {
+            "text": "될",
+            "start": 3.56,
+            "end": 3.64
+          },
+          {
+            "text": "수",
+            "start": 3.68,
+            "end": 3.74
+          },
+          {
+            "text": "있습니다.",
+            "start": 3.74,
+            "end": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "title",
+      "narration": "걷는 동안 근육이 혈액 속 포도당을 에너지로 쓰기 때문인데요.",
+      "onScreen": {
+        "title": "움직이는 근육은\n포도당을 씁니다",
+        "headline": "움직이는 근육은\n포도당을 씁니다",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "198582713c32",
+        "start": 4.766667,
+        "duration": 5.266667,
+        "speechEnd": 4.945714,
+        "words": [
+          {
+            "text": "걷는",
+            "start": 0.05,
+            "end": 0.57
+          },
+          {
+            "text": "동안",
+            "start": 0.57,
+            "end": 0.86
+          },
+          {
+            "text": "근육이",
+            "start": 0.86,
+            "end": 1.28
+          },
+          {
+            "text": "혈액",
+            "start": 1.28,
+            "end": 1.85
+          },
+          {
+            "text": "속",
+            "start": 1.85,
+            "end": 1.95
+          },
+          {
+            "text": "포도당을",
+            "start": 1.98,
+            "end": 3.2
+          },
+          {
+            "text": "에너지로",
+            "start": 3.27,
+            "end": 4
+          },
+          {
+            "text": "쓰기",
+            "start": 4,
+            "end": 4.26
+          },
+          {
+            "text": "때문인데요.",
+            "start": 4.26,
+            "end": 4.88
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "title",
+      "narration": "제이형 당뇨병 성인 마흔한 명을 대상으로 한 연구에서는,",
+      "onScreen": {
+        "title": "제2형 당뇨병\n성인 41명",
+        "headline": "제2형 당뇨병\n성인 41명",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "16eea402733b",
+        "start": 10.033333,
+        "duration": 4.633333,
+        "speechEnd": 4.306168,
+        "words": [
+          {
+            "text": "제이형",
+            "start": 0.12,
+            "end": 0.66
+          },
+          {
+            "text": "당뇨병",
+            "start": 0.66,
+            "end": 1.57
+          },
+          {
+            "text": "성인",
+            "start": 1.57,
+            "end": 1.83
+          },
+          {
+            "text": "마흔한",
+            "start": 1.83,
+            "end": 2.63
+          },
+          {
+            "text": "명을",
+            "start": 2.63,
+            "end": 2.86
+          },
+          {
+            "text": "대상으로",
+            "start": 2.93,
+            "end": 3.41
+          },
+          {
+            "text": "한",
+            "start": 3.41,
+            "end": 3.54
+          },
+          {
+            "text": "연구에서는,",
+            "start": 3.54,
+            "end": 4.23
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "title",
+      "narration": "하루 삼십 분 걷기보다, 매 끼니 뒤 십 분씩 걸을 때 식후 혈당 상승의 누적 지표가 약 십이 퍼센트 낮았습니다.",
+      "onScreen": {
+        "title": "식후 걷기,\n연구에서 확인한 변화",
+        "headline": "식후 걷기,\n연구에서 확인한 변화",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "189759349371",
+        "start": 14.666667,
+        "duration": 9.633333,
+        "speechEnd": 9.316939,
+        "words": [
+          {
+            "text": "하루",
+            "start": 0.11,
+            "end": 0.23
+          },
+          {
+            "text": "삼십",
+            "start": 0.23,
+            "end": 0.93
+          },
+          {
+            "text": "분",
+            "start": 0.93,
+            "end": 1.04
+          },
+          {
+            "text": "걷기보다,",
+            "start": 1.04,
+            "end": 1.75
+          },
+          {
+            "text": "매",
+            "start": 2.19,
+            "end": 2.25
+          },
+          {
+            "text": "끼니",
+            "start": 2.25,
+            "end": 2.74
+          },
+          {
+            "text": "뒤",
+            "start": 2.74,
+            "end": 3
+          },
+          {
+            "text": "십",
+            "start": 3.39,
+            "end": 3.78
+          },
+          {
+            "text": "분씩",
+            "start": 3.78,
+            "end": 3.98
+          },
+          {
+            "text": "걸을",
+            "start": 4.12,
+            "end": 4.25
+          },
+          {
+            "text": "때",
+            "start": 4.44,
+            "end": 4.44
+          },
+          {
+            "text": "식후",
+            "start": 4.64,
+            "end": 4.8
+          },
+          {
+            "text": "혈당",
+            "start": 4.8,
+            "end": 5.53
+          },
+          {
+            "text": "상승의",
+            "start": 5.53,
+            "end": 6.07
+          },
+          {
+            "text": "누적",
+            "start": 6.07,
+            "end": 6.39
+          },
+          {
+            "text": "지표가",
+            "start": 6.61,
+            "end": 7.05
+          },
+          {
+            "text": "약",
+            "start": 7.18,
+            "end": 7.25
+          },
+          {
+            "text": "십이",
+            "start": 7.25,
+            "end": 7.746
+          },
+          {
+            "text": "퍼센트",
+            "start": 7.746,
+            "end": 8.49
+          },
+          {
+            "text": "낮았습니다.",
+            "start": 8.49,
+            "end": 9.4
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "하지만 십 분 만에 혈당이 정상화된다는 뜻은 아닙니다.",
+      "onScreen": {
+        "title": "10분 만에\n정상화?",
+        "headline": "10분 만에\n정상화?",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "6410f2f5cbac",
+        "start": 24.3,
+        "duration": 4.6,
+        "speechEnd": 4.297211,
+        "words": [
+          {
+            "text": "하지만",
+            "start": 0.08,
+            "end": 0.34
+          },
+          {
+            "text": "십",
+            "start": 0.685,
+            "end": 1.03
+          },
+          {
+            "text": "분",
+            "start": 1.03,
+            "end": 1.37
+          },
+          {
+            "text": "만에",
+            "start": 1.37,
+            "end": 1.81
+          },
+          {
+            "text": "혈당이",
+            "start": 1.82,
+            "end": 2.38
+          },
+          {
+            "text": "정상화된다는",
+            "start": 2.38,
+            "end": 3.22
+          },
+          {
+            "text": "뜻은",
+            "start": 3.31,
+            "end": 3.51
+          },
+          {
+            "text": "아닙니다.",
+            "start": 3.51,
+            "end": 3.97
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "title",
+      "narration": "오늘은 식사 뒤, 편안한 속도로 짧게 걸어보세요.",
+      "onScreen": {
+        "title": "식사 뒤,\n편안한 걸음으로",
+        "headline": "식사 뒤,\n편안한 걸음으로",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "9c97f746c972",
+        "start": 28.9,
+        "duration": 4.766667,
+        "speechEnd": 4.445011,
+        "words": [
+          {
+            "text": "오늘은",
+            "start": 0.05,
+            "end": 0.84
+          },
+          {
+            "text": "식사",
+            "start": 0.84,
+            "end": 1.41
+          },
+          {
+            "text": "뒤,",
+            "start": 1.41,
+            "end": 1.47
+          },
+          {
+            "text": "편안한",
+            "start": 1.9,
+            "end": 2.26
+          },
+          {
+            "text": "속도로",
+            "start": 2.26,
+            "end": 2.8
+          },
+          {
+            "text": "짧게",
+            "start": 2.8,
+            "end": 3.04
+          },
+          {
+            "text": "걸어보세요.",
+            "start": 3.28,
+            "end": 4.37
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "title",
+      "narration": "인슐린이나 일부 당뇨약을 쓴다면, 저혈당 예방 방법을 의료진과 확인하세요.",
+      "onScreen": {
+        "title": "당뇨약을 쓴다면\n저혈당 확인",
+        "headline": "당뇨약을 쓴다면\n저혈당 확인",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "3f643d82187f",
+        "start": 33.666667,
+        "duration": 6.266667,
+        "speechEnd": 5.948095,
+        "words": [
+          {
+            "text": "인슐린이나",
+            "start": 0.05,
+            "end": 1.08
+          },
+          {
+            "text": "일부",
+            "start": 1.08,
+            "end": 1.56
+          },
+          {
+            "text": "당뇨약을",
+            "start": 1.56,
+            "end": 2.28
+          },
+          {
+            "text": "쓴다면,",
+            "start": 2.28,
+            "end": 2.94
+          },
+          {
+            "text": "저혈당",
+            "start": 3.03,
+            "end": 3.76
+          },
+          {
+            "text": "예방",
+            "start": 3.82,
+            "end": 4.26
+          },
+          {
+            "text": "방법을",
+            "start": 4.26,
+            "end": 4.5
+          },
+          {
+            "text": "의료진과",
+            "start": 4.72,
+            "end": 5.36
+          },
+          {
+            "text": "확인하세요.",
+            "start": 5.36,
+            "end": 5.85
+          }
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "title",
+      "narration": "다음 식사 뒤에 떠올릴 수 있게, 저장해 두세요.",
+      "onScreen": {
+        "title": "다음 식사 뒤,\n기억해 두세요",
+        "headline": "다음 식사 뒤,\n기억해 두세요",
+        "showCaptions": true
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "ee5eac454c2e",
+        "start": 39.933333,
+        "duration": 3.7,
+        "speechEnd": 3.391383,
+        "words": [
+          {
+            "text": "다음",
+            "start": 0.05,
+            "end": 0.29
+          },
+          {
+            "text": "식사",
+            "start": 0.29,
+            "end": 0.55
+          },
+          {
+            "text": "뒤에",
+            "start": 0.69,
+            "end": 0.81
+          },
+          {
+            "text": "떠올릴",
+            "start": 0.9,
+            "end": 1.8
+          },
+          {
+            "text": "수",
+            "start": 1.96,
+            "end": 2.01
+          },
+          {
+            "text": "있게,",
+            "start": 2.01,
+            "end": 2.13
+          },
+          {
+            "text": "저장해",
+            "start": 2.46,
+            "end": 2.7
+          },
+          {
+            "text": "두세요.",
+            "start": 2.7,
+            "end": 3.03
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "식후 걷기 · 근거 있는 생활 습관"
+  },
+  "caption": "식후 가벼운 걷기는 식후 혈당 관리에 도움이 될 수 있습니다. 10분 만에 정상 수치가 되거나, 모든 사람에게 같은 효과가 난다는 뜻은 아닙니다.\n\n영상 속 연구: 제2형 당뇨병 성인 41명을 대상으로, 하루 30분 걷기와 매 주요 식사 뒤 10분 걷기를 각 2주씩 비교한 무작위 교차시험입니다. 식후 3시간 혈당 상승의 누적 지표(iAUC) 기하평균비가 0.88(95% 신뢰구간 0.78–0.99)로 약 12% 낮았습니다. 이는 혈당 농도 자체가 12% 내려갔다는 뜻이 아닙니다. 그래픽 100과 88은 비교 지표를 환산한 값이며 mg/dL이 아닙니다.\n\n편안한 속도로 무리하지 않고 시작하세요. 인슐린이나 일부 당뇨약을 쓰는 경우 운동 관련 저혈당 예방 방법을 의료진과 확인하세요. 약을 임의로 조절하거나 치료를 대체하지 마세요.\n\n연구: https://pubmed.ncbi.nlm.nih.gov/27747394/\n원리: https://diabetes.org/health-wellness/fitness/blood-glucose-and-exercise\n운동 시 주의: https://www.niddk.nih.gov/health-information/diabetes/overview/healthy-living-with-diabetes\n종합 연구: https://pubmed.ncbi.nlm.nih.gov/36715875/\n\n인물 이미지는 AI로 생성한 연출이며 실제 연구 참여자가 아닙니다. AI 내레이션을 사용했습니다.\n#식후걷기 #혈당관리 #걷기 #건강습관 #산책 #식후운동 #생활건강 #건강정보 #운동습관 #당뇨병 #포도당 #근육 #건강쇼츠 #일상루틴 #쇼츠",
+  "hashtags": [
+    "#식후걷기",
+    "#혈당관리",
+    "#걷기",
+    "#건강습관",
+    "#산책",
+    "#식후운동",
+    "#생활건강",
+    "#건강정보",
+    "#운동습관",
+    "#당뇨병",
+    "#포도당",
+    "#근육",
+    "#건강쇼츠",
+    "#일상루틴",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "몇 분 걸으면 혈당이 내려갈까?",
+    "instagram": false,
+    "youtube": false,
+    "channel": "personal"
+  }
+}

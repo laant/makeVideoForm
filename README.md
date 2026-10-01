@@ -82,6 +82,8 @@ myNextSeason/
 | 18 | 바람막이면 비도 막아줄까? | 쇼핑(쇼핑커넥트 · 데카트론 런 100) · 기상청 체감온도 | opus-paper(코드 종이공작 · 쌀쌀한 색감, 48.1초) | `output/18-autumn-windbreaker/` — 재테크 채널 · 네이버 클립 |
 | 19 | 스마트태그3, 아이폰에서도 될까? | 테크 · 삼성 발표 각주 기준 | autoshorts(청사진)·opus-paper(네이비 방안지) — 같은 나레이션 | `output/19-smarttag3-ios/` — opus판만 테크 채널 · 네이버 클립 |
 
+| 20 | 식후 걷기와 혈당 | 생활 건강 · 연구 및 원리 설명 | autoshorts · Codex B안 | `output/20-postmeal-walk/` |
+
 ## 환경 메모
 
 - API 키: ElevenLabs → `flow-pipeline/.env` · Google(GOOGLE_API_KEY, 결제 연결) → `OpenMontage/.env` · autoShorts(Gemini TTS·ElevenLabs·YT/IG) → `autoShorts/.env` · shopShorts(Higgsfield·Gemini TTS) → `shopShorts/.env`

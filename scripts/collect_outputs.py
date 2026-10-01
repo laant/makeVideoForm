@@ -19,6 +19,7 @@ OUT = ROOT / "output"
 
 # (프로젝트, 모듈) → 소스 후보 목록 (앞선 것 우선; final_send 우선 배치)
 MAPPING: dict[tuple[str, str], list[str]] = {
+    ("20-postmeal-walk", "codex"): ["autoShorts/episodes/postmeal-walk/final.mp4"],
     ("15-breathing-426", "codex"): ["autoShorts/episodes/breathing-426/final.mp4"],
     ("16-autumn-handcream", "opus-paper"): ["experiments/opus-autumn-handcream/out/final.mp4"],  # 코드 종이공작 · 가을 질감
     ("17-donggubat-handcream", "gemini-opus"): ["experiments/opus-donggubat-clip/out/final.mp4"],  # Gemini 제품영상 9:16 + 나레이션·자막·BGM
@@ -108,6 +109,7 @@ MAPPING: dict[tuple[str, str], list[str]] = {
 
 # 프로젝트 → autoShorts 카드뉴스 폴더 (npm run cards 결과, PNG만 복사 · src/ HTML 제외)
 CARDS: dict[str, str] = {
+    "20-postmeal-walk": "autoShorts/episodes/postmeal-walk/cards",
     "15-breathing-426": "autoShorts/episodes/breathing-426/cards",
     "09-youth-savings-2nd": "autoShorts/episodes/youth-savings-2nd/cards",
 }
