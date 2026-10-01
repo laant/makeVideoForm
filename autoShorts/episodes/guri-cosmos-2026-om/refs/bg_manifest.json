@@ -1,0 +1,74 @@
+{
+ "assets": [
+  {
+   "file": "media/bg-s01.png",
+   "scene": "s01",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: a wide riverside field densely covered with pink and white cosmos flowers, a calm river and a distant city skyline beyond. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.302Z"
+  },
+  {
+   "file": "media/bg-s02.png",
+   "scene": "s02",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: a small blank calendar card standing upright among cosmos flowers beside a river. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.304Z"
+  },
+  {
+   "file": "media/bg-s03.png",
+   "scene": "s03",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: a cosmos flower field spreading far outward beyond a small low fence. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.304Z"
+  },
+  {
+   "file": "media/bg-s04.png",
+   "scene": "s04",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: an outdoor stage glowing at night beside a cosmos field, small fireworks bursting in the dark sky above. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.304Z"
+  },
+  {
+   "file": "media/bg-s05.png",
+   "scene": "s05",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: a small outdoor stage with a single standing microphone in front of cosmos flowers in warm afternoon light. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.304Z"
+  },
+  {
+   "file": "media/bg-s06.png",
+   "scene": "s06",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: a small village bus driving along a quiet road between cosmos fields. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.304Z"
+  },
+  {
+   "file": "media/bg-s07.png",
+   "scene": "s07",
+   "preset": "paper",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, handcrafted paper collage diorama in a pop-up book style, every element cut from textured cardstock with visible paper grain and layered edges, matte cardstock surfaces, soft warm studio light with gentle contact shadows, deep charcoal cardstock backdrop. SUBJECT: a winding path through a cosmos field leading toward a river at golden hour. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint soft pink rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T07:13:18.304Z"
+  }
+ ]
+}

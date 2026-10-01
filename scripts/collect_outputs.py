@@ -26,6 +26,10 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("18-autumn-windbreaker", "opus-paper"): ["experiments/opus-windbreaker/out/final.mp4"],  # 코드 종이공작 · 쌀쌀한 색감
     ("19-smarttag3-ios", "autoshorts"): ["autoShorts/episodes/smarttag3-ios/final.mp4"],  # 청사진(blueprint) 배경
     ("19-smarttag3-ios", "opus-paper"): ["experiments/opus-smarttag3/out/final.mp4"],  # 코드 종이공작 · 네이비 방안지 (같은 나레이션)
+    ("21-guri-cosmos", "opus-paper"): ["experiments/opus-guri-cosmos/out/final.mp4"],  # 코드 종이공작 · 흔들리는 코스모스 꽃밭
+    ("21-guri-cosmos", "openmontage"): ["OpenMontage/projects/guri-cosmos-2026/renders/final.mp4"],  # 페이퍼 팝업북 이미지 + stat_card
+    ("21-guri-cosmos", "autoshorts"): ["autoShorts/episodes/guri-cosmos-2026/final.mp4"],  # paper 프리셋 배경
+    ("21-guri-cosmos", "autoshorts-om"): ["autoShorts/episodes/guri-cosmos-2026-om/final.mp4"],  # 조합판: OpenMontage 배경 + autoShorts 화면 구성
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],

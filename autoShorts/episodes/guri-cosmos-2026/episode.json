@@ -1,0 +1,670 @@
+{
+  "slug": "guri-cosmos-2026",
+  "topic": "2026 구리 코스모스 축제",
+  "audience": "수도권 가을 나들이를 찾는 시민·가족",
+  "tone": "밝고 차분한 안내체. 공식 발표된 사실만",
+  "cta": "구리 코스모스 축제 방문",
+  "reference": {
+    "url": "https://www.guri.go.kr/cosmos/contents.do?key=7241",
+    "reaction": "",
+    "transcript": "",
+    "sceneFlow": "훅(축구장 11개·사흘) → 일정·장소 → 꽃단지 확대 → 밤 무대·불꽃 → 가요제 → 대중교통 → 방문 권유",
+    "notes": "구리시 공식 축제 사이트(일정·시간표·셔틀·마을버스·주차)·공식 포스터(출연진) 2026-10-01 확인. 꽃단지 79,620㎡(+11,940㎡)는 일간경기(시 발표). 축구장 11개=79,620/7,140㎡ 환산. 드론쇼·미디어파사드·입장료·방문객 수는 공식 미확인으로 제외. 실사진(구리시 포토뉴스, 공공누리 4유형)은 사용자 결정으로 미사용."
+  },
+  "brief": {
+    "goal": "",
+    "hook": "",
+    "lengthSec": 35,
+    "mustShow": "",
+    "avoid": "",
+    "draft": "",
+    "visual": "",
+    "files": [],
+    "submittedAt": ""
+  },
+  "theme": {
+    "bg": "#14100f",
+    "fg": "#fbf5f2",
+    "accent": "#E85C8F",
+    "muted": "#b8a6a2"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "bg": {
+    "preset": "paper",
+    "layout": "plate",
+    "accent": ""
+  },
+  "gapSeconds": 0.24,
+  "transitionSeconds": 0.3,
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "한강변에 축구장 열한 개 크기 코스모스 꽃밭이, 딱 사흘만 열려요.",
+      "onScreen": {
+        "kicker": "2026 구리 코스모스 축제",
+        "title": "축구장 11개 꽃밭\n딱 사흘만",
+        "subtitle": "꽃단지 79,620㎡",
+        "subtitleAt": "word:사흘만",
+        "highlight": [
+          "사흘만"
+        ],
+        "bgPrompt": "a wide riverside field densely covered with pink and white cosmos flowers, a calm river and a distant city skyline beyond",
+        "bgImage": "media/bg-s01.png",
+        "bgDim": 0.4
+      },
+      "sfx": [
+        {
+          "name": "whoosh",
+          "at": "start",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "078a35183b32",
+        "start": 0,
+        "duration": 5.884,
+        "speechEnd": 5.644,
+        "words": [
+          {
+            "text": "한강변에",
+            "start": 0.06,
+            "end": 0.79
+          },
+          {
+            "text": "축구장",
+            "start": 0.79,
+            "end": 1.06
+          },
+          {
+            "text": "열한",
+            "start": 1.21,
+            "end": 2
+          },
+          {
+            "text": "개",
+            "start": 2,
+            "end": 2.05
+          },
+          {
+            "text": "크기",
+            "start": 2.14,
+            "end": 2.39
+          },
+          {
+            "text": "코스모스",
+            "start": 2.39,
+            "end": 3.18
+          },
+          {
+            "text": "꽃밭이,",
+            "start": 3.18,
+            "end": 3.84
+          },
+          {
+            "text": "딱",
+            "start": 4.14,
+            "end": 4.248
+          },
+          {
+            "text": "사흘만",
+            "start": 4.248,
+            "end": 4.57
+          },
+          {
+            "text": "열려요.",
+            "start": 4.57,
+            "end": 5.26
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "list",
+      "narration": "이천이십육 구리 코스모스 축제, 시월 구일부터 십일일까지, 구리한강시민공원이에요.",
+      "onScreen": {
+        "heading": "꽃멍하러 구리로 ON",
+        "items": [
+          {
+            "text": "10월 9일(금) ~ 11일(일)",
+            "at": "word:시월"
+          },
+          {
+            "text": "구리한강시민공원",
+            "at": "word:구리한강시민공원이에요."
+          }
+        ],
+        "highlight": [
+          "구리한강시민공원이에요."
+        ],
+        "bgPrompt": "a small blank calendar card standing upright among cosmos flowers beside a river",
+        "bgImage": "media/bg-s02.png",
+        "bgDim": 0.4
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:시월",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "81a86ae9a708",
+        "start": 5.884,
+        "duration": 7.482,
+        "speechEnd": 7.242,
+        "words": [
+          {
+            "text": "이천이십육",
+            "start": 0,
+            "end": 1.22
+          },
+          {
+            "text": "구리",
+            "start": 1.22,
+            "end": 1.61
+          },
+          {
+            "text": "코스모스",
+            "start": 1.69,
+            "end": 2.13
+          },
+          {
+            "text": "축제,",
+            "start": 2.25,
+            "end": 2.68
+          },
+          {
+            "text": "시월",
+            "start": 3.085,
+            "end": 3.31
+          },
+          {
+            "text": "구일부터",
+            "start": 3.46,
+            "end": 4.11
+          },
+          {
+            "text": "십일일까지,",
+            "start": 4.15,
+            "end": 5.38
+          },
+          {
+            "text": "구리한강시민공원이에요.",
+            "start": 5.59,
+            "end": 6.93
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "number-slab-pop",
+      "narration": "꽃밭은 작년보다 만 이천 제곱미터 가까이 더 넓어졌어요.",
+      "onScreen": {
+        "value": "+11,940",
+        "unit": "㎡",
+        "caption": "작년보다 넓어진 꽃단지 · 총 79,620㎡",
+        "at": "word:만",
+        "highlight": [
+          "넓어졌어요."
+        ],
+        "bgPrompt": "a cosmos flower field spreading far outward beyond a small low fence",
+        "bgImage": "media/bg-s03.png",
+        "bgDim": 0.4
+      },
+      "sfx": [
+        {
+          "name": "pop",
+          "at": "word:만",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "7b656ecc8ba5",
+        "start": 13.366,
+        "duration": 4.811,
+        "speechEnd": 4.571,
+        "words": [
+          {
+            "text": "꽃밭은",
+            "start": 0.04,
+            "end": 0.44
+          },
+          {
+            "text": "작년보다",
+            "start": 0.45,
+            "end": 1.18
+          },
+          {
+            "text": "만",
+            "start": 1.92,
+            "end": 2.173
+          },
+          {
+            "text": "이천",
+            "start": 2.173,
+            "end": 2.68
+          },
+          {
+            "text": "제곱미터",
+            "start": 2.76,
+            "end": 3.27
+          },
+          {
+            "text": "가까이",
+            "start": 3.32,
+            "end": 3.57
+          },
+          {
+            "text": "더",
+            "start": 3.57,
+            "end": 3.66
+          },
+          {
+            "text": "넓어졌어요.",
+            "start": 3.66,
+            "end": 4.49
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "list",
+      "narration": "밤 일곱 시엔 매일 무대가 열려요. 토요일엔 양파, 김다현, 일요일엔 홍이삭, 박혜신, 그리고 불꽃쇼까지.",
+      "onScreen": {
+        "heading": "매일 밤 7시 무대",
+        "items": [
+          {
+            "text": "토 개막식 · 양파 · 김다현 외",
+            "at": "word:토요일엔"
+          },
+          {
+            "text": "일 폐막식 · 홍이삭 · 박혜신 외",
+            "at": "word:일요일엔"
+          },
+          {
+            "text": "일요일 불꽃쇼",
+            "at": "word:불꽃쇼까지."
+          }
+        ],
+        "highlight": [
+          "불꽃쇼까지."
+        ],
+        "bgPrompt": "an outdoor stage glowing at night beside a cosmos field, small fireworks bursting in the dark sky above",
+        "bgImage": "media/bg-s04.png",
+        "bgDim": 0.4
+      },
+      "sfx": [
+        {
+          "name": "tone",
+          "at": "word:불꽃쇼까지.",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "87420bd98b8a",
+        "start": 18.177,
+        "duration": 9.64,
+        "speechEnd": 9.4,
+        "words": [
+          {
+            "text": "밤",
+            "start": 0.05,
+            "end": 0.18
+          },
+          {
+            "text": "일곱",
+            "start": 0.18,
+            "end": 0.71
+          },
+          {
+            "text": "시엔",
+            "start": 0.72,
+            "end": 1.08
+          },
+          {
+            "text": "매일",
+            "start": 1.08,
+            "end": 1.44
+          },
+          {
+            "text": "무대가",
+            "start": 1.44,
+            "end": 1.97
+          },
+          {
+            "text": "열려요.",
+            "start": 1.97,
+            "end": 2.47
+          },
+          {
+            "text": "토요일엔",
+            "start": 3.37,
+            "end": 3.91
+          },
+          {
+            "text": "양파,",
+            "start": 4.02,
+            "end": 4.2
+          },
+          {
+            "text": "김다현,",
+            "start": 4.75,
+            "end": 5.4
+          },
+          {
+            "text": "일요일엔",
+            "start": 5.59,
+            "end": 6
+          },
+          {
+            "text": "홍이삭,",
+            "start": 6,
+            "end": 6.68
+          },
+          {
+            "text": "박혜신,",
+            "start": 7.13,
+            "end": 7.84
+          },
+          {
+            "text": "그리고",
+            "start": 8.02,
+            "end": 8.26
+          },
+          {
+            "text": "불꽃쇼까지.",
+            "start": 8.39,
+            "end": 9.11
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "토요일 오후 네 시엔 전국 코스모스 가요제도 열려요.",
+      "onScreen": {
+        "kicker": "10월 10일(토) 오후 4시",
+        "title": "전국 코스모스\n가요제",
+        "highlight": [
+          "가요제도"
+        ],
+        "bgPrompt": "a small outdoor stage with a single standing microphone in front of cosmos flowers in warm afternoon light",
+        "bgImage": "media/bg-s05.png",
+        "bgDim": 0.4
+      },
+      "sfx": [],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "dc5ea3cc807b",
+        "start": 27.817,
+        "duration": 4.609,
+        "speechEnd": 4.369,
+        "words": [
+          {
+            "text": "토요일",
+            "start": 0.11,
+            "end": 0.48
+          },
+          {
+            "text": "오후",
+            "start": 0.48,
+            "end": 1.12
+          },
+          {
+            "text": "네",
+            "start": 1.12,
+            "end": 1.6
+          },
+          {
+            "text": "시엔",
+            "start": 1.6,
+            "end": 1.94
+          },
+          {
+            "text": "전국",
+            "start": 1.95,
+            "end": 2.16
+          },
+          {
+            "text": "코스모스",
+            "start": 2.16,
+            "end": 2.82
+          },
+          {
+            "text": "가요제도",
+            "start": 2.82,
+            "end": 3.48
+          },
+          {
+            "text": "열려요.",
+            "start": 3.48,
+            "end": 4.03
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "list",
+      "narration": "대중교통도 편해요. 팔 호선 장자호수공원역 근처에서 마을버스가 축제장까지 다니고, 공원 안엔 무료 셔틀도 있어요.",
+      "onScreen": {
+        "heading": "대중교통으로",
+        "items": [
+          {
+            "text": "8호선 장자호수공원역 → 마을버스",
+            "at": "word:마을버스가"
+          },
+          {
+            "text": "공원 안 무료 셔틀 (10~23시)",
+            "at": "word:무료"
+          }
+        ],
+        "highlight": [
+          "무료"
+        ],
+        "bgPrompt": "a small village bus driving along a quiet road between cosmos fields",
+        "bgImage": "media/bg-s06.png",
+        "bgDim": 0.4
+      },
+      "sfx": [
+        {
+          "name": "click",
+          "at": "word:마을버스가",
+          "volume": 1
+        }
+      ],
+      "transitionOut": "crossfade",
+      "effects": [],
+      "timing": {
+        "hash": "01b9e80c2151",
+        "start": 32.426,
+        "duration": 9.244,
+        "speechEnd": 9.004,
+        "words": [
+          {
+            "text": "대중교통도",
+            "start": 0.1,
+            "end": 1.05
+          },
+          {
+            "text": "편해요.",
+            "start": 1.05,
+            "end": 1.49
+          },
+          {
+            "text": "팔",
+            "start": 2.24,
+            "end": 2.64
+          },
+          {
+            "text": "호선",
+            "start": 2.64,
+            "end": 2.92
+          },
+          {
+            "text": "장자호수공원역",
+            "start": 2.97,
+            "end": 3.99
+          },
+          {
+            "text": "근처에서",
+            "start": 3.99,
+            "end": 4.35
+          },
+          {
+            "text": "마을버스가",
+            "start": 4.7,
+            "end": 5.72
+          },
+          {
+            "text": "축제장까지",
+            "start": 5.72,
+            "end": 6.52
+          },
+          {
+            "text": "다니고,",
+            "start": 6.59,
+            "end": 7.04
+          },
+          {
+            "text": "공원",
+            "start": 7.04,
+            "end": 7.35
+          },
+          {
+            "text": "안엔",
+            "start": 7.35,
+            "end": 7.79
+          },
+          {
+            "text": "무료",
+            "start": 7.84,
+            "end": 8.12
+          },
+          {
+            "text": "셔틀도",
+            "start": 8.12,
+            "end": 8.62
+          },
+          {
+            "text": "있어요.",
+            "start": 8.62,
+            "end": 8.94
+          }
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "cta",
+      "narration": "꽃멍하러 구리로. 올가을, 구리 코스모스 축제에 방문해 보세요.",
+      "onScreen": {
+        "emoji": "🌸",
+        "headline": "꽃멍하러\n구리로 ON",
+        "action": "10.9 ~ 10.11 · 구리한강시민공원",
+        "actionAt": "word:방문해",
+        "highlight": [
+          "방문해"
+        ],
+        "bgPrompt": "a winding path through a cosmos field leading toward a river at golden hour",
+        "bgImage": "media/bg-s07.png",
+        "bgDim": 0.4
+      },
+      "sfx": [],
+      "transitionOut": "cut",
+      "effects": [],
+      "timing": {
+        "hash": "b1f569e58ce3",
+        "start": 41.67,
+        "duration": 5.42,
+        "speechEnd": 5.18,
+        "words": [
+          {
+            "text": "꽃멍하러",
+            "start": 0.05,
+            "end": 1.04
+          },
+          {
+            "text": "구리로.",
+            "start": 1.04,
+            "end": 2
+          },
+          {
+            "text": "올가을,",
+            "start": 2,
+            "end": 2.49
+          },
+          {
+            "text": "구리",
+            "start": 2.82,
+            "end": 3.11
+          },
+          {
+            "text": "코스모스",
+            "start": 3.2,
+            "end": 3.82
+          },
+          {
+            "text": "축제에",
+            "start": 3.82,
+            "end": 4.21
+          },
+          {
+            "text": "방문해",
+            "start": 4.32,
+            "end": 4.71
+          },
+          {
+            "text": "보세요.",
+            "start": 4.71,
+            "end": 5.11
+          }
+        ]
+      }
+    }
+  ],
+  "cards": {
+    "footer": "출처: 구리시 코스모스 축제 공식 사이트 · 2026-10-01 확인"
+  },
+  "caption": "2026 구리 코스모스 축제 — 꽃멍하러 구리로 ON\n\n📅 10월 9일(금) ~ 11일(일) · 📍 구리한강시민공원\n🌸 꽃단지 79,620㎡ (작년보다 11,940㎡ 확대)\n🎤 매일 밤 7시 무대 — 금 전야제 · 토 개막식(양파, 김다현 외) · 일 폐막식(홍이삭, 박혜신 외) + 불꽃쇼\n🎶 10월 10일(토) 오후 4시 전국 코스모스 가요제\n🚌 8호선 장자호수공원역 인근에서 마을버스 연장 운행(09~23시) · 공원 안 무료 셔틀(10~23시)\n\n출처: 구리시 코스모스 축제 공식 사이트 (2026-10-01 확인) https://www.guri.go.kr/cosmos/index.do",
+  "hashtags": [
+    "#구리코스모스축제",
+    "#코스모스",
+    "#구리한강시민공원",
+    "#가을축제",
+    "#구리",
+    "#가볼만한곳",
+    "#가을여행",
+    "#꽃구경",
+    "#쇼츠"
+  ],
+  "upload": {
+    "title": "축구장 11개 크기 코스모스 꽃밭, 딱 사흘만",
+    "instagram": false,
+    "youtube": false,
+    "channel": "personal"
+  }
+}

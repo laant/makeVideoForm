@@ -81,6 +81,7 @@ myNextSeason/
 | 17 | 가방에 넣을 핸드크림, 무향으로 찾고 있나요? | 쇼핑(쇼핑커넥트 · 동구밭 단일 상품) | gemini-opus(Gemini 16:9 제품영상 → 9:16 재구성 · 새 나레이션·자막·합성 BGM · 실측 평점 카드, 24.3초) | `output/17-donggubat-handcream/` — 네이버 클립 전용(YouTube 쇼츠 설명 링크 클릭 불가) |
 | 18 | 바람막이면 비도 막아줄까? | 쇼핑(쇼핑커넥트 · 데카트론 런 100) · 기상청 체감온도 | opus-paper(코드 종이공작 · 쌀쌀한 색감, 48.1초) | `output/18-autumn-windbreaker/` — 재테크 채널 · 네이버 클립 |
 | 19 | 스마트태그3, 아이폰에서도 될까? | 테크 · 삼성 발표 각주 기준 | autoshorts(청사진)·opus-paper(네이비 방안지) — 같은 나레이션 | `output/19-smarttag3-ios/` — opus판만 테크 채널 · 네이버 클립 |
+| 21 | 축구장 11개 크기 코스모스 꽃밭, 딱 사흘만 | 지역 축제(2026 구리 코스모스 축제) · 공식 사이트 기준 | opus-paper · openmontage · autoshorts(paper) · autoshorts-om(조합) — 같은 나레이션 | `output/21-guri-cosmos/` — opus판 personal·클립 공개, 조합판 10/6 18:00 예약 |
 
 | 20 | 식후 걷기와 혈당 | 생활 건강 · 연구 및 원리 설명 | autoshorts · Codex B안 | `output/20-postmeal-walk/` |
 
