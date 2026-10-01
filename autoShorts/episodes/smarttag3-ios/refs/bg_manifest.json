@@ -1,0 +1,84 @@
+{
+ "assets": [
+  {
+   "file": "media/bg-s01.png",
+   "scene": "s01",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a small round tracker tag lying between two plain smartphones on the floor. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.927Z"
+  },
+  {
+   "file": "media/bg-s02.png",
+   "scene": "s02",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a plain smartphone lying face up with a simple map pin hovering above its blank screen. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  },
+  {
+   "file": "media/bg-s03.png",
+   "scene": "s03",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: two plain smartphones side by side, one with a small compass dial floating above it. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  },
+  {
+   "file": "media/bg-s04.png",
+   "scene": "s04",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a single plain smartphone with a small broken chain link beside it. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  },
+  {
+   "file": "media/bg-s05.png",
+   "scene": "s05",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a small round tracker tag at the center of wide concentric rings spreading across the floor. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  },
+  {
+   "file": "media/bg-s06.png",
+   "scene": "s06",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a small round tracker tag surrounded by several distant plain smartphones connected by thin lines. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  },
+  {
+   "file": "media/bg-s07.png",
+   "scene": "s07",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a small round tracker tag on a low pedestal with a soft upward light. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  },
+  {
+   "file": "media/bg-s08.png",
+   "scene": "s08",
+   "preset": "blueprint",
+   "layout": "plate",
+   "tool": "google_imagen",
+   "model": "gemini-3.1-flash-image",
+   "prompt": "A vertical 9:16 still frame, technical blueprint illustration, thin precise white-cyan line drawing of the subject in orthographic view with faint construction lines, on a very dark navy paper background with a subtle fine grid. SUBJECT: a small round tracker tag and a plain smartphone standing upright next to a blank calendar card. COMPOSITION: the subject sits low in the bottom 40% of the frame and is small; the upper 60% is empty dark negative space. Overall very low contrast and dim, like a background plate meant to sit behind white text. A single faint cool blue rim light touches one edge of the subject. No other colour anywhere. No text, no letters, no numbers, no labels, no logos, no brand marks, no watermark, no lens flare, no film grain, no photorealism, no bright highlights, no people, no faces.",
+   "at": "2026-10-01T04:42:19.928Z"
+  }
+ ]
+}

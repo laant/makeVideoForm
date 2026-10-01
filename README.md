@@ -79,6 +79,8 @@ myNextSeason/
 | 15 | 426 호흡법, 12초 동안 같이 해보세요 | 생활 건강 · 근거와 주의사항 포함 | autoshorts · Codex 연출 (48.4초) | `output/15-breathing-426/` |
 | 16 | '무향' 핸드크림이면 정말 향료가 없을까? | 쇼핑(쇼핑커넥트) · AAD·표시규정 보강 | opus-paper(코드 종이공작 · 가을 질감, 49.7초) | `output/16-autumn-handcream/` — 재테크 채널 · 네이버 클립 업로드 |
 | 17 | 가방에 넣을 핸드크림, 무향으로 찾고 있나요? | 쇼핑(쇼핑커넥트 · 동구밭 단일 상품) | gemini-opus(Gemini 16:9 제품영상 → 9:16 재구성 · 새 나레이션·자막·합성 BGM · 실측 평점 카드, 24.3초) | `output/17-donggubat-handcream/` — 네이버 클립 전용(YouTube 쇼츠 설명 링크 클릭 불가) |
+| 18 | 바람막이면 비도 막아줄까? | 쇼핑(쇼핑커넥트 · 데카트론 런 100) · 기상청 체감온도 | opus-paper(코드 종이공작 · 쌀쌀한 색감, 48.1초) | `output/18-autumn-windbreaker/` — 재테크 채널 · 네이버 클립 |
+| 19 | 스마트태그3, 아이폰에서도 될까? | 테크 · 삼성 발표 각주 기준 | autoshorts(청사진)·opus-paper(네이비 방안지) — 같은 나레이션 | `output/19-smarttag3-ios/` — opus판만 테크 채널 · 네이버 클립 |
 
 ## 환경 메모
 

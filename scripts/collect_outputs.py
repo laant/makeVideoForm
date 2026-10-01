@@ -22,6 +22,9 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("15-breathing-426", "codex"): ["autoShorts/episodes/breathing-426/final.mp4"],
     ("16-autumn-handcream", "opus-paper"): ["experiments/opus-autumn-handcream/out/final.mp4"],  # 코드 종이공작 · 가을 질감
     ("17-donggubat-handcream", "gemini-opus"): ["experiments/opus-donggubat-clip/out/final.mp4"],  # Gemini 제품영상 9:16 + 나레이션·자막·BGM
+    ("18-autumn-windbreaker", "opus-paper"): ["experiments/opus-windbreaker/out/final.mp4"],  # 코드 종이공작 · 쌀쌀한 색감
+    ("19-smarttag3-ios", "autoshorts"): ["autoShorts/episodes/smarttag3-ios/final.mp4"],  # 청사진(blueprint) 배경
+    ("19-smarttag3-ios", "opus-paper"): ["experiments/opus-smarttag3/out/final.mp4"],  # 코드 종이공작 · 네이비 방안지 (같은 나레이션)
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],
