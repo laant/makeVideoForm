@@ -34,6 +34,7 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("23-guided-vision", "opus-paper"): ["experiments/opus-guided-vision/out/final.mp4"],  # 테크 · 뷰파인더·음성 안내 코드 렌더
     ("23-guided-vision", "redesign"): ["output/23-guided-vision/guided-vision_redesign.mp4"],  # 사용자 리디자인판 (편집 파일: guided-vision_editable/) — 게시본
     ("24-us-jobs-report", "opus-paper"): ["experiments/opus-jobs-report/out/final.mp4"],  # 재테크 · 장부지 체크리스트 코드 렌더
+    ("25-SPAO_44s_edit_project", "edit"): ["output/25-SPAO_44s_edit_project/SPAO_44s_caption_music.mp4"],  # 쇼핑 · 사용자 편집본(자막+배경음)
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],
