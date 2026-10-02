@@ -30,6 +30,10 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("21-guri-cosmos", "openmontage"): ["OpenMontage/projects/guri-cosmos-2026/renders/final.mp4"],  # 페이퍼 팝업북 이미지 + stat_card
     ("21-guri-cosmos", "autoshorts"): ["autoShorts/episodes/guri-cosmos-2026/final.mp4"],  # paper 프리셋 배경
     ("21-guri-cosmos", "autoshorts-om"): ["autoShorts/episodes/guri-cosmos-2026-om/final.mp4"],  # 조합판: OpenMontage 배경 + autoShorts 화면 구성
+    ("22-galaxy-buds-on", "opus-paper"): ["experiments/opus-buds-on/out/final.mp4"],  # 테크 · 귀·클립·음파 코드 렌더
+    ("23-guided-vision", "opus-paper"): ["experiments/opus-guided-vision/out/final.mp4"],  # 테크 · 뷰파인더·음성 안내 코드 렌더
+    ("23-guided-vision", "redesign"): ["output/23-guided-vision/guided-vision_redesign.mp4"],  # 사용자 리디자인판 (편집 파일: guided-vision_editable/) — 게시본
+    ("24-us-jobs-report", "opus-paper"): ["experiments/opus-jobs-report/out/final.mp4"],  # 재테크 · 장부지 체크리스트 코드 렌더
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],
