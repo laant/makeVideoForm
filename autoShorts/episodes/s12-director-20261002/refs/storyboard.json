@@ -1,0 +1,411 @@
+{
+  "status": "rendered; technical and mobile visual checks passed; pronunciation listening pending",
+  "resolution": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "source": "https://pulluptech.blogspot.com/2026/10/s12.html",
+  "scenes": [
+    {
+      "id": "s01",
+      "narration": "갤럭시 탭 에스 십이, 큰 화면보다 작업 방식부터 보세요.",
+      "headline": "큰 화면보다\n내 작업부터",
+      "note": "10월 7일 국내 출시 예정",
+      "image": "media/scene-host.png",
+      "timing": {
+        "hash": "26455639e157dc32fa15ec72bd0448ab0995ea52f5f6d91963231365a3cf01ef",
+        "start": 0,
+        "duration": 4.667,
+        "speechEnd": 4.2125,
+        "words": [
+          {
+            "text": "갤럭시",
+            "start": 0.1,
+            "end": 0.625
+          },
+          {
+            "text": "탭",
+            "start": 0.6375,
+            "end": 0.8625
+          },
+          {
+            "text": "에스",
+            "start": 0.875,
+            "end": 1.175
+          },
+          {
+            "text": "십이",
+            "start": 1.1875,
+            "end": 1.6375
+          },
+          {
+            "text": "큰",
+            "start": 1.8125,
+            "end": 2.05
+          },
+          {
+            "text": "화면보다",
+            "start": 2.0625,
+            "end": 2.6625
+          },
+          {
+            "text": "작업",
+            "start": 2.675,
+            "end": 3.0375
+          },
+          {
+            "text": "방식부터",
+            "start": 3.05,
+            "end": 3.65
+          },
+          {
+            "text": "보세요",
+            "start": 3.6625,
+            "end": 4.2125
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "narration": "울트라는 십사 점 육 인치. 플러스는 십이 점 육 인치입니다.",
+      "headline": "화면 공간의 차이",
+      "note": "울트라 14.6형 · 플러스 12.6형",
+      "image": "media/scene-tablets.png",
+      "timing": {
+        "hash": "8924c09472a4feb657304f0d9b3203cc18f84579c31fe86db16ccfc0a2ad500c",
+        "start": 4.667,
+        "duration": 5.7,
+        "speechEnd": 5.25,
+        "words": [
+          {
+            "text": "울트라는",
+            "start": 0.1,
+            "end": 0.7375
+          },
+          {
+            "text": "십사",
+            "start": 0.75,
+            "end": 1.1
+          },
+          {
+            "text": "점",
+            "start": 1.1125,
+            "end": 1.4
+          },
+          {
+            "text": "육",
+            "start": 1.4125,
+            "end": 1.5625
+          },
+          {
+            "text": "인치",
+            "start": 1.575,
+            "end": 2.1125
+          },
+          {
+            "text": "플러스는",
+            "start": 2.975,
+            "end": 3.675
+          },
+          {
+            "text": "십이",
+            "start": 3.6875,
+            "end": 3.9625
+          },
+          {
+            "text": "점",
+            "start": 3.975,
+            "end": 4.2625
+          },
+          {
+            "text": "육",
+            "start": 4.275,
+            "end": 4.4375
+          },
+          {
+            "text": "인치입니다",
+            "start": 4.45,
+            "end": 5.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "narration": "와이파이 기준 육백구십이 그램과 오백오십삼 그램. 매일 들고 다닌다면 차이를 보세요.",
+      "headline": "가방 무게도\n함께 비교",
+      "note": "Wi-Fi: 692g · 553g / 차이 139g",
+      "image": "media/scene-tablets.png",
+      "timing": {
+        "hash": "f538a6db5f50973e5650c87b641aa11ae55d061d489082121bd61892480d6050",
+        "start": 10.367,
+        "duration": 7.633,
+        "speechEnd": 7.1625,
+        "words": [
+          {
+            "text": "와이파이",
+            "start": 0.1,
+            "end": 0.75
+          },
+          {
+            "text": "기준",
+            "start": 0.7625,
+            "end": 1.175
+          },
+          {
+            "text": "육백구십이",
+            "start": 1.1875,
+            "end": 1.925
+          },
+          {
+            "text": "그램과",
+            "start": 1.9375,
+            "end": 2.425
+          },
+          {
+            "text": "오백오십삼",
+            "start": 2.4375,
+            "end": 3.35
+          },
+          {
+            "text": "그램",
+            "start": 3.3625,
+            "end": 3.775
+          },
+          {
+            "text": "매일",
+            "start": 4.6375,
+            "end": 5.0375
+          },
+          {
+            "text": "들고",
+            "start": 5.05,
+            "end": 5.3625
+          },
+          {
+            "text": "다닌다면",
+            "start": 5.375,
+            "end": 6.0625
+          },
+          {
+            "text": "차이를",
+            "start": 6.075,
+            "end": 6.5625
+          },
+          {
+            "text": "보세요",
+            "start": 6.575,
+            "end": 7.1625
+          }
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "narration": "포토샵 혜택은 모바일 프리미엄 사 개월 체험입니다. 피씨용 전체 기능이나 영구 이용권은 아닙니다.",
+      "headline": "포토샵 혜택은\n4개월 체험",
+      "note": "모바일 프리미엄 · 영구 이용권 아님",
+      "image": "media/scene-edit.png",
+      "timing": {
+        "hash": "0baf976d941bcda6cd2f717522d3a3e18882a025a8be020a65cf521a801b35a8",
+        "start": 18.0,
+        "duration": 8.133,
+        "speechEnd": 7.6625,
+        "words": [
+          {
+            "text": "포토샵",
+            "start": 0.1,
+            "end": 0.5625
+          },
+          {
+            "text": "혜택은",
+            "start": 0.575,
+            "end": 1.05
+          },
+          {
+            "text": "모바일",
+            "start": 1.0625,
+            "end": 1.6875
+          },
+          {
+            "text": "프리미엄",
+            "start": 1.7,
+            "end": 2.2625
+          },
+          {
+            "text": "사",
+            "start": 2.275,
+            "end": 2.4625
+          },
+          {
+            "text": "개월",
+            "start": 2.475,
+            "end": 2.7875
+          },
+          {
+            "text": "체험입니다",
+            "start": 2.8,
+            "end": 3.6625
+          },
+          {
+            "text": "피씨용",
+            "start": 4.525,
+            "end": 5.0
+          },
+          {
+            "text": "전체",
+            "start": 5.0125,
+            "end": 5.3625
+          },
+          {
+            "text": "기능이나",
+            "start": 5.375,
+            "end": 5.9625
+          },
+          {
+            "text": "영구",
+            "start": 5.975,
+            "end": 6.375
+          },
+          {
+            "text": "이용권은",
+            "start": 6.3875,
+            "end": 6.9375
+          },
+          {
+            "text": "아닙니다",
+            "start": 6.95,
+            "end": 7.6625
+          }
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "narration": "내 파일을 열고 편집하고 내보내는지 확인하세요. 키보드는 별매입니다.",
+      "headline": "내 파일로\n작업 순서 확인",
+      "note": "열기 → 편집 → 내보내기 / 키보드 별매",
+      "image": "media/scene-edit.png",
+      "timing": {
+        "hash": "46c5fdd31e78415077ba58f0cd24d769aaede0656e0e0f17bca1577c12491e33",
+        "start": 26.133,
+        "duration": 6.267,
+        "speechEnd": 5.8125,
+        "words": [
+          {
+            "text": "내",
+            "start": 0.1,
+            "end": 0.3375
+          },
+          {
+            "text": "파일을",
+            "start": 0.35,
+            "end": 0.7375
+          },
+          {
+            "text": "열고",
+            "start": 0.75,
+            "end": 1.0875
+          },
+          {
+            "text": "편집하고",
+            "start": 1.1,
+            "end": 1.8125
+          },
+          {
+            "text": "내보내는지",
+            "start": 1.825,
+            "end": 2.625
+          },
+          {
+            "text": "확인하세요",
+            "start": 2.6375,
+            "end": 3.4375
+          },
+          {
+            "text": "키보드는",
+            "start": 4.3,
+            "end": 4.925
+          },
+          {
+            "text": "별매입니다",
+            "start": 4.9375,
+            "end": 5.8125
+          }
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "narration": "책상 작업은 화면 공간, 이동이 많다면 휴대성. 내 작업부터 골라 보세요.",
+      "headline": "책상 vs 이동\n내 기준으로 선택",
+      "note": "공식 발표 기반 · 실사용 후기 아님",
+      "image": "media/scene-host.png",
+      "timing": {
+        "hash": "3ade4d983a771501dcc04c71956ba5c41e3880d23816e80d5407e1513b4a514d",
+        "start": 32.4,
+        "duration": 6.9,
+        "speechEnd": 6.45,
+        "words": [
+          {
+            "text": "책상",
+            "start": 0.1,
+            "end": 0.525
+          },
+          {
+            "text": "작업은",
+            "start": 0.5375,
+            "end": 0.9625
+          },
+          {
+            "text": "화면",
+            "start": 0.975,
+            "end": 1.3375
+          },
+          {
+            "text": "공간",
+            "start": 1.35,
+            "end": 1.925
+          },
+          {
+            "text": "이동이",
+            "start": 2.1,
+            "end": 2.4875
+          },
+          {
+            "text": "많다면",
+            "start": 2.5,
+            "end": 3.0625
+          },
+          {
+            "text": "휴대성",
+            "start": 3.075,
+            "end": 3.7625
+          },
+          {
+            "text": "내",
+            "start": 4.625,
+            "end": 4.8625
+          },
+          {
+            "text": "작업부터",
+            "start": 4.875,
+            "end": 5.55
+          },
+          {
+            "text": "골라",
+            "start": 5.5625,
+            "end": 5.875
+          },
+          {
+            "text": "보세요",
+            "start": 5.8875,
+            "end": 6.45
+          }
+        ]
+      }
+    }
+  ]
+}

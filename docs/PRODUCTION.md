@@ -94,3 +94,9 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 - talkcraft판: `talkcraft/<이름>/remotion/out/final.mp4`
 - autoShorts판: `autoShorts/episodes/<slug>/final.mp4`
 - 삭제된 MPT의 과거 완주분: `_archive-mpt/`
+
+
+## 2026-10-02 사용자 음성 교정 — 이전 선희 설정보다 우선
+- 사용자는 S12 쇼츠의 Microsoft Edge 선희 음성을 거부하고 “음성은 원래 autoshorts에 있는 방식으로해줘 … 다음에도 아예넣지말자”라고 요청했다. 이후 해당 제작 흐름에서 Edge TTS/선희를 사용하지 않는다. 모든 내레이션 제거 요청은 아니다.
+- 기존 요금제 기준작 `optimal-plan-codex-director`의 실제 음성 설정을 따른다: `provider=gemini`, `modelId=gemini-3.1-flash-tts-preview`, `voiceId=Aoede`, `prompt=""`. `scripts/tts.js`의 Gemini 생성·Whisper 단어 정렬을 사용하며 다른 음성으로 임의 대체하지 않는다.
+- 음성 교체 시 실제 새 타이밍으로 자막·장면·효과음을 재조정하고 원본 영상·음성을 보존한다. 공급자 오류/권한 거절/추가 결제·구독·새 자격증명이 필요하면 해당 단계만 중단하고 알린다.

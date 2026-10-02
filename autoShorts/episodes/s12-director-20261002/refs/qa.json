@@ -1,0 +1,22 @@
+{
+  "duration": 39.333,
+  "resolution": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "technical_checks": "passed",
+  "mobile_frame_width": 390,
+  "browser_playback": {
+    "clientWidth": 390,
+    "duration": 39.333333,
+    "currentTime": 39.333333,
+    "ended": true,
+    "muted": false,
+    "error": null
+  },
+  "voice": "Microsoft Edge ko-KR-SunHiNeural +0% +0Hz",
+  "music": "Original locally synthesized quiet arpeggio, no third-party recording",
+  "listening_status": "No native audio capture capability; browser playback not evidence of subjective pronunciation QA",
+  "public_upload": false
+}

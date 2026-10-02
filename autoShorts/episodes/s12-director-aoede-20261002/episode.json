@@ -1,0 +1,175 @@
+{
+  "slug": "s12-director-aoede-20261002",
+  "topic": "갤럭시 탭 S12, 큰 화면보다 내 작업부터",
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "갤럭시 탭 에스 십이에 포토샵이 들어갑니다.",
+      "onScreen": {
+        "id": "s01",
+        "narration": "갤럭시 탭 에스 십이에 포토샵이 들어갑니다.",
+        "headline": "갤럭시 탭 S12에\n포토샵이 들어온다",
+        "note": "10월 7일 국내 출시 예정",
+        "image": "media/scene-edit.png",
+        "caption_phrases": [
+          "갤럭시 탭 S12에 포토샵"
+        ]
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "title",
+      "narration": "그래서 노트북 대신 살까 싶죠. 그런데 큰 화면부터 고르면 놓치는 게 있어요.",
+      "onScreen": {
+        "id": "s02",
+        "narration": "그래서 노트북 대신 살까 싶죠. 그런데 큰 화면부터 고르면 놓치는 게 있어요.",
+        "headline": "노트북 대신?\n큰 화면부터 고르기 전에",
+        "note": "공식 발표 기반 · 실사용 후기 아님",
+        "image": "media/scene-host.png",
+        "caption_phrases": [
+          "노트북 대신 살까?",
+          "큰 화면만 보면 놓치는 것"
+        ]
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "template": "title",
+      "narration": "책상에서 자료를 나란히 볼 땐 울트라. 매일 들고 다닐 거면 플러스부터 보세요.",
+      "onScreen": {
+        "id": "s03",
+        "narration": "책상에서 자료를 나란히 볼 땐 울트라. 매일 들고 다닐 거면 플러스부터 보세요.",
+        "headline": "책상 위 공간 vs\n매일 들고 다닐 크기",
+        "note": "울트라 14.6형 · 플러스 12.6형",
+        "image": "media/scene-tablets.png",
+        "caption_phrases": [
+          "책상 작업은 울트라",
+          "매일 들고 다니면 플러스"
+        ]
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "title",
+      "narration": "와이파이 모델끼리 백삼십구 그램 차이예요. 케이스랑 키보드 무게도 더해야 하죠.",
+      "onScreen": {
+        "id": "s04",
+        "narration": "와이파이 모델끼리 백삼십구 그램 차이예요. 케이스랑 키보드 무게도 더해야 하죠.",
+        "headline": "본체 무게에\n액세서리까지",
+        "note": "Wi-Fi: 692g · 553g / 키보드 별매",
+        "image": "media/scene-tablets.png",
+        "caption_phrases": [
+          "Wi-Fi 기준 139g 차이",
+          "케이스·키보드 무게도 추가"
+        ]
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "포토샵 혜택은 사 개월 체험이에요. 모바일 프리미엄이고, 컴퓨터용 기능이 전부 된다는 뜻은 아니에요.",
+      "onScreen": {
+        "id": "s05",
+        "narration": "포토샵 혜택은 사 개월 체험이에요. 모바일 프리미엄이고, 컴퓨터용 기능이 전부 된다는 뜻은 아니에요.",
+        "headline": "포토샵 혜택은\n모바일 4개월 체험",
+        "note": "PC 전체 기능·영구 이용권과 구분",
+        "image": "media/scene-edit.png",
+        "caption_phrases": [
+          "포토샵 혜택은 4개월 체험",
+          "모바일 프리미엄 기준",
+          "PC 전체 기능과 구분"
+        ]
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "title",
+      "narration": "노트북을 대신할지는 내 파일로 확인하세요. 열고, 편집하고, 저장까지. 그게 되는지부터요.",
+      "onScreen": {
+        "id": "s06",
+        "narration": "노트북을 대신할지는 내 파일로 확인하세요. 열고, 편집하고, 저장까지. 그게 되는지부터요.",
+        "headline": "내 파일로\n작업 끝까지 해보기",
+        "note": "열기 → 편집 → 원하는 형식으로 저장",
+        "image": "media/scene-edit.png",
+        "caption_phrases": [
+          "내 파일로 확인하세요",
+          "열고 → 편집하고 → 저장",
+          "작업 끝까지 되는지부터"
+        ]
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    }
+  ],
+  "transitionSeconds": 0,
+  "caption": "공식 발표 기반 자료 조사. 생성 장면은 제품 실물이나 실제 앱 화면이 아닙니다. https://pulluptech.blogspot.com/2026/10/s12.html",
+  "upload": {
+    "youtube": false,
+    "instagram": false,
+    "channel": "tech",
+    "title": "갤럭시 탭 S12, 큰 화면보다 내 작업부터"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25,
+  "tone": "요금제 B안의 차분한 대화체. 새 소식 → 그런데 → 선택 상황 → 조건 → 할 일 하나.",
+  "cta": "내 파일로 열기·편집·저장까지 확인",
+  "reference": {
+    "sceneFlow": "포토샵 기대 → 큰 화면만 고르기 전 → 책상/이동 → 가방 무게 → 모바일 4개월 조건 → 내 파일 확인"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "slug": "s12-director-aoede-20261002",
+  "topic": "갤럭시 탭 S12, 큰 화면보다 내 작업부터",
+  "scenes": [
+    {
+      "id": "s01",
+      "template": "title",
+      "narration": "갤럭시 탭 에스 십이, 큰 화면보다 작업 방식부터 보세요.",
+      "onScreen": {
+        "id": "s01",
+        "narration": "갤럭시 탭 에스 십이, 큰 화면보다 작업 방식부터 보세요.",
+        "headline": "큰 화면보다\n내 작업부터",
+        "note": "10월 7일 국내 출시 예정",
+        "image": "media/scene-host.png",
+        "timing_status": "awaiting approved TTS; do not assign final durations"
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "template": "title",
+      "narration": "울트라는 십사 점 육 인치. 플러스는 십이 점 육 인치입니다.",
+      "onScreen": {
+        "id": "s02",
+        "narration": "울트라는 십사 점 육 인치. 플러스는 십이 점 육 인치입니다.",
+        "headline": "화면 공간의 차이",
+        "note": "울트라 14.6형 · 플러스 12.6형",
+        "image": "media/scene-tablets.png",
+        "timing_status": "awaiting approved TTS; do not assign final durations"
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "template": "title",
+      "narration": "와이파이 기준 육백구십이 그램과 오백오십삼 그램. 매일 들고 다닌다면 차이를 보세요.",
+      "onScreen": {
+        "id": "s03",
+        "narration": "와이파이 기준 육백구십이 그램과 오백오십삼 그램. 매일 들고 다닌다면 차이를 보세요.",
+        "headline": "가방 무게도\n함께 비교",
+        "note": "Wi-Fi: 692g · 553g / 차이 139g",
+        "image": "media/scene-tablets.png",
+        "timing_status": "awaiting approved TTS; do not assign final durations"
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "template": "title",
+      "narration": "포토샵 혜택은 모바일 프리미엄 사 개월 체험입니다. 피씨용 전체 기능이나 영구 이용권은 아닙니다.",
+      "onScreen": {
+        "id": "s04",
+        "narration": "포토샵 혜택은 모바일 프리미엄 사 개월 체험입니다. 피씨용 전체 기능이나 영구 이용권은 아닙니다.",
+        "headline": "포토샵 혜택은\n4개월 체험",
+        "note": "모바일 프리미엄 · 영구 이용권 아님",
+        "image": "media/scene-edit.png",
+        "timing_status": "awaiting approved TTS; do not assign final durations"
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "template": "title",
+      "narration": "내 파일을 열고 편집하고 내보내는지 확인하세요. 키보드는 별매입니다.",
+      "onScreen": {
+        "id": "s05",
+        "narration": "내 파일을 열고 편집하고 내보내는지 확인하세요. 키보드는 별매입니다.",
+        "headline": "내 파일로\n작업 순서 확인",
+        "note": "열기 → 편집 → 내보내기 / 키보드 별매",
+        "image": "media/scene-edit.png",
+        "timing_status": "awaiting approved TTS; do not assign final durations"
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "template": "title",
+      "narration": "책상 작업은 화면 공간, 이동이 많다면 휴대성. 내 작업부터 골라 보세요.",
+      "onScreen": {
+        "id": "s06",
+        "narration": "책상 작업은 화면 공간, 이동이 많다면 휴대성. 내 작업부터 골라 보세요.",
+        "headline": "책상 vs 이동\n내 기준으로 선택",
+        "note": "공식 발표 기반 · 실사용 후기 아님",
+        "image": "media/scene-host.png",
+        "timing_status": "awaiting approved TTS; do not assign final durations"
+      },
+      "transitionOut": "cut",
+      "sfx": [
+        {
+          "name": "pop",
+          "at": 0.4,
+          "volume": 0.2
+        }
+      ]
+    }
+  ],
+  "transitionSeconds": 0,
+  "caption": "공식 발표 기반 자료 조사. 생성 장면은 제품 실물이나 실제 앱 화면이 아닙니다. https://pulluptech.blogspot.com/2026/10/s12.html",
+  "upload": {
+    "youtube": false,
+    "instagram": false,
+    "channel": "tech",
+    "title": "갤럭시 탭 S12, 큰 화면보다 내 작업부터"
+  },
+  "voice": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1.05
+  },
+  "gapSeconds": 0.25
+}
