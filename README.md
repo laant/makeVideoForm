@@ -81,6 +81,7 @@ myNextSeason/
 | 17 | 가방에 넣을 핸드크림, 무향으로 찾고 있나요? | 쇼핑(쇼핑커넥트 · 동구밭 단일 상품) | gemini-opus(Gemini 16:9 제품영상 → 9:16 재구성 · 새 나레이션·자막·합성 BGM · 실측 평점 카드, 24.3초) | `output/17-donggubat-handcream/` — 네이버 클립 전용(YouTube 쇼츠 설명 링크 클릭 불가) |
 | 18 | 바람막이면 비도 막아줄까? | 쇼핑(쇼핑커넥트 · 데카트론 런 100) · 기상청 체감온도 | opus-paper(코드 종이공작 · 쌀쌀한 색감, 48.1초) | `output/18-autumn-windbreaker/` — 재테크 채널 · 네이버 클립 |
 | 19 | 스마트태그3, 아이폰에서도 될까? | 테크 · 삼성 발표 각주 기준 | autoshorts(청사진)·opus-paper(네이비 방안지) — 같은 나레이션 | `output/19-smarttag3-ios/` — opus판만 테크 채널 · 네이버 클립 |
+| 26 | 2026년 9월 미국 고용보고서 | 재테크 · BLS 9월분(10/2 발표) 원문 대조 | narration(사용자 모션그래픽 + Gemini Aoede 나레이션, 장면 길이 맞춤 41.7초) | `output/26-2026-09-us-jobs-motion-v2/` — 재테크 채널 · 네이버 클립 |
 | 25 | 가디건 하나로 가을 준비 | 쇼핑(쇼핑커넥트 · 스파오 라운드넥 카디건) · 공식 상품정보 | edit(사용자 편집본 · 공식 상품 사진 + AI 착장 연출, 자막+합성 배경음, 44초) | `output/25-SPAO_44s_edit_project/` — 재테크 채널 · 네이버 클립 |
 | 22 | 갤럭시 버즈 온, 지하철보다 산책에 맞을까? | 테크 · 삼성 뉴스룸 공식 자료 | opus-paper(네이비 방안지 · 착용 사진 Gemini 종이공작 변환) | `output/22-galaxy-buds-on/` — 테크 채널 · 네이버 클립 |
 | 23 | 작은 글씨, 카메라로 보여주고 물어볼 수 있을까? | 테크 · Google 블로그(제미나이 라이브 가이드 비전) | opus-paper · redesign(사용자 리디자인판, 편집 파일 `guided-vision_editable/`) | `output/23-guided-vision/` — redesign판 테크 채널 · 네이버 클립 |
