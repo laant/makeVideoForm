@@ -1,0 +1,5 @@
+out/
+.venv
+__pycache__/
+audio/concat.txt
+audio/gap.mp3
