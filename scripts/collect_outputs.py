@@ -32,6 +32,7 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("21-guri-cosmos", "autoshorts-om"): ["autoShorts/episodes/guri-cosmos-2026-om/final.mp4"],  # 조합판: OpenMontage 배경 + autoShorts 화면 구성
     ("22-galaxy-buds-on", "opus-paper"): ["experiments/opus-buds-on/out/final.mp4"],  # 테크 · 귀·클립·음파 코드 렌더
     ("23-guided-vision", "opus-paper"): ["experiments/opus-guided-vision/out/final.mp4"],  # 테크 · 뷰파인더·음성 안내 코드 렌더
+    ("23-guided-vision", "motion-v2"): ["experiments/opus-guided-vision-v2/out/final.mp4"],  # MOTION-RULES v1.0 샘플(뷰파인더 괄호 모티프·자막 없음·박자·블러4)
     ("23-guided-vision", "redesign"): ["output/23-guided-vision/guided-vision_redesign.mp4"],  # 사용자 리디자인판 (편집 파일: guided-vision_editable/) — 게시본
     ("24-us-jobs-report", "opus-paper"): ["experiments/opus-jobs-report/out/final.mp4"],  # 재테크 · 장부지 체크리스트 코드 렌더
     ("25-SPAO_44s_edit_project", "edit"): ["output/25-SPAO_44s_edit_project/SPAO_44s_caption_music.mp4"],  # 쇼핑 · 사용자 편집본(자막+배경음)
