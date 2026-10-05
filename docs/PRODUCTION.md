@@ -53,7 +53,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 
 ## 4. 확인 게이트 (필수 프로세스)
 
-1. **대본** (컷별 나레이션·구성 + 숫자 검증) → **사용자 확인**
+1. **대본** (컷별 나레이션·구성 + 숫자 검증) → **사용자 확인** — 코드 렌더 모션 쇼츠는 `treatment.md` 를 항상 함께 낸다([MOTION-RULES](MOTION-RULES.md))
 2. **컷별 프롬프트** (템플릿 적용) → **사용자 확인**
 3. 생성→다운로드→더빙→조립 → 자동 진행
 
@@ -74,6 +74,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 - **렌더 런타임은 HyperFrames(Apache-2.0)로 통일한다.** autoShorts·shopShorts 는 전면, OpenMontage 는
   `render_runtime = "hyperframes"` 로 선택 가능(Phase 1). 단어 단위 자막 번인·아바타 립싱크는
   아직 Remotion 전용이므로 그때만 예외 — `OpenMontage/skills/core/hyperframes.md` 의 결정 매트릭스를 따른다.
+- **코드 렌더 모션 쇼츠**(opus 렌더러 `experiments/` · 사용자 모션그래픽)는 [`docs/MOTION-RULES.md`](MOTION-RULES.md) 를 따른다: treatment.md 항상 · 숫자는 단어보다 먼저 안 나옴 · 하단 자막 기본 생략 · 배경음 박자 맞춤과 모션 블러 4장 기본 · 오디오 목표치.
 - 공용 자원: 폰트 `flow-pipeline/fonts/Pretendard-*.ttf`, PIL venv `OpenMontage/.venv`, TTS(Gemini Aoede = 한국어 네이티브 검증).
 
 ## 6. 산출물 위치
