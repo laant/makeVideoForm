@@ -1,0 +1,5 @@
+{
+  "tool": "builtin image_gen",
+  "input": "B video frame at 3 seconds",
+  "prompt": "Remove ONLY all typography, progress bar, yellow underline, speech bubbles and footer/counter. Seamlessly reconstruct warm cream background/grocery store. Preserve exact couple, expressions, poses, identities, clothes, phones, milk carton, grocery bag, painting style, palette, composition and proportions. No new text or symbols. Portrait same aspect ratio; clean cream space above heads."
+}

@@ -54,7 +54,7 @@ export async function checkUrl(url, timeoutMs = 10000) {
   };
   try {
     let res = await tryFetch("HEAD");
-    if (res.status === 405 || res.status === 501) res = await tryFetch("GET");
+    if (res.status === 404 || res.status === 405 || res.status === 501) res = await tryFetch("GET");
     if (res.status < 400) return { url, level: "ok", detail: `${res.status}` };
     if ([401, 403, 429].includes(res.status)) return { url, level: "warn", detail: `${res.status} — 봇 차단일 수 있음, 브라우저로 직접 확인` };
     return { url, level: "fail", detail: `${res.status}` };

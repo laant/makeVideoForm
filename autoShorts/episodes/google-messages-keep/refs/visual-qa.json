@@ -1,0 +1,76 @@
+[
+  {
+    "text": "GOOGLE 메시지 × KEEP\n같이 쓰는\n장보기 메모\n메시지 대신, 같은 목록\nGoogle 메시지 × Keep\nAndroid 기준 · 실제 앱 UI가 아닌 설명용 그림",
+    "images": [
+      {
+        "src": "media/couple.png",
+        "loaded": true
+      },
+      {
+        "src": "media/cover.webp",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "text": "GOOGLE 메시지 × KEEP\n대화에서 목록 보내기\n1\n추가\n2\nKeep 메모\n3\n목록 작성 → 보내기\nAndroid 기준 · 실제 앱 UI가 아닌 설명용 그림",
+    "images": [
+      {
+        "src": "media/woman.png",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "text": "GOOGLE 메시지 × KEEP\n샀다면, 직접 체크\n마트에서\n\n\n✓\n우유\n상대 목록에도\n\n\n✓\n우유\n수정하면 미리보기도 갱신\nAndroid 기준 · 실제 앱 UI가 아닌 설명용 그림",
+    "images": [
+      {
+        "src": "media/man.png",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "text": "GOOGLE 메시지 × KEEP\n수정이 안 된다면\n메모 주인에게\n수정 권한 요청하기\n요청 → 확인\nAndroid 기준 · 실제 앱 UI가 아닌 설명용 그림",
+    "images": [
+      {
+        "src": "media/permissions.png",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "text": "GOOGLE 메시지 × KEEP\n단체방을 나가도…\n방에서 나간 사람\n메모 접근은 남아요\n채팅과 메모 권한은 별개\n출처: Google Keep 공식 도움말 · 그룹 채팅 공유 안내",
+    "images": [
+      {
+        "src": "media/permissions.png",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "text": "GOOGLE 메시지 × KEEP\n공유를 끝내려면\nKeep → 공동작업자\n제외할 사람 삭제\n→ 저장\n메모 전체 삭제와 구분하세요\nKeep → 작업 → 공동작업자 → 사용자 삭제 → 저장",
+    "images": [
+      {
+        "src": "media/permissions.png",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  },
+  {
+    "text": "GOOGLE 메시지 × KEEP\n내 대화창에서\n먼저 확인하세요\nKeep 메모 메뉴 확인\n자세한 방법은 블로그에\n기기·계정별 메뉴 확인 · AI 이미지 및 음성 사용",
+    "images": [
+      {
+        "src": "media/end.png",
+        "loaded": true
+      }
+    ],
+    "overflow": []
+  }
+]

@@ -1,0 +1,15 @@
+✓ 해상도 1080x1920 (9:16)     1080x1920
+✓ FPS 30                   30
+✓ 코덱 H.264 / yuv420p       h264/yuv420p
+✓ 오디오 스트림 AAC              aac
+✓ 길이 = 나레이션 ±0.15s         영상 38.9s / 음성 38.867s
+✓ 프레임 수 ≈ 길이×30            1166f
+✓ 길이 ≤ 90s (릴스/쇼츠)         38.9s
+✓ 검은 화면 0.3s+ 없음           -
+✓ 1.2s+ 무음 없음              -
+✓ 첫 소리 앞 여백 ≥ 0.03s (머리 잘림 없음) 0.099s
+✓ 마지막 발화 뒤 여유 ≥ 0.2s (꼬리 잘림 없음) 1.544s
+✓ 자리표시자 없음 (@your_handle·TODO·뼈대 문구) -
+
+검수 이미지: episodes/google-messages-keep/renders/check/ (contact-sheet.jpg)
+✓ 검수 통과 — 업로드 전 contact-sheet 와 미리보기(npm run preview)로 최종 확인하세요.

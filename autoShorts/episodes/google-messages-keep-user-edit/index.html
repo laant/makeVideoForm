@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="vendor/gsap.min.js"></script>
+    <style>* { margin: 0; padding: 0; } html, body { width: 1080px; height: 1920px; overflow: hidden; background: #faf4e8; }</style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="6.6" data-width="1080" data-height="1920">
+      <div id="scene-s01" class="clip" data-composition-id="s01" data-composition-src="scenes/s01.html" data-start="0" data-duration="6.6" data-track-index="0"></div>
+      <audio id="narration" src="audio/narration.mp3" data-start="0" data-duration="6.6" data-track-index="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

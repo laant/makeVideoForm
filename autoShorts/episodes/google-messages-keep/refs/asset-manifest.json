@@ -1,0 +1,20 @@
+{
+  "duration": 38.866667,
+  "resolution": "1080x1920",
+  "fps": 30,
+  "source": "https://pulluptech.blogspot.com/2026/10/google-messages-keep-notes.html",
+  "referenceImage": "User-selected first blog illustration, marked AI-generated in source",
+  "generatedImages": "builtin image_gen, five identity-referenced variants",
+  "narration": {
+    "provider": "gemini",
+    "voiceId": "Aoede",
+    "prompt": "",
+    "modelId": "gemini-3.1-flash-tts-preview",
+    "stability": 0.45,
+    "similarityBoost": 0.8,
+    "style": 0.15,
+    "speed": 1
+  },
+  "music": "Original procedural ambient, no third-party recording",
+  "publishing": "Not uploaded; current request is production only"
+}

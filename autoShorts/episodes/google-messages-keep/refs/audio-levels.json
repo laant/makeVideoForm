@@ -1,0 +1,12 @@
+{
+  "beforeAdjustment": {
+    "meanDb": -21.3,
+    "peakDb": -4.8
+  },
+  "finalGainDb": 2,
+  "targetMeanDb": [
+    -20,
+    -18
+  ],
+  "targetPeakDbMax": -2
+}
