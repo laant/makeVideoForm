@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Editable ink-theater replacement template, scale 2; body center = (300,300).
+     Screen-left/screen-right naming follows the original template.
+     Paint order: arms, legs, body, strap, bag, eyes, optional mouth, guides.
+     Limb paths have two editable curve segments; no embedded raster artwork.
+     This is neutral-pose artwork, not a tested engine/IK implementation. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <title>Round crossbody character — editable neutral template</title>
+  <desc>One round white head/body, two black dot eyes, thin smooth limbs, and a tiny diagonal crossbody bag on screen right. No default mouth. Body height 140; hip-to-foot vertical extent 140. Required part IDs are retained. Mouth and construction guides are hidden by default.</desc>
+  <rect id="background" width="600" height="600" fill="#ffffff"/>
+
+  <!-- Shoulders: (235,298), (365,298); hands: (212,398), (388,398).
+       The two cubic segments meet smoothly at each nominal elbow.
+       In an engine, solve the 55 + 50 arm bones and redraw the curve. -->
+  <g id="armL" data-shoulder="235,298" data-elbow="216,352" data-hand="212,398">
+    <path d="M 235,298 C 227,316 220,334 216,352 C 212,370 212,386 212,398" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="armR" data-shoulder="365,298" data-elbow="384,352" data-hand="388,398">
+    <path d="M 365,298 C 373,316 380,334 384,352 C 388,370 388,386 388,398" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Hips and knees retain the proposed 70 + 70 leg-rig layout.
+       The tiny terminal bend is contour styling, not a separate shoe/foot. -->
+  <g id="legL" data-hip="272,362" data-knee="272,432" data-ankle="272,502" data-visible-tip="259,502">
+    <path d="M 272,362 C 272,385 272,409 272,432 C 272,452 272,473 272,488 C 272,496 268,501 259,502" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="legR" data-hip="328,362" data-knee="328,432" data-ankle="328,502" data-visible-tip="341,502">
+    <path d="M 328,362 C 328,385 328,409 328,432 C 328,452 328,473 328,488 C 328,496 332,501 341,502" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Softly rounded native Bezier contour; nominal bounds 230..370. -->
+  <g id="body" data-center="300,300">
+    <path d="M 300,230 C 339,230 370,261 370,300 C 370,339 340,370 300,370 C 260,370 230,340 230,300 C 230,261 260,230 300,230 Z" fill="#ffffff" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="strap">
+    <path d="M 237.6,268 C 259,299 291,330 328,341 C 333,342.5 337,343.5 341,344" fill="none" stroke="#000000" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="bag" transform="translate(346 347) rotate(-16)" data-anchor="346,347">
+    <path d="M -17,-7 C -17,-11 -14,-13 -10,-13 L 10,-13 C 14,-13 17,-11 17,-7 L 17,4 C 17,11 11,15 0,15 C -11,15 -17,11 -17,4 Z" fill="#ffffff" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M -17,-6 C -16,1 -10,4 0,4 C 10,4 16,1 17,-6" fill="none" stroke="#000000" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="eyeL"><circle cx="277" cy="280" r="5.5" fill="#000000"/></g>
+  <g id="eyeR"><circle cx="323" cy="280" r="5.5" fill="#000000"/></g>
+  <g id="mouth" style="display:none">
+    <path d="M 293,300 C 295,307 305,307 307,300" fill="none" stroke="#000000" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Show this single group for registration. Keep hidden when exporting.
+       Marker paths deliberately do not add circles beyond the two dot eyes. -->
+  <g id="guides" style="display:none" font-family="sans-serif" font-size="11" fill="#b53c2d">
+    <g fill="none" stroke="#5996b7" stroke-width="1" stroke-dasharray="4 4" opacity="0.8">
+      <rect x="230" y="230" width="140" height="140"/>
+      <path d="M 300,215 V 515 M 220,300 H 380 M 235,298 L 216,352 L 212,398 M 365,298 L 384,352 L 388,398 M 272,362 V 502 M 328,362 V 502"/>
+      <path d="M 150,230 V 370 M 145,230 H 155 M 145,370 H 155 M 410,362 V 502 M 405,362 H 415 M 405,502 H 415"/>
+    </g>
+    <g fill="none" stroke="#b53c2d" stroke-width="1.6" stroke-linecap="round">
+      <path d="M 296,300 H 304 M 300,296 V 304 M 231,298 H 239 M 235,294 V 302 M 361,298 H 369 M 365,294 V 302 M 212,352 H 220 M 216,348 V 356 M 380,352 H 388 M 384,348 V 356 M 268,362 H 276 M 272,358 V 366 M 324,362 H 332 M 328,358 V 366 M 268,432 H 276 M 272,428 V 436 M 324,432 H 332 M 328,428 V 436 M 268,502 H 276 M 272,498 V 506 M 324,502 H 332 M 328,498 V 506 M 208,398 H 216 M 212,394 V 402 M 384,398 H 392 M 388,394 V 402"/>
+    </g>
+    <text x="300" y="193" text-anchor="middle" fill="#315b72" font-size="14">ROUND CROSSBODY / NEUTRAL REGISTRATION</text>
+    <text x="300" y="211" text-anchor="middle" fill="#315b72">600 × 600 · body center (300,300) · scale 2</text>
+    <text x="137" y="307" text-anchor="middle" transform="rotate(-90 137 307)" fill="#315b72">body 140</text>
+    <text x="426" y="432" text-anchor="middle" transform="rotate(-90 426 432)" fill="#315b72">leg height 140</text>
+    <text x="308" y="304">center</text>
+    <text x="224" y="289" text-anchor="end">shoulder L</text>
+    <text x="376" y="289">shoulder R</text>
+    <text x="203" y="351" text-anchor="end">elbow L</text>
+    <text x="397" y="351">elbow R</text>
+    <text x="261" y="381" text-anchor="end">hip L</text>
+    <text x="339" y="381">hip R</text>
+    <text x="261" y="436" text-anchor="end">knee L</text>
+    <text x="339" y="436">knee R</text>
+    <text x="272" y="520" text-anchor="middle">foot L</text>
+    <text x="328" y="520" text-anchor="middle">foot R</text>
+    <text x="30" y="552" fill="#315b72">Eyes: r5.5 at (±23,-20) · contour/limbs: 4 · bag: 34 × 28, rotated -16°</text>
+    <text x="30" y="571" fill="#315b72">Rig proposal: arm 55 + 50 · leg 70 + 70 · guides hidden in production SVG</text>
+  </g>
+</svg>

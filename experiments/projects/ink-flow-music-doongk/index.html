@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <script src="ink-theater.js"></script>
+    <script src="doongk.js"></script>
+    <script src="timing.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      @font-face { font-family: "InkKo"; src: url("assets/NanumPenScript-Regular.ttf") format("truetype"); font-display: block; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #fcfbf8; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #fcfbf8; }
+      svg#ink { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .lay { position: absolute; inset: 0; opacity: 0; }
+      .t { position: absolute; font-family: "InkKo", cursive; color: #222; opacity: 0; line-height: 1.05; white-space: nowrap; }
+      .h1 { font-size: 132px; } .h2 { font-size: 92px; } .lb { font-size: 64px; } .md { font-size: 76px; } .sm { font-size: 52px; color: #6d675c; }
+      .red { color: #c8452e; }
+      .u { background-image: linear-gradient(#222, #222); background-repeat: no-repeat; background-position: 0 92%; background-size: 0% 7px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="61.3" data-width="1080" data-height="1920">
+      <svg id="ink" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <filter id="boil" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence id="boilTurb" type="fractalNoise" baseFrequency="0.016" numOctaves="1" seed="1" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+          </filter>
+        </defs>
+        <g id="s1" opacity="0"></g><g id="s2" opacity="0"></g><g id="s3" opacity="0"></g><g id="s4" opacity="0"></g>
+        <g id="s5" opacity="0"></g><g id="s6" opacity="0"></g><g id="s7" opacity="0"></g>
+      </svg>
+      <div id="o1" class="lay"></div><div id="o2" class="lay"></div><div id="o3" class="lay"></div><div id="o4" class="lay"></div>
+      <div id="o5" class="lay"></div><div id="o6" class="lay"></div><div id="o7" class="lay"></div>
+      <audio id="mix" src="audio/mix.mp3" data-start="0" data-duration="61.3" data-track-index="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      if (document.fonts && document.fonts.load) { document.fonts.load("80px InkKo"); }
+      var IT = window.InkTheater, el = IT.el, INK = IT.INK, ink = IT.inkPath, TM = window.TM, RED = "#c8452e";
+      var tl = gsap.timeline({ paused: true });
+      var G, OV;
+      // 단어 시각(전역) · 박 맞춤(단어 뒤 0.15초 안에 박이 있으면 그 박)
+      function W(i, k) { return TM.scenes[i].start + TM.scenes[i].w[k]; }
+      function S(i, k) { var g = W(i, k), b = Math.ceil(g / TM.beat - 1e-6) * TM.beat; return (b - g <= 0.15) ? b : g; }
+      function CUT(i) { return TM.cuts[i]; }
+      function END(i) { return i + 1 < TM.cuts.length ? TM.cuts[i + 1] : TM.total; }
+
+      // ── 도구 ──
+      function scene(i) {
+        G = document.getElementById("s" + (i + 1)); OV = document.getElementById("o" + (i + 1));
+        G.setAttribute("filter", "url(#boil)");
+        var a = CUT(i), b = END(i);
+        tl.to([G, OV], { opacity: 1, duration: i === 0 ? 0.01 : 0.3 }, a);
+        if (i + 1 < TM.cuts.length) tl.to([G, OV], { opacity: 0, duration: 0.25 }, b - 0.12);
+      }
+      function txt(cls, s, x, y, at, extraHTML) {
+        var d = document.createElement("div"); d.className = "t " + cls;
+        if (extraHTML) d.innerHTML = s; else d.textContent = s;
+        d.style.left = x + "px"; d.style.top = y + "px"; OV.appendChild(d);
+        tl.fromTo(d, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: IT.ease.overshoot }, at);
+        return d;
+      }
+      function P(pts, sw, opt, color) {
+        var p = el("path", { d: ink(pts, Object.assign({ wobble: 1.4, step: 40 }, opt || {})), fill: "none", stroke: color || INK, "stroke-width": sw || 5, "stroke-linecap": "round", "stroke-linejoin": "round" });
+        G.appendChild(p); return p;
+      }
+      function R(x, y, w, h) { return [[x, y], [x + w, y], [x + w, y + h], [x, y + h], [x, y]]; }
+      function draw(p, at, dur) { var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; tl.to(p, { strokeDashoffset: 0, duration: dur || 0.5, ease: "power1.inOut" }, at); return p; }
+      function check(x, y, at, s, color) { var c = P([[x, y], [x + 18 * (s || 1), y + 20 * (s || 1)], [x + 52 * (s || 1), y - 26 * (s || 1)]], 8, { wobble: 0.6, step: 12 }, color); draw(c, at, 0.25); return c; }
+      function cross(x, y, r, at, color) { draw(P([[x - r, y - r], [x + r, y + r]], 9, { wobble: 1 }, color), at, 0.2); draw(P([[x + r, y - r], [x - r, y + r]], 9, { wobble: 1 }, color), at + 0.12, 0.2); }
+      function soundBox(x, y, s) {  // 연결 모티프: 노브 2개 달린 소리 상자
+        s = s || 1;
+        var g = el("g", { transform: "translate(" + x + "," + y + ") scale(" + s + ")" });
+        g.appendChild(el("path", { d: ink(R(0, 0, 170, 110), { wobble: 1.2, step: 30 }), fill: "#fff", stroke: INK, "stroke-width": 5 }));
+        [45, 105].forEach(function (cx) { g.appendChild(el("circle", { cx: cx, cy: 50, r: 20, fill: "#fff", stroke: INK, "stroke-width": 4 })); g.appendChild(el("line", { x1: cx, y1: 50, x2: cx + 10, y2: 34, stroke: INK, "stroke-width": 4 })); });
+        g.appendChild(el("line", { x1: 140, y1: 30, x2: 140, y2: 80, stroke: INK, "stroke-width": 3 }));
+        g.appendChild(el("line", { x1: 152, y1: 38, x2: 152, y2: 72, stroke: INK, "stroke-width": 3 }));
+        G.appendChild(g); return g;
+      }
+      function move(g, x0, y0, x1, y1, s, at, dur, hop) {
+        var o = { u: 0 };
+        tl.to(o, { u: 1, duration: dur || 0.6, ease: "power2.inOut", onUpdate: function () {
+          var x = x0 + (x1 - x0) * o.u, y = y0 + (y1 - y0) * o.u - Math.sin(o.u * Math.PI) * (hop || 0);
+          g.setAttribute("transform", "translate(" + x + "," + y + ") scale(" + (s || 1) + ")");
+        } }, at);
+      }
+      function laptop(x, y, w, h) {
+        var scr = P(R(x, y, w, h), 6, { wobble: 1.6 }); var base = P([[x - 50, y + h + 10], [x + w + 50, y + h + 10], [x + w + 20, y + h + 50], [x - 20, y + h + 50], [x - 50, y + h + 10]], 6);
+        return [scr, base];
+      }
+      // 캐릭터: 둥크(doongk) — 기본 마스코트와 같은 사용법. 선이 가늘어 1.3배로 키우고, 발끝(바닥선)을 기본 마스코트와 맞춤
+      function mascot(x, y, s) { var z = s * 1.3; var M = IT.doongk({ x: x, y: y + 70 * s - 101 * z, scale: z }); G.appendChild(M.g); gsap.set(M.g, { opacity: 0 }); return M; }
+      function show(n, at) { tl.to(n, { opacity: 1, duration: 0.25 }, at); }
+      function reach(M, side, pts, at, dur) {  // pts: [[x,y],...] 따라가기
+        var o = { u: 0 };
+        tl.to(o, { u: 1, duration: dur || 0.4, ease: "power1.inOut", onUpdate: function () {
+          var f = o.u * (pts.length - 1), i = Math.min(pts.length - 2, Math.floor(f)), r = f - i;
+          var p = [pts[i][0] + (pts[i + 1][0] - pts[i][0]) * r, pts[i][1] + (pts[i + 1][1] - pts[i][1]) * r];
+          (side === "R" ? M.reachR : M.reachL)(p);
+        } }, at);
+      }
+
+      // ── 1. 말풍선 → 소리 상자 → 노트북 ──
+      (function () {
+        scene(0);
+        txt("h1", "구글 Flow Music", 90, 220, 0.05);
+        txt("sm", "10월 6일 발표 · AI 제작 개념도", 96, 370, 0.4);
+        var img = el("image", { href: "media/01-flow-overview.png", x: 90, y: 520, width: 900, height: 600, preserveAspectRatio: "xMidYMid slice" });
+        var photo = el("g", null, [el("rect", { x: 80, y: 510, width: 920, height: 620, fill: "#fff", stroke: INK, "stroke-width": 4 }), img,
+          el("rect", { x: 140, y: 490, width: 160, height: 44, fill: "#e9e3d3", opacity: 0.9, transform: "rotate(-8 220 512)" }),
+          el("rect", { x: 780, y: 490, width: 160, height: 44, fill: "#e9e3d3", opacity: 0.9, transform: "rotate(7 860 512)" })]);
+        document.getElementById("ink").insertBefore(photo, document.getElementById("s1"));
+        gsap.set(photo, { opacity: 0 }); tl.to(photo, { opacity: 1, duration: 0.3 }, 0.1); tl.to(photo, { opacity: 0, duration: 0.3 }, W(0, 3) - 0.1);
+        var M = mascot(240, 1300, 2.2); show(M.g, W(0, 3));
+        IT.balloon(tl, { into: G, overlay: OV, at: S(0, 3), dur: 1.5, text: "부드러운 신스 만들어 줘", mouth: [300, 1210], center: [560, 1000], w: 620, h: 130, size: 66, font: "InkKo", boil: "boil" });
+        var box = soundBox(480, 950, 1.2); gsap.set(box, { opacity: 0 });
+        tl.to(box, { opacity: 1, duration: 0.2 }, S(0, 3) + 1.35);  // 말풍선이 접힌 뒤 상자로
+        laptop(560, 1180, 420, 260).forEach(function (p, j) { draw(p, S(0, 7) + j * 0.15, 0.45); });
+        txt("lb", "음악 프로그램", 600, 1095, S(0, 8));
+        move(box, 480, 950, 680, 1290, 0.9, S(0, 10) - 0.1, 0.55, 140);
+        reach(M, "R", [[300, 1290], [420, 1120], [300, 1290]], S(0, 10) - 0.2, 0.6);
+        check(890, 1210, S(0, 10) + 0.5, 1.1);
+        txt("h2", "말로 만든 악기 → Mac 음악 프로그램", 70, 1530, S(0, 10));
+      })();
+
+      // ── 2. Spaces 메모장 · 코딩 필요 없음 · '플러그인/VST' 밑줄 ──
+      (function () {
+        scene(1);
+        txt("h2", "Spaces에서 문장으로", 90, 230, CUT(1) + 0.05);
+        draw(P(R(90, 420, 900, 360), 5, { wobble: 1.6 }), CUT(1) + 0.1, 0.6);
+        for (var k = 0; k < 3; k++) draw(P([[130, 560 + k * 80], [950, 560 + k * 80]], 2), CUT(1) + 0.3 + k * 0.08, 0.3);
+        txt("md", "따뜻한 패드 <span id='uV' class='u'>VST</span> <span id='uP' class='u'>플러그인</span> 만들어 줘", 130, 480, S(1, 3), true);
+        tl.to("#uP", { backgroundSize: "100% 7px", duration: 0.35 }, S(1, 11));
+        tl.to("#uV", { backgroundSize: "100% 7px", duration: 0.35 }, S(1, 12));
+        txt("lb", "요청에 ‘플러그인’ 또는 ‘VST’", 130, 650, S(1, 11) + 0.2);
+        var code = el("text", { x: 300, y: 1130, "font-size": 220, "font-family": "InkKo, monospace", fill: INK }); code.textContent = "</>"; G.appendChild(code);
+        gsap.set(code, { opacity: 0 }); tl.to(code, { opacity: 1, duration: 0.25 }, S(1, 6));
+        cross(440, 1050, 130, S(1, 7));
+        txt("md", "코딩 필요 없음", 330, 1220, S(1, 7) + 0.25);
+        var box = soundBox(780, 1380, 1.0); gsap.set(box, { opacity: 0 }); tl.to(box, { opacity: 1, duration: 0.2 }, S(1, 3) + 0.2);
+        var M = mascot(150, 1500, 1.9); show(M.g, CUT(1) + 0.2);
+        reach(M, "R", [[230, 1420], [330, 1330], [290, 1380], [330, 1330]], S(1, 3), 1.2);
+      })();
+
+      // ── 3. 설치 1번 → Flow Instrument · Flow Effect ──
+      (function () {
+        scene(2);
+        txt("h2", "설치는 처음 1번", 90, 230, CUT(2) + 0.05);
+        var pkg = P(R(380, 420, 320, 230), 6, { wobble: 1.4 }); draw(pkg, CUT(2) + 0.1, 0.5);
+        var lid = P([[370, 420], [710, 420]], 8); draw(lid, CUT(2) + 0.2, 0.3);
+        gsap.set(lid, { svgOrigin: "380 420" }); tl.to(lid, { rotation: -28, duration: 0.35, ease: IT.ease.overshoot }, S(2, 2));
+        draw(P([[540, 470], [540, 590]], 7), CUT(2) + 0.4, 0.3); draw(P([[500, 550], [540, 594], [580, 550]], 7), CUT(2) + 0.6, 0.25);
+        txt("lb", "설치 파일", 450, 670, S(2, 1));
+        laptop(130, 980, 820, 420).forEach(function (p, j) { draw(p, S(2, 5) + j * 0.15, 0.5); });
+        txt("lb", "음악 프로그램", 140, 900, S(2, 6));
+        draw(P([[480, 760], [330, 1040]], 4, { wobble: 2 }), S(2, 6) + 0.2, 0.4);
+        draw(P([[600, 760], [740, 1040]], 4, { wobble: 2 }), S(2, 6) + 0.3, 0.4);
+        draw(P(R(170, 1050, 360, 300), 5), S(2, 8) - 0.1, 0.4); txt("lb", "Flow", 200, 1080, S(2, 8)); txt("lb", "Instrument", 200, 1150, S(2, 8));
+        draw(P(R(570, 1050, 340, 300), 5), S(2, 10) - 0.1, 0.4); txt("lb", "Flow", 600, 1080, S(2, 10)); txt("lb", "Effect", 600, 1150, S(2, 10));
+        txt("md", "설치는 처음 1번이면 끝", 120, 1560, S(2, 3));
+      })();
+
+      // ── 4. .fmx 카드가 슬롯으로 ──
+      (function () {
+        scene(3);
+        txt("h2", "새 소리는 .fmx 파일로", 90, 230, CUT(3) + 0.05);
+        var cloud = P([[330, 560], [300, 500], [360, 450], [430, 430], [500, 380], [600, 390], [660, 440], [740, 440], [780, 500], [750, 560], [330, 560]], 6, { wobble: 2 });
+        draw(cloud, CUT(3) + 0.1, 0.6); txt("lb", "Flow Music", 410, 460, CUT(3) + 0.3);
+        laptop(130, 1000, 820, 420).forEach(function (p, j) { draw(p, CUT(3) + 0.2 + j * 0.1, 0.4); });
+        draw(P(R(170, 1070, 360, 300), 5), CUT(3) + 0.4, 0.3); txt("sm", "Flow Instrument", 190, 1300, CUT(3) + 0.5);
+        draw(P(R(570, 1070, 340, 300), 5), CUT(3) + 0.5, 0.3); txt("sm", "Flow Effect", 600, 1300, CUT(3) + 0.6);
+        function card(at, x1, y1) {
+          var c = el("g", { transform: "translate(470,520)" });
+          c.appendChild(el("path", { d: ink(R(0, 0, 150, 190), { wobble: 1, step: 30 }), fill: "#fff", stroke: INK, "stroke-width": 5 }));
+          var t = el("text", { x: 22, y: 110, "font-size": 58, "font-family": "InkKo", fill: INK }); t.textContent = ".fmx"; c.appendChild(t);
+          G.appendChild(c); gsap.set(c, { opacity: 0 }); tl.to(c, { opacity: 1, duration: 0.15 }, at);
+          var o = { u: 0 };
+          tl.to(o, { u: 1, duration: 0.8, ease: "power2.inOut", onUpdate: function () {
+            var x = 470 + (x1 - 470) * o.u, y = 520 + (y1 - 520) * o.u - Math.sin(o.u * Math.PI) * 160;
+            c.setAttribute("transform", "translate(" + x + "," + y + ") rotate(" + (o.u * 8 - 4) + ")");
+          } }, at);
+        }
+        card(S(3, 4), 270, 1110); card(S(3, 9), 660, 1110);
+        txt("md", "창에 끌어다 놓기", 270, 1560, S(3, 9));
+        var M = mascot(985, 1680, 1.4); show(M.g, CUT(3) + 0.3);
+      })();
+
+      // ── 5. 체 기계: 합성만 통과 · macOS만 ──
+      (function () {
+        scene(4);
+        txt("h2", "내보낼 수 있는 소리", 90, 230, CUT(4) + 0.05);
+        txt("lb", "macOS만 지원", 640, 380, S(4, 2));
+        draw(P([[220, 900], [860, 900]], 7), CUT(4) + 0.1, 0.4);
+        for (var k = 0; k < 9; k++) draw(P([[260 + k * 70, 880], [260 + k * 70, 920]], 4), CUT(4) + 0.2 + k * 0.03, 0.15);
+        draw(P([[220, 900], [380, 1080], [700, 1080], [860, 900]], 5), CUT(4) + 0.3, 0.5);
+        function item(label, at, pass, lx) {
+          var g = el("g", { transform: "translate(" + lx + ",470)" });
+          g.appendChild(el("path", { d: ink(R(0, 0, 300, 120), { wobble: 1, step: 30 }), fill: "#fff", stroke: INK, "stroke-width": 5 }));
+          G.appendChild(g); gsap.set(g, { opacity: 0 });
+          var t = txt("sm", label, lx + 20, 500, at); t.style.color = "#222";
+          tl.to(g, { opacity: 1, duration: 0.15 }, at);
+          var o = { u: 0 };
+          var ty = pass ? 1250 : 760;
+          tl.to(o, { u: 1, duration: 0.6, ease: pass ? "power2.in" : "power2.out", onUpdate: function () {
+            var y = 470 + (ty - 470) * o.u, x = lx + (pass ? 0 : 0);
+            g.setAttribute("transform", "translate(" + x + "," + y + ")"); t.style.top = (y + 30) + "px";
+          } }, at + 0.3);
+          if (!pass) {
+            tl.to(o, { u: 0.55, duration: 0.35, ease: "power2.out" }, at + 0.9);
+            cross(lx + 150, 640, 70, at + 1.0, RED);
+          } else check(lx + 320, 1270, at + 0.95, 1.2);
+        }
+        item("샘플 기반 악기", S(4, 4), false, 120);
+        item("생성형 AI 오디오", S(4, 7), false, 620);
+        item("일반 합성 소리", S(4, 14), true, 380);
+        var no = txt("lb", "내보낼 수 없음", 300, 1500, S(4, 10)); no.classList.add("red");
+        tl.to(no, { opacity: 0, duration: 0.2 }, S(4, 13));
+        txt("md", "일반 합성 소리만 가능", 220, 1560, S(4, 14) + 0.3);
+      })();
+
+      // ── 6. 이용 조건 체크리스트 + 크레딧 연료계 ──
+      (function () {
+        scene(5);
+        txt("h2", "이용 조건", 90, 230, CUT(5) + 0.05);
+        var rows = [["만 18세 이상 · 나이 인증", 1, 5], ["지원 지역", 8, 9], ["무료 가입 · 크레딧 제한", 12, 13]];
+        rows.forEach(function (r, j) {
+          var y = 470 + j * 170;
+          draw(P(R(90, y, 70, 70), 5), S(5, r[1]) - 0.15, 0.25);
+          txt("lb", r[0], 190, y - 4, S(5, r[1]));
+          check(100, y + 30, S(5, r[2]) + 0.1, 1.1);
+        });
+        var gx = 540, gy = 1230, gr = 210;
+        var arc = el("path", { d: "M " + (gx - gr) + " " + gy + " A " + gr + " " + gr + " 0 0 1 " + (gx + gr) + " " + gy, fill: "none", stroke: INK, "stroke-width": 7 }); G.appendChild(arc); draw(arc, S(5, 13), 0.5);
+        var nd = el("line", { x1: gx, y1: gy, x2: gx - gr + 30, y2: gy, stroke: INK, "stroke-width": 7, "stroke-linecap": "round" }); G.appendChild(nd);
+        gsap.set(nd, { svgOrigin: gx + " " + gy, rotation: 0, opacity: 0 }); tl.to(nd, { opacity: 1, duration: 0.1 }, S(5, 13));
+        tl.to(nd, { rotation: 38, duration: 0.6, ease: IT.ease.overshoot }, S(5, 14));
+        txt("sm", "무료 크레딧", gx - 120, gy + 20, S(5, 13) + 0.2);
+        txt("md", "더 쓰려면 유료 요금제", 210, 1400, S(5, 14) + 0.3);
+      })();
+
+      // ── 7. 작은 합성 악기 하나부터 (긍정) ──
+      (function () {
+        scene(6);
+        txt("h2", "작은 합성 악기 하나부터", 90, 230, S(6, 1));
+        var kx = 160, ky = 1000;
+        draw(P(R(kx, ky, 760, 260), 6), CUT(6) + 0.1, 0.5);
+        for (var k = 1; k < 10; k++) draw(P([[kx + k * 76, ky], [kx + k * 76, ky + 260]], 3), CUT(6) + 0.2 + k * 0.03, 0.2);
+        [1, 2, 4, 5, 6, 8, 9].forEach(function (k) { var b = el("rect", { x: kx + k * 76 - 20, y: ky, width: 40, height: 150, fill: INK }); G.appendChild(b); gsap.set(b, { opacity: 0 }); tl.to(b, { opacity: 1, duration: 0.2 }, CUT(6) + 0.5); });
+        var box = soundBox(440, 780, 1.2); gsap.set(box, { opacity: 0 }); tl.to(box, { opacity: 1, duration: 0.2 }, CUT(6) + 0.3);
+        var M = mascot(960, 1500, 1.7); show(M.g, CUT(6) + 0.2);
+        reach(M, "L", [[880, 1400], [820, 1250], [870, 1320], [760, 1250], [870, 1320], [820, 1250]], S(6, 2), 2.6);
+        for (var n = 0; n < 9; n++) {
+          var at = S(6, 5) + n * TM.beat;
+          var note = el("text", { x: 470 + (n % 3) * 60, y: 760, "font-size": 90, "font-family": "InkKo, serif", fill: INK }); note.textContent = n % 2 ? "♪" : "♫"; G.appendChild(note);
+          gsap.set(note, { opacity: 0 });
+          tl.to(note, { opacity: 1, duration: 0.15 }, at);
+          tl.to(note, { y: -320, x: (n % 2 ? 60 : -60), opacity: 0, duration: 2.0, ease: "power1.out" }, at + 0.1);
+        }
+        txt("md", "반복해 쓸 도구를 말로 만든다", 120, 1500, S(6, 9));
+        txt("sm", "출처: Google 블로그(2026.10.06) · Flow 도움말 · 실사용 후기 아님", 70, 1650, S(6, 18));
+      })();
+
+      IT.boil(document.getElementById("boilTurb"), tl, { duration: TM.total, fps: 9 });
+      tl.to({}, { duration: 0.01 }, TM.total - 0.01);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="gsap.min.js"></script>
+    <script src="ink-theater.js"></script>
+    <script src="doongk.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      @font-face { font-family: "InkKo"; src: url("assets/NanumPenScript-Regular.ttf") format("truetype"); font-display: block; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #fcfbf8; }
+      #root { position: relative; width: 1920px; height: 1080px; background: #fcfbf8; }
+      svg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+      .c { position: absolute; width: 380px; text-align: center; font-family: "InkKo", cursive; font-size: 44px; color: #222; }
+      .h { position: absolute; left: 60px; top: 24px; font-family: "InkKo", cursive; font-size: 64px; color: #222; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="1" data-width="1920" data-height="1080">
+      <svg id="s" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="h">둥크(doongk) — 연결용 포즈 8종 (엔진 렌더 · scale 2)</div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      var IT = window.InkTheater, svg = document.getElementById("s"), root = document.getElementById("root");
+      // 규격 4장 연결용 8종 — 손끝 목표(몸 중심 기준, 원화 단위 = scale 2 화면 px)
+      var P = [
+        ["1 기본(대기)", null, null, 0, 0, null],
+        ["2 오른손 앞으로 뻗기(레버)", null, [160, -10], 0, 0, null],
+        ["3 오른손 위로(가리키기·두드리기)", null, [95, -100], 0, 0, null],
+        ["4 두 손 위로(으쓱·환호)", [-125, -78], [125, -78], 0, 0, "smile"],
+        ["5 두 손 앞으로 모음(물건 들기)", [-12, 35], [12, 35], 0, 0, null],
+        ["6 아래로 누르기(건반)", null, [140, 65], 0, 6, null],
+        ["7 시선 왼쪽 · 걷기", null, null, -4, -8, "walk"],
+        ["8 점눈 유지 대기", null, null, 0, 0, null]
+      ];
+      P.forEach(function (p, i) {
+        var cx = 240 + (i % 4) * 480, cy = 250 + Math.floor(i / 4) * 470;
+        var D = IT.doongk({ x: cx, y: cy + p[4], scale: 2 });
+        svg.appendChild(D.g);
+        if (p[4] === 6) D.legs([cx - 40, cy + 202], [cx + 40, cy + 202]);   // 누르기: 발은 바닥, 무릎 굽힘
+        if (p[1]) D.reachL([cx + p[1][0], cy + p[4] + p[1][1]]);
+        if (p[2]) D.reachR([cx + p[2][0], cy + p[4] + p[2][1]]);
+        if (p[3]) D.look(p[3]);
+        if (p[5] === "smile") D.mouth("smile");
+        if (p[5] === "walk") D.walk(0.25);
+        var d = document.createElement("div"); d.className = "c"; d.textContent = p[0];
+        d.style.left = (cx - 190) + "px"; d.style.top = (cy + 225) + "px"; root.appendChild(d);
+      });
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
