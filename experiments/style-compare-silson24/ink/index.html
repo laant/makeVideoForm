@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <script src="ink-theater.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      @font-face { font-family: "InkKo"; src: url("assets/NanumPenScript-Regular.ttf") format("truetype"); font-display: block; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #fcfbf8; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #fcfbf8; }
+      svg#ink { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      #ov { position: absolute; inset: 0; }
+      .t { position: absolute; font-family: "InkKo", cursive; color: #222; opacity: 0; line-height: 1.05; white-space: nowrap; }
+      .h1 { font-size: 128px; } .h2 { font-size: 92px; } .lb { font-size: 62px; } .sm { font-size: 52px; color: #6d675c; }
+      .red { color: #c8452e; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30.22" data-width="1080" data-height="1920">
+      <svg id="ink" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="boil" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence id="boilTurb" type="fractalNoise" baseFrequency="0.016" numOctaves="1" seed="1" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+          </filter>
+        </defs>
+        <g id="s1" filter="url(#boil)"></g>
+        <g id="s2" filter="url(#boil)" opacity="0"></g>
+        <g id="s3" filter="url(#boil)" opacity="0"></g>
+      </svg>
+      <div id="ov"><div id="o1" style="position:absolute;inset:0"></div><div id="o2" style="position:absolute;inset:0;opacity:0"></div><div id="o3" style="position:absolute;inset:0;opacity:0"></div></div>
+      <audio id="narration" src="audio/narration_3.mp3" data-start="0" data-duration="30.22" data-track-index="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      if (document.fonts && document.fonts.load) { document.fonts.load("80px InkKo"); }
+      var IT = window.InkTheater, el = IT.el, INK = IT.INK, ink = IT.inkPath;
+      var tl = gsap.timeline({ paused: true });
+      var OV = document.getElementById("o1");
+      // 장면 시작(초) — 27번 나레이션 timing.json
+      var S1 = 0.0, S2 = 8.849, S3 = 19.369, CUT2 = 8.7, CUT3 = 19.22;
+      function w1(t) { return S1 + t; } function w2(t) { return S2 + t; } function w3(t) { return S3 + t; }
+
+      // ── 공통 도구 ──────────────────────────────
+      function txt(cls, s, x, y, at, out, extra) {
+        var d = document.createElement("div"); d.className = "t " + cls; d.textContent = s;
+        d.style.left = x + "px"; d.style.top = y + "px"; if (extra) d.style.cssText += extra; OV.appendChild(d);
+        tl.fromTo(d, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: IT.ease.overshoot }, at);
+        if (out != null) tl.to(d, { opacity: 0, duration: 0.25 }, out);
+        return d;
+      }
+      function line(g, pts, sw, opt) {
+        var p = el("path", { d: ink(pts, Object.assign({ wobble: 1.4, step: 40 }, opt || {})), fill: "none", stroke: INK, "stroke-width": sw || 5, "stroke-linecap": "round", "stroke-linejoin": "round" });
+        g.appendChild(p); return p;
+      }
+      function rectPath(x, y, w, h) { return [[x, y], [x + w, y], [x + w, y + h], [x, y + h], [x, y]]; }
+      function draw(p, at, dur) { var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; tl.to(p, { strokeDashoffset: 0, duration: dur || 0.6, ease: "power1.inOut" }, at); return p; }
+      function receipt(g, x, y, s) {
+        var r = el("g", { transform: "translate(" + x + "," + y + ") scale(" + (s || 1) + ")" });
+        var zz = [[0, 0], [90, 0], [90, 110]]; for (var k = 6; k >= 0; k--) zz.push([k * 15, 110 + (k % 2 ? 0 : 10)]); zz.push([0, 0]);
+        r.appendChild(el("path", { d: ink(zz, { wobble: 1, step: 20 }), fill: "#fff", stroke: INK, "stroke-width": 4, "stroke-linejoin": "round" }));
+        [28, 50, 72].forEach(function (yy, i) { r.appendChild(el("line", { x1: 14, y1: yy, x2: i === 1 ? 60 : 76, y2: yy, stroke: INK, "stroke-width": 3 })); });
+        g.appendChild(r); return r;
+      }
+      function sceneFade(id, tin, tout) {  // SVG 장면 + 같은 번호의 글자층을 함께
+        var o = "#o" + id.slice(1);
+        if (tin > 0) tl.to(["#" + id, o], { opacity: 1, duration: 0.3 }, tin);
+        if (tout != null) tl.to(["#" + id, o], { opacity: 0, duration: 0.25 }, tout);
+      }
+
+      // ── 1장면: 폰 기계 · 레버 3개 · 영수증 투입 ──────────
+      (function () {
+        var g = document.getElementById("s1");
+        txt("h1", "10월 7일부터", 90, 230, w1(0.06), CUT2);
+        txt("sm", "금융위 9월 30일 발표", 96, 370, w1(0.9), CUT2);
+        txt("h2", "앱 안에서 실손 청구 끝까지", 90, 1640, w1(4.18), CUT2);
+        // 폰 기계
+        var phone = line(g, rectPath(560, 620, 400, 760), 7, { wobble: 1.8 }); draw(phone, 0.2, 0.9);
+        var screen = line(g, rectPath(590, 700, 340, 560), 3); draw(screen, 0.6, 0.6);
+        var slot = el("rect", { x: 700, y: 640, width: 120, height: 14, rx: 4, fill: INK }); g.appendChild(slot);
+        // 앱 줄 3개 + 레버 3개(폰 왼쪽에 붙음)
+        var names = ["네이버 지도", "네이버페이", "토스"], keys = [1.557, 2.355, 3.70];
+        var M = IT.mascot({ x: 250, y: 1180, scale: 2.4 }); g.appendChild(M.g);
+        names.forEach(function (n, i) {
+          var y = 760 + i * 120, t = w1(keys[i]);
+          var row = line(g, rectPath(610, y - 40, 300, 84), 3); draw(row, 0.8 + i * 0.1, 0.4);
+          txt("lb", n, 630, y - 30, t + 0.05);
+          var arm = el("line", { x1: 560, y1: y, x2: 470, y2: y - 40, stroke: INK, "stroke-width": 8, "stroke-linecap": "round" });
+          var knob = el("circle", { cx: 470, cy: y - 40, r: 14, fill: INK });
+          var lev = el("g", null, [arm, knob, el("circle", { cx: 560, cy: y, r: 7, fill: INK })]); g.appendChild(lev);
+          gsap.set(lev, { svgOrigin: "560 " + y });
+          tl.to(lev, { rotation: -38, duration: 0.25, ease: IT.ease.overshoot }, t);
+          var tick = el("path", { d: ink([[860, y], [876, y + 18], [902, y - 18]], { wobble: 0.6 }), fill: "none", stroke: INK, "stroke-width": 6, "stroke-linecap": "round" }); g.appendChild(tick); draw(tick, t + 0.15, 0.25);
+          // 마스코트 팔이 레버 손잡이로
+          var px = { u: 0 };
+          tl.to(px, { u: 1, duration: 0.3, onUpdate: function () { var kx = 470 + (1 - Math.cos(-38 * Math.PI / 180 * px.u)) * 0, ky = y - 40 + 50 * px.u; M.reachR([kx, ky]); } }, t - 0.05);
+        });
+        // 영수증: 마스코트 손 → 투입구 → 화면 안에서 끝까지
+        var rc = receipt(g, 150, 1000, 1.1);
+        var rp = { u: 0 };
+        tl.to(rp, { u: 1, duration: 0.9, ease: "power2.inOut", onUpdate: function () {
+          var x = 150 + (710 - 150) * rp.u, y = 1000 + (520 - 1000) * rp.u - Math.sin(rp.u * Math.PI) * 120;
+          rc.setAttribute("transform", "translate(" + x + "," + y + ") scale(1.1)"); M.reachL([x + 10, y + 120]);
+        } }, w1(5.07));
+        tl.to(rc, { opacity: 0, duration: 0.2 }, w1(5.07) + 0.9);
+        var mini = receipt(g, 720, 1140, 0.6); gsap.set(mini, { opacity: 0 });
+        tl.to(mini, { opacity: 1, duration: 0.15 }, w1(6.3));
+        tl.fromTo(mini, { attr: { transform: "translate(720,1060) scale(0.6)" } }, { attr: { transform: "translate(720,1170) scale(0.6)" }, duration: 0.5, ease: "power2.in" }, w1(6.3));
+        var lamp = el("circle", { cx: 760, cy: 1330, r: 30, fill: "#fff", stroke: INK, "stroke-width": 5 }); g.appendChild(lamp);
+        tl.to(lamp, { attr: { fill: INK }, duration: 0.15 }, w1(6.47) + 0.3);
+        txt("lb", "보험사까지 ✓", 640, 1395, w1(6.47) + 0.35);
+        sceneFade("s1", 0, CUT2);
+      })();
+
+      // ── 2장면: 지금(먼 건물까지 걸어감) vs 10월 7일(컨베이어) · 마이데이터 ──
+      (function () {
+        var g = document.getElementById("s2"); OV = document.getElementById("o2");
+        sceneFade("s2", CUT2 + 0.05, CUT3);
+        txt("h2", "지금 vs 10월 7일", 90, 230, w2(-0.1), CUT3);
+        // 위 길: 폰 → 다리 → 실손24 사이트 건물
+        txt("lb", "지금: 사이트로 건너가야", 90, 360, w2(0.06), CUT3);
+        var ph = line(g, rectPath(90, 500, 120, 210), 6); draw(ph, w2(0.0), 0.5);
+        var bld = line(g, [[780, 710], [780, 470], [860, 430], [960, 470], [960, 710]], 6); draw(bld, w2(0.4), 0.6);
+        for (var r = 0; r < 3; r++) for (var c = 0; c < 2; c++) g.appendChild(el("rect", { x: 805 + c * 80, y: 500 + r * 60, width: 34, height: 34, fill: "none", stroke: INK, "stroke-width": 3 }));
+        txt("sm", "실손24 사이트", 770, 720, w2(1.62));
+        var bridge = line(g, [[220, 700], [380, 620], [520, 640], [660, 600], [770, 700]], 4, { wobble: 2.2 }); draw(bridge, w2(1.62), 0.8);
+        for (var k = 0; k < 9; k++) { var bx = 250 + k * 60; g.appendChild(el("line", { x1: bx, y1: 690 - k * 4, x2: bx, y2: 720 - k * 4, stroke: INK, "stroke-width": 2 })); }
+        var M = IT.mascot({ x: 0, y: 0, scale: 1.2 }); var mw = el("g", null, [M.g]); g.appendChild(mw);
+        var mr = receipt(mw, -20, -150, 0.5);
+        var wk = { u: 0 };
+        gsap.set(mw, { opacity: 0 });
+        tl.to(mw, { opacity: 1, duration: 0.2 }, w2(2.2));
+        tl.to(wk, { u: 1, duration: 1.6, ease: "none", onUpdate: function () {
+          var x = 250 + 470 * wk.u, y = 600 - Math.abs(Math.sin(wk.u * Math.PI * 6)) * 14 - Math.sin(wk.u * Math.PI) * 60;
+          mw.setAttribute("transform", "translate(" + x + "," + y + ")"); M.reachR([22, -120]); M.reachL([-22, -120]);
+        } }, w2(2.44));
+        // '그 단계가 줄어요' → 위 길에 엑스
+        var x1 = line(g, [[120, 450], [960, 760]], 9, { wobble: 3 }); var x2 = line(g, [[960, 450], [120, 760]], 9, { wobble: 3 });
+        draw(x1, w2(4.01), 0.3); draw(x2, w2(4.01) + 0.15, 0.3);
+        // 아래 길: 폰 → 컨베이어 → 보험사
+        txt("lb", "10월 7일: 앱 안에서 바로", 90, 830, w2(4.01) + 0.2, CUT3);
+        var ph2 = line(g, rectPath(90, 950, 120, 210), 6); draw(ph2, w2(4.1), 0.4);
+        var belt = line(g, [[220, 1120], [770, 1120]], 6); draw(belt, w2(4.2), 0.4);
+        var belt2 = line(g, [[220, 1150], [770, 1150]], 6); draw(belt2, w2(4.2), 0.4);
+        var ck1 = IT.parts.crank(240, 1135, 22), ck2 = IT.parts.crank(750, 1135, 22); g.appendChild(ck1.g); g.appendChild(ck2.g);
+        [ck1, ck2].forEach(function (ck) { gsap.set(ck.wheel, { svgOrigin: ck.pivot[0] + " " + ck.pivot[1] }); tl.to(ck.wheel, { rotation: 720, duration: 2.0, ease: "none" }, w2(4.3)); });
+        var ins = line(g, rectPath(790, 970, 190, 190), 6); draw(ins, w2(4.3), 0.4);
+        txt("sm", "보험사", 830, 1040, w2(4.5), CUT3);
+        var br = receipt(g, 230, 1010, 0.6); gsap.set(br, { opacity: 0 });
+        tl.to(br, { opacity: 1, duration: 0.1 }, w2(4.4));
+        tl.fromTo(br, { attr: { transform: "translate(230,1010) scale(0.6)" } }, { attr: { transform: "translate(700,1010) scale(0.6)" }, duration: 0.9, ease: "power1.inOut" }, w2(4.4));
+        // 마이데이터: 깔때기 + 입력칸 4개
+        txt("lb", "마이데이터 동의하면", 90, 1260, w2(5.34), CUT3);
+        var hop = IT.parts.hopper(540, 1350, 240, 90); g.appendChild(hop.g); draw(hop.g, w2(5.4), 0.4);
+        var fields = ["병원", "진료일", "보험사", "계좌번호"], fk = [7.0, 7.48, 8.08, 8.68];
+        fields.forEach(function (f, i) {
+          var x = 110 + (i % 2) * 450, y = 1490 + Math.floor(i / 2) * 150;
+          var bx = line(g, rectPath(x, y, 400, 110), 4); draw(bx, w2(5.6) + i * 0.1, 0.35);
+          txt("lb", f, x + 20, y + 22, w2(5.7) + i * 0.1);
+          var sc = line(g, [[x + 200, y + 70], [x + 250, y + 40], [x + 290, y + 72], [x + 340, y + 38], [x + 375, y + 66]], 5, { wobble: 1.6 });
+          draw(sc, w2(fk[i]), 0.3);
+        });
+        txt("sm", "입력 생략", 760, 1800, w2(9.52), CUT3);
+      })();
+
+      // ── 3장면: 계기판 47.7% · 절반 선 · 으쓱 ──────────
+      (function () {
+        var g = document.getElementById("s3"); OV = document.getElementById("o3");
+        sceneFade("s3", CUT3 + 0.05, null);
+        txt("h2", "내 병원, 연계됐을까?", 90, 230, w3(-0.1));
+        txt("sm", "실손24 홈페이지 ‘참여병원·약국’에서 확인", 96, 350, w3(2.38));
+        var cx = 540, cy = 1080, R = 330;
+        var arc = el("path", { d: "M " + (cx - R) + " " + cy + " A " + R + " " + R + " 0 0 1 " + (cx + R) + " " + cy, fill: "none", stroke: INK, "stroke-width": 9, "stroke-linecap": "round" }); g.appendChild(arc); draw(arc, w3(0.3), 0.8);
+        g.appendChild(el("line", { x1: cx - R - 20, y1: cy, x2: cx + R + 20, y2: cy, stroke: INK, "stroke-width": 5 }));
+        [0, 0.25, 0.5, 0.75, 1].forEach(function (p) { var a = Math.PI * (1 - p), x = cx + Math.cos(a) * R, y = cy - Math.sin(a) * R;
+          g.appendChild(el("line", { x1: x, y1: y, x2: cx + Math.cos(a) * (R - 40), y2: cy - Math.sin(a) * (R - 40), stroke: INK, "stroke-width": p === 0.5 ? 6 : 4 })); });
+        txt("sm", "0", cx - R - 20, cy + 14, w3(0.6)); txt("sm", "100", cx + R - 40, cy + 14, w3(0.6));
+        // 절반(50%) 점선
+        var half = el("line", { x1: cx, y1: cy - R - 60, x2: cx, y2: cy - R + 50, stroke: INK, "stroke-width": 5, "stroke-dasharray": "14 12" }); g.appendChild(half);
+        gsap.set(half, { opacity: 0 }); tl.to(half, { opacity: 1, duration: 0.3 }, w3(8.96));
+        txt("lb", "절반", cx - 50, cy - R - 130, w3(8.96));
+        var needle = el("line", { x1: cx, y1: cy, x2: cx - R + 50, y2: cy, stroke: INK, "stroke-width": 8, "stroke-linecap": "round" }); g.appendChild(needle);
+        g.appendChild(el("circle", { cx: cx, cy: cy, r: 16, fill: INK }));
+        gsap.set(needle, { svgOrigin: cx + " " + cy, rotation: 0 });
+        tl.to(needle, { rotation: 180 * 0.477, duration: 0.9, ease: IT.ease.bouncy || IT.ease.overshoot }, w3(5.93));
+        txt("h1", "47.7%", cx - 150, cy + 60, w3(5.93) + 0.2);
+        txt("sm", "연계 5만340곳 · 9월 28일 기준", 200, cy + 210, w3(3.0));
+        var M = IT.mascot({ x: 170, y: 1520, scale: 2.0 }); g.appendChild(M.g);
+        var tap = { u: 0 };
+        tl.to(tap, { u: 1, duration: 0.3, yoyo: true, repeat: 1, onUpdate: function () { M.reachR([170 + 90 + 120 * tap.u, 1520 - 60 - 160 * tap.u]); } }, w3(5.6));
+        var sh = { u: 0 };
+        tl.to(sh, { u: 1, duration: 0.35, ease: IT.ease.overshoot, onUpdate: function () {
+          M.reachL([170 - 70 - 20 * sh.u, 1520 - 40 - 70 * sh.u]); M.reachR([170 + 70 + 20 * sh.u, 1520 - 40 - 70 * sh.u]);
+        } }, w3(8.6));
+        IT.balloon(tl, { into: g, overlay: OV, at: w3(8.735), dur: 2.2, text: "아직 절반이 안 돼요", mouth: [230, 1440], center: [600, 1560], w: 560, h: 130, size: 64, font: "InkKo", boil: "boil" });
+      })();
+
+      IT.boil(document.getElementById("boilTurb"), tl, { duration: 30.2, fps: 9 });
+      tl.to({}, { duration: 0.01 }, 30.2);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
