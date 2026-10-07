@@ -22,30 +22,31 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("28-google-messages-keep", "codex"): ["autoShorts/episodes/google-messages-keep/final.mp4"],
     ("20-postmeal-walk", "codex"): ["autoShorts/episodes/postmeal-walk/final.mp4"],
     ("15-breathing-426", "codex"): ["autoShorts/episodes/breathing-426/final.mp4"],
-    ("16-autumn-handcream", "opus-paper"): ["experiments/opus-autumn-handcream/out/final.mp4"],  # 코드 종이공작 · 가을 질감
-    ("17-donggubat-handcream", "gemini-opus"): ["experiments/opus-donggubat-clip/out/final.mp4"],  # Gemini 제품영상 9:16 + 나레이션·자막·BGM
-    ("18-autumn-windbreaker", "opus-paper"): ["experiments/opus-windbreaker/out/final.mp4"],  # 코드 종이공작 · 쌀쌀한 색감
+    ("16-autumn-handcream", "opus-paper"): ["experiments/projects/opus-autumn-handcream/out/final.mp4"],  # 코드 종이공작 · 가을 질감
+    ("17-donggubat-handcream", "gemini-opus"): ["experiments/projects/opus-donggubat-clip/out/final.mp4"],  # Gemini 제품영상 9:16 + 나레이션·자막·BGM
+    ("18-autumn-windbreaker", "opus-paper"): ["experiments/projects/opus-windbreaker/out/final.mp4"],  # 코드 종이공작 · 쌀쌀한 색감
     ("19-smarttag3-ios", "autoshorts"): ["autoShorts/episodes/smarttag3-ios/final.mp4"],  # 청사진(blueprint) 배경
-    ("19-smarttag3-ios", "opus-paper"): ["experiments/opus-smarttag3/out/final.mp4"],  # 코드 종이공작 · 네이비 방안지 (같은 나레이션)
-    ("21-guri-cosmos", "opus-paper"): ["experiments/opus-guri-cosmos/out/final.mp4"],  # 코드 종이공작 · 흔들리는 코스모스 꽃밭
+    ("19-smarttag3-ios", "opus-paper"): ["experiments/projects/opus-smarttag3/out/final.mp4"],  # 코드 종이공작 · 네이비 방안지 (같은 나레이션)
+    ("21-guri-cosmos", "opus-paper"): ["experiments/projects/opus-guri-cosmos/out/final.mp4"],  # 코드 종이공작 · 흔들리는 코스모스 꽃밭
     ("21-guri-cosmos", "openmontage"): ["OpenMontage/projects/guri-cosmos-2026/renders/final.mp4"],  # 페이퍼 팝업북 이미지 + stat_card
     ("21-guri-cosmos", "autoshorts"): ["autoShorts/episodes/guri-cosmos-2026/final.mp4"],  # paper 프리셋 배경
     ("21-guri-cosmos", "autoshorts-om"): ["autoShorts/episodes/guri-cosmos-2026-om/final.mp4"],  # 조합판: OpenMontage 배경 + autoShorts 화면 구성
-    ("22-galaxy-buds-on", "opus-paper"): ["experiments/opus-buds-on/out/final.mp4"],  # 테크 · 귀·클립·음파 코드 렌더
-    ("23-guided-vision", "opus-paper"): ["experiments/opus-guided-vision/out/final.mp4"],  # 테크 · 뷰파인더·음성 안내 코드 렌더
-    ("23-guided-vision", "motion-v2"): ["experiments/opus-guided-vision-v2/out/final.mp4"],  # MOTION-RULES v1.0 샘플(뷰파인더 괄호 모티프·자막 없음·박자·블러4)
+    ("22-galaxy-buds-on", "opus-paper"): ["experiments/projects/opus-buds-on/out/final.mp4"],  # 테크 · 귀·클립·음파 코드 렌더
+    ("23-guided-vision", "opus-paper"): ["experiments/projects/opus-guided-vision/out/final.mp4"],  # 테크 · 뷰파인더·음성 안내 코드 렌더
+    ("23-guided-vision", "motion-v2"): ["experiments/projects/opus-guided-vision-v2/out/final.mp4"],  # MOTION-RULES v1.0 샘플(뷰파인더 괄호 모티프·자막 없음·박자·블러4)
     ("23-guided-vision", "redesign"): ["output/23-guided-vision/guided-vision_redesign.mp4"],  # 사용자 리디자인판 (편집 파일: guided-vision_editable/) — 게시본
-    ("24-us-jobs-report", "opus-paper"): ["experiments/opus-jobs-report/out/final.mp4"],  # 재테크 · 장부지 체크리스트 코드 렌더
+    ("24-us-jobs-report", "opus-paper"): ["experiments/projects/opus-jobs-report/out/final.mp4"],  # 재테크 · 장부지 체크리스트 코드 렌더
     ("25-SPAO_44s_edit_project", "edit"): ["output/25-SPAO_44s_edit_project/SPAO_44s_caption_music.mp4"],  # 쇼핑 · 사용자 편집본(자막+배경음)
-    ("27-silson24-platform", "opus-paper"): ["experiments/opus-silson24/out/final.mp4"],  # 재테크 · MOTION-RULES 영수증 모티프
-    ("26-2026-09-us-jobs-motion-v2", "narration"): ["experiments/jobs-sep-motion/out/final.mp4"],  # 재테크 · 사용자 모션그래픽 + Aoede 나레이션
+    ("29-google-flow-music-plugin", "ink"): ["experiments/projects/ink-flow-music/renders/final.mp4"],  # 테크 · ink-theater(HyperFrames) 첫 게시판
+    ("27-silson24-platform", "opus-paper"): ["experiments/projects/opus-silson24/out/final.mp4"],  # 재테크 · MOTION-RULES 영수증 모티프
+    ("26-2026-09-us-jobs-motion-v2", "narration"): ["experiments/projects/jobs-sep-motion/out/final.mp4"],  # 재테크 · 사용자 모션그래픽 + Aoede 나레이션
     ("01-hidden-insurance", "flow"): [
         "flow-pipeline/projects/01-hidden-insurance/out/final_send.mp4",
         "flow-pipeline/projects/01-hidden-insurance/out/final.mp4"],
     ("01-hidden-insurance", "openmontage"): [
         "OpenMontage/projects/hidden-insurance-money/renders/final_v3.mp4"],
     ("01-hidden-insurance", "talkcraft"): [
-        "talkcraft/demo/remotion/out/delivery.mp4"],
+        "talkcraft/projects/demo/remotion/out/delivery.mp4"],
     ("02-country-house-reno", "flow"): [
         "flow-pipeline/projects/02-country-house-reno/out/final_send.mp4",
         "flow-pipeline/projects/02-country-house-reno/out/final.mp4"],
@@ -56,8 +57,8 @@ MAPPING: dict[tuple[str, str], list[str]] = {
         "OpenMontage/projects/tokyo-gcans-archi/renders/final_send.mp4",
         "OpenMontage/projects/tokyo-gcans-archi/renders/final.mp4"],
     ("03-tokyo-gcans", "talkcraft"): [
-        "talkcraft/gcans/remotion/out/final_send.mp4",
-        "talkcraft/gcans/remotion/out/final.mp4"],
+        "talkcraft/projects/gcans/remotion/out/final_send.mp4",
+        "talkcraft/projects/gcans/remotion/out/final.mp4"],
     ("03-tokyo-gcans", "mpt"): [
         "_archive-mpt/e79a0500-final.mp4"],  # MPT 모듈 삭제됨 — 아카이브 참조
     ("06-ai-thinking-ep1", "flow"): [
@@ -65,11 +66,11 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("06-ai-thinking-ep1", "openmontage"): [
         "OpenMontage/projects/ai-thinking-ep1/renders/final.mp4"],
     ("06-ai-thinking-ep1", "talkcraft"): [
-        "talkcraft/thinking/remotion/out/final.mp4"],
+        "talkcraft/projects/thinking/remotion/out/final.mp4"],
     ("09-youth-savings-2nd", "openmontage"): [
         "OpenMontage/projects/youth-savings-2nd/renders/final.mp4"],
     ("09-youth-savings-2nd", "talkcraft"): [
-        "talkcraft/savings/remotion/out/final.mp4"],
+        "talkcraft/projects/savings/remotion/out/final.mp4"],
     ("09-youth-savings-2nd", "autoshorts"): [
         "autoShorts/episodes/youth-savings-2nd/final.mp4"],
     ("09-youth-savings-2nd", "flow"): [
@@ -85,8 +86,8 @@ MAPPING: dict[tuple[str, str], list[str]] = {
         "flow-pipeline/projects/05-yeonan-family/out/final_send.mp4",
         "flow-pipeline/projects/05-yeonan-family/out/final.mp4"],
     ("05-yeonan-family", "talkcraft"): [
-        "talkcraft/family/remotion/out/final_send.mp4",
-        "talkcraft/family/remotion/out/final.mp4"],
+        "talkcraft/projects/family/remotion/out/final_send.mp4",
+        "talkcraft/projects/family/remotion/out/final.mp4"],
     ("04-guri-flags", "flow"): [
         "flow-pipeline/projects/04-guri-flags/out/final_send.mp4",
         "flow-pipeline/projects/04-guri-flags/out/final.mp4"],
@@ -100,10 +101,10 @@ MAPPING: dict[tuple[str, str], list[str]] = {
     ("04-guri-flags", "autoshorts-visit"): [
         "autoShorts/episodes/guri-flags-45-visit/final.mp4"],  # 45초판 재제작 · 결말 '구리시에 방문해 보세요'
     ("04-guri-flags", "opus-paper"): [
-        "experiments/opus-paper-04/out/final.mp4"],  # 모듈 없이 절차적 종이 공작 렌더(실험) · 같은 나레이션
+        "experiments/projects/opus-paper-04/out/final.mp4"],  # 모듈 없이 절차적 종이 공작 렌더(실험) · 같은 나레이션
     ("04-guri-flags", "talkcraft"): [
-        "talkcraft/guri/remotion/out/final_send.mp4",
-        "talkcraft/guri/remotion/out/final.mp4"],
+        "talkcraft/projects/guri/remotion/out/final_send.mp4",
+        "talkcraft/projects/guri/remotion/out/final.mp4"],
     ("14-optimal-plan", "autoshorts"): [
         "autoShorts/episodes/optimal-plan/final.mp4"],  # 최적요금제 안내 (10/1 시행) · 재테크 채널
     ("14-optimal-plan", "engraving"): [

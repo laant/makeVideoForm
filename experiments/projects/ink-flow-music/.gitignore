@@ -1,0 +1,7 @@
+renders/
+snaps/
+.venv
+__pycache__/
+audio/concat.txt
+audio/gap.mp3
+audio/bgm.wav

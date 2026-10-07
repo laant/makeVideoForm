@@ -54,9 +54,9 @@ python3 -m venv OpenMontage/.venv
 OpenMontage/.venv/bin/pip install -r OpenMontage/requirements.txt
 
 # Remotion 의존성 (talkcraft — demo가 원본, 나머지는 심링크로 공유)
-(cd talkcraft/demo/remotion && npm install)
-#  gcans/guri/family의 node_modules는 ../../demo/remotion/node_modules 심링크 —
-#  끊겨 있으면: ln -s ../../demo/remotion/node_modules talkcraft/<이름>/remotion/node_modules
+(cd talkcraft/projects/demo/remotion && npm install)
+#  projects/ 아래 gcans/guri/family/savings/thinking의 node_modules는 ../../demo/remotion/node_modules 심링크 —
+#  끊겨 있으면: ln -s ../../demo/remotion/node_modules talkcraft/projects/<이름>/remotion/node_modules
 
 # Remotion 의존성 (OpenMontage 렌더러)
 (cd OpenMontage/remotion-composer && npm install)
@@ -93,7 +93,7 @@ autoShorts YouTube 업로드를 쓰려면 `cd autoShorts && npm run yt:auth` 1�
 |---|---|
 | flow-pipeline | `cd flow-pipeline && FLOW_PROJECT=<프로젝트> python3 scripts/assemble.py` (클립·오디오 있는 프로젝트에서) |
 | OpenMontage | `cd OpenMontage && .venv/bin/python projects/yeonan-family/produce.py assets` (키 필요) |
-| talkcraft | `cd talkcraft/family/remotion && npx remotion compositions src/entry.ts` |
+| talkcraft | `cd talkcraft/projects/family/remotion && npx remotion compositions src/entry.ts` |
 | autoShorts | `cd autoShorts && npx hyperframes doctor && npm run make -- sample --mock` (크레딧 0) |
 | 수집기 | `python3 scripts/collect_outputs.py` (소스 없으면 skip으로 표시됨 — 정상) |
 

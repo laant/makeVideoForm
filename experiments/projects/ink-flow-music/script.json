@@ -1,0 +1,14 @@
+{
+  "title": "구글 Flow Music 플러그인 — Mac 음악 프로그램에서 내가 만든 악기 쓰기",
+  "source": "https://pulluptech.blogspot.com/2026/10/google-flow-music-plugin-macos-vst3-au.html",
+  "refs": ["Google 블로그 2026-10-06 Producers can now vibe code their own music production tools using Google Flow Music: Spaces 자연어로 악기·효과, 코딩 불필요, VST3/AU 내보내기", "Flow Music 도움말 18631279: macOS만, 한 번 설치 → Flow Instrument·Flow Effect, 'Use in DAW' → .fmx 를 창에 끌어다 놓기, 프롬프트에 plugin/VST, 샘플 기반·생성형 AI 오디오 내보내기 불가(합성만), Plugins 필터", "도움말 17083868: 만 18세 이상·나이 인증·지원 지역·무료 가입·유료로 크레딧 추가"],
+  "scenes": [
+    {"narration": "구글 플로우 뮤직에서 말로 만든 악기와 효과를, 맥 음악 프로그램에 플러그인으로 가져갈 수 있게 됐어요."},
+    {"narration": "스페이스에서 원하는 소리를 문장으로 설명하면 되고, 코딩은 필요 없어요. 요청할 때 플러그인이나 브이에스티라는 말을 넣어 주세요."},
+    {"narration": "설치는 처음 한 번이면 돼요. 음악 프로그램에 플로우 인스트루먼트와 플로우 이펙트가 생겨요."},
+    {"narration": "그다음부터는 새로 만든 소리를 에프엠엑스 파일로 받아서, 그 창에 끌어다 놓으면 돼요."},
+    {"narration": "다만 지금은 맥에서만 되고, 샘플 기반 악기나 생성형 에이아이 오디오는 내보낼 수 없어요. 일반 합성 소리만 가능해요."},
+    {"narration": "만 열여덟 살 이상, 나이 인증된 구글 계정과 지원 지역이 필요해요. 가입은 무료지만 크레딧에는 제한이 있어요."},
+    {"narration": "처음엔 단순한 합성 악기 하나로 시작해 보세요. 내 작업에 반복해 쓸 도구를 말로 만들 수 있다는 게 이번 기능의 핵심이에요."}
+  ]
+}

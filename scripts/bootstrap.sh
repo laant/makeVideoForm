@@ -33,9 +33,9 @@ else
 fi
 
 echo "== 5/5 node_modules =="
-[ -d talkcraft/demo/remotion/node_modules ] || (cd talkcraft/demo/remotion && npm install)
-for p in gcans guri family; do
-  link="talkcraft/$p/remotion/node_modules"
+[ -d talkcraft/projects/demo/remotion/node_modules ] || (cd talkcraft/projects/demo/remotion && npm install)
+for p in gcans guri family savings thinking; do
+  link="talkcraft/projects/$p/remotion/node_modules"
   [ -e "$link" ] || ln -s ../../demo/remotion/node_modules "$link"
 done
 [ -d OpenMontage/remotion-composer/node_modules ] || (cd OpenMontage/remotion-composer && npm install)

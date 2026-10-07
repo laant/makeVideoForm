@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ink-theater 기본 마스코트 부위 템플릿 (scale 2, 몸 중심 = (300,300)).
+     새 캐릭터는 같은 id 의 그룹 구조를 유지하고, guides 레이어의 관절점(빨간 점) 위치에 맞춰 다시 그린다.
+     guides 레이어는 납품 전에 숨기거나 지워도 됨. 레이어 순서(아래→위): armL, armR, body, legL, legR, eyeL, eyeR -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#fcfbf8"/>
+  <g id="armL"><path d="M244 296 L210 330 L236 360" fill="none" stroke="#222" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="armR"><path d="M356 296 L390 330 L364 360" fill="none" stroke="#222" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="body"><ellipse cx="300" cy="300" rx="80" ry="100" fill="#222"/></g>
+  <g id="legL"><path d="M276 392 l-8 48" stroke="#222" stroke-width="14" fill="none" stroke-linecap="round"/></g>
+  <g id="legR"><path d="M324 392 l8 48" stroke="#222" stroke-width="14" fill="none" stroke-linecap="round"/></g>
+  <g id="eyeL"><circle cx="276" cy="268" r="14" fill="#fff"/></g>
+  <g id="eyeR"><circle cx="324" cy="268" r="14" fill="#fff"/></g>
+  <g id="guides" font-family="sans-serif" font-size="13" fill="#c8452e">
+    <circle cx="300" cy="300" r="5"/><text x="308" y="304">body center (0,0)</text>
+    <circle cx="244" cy="296" r="5"/><text x="150" y="290">shoulderL (-56,-4)</text>
+    <circle cx="356" cy="296" r="5"/><text x="364" y="290">shoulderR (56,-4)</text>
+    <circle cx="276" cy="392" r="5"/><text x="170" y="400">hipL (-24,92)</text>
+    <circle cx="324" cy="392" r="5"/><text x="332" y="400">hipR (24,92)</text>
+    <text x="30" y="540">arm: upper 64 + lower 60 (IK 2-bone), stroke 14 · leg 48</text>
+    <text x="30" y="562">eye r14 at (±24,-32) · body ellipse rx80 ry100 · scale 2</text>
+  </g>
+</svg>

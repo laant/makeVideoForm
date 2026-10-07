@@ -15,7 +15,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 PROJ = Path(__file__).resolve().parent
-SRC = ROOT.parent / "experiments/opus-silson24"
+SRC = ROOT.parent / "experiments/projects/opus-silson24"
 sys.path.insert(0, str(ROOT))
 
 from lib.env_loader import load_env  # noqa: E402

@@ -29,7 +29,12 @@ myNextSeason/
 ├── talkcraft/               # 모듈③ Remotion 코드 모션그래픽 (⚠️ 비상업 라이선스 — 실험 전용)
 │   ├── README.md            #   구조·새 프로젝트 복제법
 │   ├── video-talkcraft/     #   엔진·스킬 원본 (업스트림)
-│   └── demo·gcans·guri·family/  # 프로젝트들 (demo가 node_modules 원본 보유)
+│   └── projects/            #   영상 프로젝트 demo·gcans·guri·family·savings·thinking (demo가 node_modules 원본 보유)
+│
+├── experiments/             # 모듈⑥ opus 코드 렌더(PIL 종이공작·ink-theater) — MOTION-RULES
+│   ├── paperkit.py · audiokit.py  #   공용 도구 (종이 질감·라벨·BGM 합성)
+│   ├── ink-character-kit/   #   ink-theater 캐릭터 제작 규격·템플릿
+│   └── projects/<이름>/     #   영상 프로젝트 (script·tts·render·treatment, .venv 는 opus-paper-04 공유)
 │
 ├── autoShorts/              # 모듈④ HTML/GSAP 템플릿 씬 → HyperFrames 렌더 → FFmpeg (+YT/IG 업로드)
 │   ├── CLAUDE.md            #   작업 규칙 (슬래시 커맨드 /shorts-* 는 루트 .claude/commands/)

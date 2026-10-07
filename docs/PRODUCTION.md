@@ -74,7 +74,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 - **렌더 런타임은 HyperFrames(Apache-2.0)로 통일한다.** autoShorts·shopShorts 는 전면, OpenMontage 는
   `render_runtime = "hyperframes"` 로 선택 가능(Phase 1). 단어 단위 자막 번인·아바타 립싱크는
   아직 Remotion 전용이므로 그때만 예외 — `OpenMontage/skills/core/hyperframes.md` 의 결정 매트릭스를 따른다.
-- **코드 렌더 모션 쇼츠**(opus 렌더러 `experiments/` · 사용자 모션그래픽)는 [`docs/MOTION-RULES.md`](MOTION-RULES.md) 를 따른다: treatment.md 항상 · 숫자는 단어보다 먼저 안 나옴 · 하단 자막 기본 생략 · 배경음 박자 맞춤과 모션 블러 4장 기본 · 오디오 목표치.
+- **코드 렌더 모션 쇼츠**(opus 렌더러 `experiments/projects/` · 사용자 모션그래픽)는 [`docs/MOTION-RULES.md`](MOTION-RULES.md) 를 따른다: treatment.md 항상 · 숫자는 단어보다 먼저 안 나옴 · 하단 자막 기본 생략 · 배경음 박자 맞춤과 모션 블러 4장 기본 · 오디오 목표치.
 - 공용 자원: 폰트 `flow-pipeline/fonts/Pretendard-*.ttf`, PIL venv `OpenMontage/.venv`, TTS(Gemini Aoede = 한국어 네이티브 검증).
 
 ## 6. 산출물 위치
@@ -92,7 +92,7 @@ TTS·표기 공통 규칙: 숫자는 한글 표기("오십 미터"), AI 생성 �
 모듈 내 원본 위치:
 - Flow판: `flow-pipeline/projects/<NN-이름>/out/final.mp4`
 - OpenMontage판: `OpenMontage/projects/<이름>/renders/final.mp4`
-- talkcraft판: `talkcraft/<이름>/remotion/out/final.mp4`
+- talkcraft판: `talkcraft/projects/<이름>/remotion/out/final.mp4`
 - autoShorts판: `autoShorts/episodes/<slug>/final.mp4`
 - 삭제된 MPT의 과거 완주분: `_archive-mpt/`
 

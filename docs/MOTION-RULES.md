@@ -14,7 +14,7 @@
 
 ## 1. 영상마다 `treatment.md` 한 장 (제작 전, 대본 확인과 함께 — **항상**)
 
-대본 확인 게이트에 아래 양식을 **항상** 같이 낸다(모든 코드 렌더 모션 쇼츠). 프로젝트 폴더(`experiments/<이름>/treatment.md`)에 둔다.
+대본 확인 게이트에 아래 양식을 **항상** 같이 낸다(모든 코드 렌더 모션 쇼츠). 프로젝트 폴더(`experiments/projects/<이름>/treatment.md`)에 둔다.
 
 ```markdown
 # <번호> <제목> — treatment
